@@ -9,22 +9,25 @@ export enum AppView {
 
 export enum Subject {
   MATH = 'Matemática',
-  PHYSICS = 'Física',
-  CHEMISTRY = 'Química',
-  BIOLOGY = 'Biologia',
+  PORTUGUESE = 'Português',
   HISTORY = 'História',
   GEOGRAPHY = 'Geografia',
-  PORTUGUESE = 'Português',
-  LITERATURE = 'Literatura',
+  SCIENCE = 'Ciências',
   ENGLISH = 'Inglês',
-  PHILOSOPHY = 'Filosofia',
 }
 
-export enum ExamType {
-  ENEM = 'ENEM',
-  FUVEST = 'FUVEST',
-  UNICAMP = 'UNICAMP',
-  GENERIC = 'Geral',
+export enum ETECCourse {
+  ADMINISTRATION = 'Administração',
+  INFORMATICS = 'Informática',
+  LOGISTICS = 'Logística',
+  ACCOUNTING = 'Contabilidade',
+  NURSING = 'Enfermagem',
+  MECHANICS = 'Mecânica',
+  ELECTRONICS = 'Eletrônica',
+  BUILDINGS = 'Edificações',
+  CHEMISTRY = 'Química',
+  ENVIRONMENT = 'Meio Ambiente',
+  OTHER = 'Outro',
 }
 
 // Interfaces
@@ -47,11 +50,11 @@ export interface QuizResult {
   }[];
 }
 
-export interface EssayFeedback {
-  score: number; // 0-1000
-  competencies: {
+export interface TextAnalysis {
+  score: number; // 0-100
+  aspects: {
     name: string;
-    score: number; // 0-200
+    score: number; // 0-25
     feedback: string;
   }[];
   generalComment: string;
@@ -67,7 +70,7 @@ export interface StudyPlanDay {
 }
 
 export interface StudyPlan {
-  targetExam: string;
+  targetCourse: string;
   weeklySchedule: StudyPlanDay[];
 }
 

@@ -8,7 +8,7 @@ import ReactMarkdown from 'react-markdown';
 const TutorModule: React.FC = () => {
   const chatSession = useRef<Chat | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: 'Olá! Sou o VestiBot. Em que matéria posso te ajudar hoje?' }
+    { role: 'model', text: 'Olá! Sou o ETEC Tutor. Em que matéria posso te ajudar hoje?' }
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -26,7 +26,7 @@ const TutorModule: React.FC = () => {
 
   const handleSend = async () => {
     if (!input.trim() || isTyping || !chatSession.current) return;
-    
+
     const userMsg = input;
     setInput('');
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
@@ -34,23 +34,23 @@ const TutorModule: React.FC = () => {
 
     try {
       const result = await chatSession.current.sendMessageStream({
-          message: userMsg
+        message: userMsg
       });
 
       let fullText = "";
       setMessages(prev => [...prev, { role: 'model', text: '' }]);
 
       for await (const chunk of result) {
-          const responseChunk = chunk as GenerateContentResponse;
-          const chunkText = responseChunk.text;
-          if (chunkText) {
-            fullText += chunkText;
-            setMessages(prev => {
-                const newArr = [...prev];
-                newArr[newArr.length - 1] = { role: 'model', text: fullText };
-                return newArr;
-            });
-          }
+        const responseChunk = chunk as GenerateContentResponse;
+        const chunkText = responseChunk.text;
+        if (chunkText) {
+          fullText += chunkText;
+          setMessages(prev => {
+            const newArr = [...prev];
+            newArr[newArr.length - 1] = { role: 'model', text: fullText };
+            return newArr;
+          });
+        }
       }
     } catch (error) {
       console.error("Error sending message:", error);
@@ -68,7 +68,7 @@ const TutorModule: React.FC = () => {
   };
 
   const handleClear = () => {
-    setMessages([{ role: 'model', text: 'Olá! Sou o VestiBot. Em que matéria posso te ajudar hoje?' }]);
+    setMessages([{ role: 'model', text: 'Olá! Sou o ETEC Tutor. Em que matéria posso te ajudar hoje?' }]);
     chatSession.current = createTutorChat(); // Reset chat session context
   };
 
@@ -87,7 +87,7 @@ const TutorModule: React.FC = () => {
             </p>
           </div>
         </div>
-        <button 
+        <button
           onClick={handleClear}
           className="text-gray-400 hover:text-red-500 p-2 rounded-lg hover:bg-red-50 transition-all"
           title="Limpar conversa"
@@ -103,25 +103,23 @@ const TutorModule: React.FC = () => {
           return (
             <div key={idx} className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
               <div className={`flex max-w-[85%] md:max-w-[75%] gap-3 ${isUser ? 'flex-row-reverse' : 'flex-row'}`}>
-                <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center mt-1 ${
-                  isUser ? 'bg-indigo-100 text-indigo-600' : 'bg-amber-100 text-amber-600'
-                }`}>
+                <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center mt-1 ${isUser ? 'bg-indigo-100 text-indigo-600' : 'bg-amber-100 text-amber-600'
+                  }`}>
                   {isUser ? <User size={16} /> : <Bot size={16} />}
                 </div>
-                
-                <div className={`p-4 rounded-2xl shadow-sm ${
-                  isUser 
-                    ? 'bg-indigo-600 text-white rounded-tr-none' 
+
+                <div className={`p-4 rounded-2xl shadow-sm ${isUser
+                    ? 'bg-indigo-600 text-white rounded-tr-none'
                     : 'bg-white text-gray-800 border border-gray-200 rounded-tl-none'
-                }`}>
+                  }`}>
                   {isUser ? (
                     <p className="whitespace-pre-wrap">{msg.text}</p>
                   ) : (
                     <div className="prose prose-sm max-w-none prose-p:leading-relaxed prose-pre:bg-gray-100 prose-pre:text-gray-800">
-                       <ReactMarkdown>{msg.text}</ReactMarkdown>
-                       {msg.text === '' && isTyping && idx === messages.length - 1 && (
-                         <span className="inline-block w-2 h-4 bg-gray-400 animate-pulse ml-1 align-middle"></span>
-                       )}
+                      <ReactMarkdown>{msg.text}</ReactMarkdown>
+                      {msg.text === '' && isTyping && idx === messages.length - 1 && (
+                        <span className="inline-block w-2 h-4 bg-gray-400 animate-pulse ml-1 align-middle"></span>
+                      )}
                     </div>
                   )}
                 </div>
@@ -153,7 +151,7 @@ const TutorModule: React.FC = () => {
           </button>
         </div>
         <p className="text-center text-xs text-gray-400 mt-2">
-          O VestiBot pode cometer erros. Verifique informações importantes.
+          O ETEC Tutor pode cometer erros. Verifique informações importantes.
         </p>
       </div>
     </div>
