@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1770406501569",
+    "date": "2026-02-06T19:35:01.569Z",
+    "subject": "Simulado",
+    "score": 1,
+    "totalQuestions": 6,
+    "durationSeconds": 22,
+    "questions": [
+      {
+        "id": 1,
+        "subject": "Ciências da Natureza",
+        "source": "Simulado ETEC",
+        "contextText": "O consumo excessivo de plásticos tem gerado microplásticos que contaminam os oceanos. Um estudo mostrou que certas bactérias evoluíram para degradar PET, mas o processo é lento e libera CO2.",
+        "competency": "Sustentabilidade e Impacto Ambiental",
+        "gradeLevel": "9º Ano",
+        "text": "Com base no texto e nos conhecimentos sobre ecologia, a solução mais eficaz a curto prazo para mitigar esse impacto ambiental, alinhada à política dos 5Rs, seria:",
+        "alternatives": [
+          "Aumentar a queima de lixo plástico para gerar energia térmica.",
+          "Reduzir o consumo de descartáveis e investir em materiais biodegradáveis.",
+          "Introduzir geneticamente mais bactérias nos oceanos sem controle prévio.",
+          "Substituir todo o plástico por vidro, que é mais barato e leve.",
+          "Enterrar o lixo em profundidades maiores para evitar contato com a água."
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": 2,
+        "subject": "Matemática",
+        "source": "Simulado ETEC",
+        "contextText": "Para pintar uma parede de 20 m², um pintor gastou 2,5 litros de tinta. Ele foi contratado para pintar um salão escolar com 120 m² de parede.",
+        "competency": "Grandezas Proporcionais (Regra de Três)",
+        "gradeLevel": "7º Ano",
+        "text": "Considerando que o rendimento da tinta seja o mesmo, quantos litros de tinta, no mínimo, serão necessários para pintar todo o salão?",
+        "alternatives": [
+          "10 litros",
+          "12,5 litros",
+          "15 litros",
+          "18 litros",
+          "20 litros"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": 3,
+        "subject": "Linguagens",
+        "source": "Simulado ETEC",
+        "contextText": "Leia: 'A tecnologia aproxima quem está longe e afasta quem está perto.'",
+        "competency": "Interpretação e Figuras de Linguagem",
+        "gradeLevel": "8º Ano",
+        "text": "A frase acima utiliza uma figura de linguagem caracterizada pela oposição de ideias (longe/perto, aproxima/afasta). Essa figura é conhecida como:",
+        "alternatives": [
+          "Metáfora",
+          "Eufemismo",
+          "Antítese",
+          "Hipérbole",
+          "Pleonasmo"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": 4,
+        "subject": "Ciências Humanas",
+        "source": "Simulado ETEC",
+        "contextText": "A partir de 1930, o Brasil iniciou um processo efetivo de industrialização, deixando de ser um país essencialmente agrário. Esse período, liderado por Getúlio Vargas, focou na indústria de base.",
+        "competency": "Processos Históricos e Transformação do Espaço",
+        "gradeLevel": "9º Ano",
+        "text": "Um dos principais marcos desse período foi a criação de empresas estatais estratégicas. Assinale a alternativa que contém uma empresa criada nesse contexto:",
+        "alternatives": [
+          "Embraer (Aviões)",
+          "CSN (Companhia Siderúrgica Nacional)",
+          "Itaipu Binacional",
+          "Sabesp",
+          "Metrô de São Paulo"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": 5,
+        "subject": "Ciências da Natureza (Física)",
+        "source": "Simulado ETEC",
+        "contextText": "Em uma conta de luz, o consumo é medido em kWh (quilowatt-hora). Um chuveiro elétrico tem potência de 5.000 W (ou 5 kW).",
+        "competency": "Consumo de Energia e Potência",
+        "gradeLevel": "9º Ano",
+        "text": "Se uma família utiliza esse chuveiro por 30 horas mensais, qual será o consumo em kWh registrado no final do mês?",
+        "alternatives": [
+          "15 kWh",
+          "50 kWh",
+          "150 kWh",
+          "300 kWh",
+          "1500 kWh"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": 6,
+        "subject": "Linguagens",
+        "source": "Simulado ETEC",
+        "contextText": "O gênero textual 'Charge' une linguagem verbal e não verbal para fazer críticas sociais, geralmente utilizando o humor e a ironia.",
+        "competency": "Gêneros Textuais e Cidadania",
+        "gradeLevel": "8º Ano",
+        "text": "Ao interpretar uma charge sobre desmatamento onde uma árvore pede 'socorro' a um lenhador, o elemento principal para a compreensão da crítica é:",
+        "alternatives": [
+          "A qualidade técnica do desenho.",
+          "A personificação da natureza (prosopopeia) denunciando a ação humana.",
+          "O uso exclusivo de linguagem formal.",
+          "A ausência de contexto histórico.",
+          "A concordância nominal correta da fala da árvore."
+        ],
+        "correctIndex": 1
+      }
+    ],
+    "userAnswers": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      2
+    ]
+  }
+]
