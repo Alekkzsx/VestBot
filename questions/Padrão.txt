@@ -1,0 +1,1712 @@
+[
+  {
+    "grupo_id": 1,
+    "tema": "Tecnologia e Unidades de Medida",
+    "texto_referencia": "Com a evolução das câmeras de smartphones, o tamanho dos arquivos de imagem aumentou. Um usuário possui um celular com capacidade total de armazenamento de 128 GB (Gigabytes). O sistema operacional e os aplicativos essenciais ocupam 28 GB. Ele deseja fazer um backup de fotos de uma viagem, onde cada foto tem, em média, 5 MB (Megabytes).",
+    "image_id": "",
+    "id": 1,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Sabendo que 1 GB = 1.024 MB, quantas fotos, aproximadamente, esse usuário poderá armazenar no espaço livre restante do dispositivo?",
+    "alternativas": [
+      "2.000 fotos",
+      "10.000 fotos",
+      "20.480 fotos",
+      "25.600 fotos",
+      "100.000 fotos"
+    ],
+    "correta": "20.480 fotos",
+    "explicacao_base": "Espaço livre: 128 GB - 28 GB = 100 GB. Convertendo para MB: 100 * 1.024 = 102.400 MB. Número de fotos: 102.400 MB / 5 MB = 20.480 fotos."
+  },
+  {
+    "grupo_id": 2,
+    "tema": "Imunologia e Saúde Pública",
+    "texto_referencia": "Existem duas formas principais de imunização. A ativa ocorre quando o próprio corpo é estimulado a produzir anticorpos, geralmente de forma preventiva e duradoura. A passiva ocorre quando o indivíduo recebe anticorpos prontos para combater um antígeno específico de forma imediata e curativa, mas temporária.",
+    "image_id": "",
+    "id": 2,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "Considerando os conceitos apresentados, o soro antiofídico (utilizado contra picadas de cobra) e a vacina contra a gripe são exemplos, respectivamente, de imunização:",
+    "alternativas": [
+      "Ativa e Passiva.",
+      "Passiva e Ativa.",
+      "Passiva e Passiva.",
+      "Ativa e Ativa.",
+      "Natural e Artificial."
+    ],
+    "correta": "Passiva e Ativa.",
+    "explicacao_base": "O soro contém anticorpos prontos (imunização passiva/curativa). A vacina estimula o corpo a produzir anticorpos e criar memória imunológica (imunização ativa/preventiva)."
+  },
+  {
+    "grupo_id": 3,
+    "tema": "Urbanização e História do Brasil",
+    "texto_referencia": "A partir de 1930, o Brasil acelerou seu processo de industrialização. Esse fenômeno atraiu milhares de trabalhadores do campo para as cidades em busca de emprego nas fábricas, gerando um crescimento urbano desordenado.",
+    "image_id": "",
+    "id": 3,
+    "materia": "Geografia / História",
+    "dificuldade": "Fácil",
+    "enunciado": "O movimento migratório descrito no texto, caracterizado pela saída da população do campo em direção aos centros urbanos, é denominado:",
+    "alternativas": [
+      "Migração Pendular.",
+      "Transumância.",
+      "Êxodo Rural.",
+      "Reforma Agrária.",
+      "Nomadismo."
+    ],
+    "correta": "Êxodo Rural.",
+    "explicacao_base": "Êxodo Rural é a migração em massa da população da zona rural (campo) para a zona urbana (cidade)."
+  },
+  {
+    "grupo_id": 4,
+    "tema": "Termologia e Mudanças de Estado",
+    "texto_referencia": "Em dias quentes, ao colocarmos álcool em gel nas mãos, sentimos uma sensação de frescor imediato. Isso ocorre porque o álcool precisa absorver calor da pele para mudar de estado físico.",
+    "image_id": "",
+    "id": 4,
+    "materia": "Física / Química",
+    "dificuldade": "Média",
+    "enunciado": "A mudança de estado físico responsável pela sensação de resfriamento descrita é a:",
+    "alternativas": [
+      "Fusão.",
+      "Solidificação.",
+      "Condensação.",
+      "Evaporação (Vaporização).",
+      "Sublimação."
+    ],
+    "correta": "Evaporação (Vaporização).",
+    "explicacao_base": "O álcool passa do estado líquido para o gasoso (evaporação). Esse é um processo endotérmico (absorve calor), retirando energia térmica da pele e causando a sensação de frio."
+  },
+  {
+    "grupo_id": 5,
+    "tema": "Geometria Plana e Orçamento",
+    "texto_referencia": "Um pintor foi contratado para pintar uma parede retangular de 4 metros de comprimento por 3 metros de altura. No entanto, nessa parede há uma porta de 2 metros de altura por 1 metro de largura que não será pintada.",
+    "image_id": "",
+    "id": 5,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Se uma lata de tinta cobre exatamente 5 m², quantas latas, no mínimo, serão necessárias para pintar essa parede inteira (descontando a porta)?",
+    "alternativas": [
+      "1 lata",
+      "2 latas",
+      "3 latas",
+      "4 latas",
+      "5 latas"
+    ],
+    "correta": "2 latas",
+    "explicacao_base": "Área total da parede: 4m * 3m = 12 m². Área da porta: 2m * 1m = 2 m². Área a pintar: 12 - 2 = 10 m². Se 1 lata cobre 5 m², são necessárias: 10 / 5 = 2 latas."
+  },
+  {
+    "grupo_id": 6,
+    "tema": "Literatura e Figuras de Linguagem",
+    "texto_referencia": "Leia o verso de Gregório de Matos: 'O todo sem a parte não é todo; / A parte sem o todo não é parte; / Mas se a parte o faz todo, sendo parte, / Não se diga, que é parte, sendo todo.'",
+    "image_id": "",
+    "id": 6,
+    "materia": "Português",
+    "dificuldade": "Difícil",
+    "enunciado": "O jogo de palavras e o raciocínio lógico complexo, muitas vezes contraditório, são características marcantes de qual movimento literário brasileiro?",
+    "alternativas": [
+      "Romantismo",
+      "Barroco",
+      "Realismo",
+      "Modernismo",
+      "Quinhentismo"
+    ],
+    "correta": "Barroco",
+    "explicacao_base": "O Barroco (séc. XVII) é caracterizado pelo Cultismo (jogo de palavras) e Conceptismo (jogo de ideias/raciocínio lógico), expressando a dualidade e a complexidade do ser humano."
+  },
+  {
+    "grupo_id": 7,
+    "tema": "Química Ambiental e Densidade",
+    "texto_referencia": "Em vazamentos de petróleo no mar, observa-se que o óleo forma uma mancha negra que flutua sobre a água, impedindo a passagem de luz e as trocas gasosas, o que afeta a vida marinha.",
+    "image_id": "",
+    "id": 7,
+    "materia": "Química",
+    "dificuldade": "Fácil",
+    "enunciado": "O petróleo flutua na água do mar porque:",
+    "alternativas": [
+      "É mais denso que a água e insolúvel nela.",
+      "É menos denso que a água e solúvel nela.",
+      "É menos denso que a água e insolúvel (não se mistura) nela.",
+      "Tem a mesma densidade da água, formando uma mistura homogênea.",
+      "Reage quimicamente com o sal da água, formando um gás."
+    ],
+    "correta": "É menos denso que a água e insolúvel (não se mistura) nela.",
+    "explicacao_base": "Para flutuar, a substância deve ser menos densa. Como óleo e água não se misturam (são imiscíveis devido à polaridade), o óleo fica na superfície."
+  },
+  {
+    "grupo_id": 8,
+    "tema": "Cinemática e Segurança no Trânsito",
+    "texto_referencia": "Dirigir distraído usando o celular aumenta o risco de acidentes. Imagine que um motorista trafega a uma velocidade constante de 72 km/h e desvia o olhar para o celular por apenas 2 segundos.",
+    "image_id": "",
+    "id": 8,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "Qual a distância, em metros, que o carro percorreu 'às cegas' durante esses 2 segundos?",
+    "alternativas": [
+      "20 metros",
+      "30 metros",
+      "40 metros",
+      "72 metros",
+      "144 metros"
+    ],
+    "correta": "40 metros",
+    "explicacao_base": "Converta a velocidade para m/s: 72 km/h ÷ 3,6 = 20 m/s. Distância = Velocidade * Tempo. D = 20 m/s * 2 s = 40 metros."
+  },
+  {
+    "grupo_id": 9,
+    "tema": "Ecologia e Relações Ecológicas",
+    "texto_referencia": "As bromélias e orquídeas são plantas que vivem sobre os troncos de árvores maiores para obter mais luz solar, sem retirar nutrientes da árvore e sem prejudicá-la.",
+    "image_id": "",
+    "id": 9,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "Essa relação ecológica, onde uma espécie é beneficiada e a outra é indiferente (não ganha nem perde), é chamada de:",
+    "alternativas": [
+      "Parasitismo",
+      "Mutualismo",
+      "Predatismo",
+      "Epifitismo (Comensalismo)",
+      "Competição"
+    ],
+    "correta": "Epifitismo (Comensalismo)",
+    "explicacao_base": "Epifitismo é um tipo de comensalismo específico de plantas: a planta 'hóspede' usa a outra apenas como suporte (moradia) sem causar danos."
+  },
+  {
+    "grupo_id": 10,
+    "tema": "Geopolítica e Atualidades",
+    "texto_referencia": "A Organização do Tratado do Atlântico Norte (OTAN) foi criada em 1949, no contexto da Guerra Fria, como uma aliança militar ocidental.",
+    "image_id": "",
+    "id": 10,
+    "materia": "Geografia / História",
+    "dificuldade": "Média",
+    "enunciado": "Recentemente, a expansão da OTAN em direção ao leste europeu foi um dos argumentos centrais utilizados para justificar o início de qual conflito contemporâneo?",
+    "alternativas": [
+      "A Guerra da Coreia.",
+      "A Guerra Civil na Síria.",
+      "A Guerra entre Rússia e Ucrânia.",
+      "O conflito entre Israel e Palestina.",
+      "A Guerra do Vietnã."
+    ],
+    "correta": "A Guerra entre Rússia e Ucrânia.",
+    "explicacao_base": "A Rússia vê a expansão da OTAN para países fronteiriços (como a Ucrânia) como uma ameaça à sua segurança nacional, sendo este um dos estopins declarados para a invasão em 2022."
+  },
+  {
+    "grupo_id": 11,
+    "tema": "Matemática Financeira e Consumo",
+    "texto_referencia": "Em épocas de 'Black Friday', é comum lojas oferecerem descontos para pagamentos à vista ou juros para parcelamentos. Um notebook custa R$ 2.500,00 no preço de etiqueta. A loja oferece duas opções: Pagamento via Pix com 10% de desconto sobre o valor de etiqueta; ou pagamento em 10 vezes no cartão de crédito, porém com um acréscimo total de 5% sobre o valor de etiqueta.",
+    "image_id": "",
+    "id": 11,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Qual é a diferença, em reais, entre o valor total pago a prazo (cartão) e o valor pago à vista (Pix)?",
+    "alternativas": [
+      "R$ 125,00",
+      "R$ 250,00",
+      "R$ 375,00",
+      "R$ 400,00",
+      "R$ 500,00"
+    ],
+    "correta": "R$ 375,00",
+    "explicacao_base": "À vista: 2500 - 10% (250) = R$ 2.250. A prazo: 2500 + 5% (125) = R$ 2.625. Diferença: 2625 - 2250 = R$ 375,00."
+  },
+  {
+    "grupo_id": 12,
+    "tema": "Mudanças Climáticas e Química",
+    "texto_referencia": "O aumento da concentração de CO₂ na atmosfera não causa apenas o aquecimento global. Parte desse gás é absorvida pelos oceanos. Ao reagir com a água, o dióxido de carbono forma ácido carbônico (H₂CO₃), alterando o equilíbrio químico marinho. Esse fenômeno é conhecido como acidificação dos oceanos.",
+    "image_id": "",
+    "id": 12,
+    "materia": "Química / Biologia",
+    "dificuldade": "Difícil",
+    "enunciado": "A consequência direta da acidificação dos oceanos (diminuição do pH) para animais marinhos como corais, moluscos e crustáceos é:",
+    "alternativas": [
+      "O aumento da calcificação, deixando suas conchas mais duras.",
+      "A dificuldade na formação e manutenção de suas conchas e esqueletos de carbonato de cálcio (CaCO₃), que podem se dissolver.",
+      "A proliferação excessiva de algas que realizam mais fotossíntese.",
+      "A transformação de suas carapaças em plástico.",
+      "A imunidade contra predadores devido à acidez."
+    ],
+    "correta": "A dificuldade na formação e manutenção de suas conchas e esqueletos de carbonato de cálcio (CaCO₃), que podem se dissolver.",
+    "explicacao_base": "Em meio ácido, o Carbonato de Cálcio (base das conchas) reage e se dissolve, fragilizando a vida marinha calcária."
+  },
+  {
+    "grupo_id": 13,
+    "tema": "Patrimônio Cultural",
+    "texto_referencia": "O IPHAN (Instituto do Patrimônio Histórico e Artístico Nacional) classifica o patrimônio em Material (concreto, como prédios e cidades) e Imaterial (saberes, celebrações e formas de expressão).",
+    "image_id": "",
+    "id": 13,
+    "materia": "História / Sociologia",
+    "dificuldade": "Fácil",
+    "enunciado": "Assinale a alternativa que apresenta um exemplo de Patrimônio Cultural Imaterial brasileiro.",
+    "alternativas": [
+      "O Cristo Redentor no Rio de Janeiro.",
+      "O Centro Histórico de Ouro Preto.",
+      "A Roda de Capoeira.",
+      "As Ruínas de São Miguel das Missões.",
+      "O Plano Piloto de Brasília."
+    ],
+    "correta": "A Roda de Capoeira.",
+    "explicacao_base": "Prédios e monumentos são materiais. A Capoeira é uma manifestação cultural, um saber/prática, logo, é imaterial."
+  },
+  {
+    "grupo_id": 14,
+    "tema": "Eletrodinâmica e Consumo",
+    "texto_referencia": "Com a popularização das 'Air Fryers' (fritadeiras elétricas), o consumo doméstico aumentou. Um modelo comum tem potência de 1.500 W.",
+    "image_id": "",
+    "id": 14,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "Se uma pessoa utiliza essa fritadeira por 30 minutos todos os dias, ao final de 30 dias, qual será o custo desse consumo na conta de luz? (Considere o preço de 1 kWh = R$ 0,80).",
+    "alternativas": [
+      "R$ 15,00",
+      "R$ 18,00",
+      "R$ 22,50",
+      "R$ 36,00",
+      "R$ 45,00"
+    ],
+    "correta": "R$ 18,00",
+    "explicacao_base": "Potência = 1,5 kW. Tempo diário = 0,5 h. Energia dia = 0,75 kWh. Energia mês = 0,75 * 30 = 22,5 kWh. Custo = 22,5 * 0,80 = R$ 18,00."
+  },
+  {
+    "grupo_id": 15,
+    "tema": "Genética Molecular",
+    "texto_referencia": "O DNA é formado por duas fitas complementares de nucleotídeos. As bases nitrogenadas se ligam de forma específica: Adenina (A) sempre se liga com Timina (T), e Citosina (C) sempre se liga com Guanina (G).",
+    "image_id": "",
+    "id": 15,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "Se uma das fitas de um trecho de DNA possui a sequência de bases 'A - T - G - C - T - A', qual será a sequência correta da fita complementar?",
+    "alternativas": [
+      "T - A - C - G - A - T",
+      "G - C - A - T - C - G",
+      "A - T - G - C - T - A",
+      "U - A - C - G - A - U",
+      "T - T - G - G - A - A"
+    ],
+    "correta": "T - A - C - G - A - T",
+    "explicacao_base": "Regra de Chargaff: A vira T, T vira A, G vira C, C vira G. Logo: A->T, T->A, G->C, C->G, T->A, A->T."
+  },
+  {
+    "grupo_id": 16,
+    "tema": "Transição Energética e Geografia",
+    "texto_referencia": "A transição para carros elétricos aumentou a demanda por baterias de íons de lítio. A América do Sul possui uma das maiores reservas mundiais desse mineral, localizada no chamado 'Triângulo do Lítio'.",
+    "image_id": "",
+    "id": 16,
+    "materia": "Geografia",
+    "dificuldade": "Média",
+    "enunciado": "Quais países compõem o 'Triângulo do Lítio', região estratégica para a economia do século XXI?",
+    "alternativas": [
+      "Brasil, Venezuela e Colômbia.",
+      "Argentina, Bolívia e Chile.",
+      "Uruguai, Paraguai e Argentina.",
+      "Peru, Equador e Colômbia.",
+      "Chile, Brasil e Argentina."
+    ],
+    "correta": "Argentina, Bolívia e Chile.",
+    "explicacao_base": "Esses três países andinos concentram a maior parte das reservas de lítio em salares (como o Salar de Uyuni na Bolívia e o do Atacama no Chile)."
+  },
+  {
+    "grupo_id": 17,
+    "tema": "Interpretação e Modernismo",
+    "texto_referencia": "O Movimento Antropofágico, liderado por Oswald de Andrade na década de 1920, propunha 'devorar' a cultura estrangeira (europeia/norte-americana) para digeri-la e criar uma arte genuinamente brasileira.",
+    "image_id": "",
+    "id": 17,
+    "materia": "Português / Literatura",
+    "dificuldade": "Média",
+    "enunciado": "A metáfora da antropofagia (ato de comer carne humana) nesse contexto cultural significa:",
+    "alternativas": [
+      "Rejeitar totalmente qualquer tecnologia ou arte vinda de fora do Brasil.",
+      "Copiar fielmente os padrões artísticos franceses.",
+      "Assimilar as influências externas, misturá-las com a raiz nacional e produzir algo novo e original.",
+      "Voltar aos costumes indígenas primitivos de rituais de sacrifício real.",
+      "Proibir o ensino de línguas estrangeiras nas escolas."
+    ],
+    "correta": "Assimilar as influências externas, misturá-las com a raiz nacional e produzir algo novo e original.",
+    "explicacao_base": "Antropofagia cultural é a deglutição do que vem de fora para a criação de uma identidade brasileira híbrida e moderna."
+  },
+  {
+    "grupo_id": 18,
+    "tema": "Teorema de Pitágoras e Segurança",
+    "texto_referencia": "Para realizar um reparo na fiação de um poste, um eletricista apoia uma escada de 10 metros de comprimento no topo do poste. A base da escada é colocada no chão a 6 metros de distância da base do poste.",
+    "image_id": "",
+    "id": 18,
+    "materia": "Matemática",
+    "dificuldade": "Fácil",
+    "enunciado": "Qual é a altura aproximada do ponto onde a escada toca o poste? (Considere o poste perpendicular ao solo).",
+    "alternativas": [
+      "4 metros",
+      "8 metros",
+      "12 metros",
+      "16 metros",
+      "60 metros"
+    ],
+    "correta": "8 metros",
+    "explicacao_base": "Pitágoras: Hipotenusa² = CatetoA² + CatetoB². 10² = 6² + h². 100 = 36 + h². h² = 64. h = 8m. (Triângulo pitagórico clássico 3,4,5 multiplicado por 2)."
+  },
+  {
+    "grupo_id": 19,
+    "tema": "Separação de Misturas",
+    "texto_referencia": "Nas Estações de Tratamento de Água (ETA), após a adição de coagulantes, formam-se flocos de sujeira pesados. A água então passa por grandes tanques onde a velocidade do fluxo é reduzida para que esses flocos vão para o fundo.",
+    "image_id": "",
+    "id": 19,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "O nome do processo físico de separação descrito, que se baseia na diferença de densidade (a sujeira desce e a água limpa fica em cima), é:",
+    "alternativas": [
+      "Destilação Fracionada.",
+      "Filtração.",
+      "Decantação.",
+      "Centrifugação.",
+      "Tamisação."
+    ],
+    "correta": "Decantação.",
+    "explicacao_base": "Decantação é o processo onde a fase sólida (ou líquida mais densa) se deposita no fundo do recipiente pela ação da gravidade."
+  },
+  {
+    "grupo_id": 20,
+    "tema": "Cinemática e Velocidade Média",
+    "texto_referencia": "Um ônibus de viagem percorre um trajeto total de 300 km. A primeira metade da viagem (150 km) foi feita com velocidade média de 75 km/h. A segunda metade (150 km), devido ao trânsito e chuva, foi feita com velocidade média de 50 km/h.",
+    "image_id": "",
+    "id": 20,
+    "materia": "Física",
+    "dificuldade": "Difícil",
+    "enunciado": "Qual foi a velocidade média do ônibus considerando todo o percurso?",
+    "alternativas": [
+      "60 km/h",
+      "62,5 km/h",
+      "65 km/h",
+      "70 km/h",
+      "125 km/h"
+    ],
+    "correta": "60 km/h",
+    "explicacao_base": "Tempo 1: 150/75 = 2h. Tempo 2: 150/50 = 3h. Tempo Total = 5h. Distância Total = 300km. Vm = 300 / 5 = 60 km/h. (Atenção: não é a média aritmética das velocidades)."
+  },
+  {
+    "grupo_id": 21,
+    "tema": "Ecologia e Bioacumulação",
+    "texto_referencia": "A poluição dos oceanos por microplásticos é um problema crescente. Pequenos animais, como o zooplâncton, confundem essas partículas com alimento. Peixes pequenos comem o zooplâncton, peixes maiores comem os pequenos e, eventualmente, humanos comem esses peixes. Pesquisas indicam que a concentração de toxinas ligadas ao plástico aumenta à medida que se sobe na cadeia alimentar.",
+    "image_id": "",
+    "id": 21,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "O fenômeno ecológico descrito no texto, onde a concentração de uma substância tóxica aumenta nos níveis tróficos superiores (sendo maior no predador do que na presa), é denominado:",
+    "alternativas": [
+      "Eutrofização.",
+      "Magnificação Trófica (Bioacumulação).",
+      "Seleção Natural.",
+      "Biodegradação.",
+      "Comensalismo."
+    ],
+    "correta": "Magnificação Trófica (Bioacumulação).",
+    "explicacao_base": "A magnificação trófica ocorre quando poluentes não biodegradáveis se acumulam nos tecidos dos organismos e sua concentração aumenta ao longo da cadeia alimentar."
+  },
+  {
+    "grupo_id": 22,
+    "tema": "Porcentagem e Inflação",
+    "texto_referencia": "Devido a fatores climáticos que afetaram a safra, o preço do azeite de oliva sofreu reajustes consecutivos. Em um supermercado, uma garrafa custava R$ 30,00. No primeiro mês, o preço subiu 10%. No mês seguinte, sobre o novo valor, houve um novo aumento de 20%.",
+    "image_id": "",
+    "id": 22,
+    "materia": "Matemática",
+    "dificuldade": "Difícil",
+    "enunciado": "Qual é o valor final do azeite após esses dois aumentos e qual foi a porcentagem total de aumento em relação ao preço original?",
+    "alternativas": [
+      "R$ 39,00 e 30%",
+      "R$ 39,60 e 32%",
+      "R$ 39,60 e 30%",
+      "R$ 40,00 e 33,3%",
+      "R$ 42,00 e 40%"
+    ],
+    "correta": "R$ 39,60 e 32%",
+    "explicacao_base": "1º Aumento: 30 * 1,10 = R$ 33,00. 2º Aumento: 33 * 1,20 = R$ 39,60. Aumento total: 39,60 - 30,00 = 9,60. Em porcentagem: 9,60 / 30 = 0,32 ou 32%. (Note que não se somam as taxas: 10% + 20% ≠ 32%)."
+  },
+  {
+    "grupo_id": 23,
+    "tema": "Geografia Física e Biomas",
+    "texto_referencia": "Considerado o 'berço das águas' ou a 'caixa d'água' do Brasil, este bioma ocupa a região central do país. Sua vegetação possui troncos tortuosos, cascas grossas e raízes profundas para buscar água em lençóis freáticos distantes, adaptando-se a um clima com duas estações bem definidas: uma chuvosa e uma seca.",
+    "image_id": "",
+    "id": 23,
+    "materia": "Geografia",
+    "dificuldade": "Fácil",
+    "enunciado": "As características descritas no texto referem-se ao bioma:",
+    "alternativas": [
+      "Mata Atlântica.",
+      "Caatinga.",
+      "Cerrado.",
+      "Pampa.",
+      "Pantanal."
+    ],
+    "correta": "Cerrado.",
+    "explicacao_base": "Troncos tortuosos, cascas grossas, solo ácido (latossolo), raízes profundas e sazonalidade marcante são características típicas do Cerrado brasileiro."
+  },
+  {
+    "grupo_id": 24,
+    "tema": "Eletricidade e Potência",
+    "texto_referencia": "Para proteger os circuitos elétricos de uma casa, utilizam-se disjuntores que desarmam quando a corrente elétrica ultrapassa um certo valor. Um chuveiro elétrico possui as seguintes especificações na etiqueta: Tensão (Voltagem) = 220 V e Potência = 5.500 W.",
+    "image_id": "",
+    "id": 24,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "Para que esse chuveiro funcione corretamente sem desarmar o sistema, o disjuntor deve suportar uma corrente elétrica de, no mínimo:",
+    "alternativas": [
+      "10 Amperes (A)",
+      "15 Amperes (A)",
+      "20 Amperes (A)",
+      "25 Amperes (A)",
+      "40 Amperes (A)"
+    ],
+    "correta": "25 Amperes (A)",
+    "explicacao_base": "Utiliza-se a fórmula da Potência elétrica: P = U * i. Logo, i = P / U. Substituindo: i = 5500 / 220 = 25 A."
+  },
+  {
+    "grupo_id": 25,
+    "tema": "História Geral e Política",
+    "texto_referencia": "Durante o Império Romano, os governantes distribuíam trigo gratuitamente e promoviam grandes espetáculos de lutas de gladiadores nos anfiteatros. O poeta Juvenal criticou essa prática afirmando que o povo, que antes decidia sobre comandos e legiões, agora se contentava com 'panem et circenses'.",
+    "image_id": "",
+    "id": 25,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "A política do 'Pão e Circo' tinha como objetivo principal:",
+    "alternativas": [
+      "Treinar a população para a guerra contra os bárbaros.",
+      "Promover a saúde pública através da alimentação balanceada.",
+      "Garantir a alienação política da plebe, evitando revoltas sociais contra o imperador.",
+      "Aumentar o nível cultural dos romanos através do teatro grego.",
+      "Distribuir a riqueza de forma igualitária entre patrícios e plebeus."
+    ],
+    "correta": "Garantir a alienação política da plebe, evitando revoltas sociais contra o imperador.",
+    "explicacao_base": "A estratégia visava manter a população pobre (plebe) ocupada e alimentada para que não se rebelasse contra a desigualdade e os problemas políticos de Roma."
+  },
+  {
+    "grupo_id": 26,
+    "tema": "Química e Tabela Periódica",
+    "texto_referencia": "Os letreiros luminosos coloridos, muito comuns em fachadas de lojas antigas, utilizam gases que emitem luz quando percorridos por uma corrente elétrica. O gás mais famoso desse tipo é o neônio (Ne). Esses elementos são conhecidos por sua baixa reatividade química, ou seja, dificilmente se combinam com outros átomos.",
+    "image_id": "",
+    "id": 26,
+    "materia": "Química",
+    "dificuldade": "Fácil",
+    "enunciado": "Na Tabela Periódica, o neônio, o hélio e o argônio pertencem à família 18, também conhecida como:",
+    "alternativas": [
+      "Metais Alcalinos.",
+      "Halogênios.",
+      "Gases Nobres.",
+      "Metais de Transição.",
+      "Calcogênios."
+    ],
+    "correta": "Gases Nobres.",
+    "explicacao_base": "Gases Nobres (família 18 ou 8A) possuem a camada de valência completa (estabilidade eletrônica), por isso são inertes (pouco reativos)."
+  },
+  {
+    "grupo_id": 27,
+    "tema": "Saúde Pública e Viroses",
+    "texto_referencia": "O Brasil enfrenta periodicamente epidemias de dengue. O combate à doença foca na eliminação de água parada em pneus, vasos e garrafas. Recentemente, a vacina contra a dengue começou a ser distribuída no SUS.",
+    "image_id": "",
+    "id": 27,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "A medida de eliminar água parada é fundamental porque interfere diretamente em qual fase do ciclo de vida do mosquito *Aedes aegypti*?",
+    "alternativas": [
+      "Interrompe a fase adulta alada, pois o mosquito bebe essa água.",
+      "Impede o desenvolvimento das larvas, que são aquáticas.",
+      "Mata o vírus da dengue que vive livre na água.",
+      "Impede que o mosquito macho se alimente de néctar.",
+      "Facilita a ação de predadores aéreos como pássaros."
+    ],
+    "correta": "Impede o desenvolvimento das larvas, que são aquáticas.",
+    "explicacao_base": "O *Aedes aegypti* deposita ovos na água parada, onde eclodem e viram larvas. Sem água, o ciclo reprodutivo do vetor é interrompido."
+  },
+  {
+    "grupo_id": 28,
+    "tema": "Interpretação e Tecnologia",
+    "texto_referencia": "A Inteligência Artificial (IA) generativa é capaz de criar textos, imagens e códigos a partir de comandos simples. Embora traga produtividade, especialistas alertam para o risco de 'alucinação', termo usado quando a IA inventa informações falsas com total convicção, podendo propagar desinformação.",
+    "image_id": "",
+    "id": 28,
+    "materia": "Português / Atualidades",
+    "dificuldade": "Média",
+    "enunciado": "Infere-se do texto que o uso acrítico da Inteligência Artificial pode resultar em:",
+    "alternativas": [
+      "Garantia absoluta de veracidade dos fatos históricos.",
+      "Substituição completa do cérebro humano em todas as tarefas criativas.",
+      "Propagação de Fake News (notícias falsas) devido à falha técnica chamada alucinação.",
+      "Melhoria automática da ética na internet.",
+      "Eliminação total de erros gramaticais em textos jornalísticos."
+    ],
+    "correta": "Propagação de Fake News (notícias falsas) devido à falha técnica chamada alucinação.",
+    "explicacao_base": "O texto define 'alucinação' como a invenção de dados falsos, o que leva diretamente à desinformação (fake news) se o usuário não verificar a fonte."
+  },
+  {
+    "grupo_id": 29,
+    "tema": "Grandezas Proporcionais e Nutrição",
+    "texto_referencia": "Para conscientizar sobre o consumo de açúcar, uma nutricionista mostra que uma lata de refrigerante comum de 350 ml contém, aproximadamente, 37 gramas de açúcar.",
+    "image_id": "",
+    "id": 29,
+    "materia": "Química / Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Se um indivíduo consumir uma garrafa de 2 litros desse mesmo refrigerante, qual a quantidade de açúcar ingerida, aproximadamente? (Considere a proporção constante).",
+    "alternativas": [
+      "100 gramas.",
+      "150 gramas.",
+      "211 gramas.",
+      "370 gramas.",
+      "700 gramas."
+    ],
+    "correta": "211 gramas.",
+    "explicacao_base": "Regra de três: 350ml está para 37g, assim como 2000ml está para X. X = (2000 * 37) / 350. X ≈ 211,4 g."
+  },
+  {
+    "grupo_id": 30,
+    "tema": "Figuras de Linguagem",
+    "texto_referencia": "Em uma campanha de trânsito, lê-se o slogan: 'Não deixe que a bebida transforme o seu carro em uma arma'.",
+    "image_id": "",
+    "id": 30,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "A figura de linguagem que estabelece uma comparação implícita entre o 'carro' e a 'arma', sem o uso de conectivos como 'como' ou 'tal qual', é a:",
+    "alternativas": [
+      "Metonímia.",
+      "Metáfora.",
+      "Hipérbole.",
+      "Pleonasmo.",
+      "Eufemismo."
+    ],
+    "correta": "Metáfora.",
+    "explicacao_base": "A metáfora é uma comparação abreviada/mental. Dizer que o carro *é* uma arma (simbolizando perigo letal) caracteriza essa figura."
+  },
+  {
+    "grupo_id": 31,
+    "tema": "Matemática e Consumo Sustentável",
+    "texto_referencia": "Muitas residências estão instalando painéis solares para reduzir a conta de luz. Suponha que um sistema fotovoltaico custe R$ 12.000,00 para ser instalado. A economia média mensal na conta de energia gerada por esse sistema é de R$ 250,00.",
+    "image_id": "",
+    "id": 31,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Desconsiderando a inflação e variações na tarifa de energia, quantos anos completos serão necessários para que a economia na conta de luz pague o valor do investimento inicial (o chamado 'payback')?",
+    "alternativas": [
+      "2 anos.",
+      "3 anos.",
+      "4 anos.",
+      "4 anos e 8 meses.",
+      "5 anos."
+    ],
+    "correta": "4 anos.",
+    "explicacao_base": "Custo total: R$ 12.000. Economia mensal: R$ 250. Economia anual: 250 * 12 = R$ 3.000. Tempo necessário: 12.000 / 3.000 = 4 anos."
+  },
+  {
+    "grupo_id": 32,
+    "tema": "Biologia Evolutiva e Saúde",
+    "texto_referencia": "A Organização Mundial da Saúde (OMS) alerta para o aumento das 'superbactérias', microrganismos resistentes aos antibióticos conhecidos. O uso indiscriminado desses medicamentos acelera o processo, pois elimina as bactérias sensíveis e deixa vivas apenas as que possuem mutações genéticas que conferem resistência.",
+    "image_id": "",
+    "id": 32,
+    "materia": "Biologia",
+    "dificuldade": "Difícil",
+    "enunciado": "O mecanismo biológico descrito, que explica o surgimento dessas populações de bactérias resistentes, é conhecido como:",
+    "alternativas": [
+      "Lei do Uso e Desuso.",
+      "Seleção Natural.",
+      "Transgenia induzida.",
+      "Geração Espontânea.",
+      "Clonagem terapêutica."
+    ],
+    "correta": "Seleção Natural.",
+    "explicacao_base": "O antibiótico atua como um fator de pressão seletiva: ele não cria a resistência, mas seleciona as bactérias que já nasceram resistentes (variabilidade genética), que sobrevivem e se reproduzem. Este é o conceito central do Darwinismo."
+  },
+  {
+    "grupo_id": 33,
+    "tema": "Geopolítica e Comércio Exterior",
+    "texto_referencia": "A balança comercial brasileira frequentemente apresenta superávit, impulsionada pela exportação de 'commodities'. São produtos básicos, com pouco ou nenhum grau de industrialização, cujos preços são determinados pelo mercado internacional, como a soja, o minério de ferro e o petróleo bruto.",
+    "image_id": "",
+    "id": 33,
+    "materia": "Geografia",
+    "dificuldade": "Média",
+    "enunciado": "A forte dependência da exportação de commodities apresenta um risco econômico para o país porque:",
+    "alternativas": [
+      "O Brasil não possui terras férteis suficientes para expandir a produção.",
+      "A economia fica vulnerável às oscilações de preços internacionais e depende de importações de produtos tecnológicos de alto valor agregado.",
+      "O setor de commodities não utiliza nenhuma tecnologia, empregando apenas mão de obra manual.",
+      "A produção de soja e minério não causa nenhum impacto ambiental, desestimulando leis de proteção.",
+      "O mercado internacional proíbe a venda de produtos industrializados brasileiros."
+    ],
+    "correta": "A economia fica vulnerável às oscilações de preços internacionais e depende de importações de produtos tecnológicos de alto valor agregado.",
+    "explicacao_base": "Países agroexportadores sofrem quando o preço da matéria-prima cai no mercado global e tendem a ter déficits tecnológicos, precisando importar itens caros (eletrônicos, maquinário, remédios)."
+  },
+  {
+    "grupo_id": 34,
+    "tema": "Óptica e Telecomunicações",
+    "texto_referencia": "A internet de alta velocidade chega às nossas casas majoritariamente através de cabos de fibra óptica. Dentro desses cabos, os dados viajam na forma de pulsos de luz. Para garantir que a luz percorra quilômetros sem escapar pelas laterais da fibra de vidro, utiliza-se um fenômeno físico específico.",
+    "image_id": "",
+    "id": 34,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "Qual é o fenômeno óptico que permite que a luz fique 'presa' e seja guiada dentro do núcleo da fibra óptica?",
+    "alternativas": [
+      "Dispersão luminosa.",
+      "Refração crítica.",
+      "Reflexão interna total.",
+      "Difração da luz.",
+      "Efeito Fotoelétrico."
+    ],
+    "correta": "Reflexão interna total.",
+    "explicacao_base": "A fibra óptica funciona com base na reflexão interna total. A luz incide na parede interna da fibra com um ângulo superior ao ângulo limite, sendo refletida totalmente de volta para o interior, propagando-se por longas distâncias."
+  },
+  {
+    "grupo_id": 35,
+    "tema": "Química Verde e Energia",
+    "texto_referencia": "Considerado o 'combustível do futuro', o Hidrogênio Verde (H₂) é produzido através da eletrólise da água, utilizando fontes de energia renováveis (como eólica ou solar), sem emitir carbono. A reação separa a molécula de água (H₂O) em seus componentes gasosos.",
+    "image_id": "",
+    "id": 35,
+    "materia": "Química",
+    "dificuldade": "Fácil",
+    "enunciado": "Na eletrólise da água, além do gás hidrogênio (H₂), qual é o outro gás liberado, essencial para a respiração da maioria dos seres vivos?",
+    "alternativas": [
+      "Dióxido de Carbono (CO₂).",
+      "Nitrogênio (N₂).",
+      "Oxigênio (O₂).",
+      "Metano (CH₄).",
+      "Hélio (He)."
+    ],
+    "correta": "Oxigênio (O₂).",
+    "explicacao_base": "A fórmula da água é H₂O. Sua decomposição gera Hidrogênio (H₂) e Oxigênio (O₂)."
+  },
+  {
+    "grupo_id": 36,
+    "tema": "História do Brasil e Direitos Trabalhistas",
+    "texto_referencia": "Em 1943, durante o governo de Getúlio Vargas, foi sancionada a Consolidação das Leis do Trabalho (CLT). Esse conjunto de normas unificou a legislação trabalhista existente e introduziu novos direitos, buscando regular a relação entre patrões e empregados no contexto da crescente industrialização brasileira.",
+    "image_id": "",
+    "id": 36,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "Entre os direitos garantidos ou consolidados pela CLT no período Vargas, NÃO se inclui:",
+    "alternativas": [
+      "O Salário Mínimo.",
+      "As Férias Remuneradas.",
+      "A jornada de trabalho de 8 horas diárias.",
+      "O Home Office (Trabalho Remoto) regulamentado.",
+      "A Carteira de Trabalho."
+    ],
+    "correta": "O Home Office (Trabalho Remoto) regulamentado.",
+    "explicacao_base": "A CLT (anos 40) garantiu salário mínimo, férias, jornada fixa e carteira assinada. O Home Office é uma modalidade de trabalho moderna, regulamentada apenas recentemente no século XXI."
+  },
+  {
+    "grupo_id": 37,
+    "tema": "Língua Portuguesa e Variação Linguística",
+    "texto_referencia": "Em um texto de rede social, lê-se: 'A gente fomos no shopping mas não tinha ninguém'. Embora a frase desvie da norma padrão culta (o correto seria 'Nós fomos' ou 'A gente foi'), ela comunica perfeitamente a mensagem em um contexto informal.",
+    "image_id": "",
+    "id": 37,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "Ao julgar quem fala dessa forma como alguém 'menos inteligente' ou 'sem cultura', comete-se um erro sociológico chamado:",
+    "alternativas": [
+      "Neologismo.",
+      "Preconceito Linguístico.",
+      "Estrangeirismo.",
+      "Licença Poética.",
+      "Arcaísmo."
+    ],
+    "correta": "Preconceito Linguístico.",
+    "explicacao_base": "O Preconceito Linguístico é o julgamento de valor negativo sobre variedades linguísticas (geralmente populares ou regionais), associando-as à falta de inteligência ou capacidade, ignorando que a língua é viva e variável."
+  },
+  {
+    "grupo_id": 38,
+    "tema": "Física e Clima Urbano",
+    "texto_referencia": "Nas grandes metrópoles, observa-se que a temperatura no centro da cidade costuma ser mais alta do que nas áreas rurais vizinhas ou parques arborizados. Esse fenômeno é causado pela grande concentração de asfalto e concreto, que absorvem muito calor, e pela falta de áreas verdes e corpos d'água.",
+    "image_id": "",
+    "id": 38,
+    "materia": "Geografia / Física",
+    "dificuldade": "Média",
+    "enunciado": "Como é denominado esse fenômeno climático típico das grandes urbanizações?",
+    "alternativas": [
+      "Inversão Térmica.",
+      "Ilhas de Calor.",
+      "Chuva Ácida.",
+      "Efeito Estufa Global.",
+      "El Niño."
+    ],
+    "correta": "Ilhas de Calor.",
+    "explicacao_base": "Ilha de Calor é o fenômeno local onde a zona urbana apresenta temperaturas mais elevadas que seu entorno rural devido à impermeabilização do solo, verticalização e poluição."
+  },
+  {
+    "grupo_id": 39,
+    "tema": "Ecologia e Poluição da Água",
+    "texto_referencia": "O despejo excessivo de esgoto doméstico e fertilizantes agrícolas ricos em nitratos e fosfatos em rios e lagos provoca a proliferação exagerada de algas na superfície da água. Esse 'tapete' verde impede a entrada de luz, matando as plantas de fundo. A decomposição dessas plantas consome todo o oxigênio da água, causando a morte de peixes.",
+    "image_id": "",
+    "id": 39,
+    "materia": "Biologia / Química",
+    "dificuldade": "Difícil",
+    "enunciado": "Esse processo de degradação ambiental de corpos d'água é tecnicamente chamado de:",
+    "alternativas": [
+      "Lixiviação.",
+      "Eutrofização.",
+      "Salinização.",
+      "Assoreamento.",
+      "Desertificação."
+    ],
+    "correta": "Eutrofização.",
+    "explicacao_base": "Eutrofização é o enriquecimento excessivo da água por nutrientes (N e P), gerando 'bloom' de algas e subsequente falta de oxigênio (anoxia) no ambiente aquático."
+  },
+  {
+    "grupo_id": 40,
+    "tema": "Geometria Espacial e Agricultura",
+    "texto_referencia": "Um agricultor deseja construir um reservatório cilíndrico (cisterna) para armazenar água da chuva em sua propriedade. O projeto indica que o reservatório deve ter um raio da base de 2 metros e uma altura de 3 metros. (Utilize π = 3).",
+    "image_id": "",
+    "id": 40,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Qual é a capacidade máxima de armazenamento de água dessa cisterna, em litros?",
+    "alternativas": [
+      "12.000 litros.",
+      "18.000 litros.",
+      "36.000 litros.",
+      "60.000 litros.",
+      "360.000 litros."
+    ],
+    "correta": "36.000 litros.",
+    "explicacao_base": "Volume do cilindro = π * R² * h. V = 3 * (2)² * 3 = 3 * 4 * 3 = 36 m³. Como 1 m³ = 1.000 litros, então 36 m³ = 36.000 litros."
+  },
+  {
+    "grupo_id": 41,
+    "tema": "Eras Geológicas e Evolução",
+    "texto_referencia": "A tirinha mostra a interação entre Piteco (um humano pré-histórico) e um dinossauro recém-nascido. Essa convivência é um tema recorrente na cultura pop (como em 'Os Flintstones'), mas carece de respaldo científico.",
+    "image_id": "piteco.png",
+    "id": 41,
+    "materia": "Biologia / Geografia",
+    "dificuldade": "Média",
+    "enunciado": "Sob a ótica da ciência evolutiva e geológica, a cena apresentada nos quadrinhos é considerada um anacronismo (erro cronológico) porque:",
+    "alternativas": [
+      "Os humanos surgiram na Era Paleozoica, enquanto os dinossauros só apareceram no final do Cenozoico.",
+      "A extinção dos dinossauros não-avianos ocorreu no final do Cretáceo (aprox. 65 milhões de anos atrás), milhões de anos antes do surgimento dos primeiros hominídeos.",
+      "Os dinossauros eram exclusivamente aquáticos, impossibilitando a interação em terra firme com humanos.",
+      "A atmosfera da Terra na época dos humanos era tóxica para os répteis gigantes devido à falta de oxigênio.",
+      "Os humanos e os dinossauros viveram no mesmo período, mas em continentes separados pela Pangeia."
+    ],
+    "correta": "A extinção dos dinossauros não-avianos ocorreu no final do Cretáceo (aprox. 65 milhões de anos atrás), milhões de anos antes do surgimento dos primeiros hominídeos.",
+    "explicacao_base": "Existe um hiato de mais de 60 milhões de anos entre a extinção dos grandes dinossauros (limite K-Pg) e o surgimento do gênero *Homo*."
+  },
+  {
+    "grupo_id": 42,
+    "tema": "Comportamento Animal (Etologia)",
+    "texto_referencia": "No terceiro e quarto quadrinhos, após o nascimento, o pequeno dinossauro passa a seguir Piteco imediatamente, demonstrando sinais de afeto (corações), como se o humano fosse sua mãe.",
+    "image_id": "piteco.png",
+    "id": 42,
+    "materia": "Biologia",
+    "dificuldade": "Difícil",
+    "enunciado": "Esse comportamento instintivo, descrito pelo etólogo Konrad Lorenz, no qual filhotes de certas espécies (especialmente aves) formam um vínculo social forte com o primeiro objeto móvel que veem ao nascer, é denominado:",
+    "alternativas": [
+      "Mimetismo.",
+      "Imprinting (Estampagem).",
+      "Mutualismo.",
+      "Hibernação.",
+      "Camuflagem."
+    ],
+    "correta": "Imprinting (Estampagem).",
+    "explicacao_base": "Imprinting (ou estampagem) é o processo de aprendizado rápido e irreversível que ocorre numa fase crítica do desenvolvimento, onde o animal reconhece e segue a figura materna (ou substituta)."
+  },
+  {
+    "grupo_id": 43,
+    "tema": "Figuras de Linguagem",
+    "texto_referencia": "No primeiro quadrinho, leem-se as palavras 'PLIC', 'TRIC', 'PLIC' próximas ao ovo.",
+    "image_id": "piteco.png",
+    "id": 43,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "Na linguagem das histórias em quadrinhos, esse recurso estilístico que visa reproduzir graficamente sons e ruídos do ambiente é classificado como uma figura de palavra chamada:",
+    "alternativas": [
+      "Metáfora.",
+      "Pleonasmo.",
+      "Onomatopeia.",
+      "Sinestesia.",
+      "Prosopopeia."
+    ],
+    "correta": "Onomatopeia.",
+    "explicacao_base": "Onomatopeia é a figura de linguagem que tenta reproduzir, através de fonemas, sons naturais, de objetos ou de animais."
+  },
+  {
+    "grupo_id": 44,
+    "tema": "Classificação Zoológica e Reprodução",
+    "texto_referencia": "Observe a diferença reprodutiva entre os dois personagens: Piteco é um mamífero, enquanto Horácio (o dinossauro) nasce a partir de um ovo com casca rígida.",
+    "image_id": "piteco.png",
+    "id": 44,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "A presença do ovo amniótico (com casca calcária) foi um passo evolutivo crucial para os répteis e aves, pois permitiu:",
+    "alternativas": [
+      "A reprodução independente da água, conquistando definitivamente o ambiente terrestre.",
+      "A respiração branquial dos embriões até a fase adulta.",
+      "A eliminação da fecundação interna.",
+      "O desenvolvimento de glândulas mamárias dentro do ovo.",
+      "A reprodução assexuada por brotamento."
+    ],
+    "correta": "A reprodução independente da água, conquistando definitivamente o ambiente terrestre.",
+    "explicacao_base": "O ovo com casca (amniótico) protege o embrião da dessecação, permitindo que os répteis (e posteriormente aves e mamíferos) se reproduzissem longe de corpos d'água, ao contrário dos anfíbios."
+  },
+  {
+    "grupo_id": 45,
+    "tema": "Morfossintaxe",
+    "texto_referencia": "No terceiro quadrinho, Piteco diz: 'Bem, \"SEU\" bebê, até a vista...'.",
+    "image_id": "piteco.png",
+    "id": 45,
+    "materia": "Português",
+    "dificuldade": "Média",
+    "enunciado": "Analisando o termo destacado no contexto da fala, percebe-se que ele NÃO indica posse (como em 'o seu carro'), mas sim:",
+    "alternativas": [
+      "Um pronome demonstrativo que indica a posição do bebê no espaço.",
+      "Uma forma de tratamento coloquial, redução da palavra 'Senhor', usada com familiaridade ou ironia.",
+      "Um adjetivo que qualifica o bebê como sendo de propriedade de Piteco.",
+      "Uma conjunção adversativa que contradiz a saudação.",
+      "Um artigo indefinido que generaliza o dinossauro."
+    ],
+    "correta": "Uma forma de tratamento coloquial, redução da palavra 'Senhor', usada com familiaridade ou ironia.",
+    "explicacao_base": "A palavra 'Seu', neste contexto (muito comum na fala brasileira e nas tirinhas do Chico Bento/Piteco), é uma aferese de 'Senhor', funcionando como pronome de tratamento e não pronome possessivo."
+  },
+  {
+    "grupo_id": 46,
+    "tema": "Física - Ondulatória",
+    "texto_referencia": "Para que Piteco pudesse ouvir o som do ovo estalando ('Plic, Tric') no primeiro quadrinho, foi necessário que ondas sonoras viajassem do ovo até seus ouvidos.",
+    "image_id": "piteco.png",
+    "id": 46,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "Sobre a natureza física desse som percebido pelo personagem, é correto afirmar que:",
+    "alternativas": [
+      "É uma onda eletromagnética que pode se propagar no vácuo.",
+      "É uma onda mecânica longitudinal que necessita de um meio material (como o ar) para se propagar.",
+      "Viaja na velocidade da luz (300.000 km/s) através do ar.",
+      "É composto por partículas físicas sólidas chamadas fótons.",
+      "Não transporta energia, apenas matéria do ovo para o ouvido."
+    ],
+    "correta": "É uma onda mecânica longitudinal que necessita de um meio material (como o ar) para se propagar.",
+    "explicacao_base": "O som é uma onda mecânica (precisa de meio para viajar, não viaja no vácuo) e, nos fluidos como o ar, é longitudinal. Transporta energia, não matéria."
+  },
+  {
+    "grupo_id": 47,
+    "tema": "Elementos da Narrativa Visual",
+    "texto_referencia": "A tirinha utiliza recursos não-verbais para indicar estados emocionais e ações que complementam o texto escrito.",
+    "image_id": "piteco.png",
+    "id": 47,
+    "materia": "Artes / Interpretação",
+    "dificuldade": "Fácil",
+    "enunciado": "No último quadrinho, a presença de três pequenos corações flutuando sobre a cabeça do dinossauro e as linhas curvas ao redor de seus pés ('cinética') indicam, respectivamente:",
+    "alternativas": [
+      "Que o dinossauro está tendo um ataque cardíaco e tremendo de frio.",
+      "Que o dinossauro sente medo de Piteco e está fugindo dele.",
+      "Um sentimento de afeição/amor pelo humano e o movimento de caminhada seguindo-o.",
+      "Que o dinossauro está faminto e pensando em corações de galinha para comer.",
+      "Ideias confusas e imobilidade total."
+    ],
+    "correta": "Um sentimento de afeição/amor pelo humano e o movimento de caminhada seguindo-o.",
+    "explicacao_base": "Na linguagem dos quadrinhos (metáforas visuais), corações simbolizam amor/afeição e linhas cinéticas perto dos pés indicam movimento."
+  },
+  {
+    "grupo_id": 48,
+    "tema": "Química dos Materiais",
+    "texto_referencia": "A casca do ovo mostrada na tirinha é uma estrutura rígida que protege o embrião. Na natureza, as cascas de ovos de aves e répteis são majoritariamente compostas pela mesma substância encontrada no calcário e no mármore.",
+    "image_id": "piteco.png",
+    "id": 48,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "A substância química principal que confere rigidez à casca do ovo é o:",
+    "alternativas": [
+      "Cloreto de Sódio (NaCl).",
+      "Carbonato de Cálcio (CaCO₃).",
+      "Óxido de Ferro (Fe₂O₃).",
+      "Sulfato de Alumínio (Al₂(SO₄)₃).",
+      "Dióxido de Silício (SiO₂)."
+    ],
+    "correta": "Carbonato de Cálcio (CaCO₃).",
+    "explicacao_base": "A casca dos ovos é formada predominantemente (cerca de 95%) por carbonato de cálcio, um sal insolúvel que garante proteção mecânica."
+  },
+  {
+    "grupo_id": 49,
+    "tema": "Tipologia Textual",
+    "texto_referencia": "A obra de Mauricio de Sousa apresentada acima se enquadra em um gênero textual específico, que mistura linguagem verbal e não-verbal, organizado em quadros sequenciais.",
+    "image_id": "piteco.png",
+    "id": 49,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "Este gênero textual, caracterizado por narrativas breves, geralmente com desfecho humorístico ou crítico, publicadas em jornais ou revistas, é chamado de:",
+    "alternativas": [
+      "Charge (focada em política atual).",
+      "Caricatura.",
+      "Tirinha (Tira de Quadrinhos).",
+      "Infográfico.",
+      "Meme de Internet."
+    ],
+    "correta": "Tirinha (Tira de Quadrinhos).",
+    "explicacao_base": "A estrutura horizontal de poucos quadros (geralmente 3 ou 4) com uma micro-narrativa e humor é a definição clássica de Tirinha."
+  },
+  {
+    "grupo_id": 50,
+    "tema": "Paleontologia",
+    "texto_referencia": "Piteco refere-se ao ser que sai do ovo como 'Ovo de Dinossauro'. A Paleontologia estuda esses animais através dos vestígios preservados nas rochas.",
+    "image_id": "piteco.png",
+    "id": 50,
+    "materia": "Geografia / Ciências",
+    "dificuldade": "Média",
+    "enunciado": "Para que um ovo de dinossauro real chegasse até os dias de hoje para ser estudado por cientistas, ele precisaria passar por um processo geológico específico de preservação chamado:",
+    "alternativas": [
+      "Metamorfose.",
+      "Fossilização.",
+      "Evaporação.",
+      "Decomposição total.",
+      "Intemperismo químico."
+    ],
+    "correta": "Fossilização.",
+    "explicacao_base": "Fossilização é o conjunto de processos físico-químicos (como permineralização) que preserva restos ou vestígios de seres vivos (ossos, ovos, pegadas) nas rochas sedimentares ao longo do tempo geológico."
+  },
+  {
+    "grupo_id": 51,
+    "tema": "Geometria Espacial e Densidade",
+    "texto_referencia": "Para o transporte dos dormentes ilustrados na figura até o canteiro de obras, é necessário calcular a carga total. Considere que a madeira utilizada é o eucalipto tratado, cuja densidade média é de 800 kg/m³.",
+    "image_id": "trilhos.png",
+    "id": 51,
+    "materia": "Matemática / Física",
+    "dificuldade": "Difícil",
+    "enunciado": "Considerando as dimensões apresentadas na imagem (2 m de comprimento, 0,16 m de altura e 0,24 m de largura), a massa de um único dormente é de:",
+    "alternativas": [
+      "51,44 kg.",
+      "61,44 kg.",
+      "76,80 kg.",
+      "92,20 kg.",
+      "128,00 kg."
+    ],
+    "correta": "61,44 kg.",
+    "explicacao_base": "Volume do paralelepípedo = 2 * 0,16 * 0,24 = 0,0768 m³. Massa = Densidade * Volume. M = 800 * 0,0768 = 61,44 kg."
+  },
+  {
+    "grupo_id": 52,
+    "tema": "História do Brasil e Logística",
+    "texto_referencia": "A imagem retrata componentes de uma ferrovia. No Brasil, a expansão da malha ferroviária no final do século XIX e início do século XX, especialmente no estado de São Paulo, esteve diretamente ligada a um ciclo econômico que necessitava escoar a produção do interior para o Porto de Santos.",
+    "image_id": "trilhos.png",
+    "id": 52,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "O ciclo econômico responsável por impulsionar essa infraestrutura e a urbanização paulista foi o:",
+    "alternativas": [
+      "Ciclo do Ouro.",
+      "Ciclo da Borracha.",
+      "Ciclo do Pau-Brasil.",
+      "Ciclo do Café.",
+      "Ciclo da Cana-de-açúcar."
+    ],
+    "correta": "Ciclo do Café.",
+    "explicacao_base": "As ferrovias (como a São Paulo Railway) foram construídas primordialmente para transportar o café produzido no oeste paulista até o porto de exportação em Santos."
+  },
+  {
+    "grupo_id": 53,
+    "tema": "Termologia e Dilatação",
+    "texto_referencia": "Na montagem da ferrovia, os trilhos de aço são fixados sobre os dormentes. É uma norma técnica de segurança deixar um pequeno espaçamento (fresta) entre as barras de trilhos consecutivas, conhecido como 'junta de dilatação'.",
+    "image_id": "trilhos.png",
+    "id": 53,
+    "materia": "Física",
+    "dificuldade": "Fácil",
+    "enunciado": "A função física dessa fresta é evitar que os trilhos entortem (flambagem) devido à:",
+    "alternativas": [
+      "Contração volumétrica causada pelo frio intenso durante o inverno.",
+      "Dilatação linear sofrida pelo aço ao ser aquecido pelo sol e pelo atrito com as rodas do trem.",
+      "Corrosão química causada pela umidade da madeira do dormente.",
+      "Compressão mecânica causada pelo peso excessivo da locomotiva.",
+      "Expansão da madeira do dormente que empurra o metal para cima."
+    ],
+    "correta": "Dilatação linear sofrida pelo aço ao ser aquecido pelo sol e pelo atrito com as rodas do trem.",
+    "explicacao_base": "Metais dilatam com o calor. Se não houver espaço para o trilho crescer linearmente, a tensão térmica fará com que o metal envergue, causando descarrilamentos."
+  },
+  {
+    "grupo_id": 54,
+    "tema": "Biologia e Anatomia Vegetal",
+    "texto_referencia": "Os dormentes são peças de madeira que devem suportar alta pressão e resistir à deterioração. Para isso, utiliza-se a parte do tronco da árvore que confere sustentação mecânica e rigidez.",
+    "image_id": "trilhos.png",
+    "id": 54,
+    "materia": "Biologia",
+    "dificuldade": "Difícil",
+    "enunciado": "O tecido vegetal morto, lignificado, responsável por essa resistência mecânica na madeira (lenho) é denominado:",
+    "alternativas": [
+      "Epiderme.",
+      "Floema secundário.",
+      "Xilema secundário.",
+      "Parênquima clorofiliano.",
+      "Meristema apical."
+    ],
+    "correta": "Xilema secundário.",
+    "explicacao_base": "A madeira utilizada comercialmente (dormentes) corresponde ao Xilema Secundário, cujas células morrem e as paredes celulares impregnadas de lignina permanecem, dando resistência."
+  },
+  {
+    "grupo_id": 55,
+    "tema": "Física e Conceito de Pressão",
+    "texto_referencia": "Observe na imagem que o trilho (metálico e fino) não toca diretamente o solo (balastro/pedras). Ele é apoiado sobre o dormente (largo e de madeira), que por sua vez repousa sobre as pedras.",
+    "image_id": "trilhos.png",
+    "id": 55,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "Do ponto de vista físico, a principal função do dormente em relação ao solo é:",
+    "alternativas": [
+      "Aumentar a força peso do trem para garantir aderência.",
+      "Diminuir a área de contato, aumentando a pressão sobre as pedras.",
+      "Aumentar a área de contato, diminuindo a pressão exercida sobre o solo e evitando afundamento.",
+      "Isolar eletricamente o trem da terra para evitar raios.",
+      "Gerar atrito cinético para frear o trem nas curvas."
+    ],
+    "correta": "Aumentar a área de contato, diminuindo a pressão exercida sobre o solo e evitando afundamento.",
+    "explicacao_base": "Pressão = Força / Área. O dormente distribui o peso (Força) por uma área maior do que a base do trilho, resultando em menor pressão no solo, garantindo estabilidade."
+  },
+  {
+    "grupo_id": 56,
+    "tema": "Matemática e Planejamento",
+    "texto_referencia": "Um engenheiro projeta uma extensão de 15 km de ferrovia. As especificações técnicas exigem que os dormentes (conforme a imagem) sejam instalados de modo que a distância entre o centro de um dormente e o centro do próximo seja de 60 cm (0,6 m).",
+    "image_id": "trilhos.png",
+    "id": 56,
+    "materia": "Matemática",
+    "dificuldade": "Difícil",
+    "enunciado": "Desconsiderando perdas, o número mínimo de dormentes necessários para construir apenas essa extensão é de:",
+    "alternativas": [
+      "9.000",
+      "25.000",
+      "41.666",
+      "90.000",
+      "250.000"
+    ],
+    "correta": "25.000",
+    "explicacao_base": "Primeiro, converta km para metros: 15 km = 15.000 m. Número de espaços = Distância Total / Espaçamento. N = 15.000 / 0,6 = 25.000 dormentes."
+  },
+  {
+    "grupo_id": 57,
+    "tema": "Química e Ligas Metálicas",
+    "texto_referencia": "O trilho representado na figura deve suportar toneladas e resistir ao tempo. Por isso, não é feito de ferro puro, mas sim de uma mistura de Ferro (Fe) com uma pequena porcentagem de Carbono (C) e outros metais (Manganês, Silício).",
+    "image_id": "trilhos.png",
+    "id": 57,
+    "materia": "Química",
+    "dificuldade": "Fácil",
+    "enunciado": "Esse material, amplamente utilizado na construção civil e ferroviária, é classificado quimicamente como uma:",
+    "alternativas": [
+      "Mistura heterogênea.",
+      "Substância pura simples.",
+      "Substância pura composta.",
+      "Liga metálica (Aço).",
+      "Solução eletrolítica."
+    ],
+    "correta": "Liga metálica (Aço).",
+    "explicacao_base": "O aço é uma liga metálica, que é uma mistura homogênea sólida composta majoritariamente por ferro e carbono."
+  },
+  {
+    "grupo_id": 58,
+    "tema": "Matemática - Geometria Plana e Área",
+    "texto_referencia": "Para aumentar a vida útil da madeira, todo o dormente (todas as suas faces) deve ser impermeabilizado com um produto químico fungicida. O dormente é um prisma de dimensões 2 m x 0,24 m x 0,16 m.",
+    "image_id": "trilhos.png",
+    "id": 58,
+    "materia": "Matemática",
+    "dificuldade": "Difícil",
+    "enunciado": "Qual é a área total da superfície, em metros quadrados (m²), de um único dormente a ser coberta pelo produto?",
+    "alternativas": [
+      "0,80 m²",
+      "1,60 m²",
+      "1,68 m²",
+      "2,40 m²",
+      "3,84 m²"
+    ],
+    "correta": "1,68 m²",
+    "explicacao_base": "Área Total = 2*(Comp*Larg) + 2*(Comp*Alt) + 2*(Larg*Alt). AT = 2*(2*0,24) + 2*(2*0,16) + 2*(0,24*0,16). AT = 2*(0,48) + 2*(0,32) + 2*(0,0384). AT = 0,96 + 0,64 + 0,0768 = 1,6768. Aproximando para duas casas decimais como nas alternativas típicas de ETEC (ou usando arredondamento comum): 1,6768 ≈ 1,68 m²."
+  },
+  {
+    "grupo_id": 59,
+    "tema": "Ecologia e Impacto Ambiental",
+    "texto_referencia": "Antigamente, muitos dormentes eram feitos de árvores nativas de madeira de lei, o que contribuiu para o desmatamento. Atualmente, a legislação exige o tratamento químico de madeiras de reflorestamento ou o uso de materiais alternativos.",
+    "image_id": "trilhos.png",
+    "id": 59,
+    "materia": "Biologia / Química",
+    "dificuldade": "Média",
+    "enunciado": "Um material moderno e sustentável que vem substituindo a madeira na fabricação de dormentes, utilizando resíduos sólidos urbanos reciclados, é o:",
+    "alternativas": [
+      "Vidro temperado.",
+      "Compósito de Plástico Reciclado (Polímeros).",
+      "Amianto.",
+      "Carvão mineral prensado.",
+      "Celulose pura."
+    ],
+    "correta": "Compósito de Plástico Reciclado (Polímeros).",
+    "explicacao_base": "Dormentes de 'madeira plástica' (polímeros reciclados) são a alternativa ecológica atual: duram mais (não apodrecem) e retiram plásticos do meio ambiente, substituindo o corte de árvores."
+  },
+  {
+    "grupo_id": 60,
+    "tema": "Geometria - Teorema de Tales e Semelhança",
+    "texto_referencia": "Para uma exposição em um museu, foi construída uma maquete da ferrovia representada na imagem. A maquete foi feita na escala 1:50.",
+    "image_id": "trilhos.png",
+    "id": 60,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Sabendo que o comprimento real do dormente é de 2 metros, qual é o comprimento do dormente na maquete, em centímetros?",
+    "alternativas": [
+      "2 cm",
+      "4 cm",
+      "10 cm",
+      "20 cm",
+      "40 cm"
+    ],
+    "correta": "4 cm",
+    "explicacao_base": "Escala 1:50 significa que 1 unidade na maquete vale 50 no real. Real = 2 metros = 200 cm. Maquete = 200 cm / 50 = 4 cm."
+  },
+  {
+    "grupo_id": 61,
+    "tema": "Matemática Financeira e Consumo",
+    "texto_referencia": "Em um cenário inflacionário, um serviço de streaming de vídeo aumentou a sua mensalidade em 20%. No mês seguinte, devido à perda massiva de assinantes, a empresa decidiu oferecer um desconto de 20% sobre o novo valor para tentar recuperar os clientes.",
+    "image_id": "",
+    "id": 61,
+    "materia": "Matemática",
+    "dificuldade": "Difícil",
+    "enunciado": "Comparando o valor final da mensalidade (após o desconto) com o valor original (antes do aumento), o preço final ficou:",
+    "alternativas": [
+      "Exatamente igual ao valor original.",
+      "4% mais caro que o valor original.",
+      "4% mais barato que o valor original.",
+      "2% mais barato que o valor original.",
+      "10% mais caro que o valor original."
+    ],
+    "correta": "4% mais barato que o valor original.",
+    "explicacao_base": "Suponha valor original R$ 100. Aumento de 20% -> 100 * 1,20 = R$ 120. Desconto de 20% sobre 120 -> 120 * 0,80 = R$ 96. Diferença: 100 - 96 = 4% menor."
+  },
+  {
+    "grupo_id": 62,
+    "tema": "Biologia Celular (Osmose)",
+    "texto_referencia": "Ao temperar uma salada de alface com sal e vinagre muito tempo antes de servir, nota-se que as folhas murcham e acumula-se água no fundo da tigela.",
+    "image_id": "",
+    "id": 62,
+    "materia": "Biologia / Química",
+    "dificuldade": "Média",
+    "enunciado": "Esse fenômeno ocorre porque o meio externo (temperado) tornou-se hipertônico em relação ao meio interno (células da alface), provocando a perda de água por:",
+    "alternativas": [
+      "Difusão Facilitada.",
+      "Transporte Ativo.",
+      "Fagocitose.",
+      "Osmose.",
+      "Pinocitose."
+    ],
+    "correta": "Osmose.",
+    "explicacao_base": "Osmose é o movimento da água do meio menos concentrado (hipotônico - dentro da célula) para o mais concentrado (hipertônico - fora da célula) através da membrana semipermeável."
+  },
+  {
+    "grupo_id": 63,
+    "tema": "Fontes de Energia",
+    "texto_referencia": "A matriz elétrica brasileira destaca-se mundialmente por ser majoritariamente renovável. A principal fonte de geração de eletricidade no país aproveita o potencial gravitacional e a energia cinética dos rios.",
+    "image_id": "",
+    "id": 63,
+    "materia": "Geografia / Física",
+    "dificuldade": "Fácil",
+    "enunciado": "A sequência correta de transformação de energia que ocorre em uma Usina Hidrelétrica, desde o reservatório até a rede de transmissão, é:",
+    "alternativas": [
+      "Energia Química → Energia Térmica → Energia Elétrica.",
+      "Energia Potencial Gravitacional → Energia Cinética → Energia Elétrica.",
+      "Energia Nuclear → Energia Térmica → Energia Cinética.",
+      "Energia Elétrica → Energia Mecânica → Energia Sonora.",
+      "Energia Solar → Energia Química → Energia Mecânica."
+    ],
+    "correta": "Energia Potencial Gravitacional → Energia Cinética → Energia Elétrica.",
+    "explicacao_base": "A água represada (altura) tem Energia Potencial. Ao cair, gira a turbina (Energia Cinética). O gerador converte o movimento em eletricidade (Indução Eletromagnética)."
+  },
+  {
+    "grupo_id": 64,
+    "tema": "Química - Separação de Misturas",
+    "texto_referencia": "O petróleo bruto extraído dos poços é uma mistura complexa de hidrocarbonetos. Para ser utilizado, ele passa por uma torre de refinaria onde é aquecido. À medida que os vapores sobem na torre, eles se resfriam e condensam em alturas diferentes, separando-se em gasolina, querosene, óleo diesel e asfalto.",
+    "image_id": "",
+    "id": 64,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "Esse método de separação, que se baseia nas diferentes temperaturas de ebulição dos componentes, chama-se:",
+    "alternativas": [
+      "Decantação.",
+      "Destilação Fracionada.",
+      "Filtração a Vácuo.",
+      "Centrifugação.",
+      "Levigação."
+    ],
+    "correta": "Destilação Fracionada.",
+    "explicacao_base": "Quando temos líquidos miscíveis (misturados) com pontos de ebulição diferentes (como no petróleo), usa-se a destilação fracionada para separá-los."
+  },
+  {
+    "grupo_id": 65,
+    "tema": "Literatura - Romantismo",
+    "texto_referencia": "Leia o trecho de Gonçalves Dias: 'Minha terra tem palmeiras, / Onde canta o Sabiá; / As aves, que aqui gorjeiam, / Não gorjeiam como lá.'",
+    "image_id": "",
+    "id": 65,
+    "materia": "Português / Literatura",
+    "dificuldade": "Média",
+    "enunciado": "O poema 'Canção do Exílio' é um ícone da Primeira Geração Romântica no Brasil. A principal característica temática observada nesses versos é:",
+    "alternativas": [
+      "O pessimismo e a obsessão pela morte (Mal do Século).",
+      "A crítica social à escravidão e aos problemas urbanos.",
+      "O Nacionalismo ufanista, com a idealização da natureza da pátria.",
+      "O uso de linguagem culta e referências à mitologia grega (Classicismo).",
+      "A denúncia da exploração do trabalhador no campo."
+    ],
+    "correta": "O Nacionalismo ufanista, com a idealização da natureza da pátria.",
+    "explicacao_base": "A 1ª geração romântica (indianista/nacionalista) buscava exaltar o Brasil, sua flora, fauna e o índio como herói, muitas vezes exagerando as qualidades da terra natal em contraste com a Europa."
+  },
+  {
+    "grupo_id": 66,
+    "tema": "História - Revolução Industrial",
+    "texto_referencia": "No século XVIII, a Inglaterra foi pioneira na Revolução Industrial. O surgimento das máquinas a vapor alterou profundamente as relações de trabalho, levando camponeses a se tornarem operários em fábricas com condições insalubres.",
+    "image_id": "",
+    "id": 66,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "Um dos primeiros movimentos de resistência operária foi o Ludismo. A principal forma de protesto dos 'luditas' era:",
+    "alternativas": [
+      "A criação de sindicatos para negociar pacificamente com os patrões.",
+      "A greve geral de fome em frente ao Parlamento Inglês.",
+      "A invasão das fábricas e a quebra das máquinas, consideradas culpadas pelo desemprego e miséria.",
+      "A emigração em massa para a América em busca de ouro.",
+      "A elaboração da Carta do Povo exigindo o direito de voto."
+    ],
+    "correta": "A invasão das fábricas e a quebra das máquinas, consideradas culpadas pelo desemprego e miséria.",
+    "explicacao_base": "Os luditas (ou 'quebradores de máquinas') acreditavam que a tecnologia (teares mecânicos) roubava seus empregos e baixava os salários, reagindo com destruição física do maquinário."
+  },
+  {
+    "grupo_id": 67,
+    "tema": "Geometria - Escala Cartográfica",
+    "texto_referencia": "Um estudante observa um mapa rodoviário onde a escala impressa é de 1:500.000 (um para quinhentos mil). Ele mede com uma régua a distância entre duas cidades e encontra 8 cm.",
+    "image_id": "",
+    "id": 67,
+    "materia": "Geografia / Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Qual é a distância real, em linha reta, entre essas duas cidades, em quilômetros?",
+    "alternativas": [
+      "4 km.",
+      "40 km.",
+      "80 km.",
+      "400 km.",
+      "800 km."
+    ],
+    "correta": "40 km.",
+    "explicacao_base": "Escala 1:500.000 significa 1 cm no mapa = 500.000 cm na realidade. 8 cm = 8 * 500.000 = 4.000.000 cm. Convertendo: 4.000.000 cm ÷ 100 = 40.000 m ÷ 1.000 = 40 km."
+  },
+  {
+    "grupo_id": 68,
+    "tema": "Atualidades e Tecnologia",
+    "texto_referencia": "Vivemos a era da hiperconexão. Geladeiras que avisam quando o leite acaba, relógios que monitoram batimentos cardíacos e enviam dados ao médico, e carros autônomos são exemplos de dispositivos conectados à internet trocando dados entre si sem intervenção humana.",
+    "image_id": "",
+    "id": 68,
+    "materia": "Tecnologia / Atualidades",
+    "dificuldade": "Fácil",
+    "enunciado": "O termo tecnológico que define esse ecossistema de objetos cotidianos conectados à rede mundial é:",
+    "alternativas": [
+      "Big Data.",
+      "Computação em Nuvem (Cloud Computing).",
+      "Internet das Coisas (IoT - Internet of Things).",
+      "Blockchain.",
+      "Metaverso."
+    ],
+    "correta": "Internet das Coisas (IoT - Internet of Things).",
+    "explicacao_base": "IoT (Internet of Things) refere-se à interconexão digital de objetos cotidianos com a internet, permitindo que coletem e troquem dados."
+  },
+  {
+    "grupo_id": 69,
+    "tema": "Cinemática e Movimento",
+    "texto_referencia": "Durante uma decolagem, um avião parte do repouso na pista e acelera uniformemente até atingir a velocidade necessária para subir.",
+    "image_id": "",
+    "id": 69,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "Se o avião acelera a uma taxa constante de 3 m/s² e leva 30 segundos para sair do chão, qual é a velocidade do avião, em metros por segundo, no instante exato da decolagem?",
+    "alternativas": [
+      "10 m/s.",
+      "30 m/s.",
+      "90 m/s.",
+      "100 m/s.",
+      "300 m/s."
+    ],
+    "correta": "90 m/s.",
+    "explicacao_base": "Fórmula da velocidade no MUV: V = V0 + a*t. Partindo do repouso, V0 = 0. Aceleração (a) = 3 m/s². Tempo (t) = 30s. V = 0 + 3*30 = 90 m/s."
+  },
+  {
+    "grupo_id": 70,
+    "tema": "Sistema Reprodutor e Métodos Contraceptivos",
+    "texto_referencia": "Existem diversos métodos contraceptivos para evitar a gravidez indesejada. Um deles consiste em uma cirurgia simples onde os canais deferentes (no homem) ou as tubas uterinas (na mulher) são cortados ou amarrados.",
+    "image_id": "",
+    "id": 70,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "Esses procedimentos cirúrgicos de esterilização são chamados, respectivamente, de:",
+    "alternativas": [
+      "Vasectomia e Laqueadura.",
+      "Laqueadura e Vasectomia.",
+      "Fecundação in vitro e Inseminação artificial.",
+      "Mastectomia e Histerectomia.",
+      "DIU e Implante Hormonal."
+    ],
+    "correta": "Vasectomia e Laqueadura.",
+    "explicacao_base": "Vasectomia corta os canais deferentes (impede a saída de espermatozoides). Laqueadura amarra/corta as tubas uterinas (impede o encontro do óvulo com o espermatozoide)."
+  },
+  {
+    "grupo_id": 71,
+    "tema": "Matemática Financeira e Inflação Oculta",
+    "texto_referencia": "A 'reduflação' é um fenômeno econômico onde fabricantes reduzem a quantidade ou peso de um produto na embalagem, mantendo o mesmo preço de venda. Um consumidor notou que sua barra de chocolate favorita, que pesava 100g e custava R$ 5,00, teve o peso reduzido para 80g, mantendo-se o preço de R$ 5,00.",
+    "image_id": "",
+    "id": 71,
+    "materia": "Matemática",
+    "dificuldade": "Difícil",
+    "enunciado": "Em termos reais (custo por grama), qual foi o percentual de aumento de preço que o consumidor sofreu nessa mudança?",
+    "alternativas": [
+      "10%",
+      "20%",
+      "25%",
+      "30%",
+      "50%"
+    ],
+    "correta": "25%",
+    "explicacao_base": "Preço antigo por grama: 5/100 = R$ 0,05. Novo preço por grama: 5/80 = R$ 0,0625. Aumento real: (0,0625 - 0,05) / 0,05 = 0,25 ou 25%. O produto ficou 25% mais caro por grama."
+  },
+  {
+    "grupo_id": 72,
+    "tema": "Biotecnologia e Saúde",
+    "texto_referencia": "Durante a pandemia de COVID-19, uma nova tecnologia de imunização ganhou destaque mundial: as vacinas de RNA mensageiro (mRNA). Diferente das vacinas tradicionais, que introduzem o vírus inativado, essa tecnologia ensina as células do corpo a produzirem uma proteína específica do vírus.",
+    "image_id": "",
+    "id": 72,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "A função biológica fundamental do RNA mensageiro nas células humanas, explorada por essa vacina, é:",
+    "alternativas": [
+      "Armazenar a informação genética no núcleo por longos períodos.",
+      "Levar as instruções do DNA para os ribossomos realizarem a síntese de proteínas.",
+      "Destruir diretamente bactérias e vírus invasores por fagocitose.",
+      "Transformar glicose em energia dentro das mitocôndrias.",
+      "Regular a temperatura corporal durante a febre."
+    ],
+    "correta": "Levar as instruções do DNA para os ribossomos realizarem a síntese de proteínas.",
+    "explicacao_base": "O dogma central da biologia molecular estabelece que o DNA é transcrito em RNAm, e este é traduzido pelos ribossomos para produzir proteínas (Síntese Proteica)."
+  },
+  {
+    "grupo_id": 73,
+    "tema": "Física Ondulatória e Cotidiano",
+    "texto_referencia": "Muitos jovens utilizam fones de ouvido com a tecnologia de 'Cancelamento Ativo de Ruído'. Esses fones possuem microfones externos que captam o barulho do ambiente e um processador que emite, quase instantaneamente, uma onda sonora específica para anular esse ruído.",
+    "image_id": "",
+    "id": 73,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "O fenômeno ondulatório que permite que o ruído externo seja 'cancelado' (silenciado) ao encontrar a onda gerada pelo fone é a:",
+    "alternativas": [
+      "Ressonância Magnética.",
+      "Refração Sonora.",
+      "Interferência Destrutiva.",
+      "Difração.",
+      "Reverberação."
+    ],
+    "correta": "Interferência Destrutiva.",
+    "explicacao_base": "O fone gera uma onda com a mesma frequência e amplitude do ruído, mas com fase invertida (vales encontram cristas). A soma das amplitudes opostas resulta em silêncio (Interferência Destrutiva)."
+  },
+  {
+    "grupo_id": 74,
+    "tema": "História de São Paulo e Cidadania",
+    "texto_referencia": "No dia 9 de julho de 1932, eclodiu em São Paulo um movimento armado contra o governo provisório de Getúlio Vargas. Os paulistas exigiam o fim do governo discricionário e a convocação de uma Assembleia Constituinte. Embora derrotados militarmente, obtiveram vitória política com a Constituição de 1934.",
+    "image_id": "",
+    "id": 74,
+    "materia": "História",
+    "dificuldade": "Fácil",
+    "enunciado": "Esse episódio marcante da história paulista, feriado estadual em São Paulo, é conhecido como:",
+    "alternativas": [
+      "Revolução Farroupilha.",
+      "Revolta da Vacina.",
+      "Intentona Comunista.",
+      "Revolução Constitucionalista.",
+      "Inconfidência Mineira."
+    ],
+    "correta": "Revolução Constitucionalista.",
+    "explicacao_base": "A Revolução Constitucionalista de 1932 foi o movimento armado liderado por SP que exigia uma nova Constituição para o Brasil, sendo o principal evento histórico celebrado no estado (MMDC)."
+  },
+  {
+    "grupo_id": 75,
+    "tema": "Química - Tabela Periódica e Tecnologia",
+    "texto_referencia": "Os 'Metais de Terras Raras' são um grupo de 17 elementos químicos essenciais para a fabricação de smartphones, telas de LED e motores de carros elétricos. Apesar do nome, não são exatamente raros na crosta terrestre, mas são difíceis de extrair e separar.",
+    "image_id": "",
+    "id": 75,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "A maioria desses elementos, como o Neodímio e o Lantânio, pertence à série dos Lantanídeos. Na Tabela Periódica, eles estão localizados no grupo dos:",
+    "alternativas": [
+      "Gases Nobres.",
+      "Metais de Transição Interna.",
+      "Não-Metais (Ametais).",
+      "Metais Alcalinos.",
+      "Halogênios."
+    ],
+    "correta": "Metais de Transição Interna.",
+    "explicacao_base": "Lantanídeos e Actinídeos são classificados como Metais de Transição Interna e geralmente são representados nas duas linhas separadas abaixo do corpo principal da tabela periódica."
+  },
+  {
+    "grupo_id": 76,
+    "tema": "Matemática - Função do 1º Grau",
+    "texto_referencia": "Um motorista de aplicativo observa que seus ganhos diários (G) dependem de um valor fixo de R$ 20,00 (referente a gorjetas ou bônus) mais R$ 1,50 por quilômetro rodado (K).",
+    "image_id": "",
+    "id": 76,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "A expressão algébrica que relaciona o Ganho (G) em função da quilometragem (K) e a distância que ele precisa percorrer num dia para ganhar exatamente R$ 170,00 são, respectivamente:",
+    "alternativas": [
+      "G = 1,50K + 20; 100 km.",
+      "G = 20K + 1,50; 8,5 km.",
+      "G = 1,50K - 20; 120 km.",
+      "G = 20K - 1,50; 100 km.",
+      "G = 1,50K; 113 km."
+    ],
+    "correta": "G = 1,50K + 20; 100 km.",
+    "explicacao_base": "Função: G = 1,50K + 20. Para G=170: 170 = 1,50K + 20 -> 1,50K = 150 -> K = 150/1,50 -> K = 100 km."
+  },
+  {
+    "grupo_id": 77,
+    "tema": "Geografia - Blocos Econômicos",
+    "texto_referencia": "Em 2024, o BRICS, bloco formado originalmente por Brasil, Rússia, Índia, China e África do Sul, anunciou sua expansão com o convite a novos países membros, como Irã e Egito. O grupo busca ampliar a cooperação econômica e política entre países emergentes.",
+    "image_id": "",
+    "id": 77,
+    "materia": "Geografia",
+    "dificuldade": "Difícil",
+    "enunciado": "A principal característica geopolítica que une os membros originais e os novos integrantes do BRICS é:",
+    "alternativas": [
+      "Todos são países do Hemisfério Norte com IDH muito alto.",
+      "Todos possuem o Inglês como língua oficial e a mesma moeda.",
+      "Buscam contrapor a hegemonia econômica do G7 (liderado por EUA e Europa) e reformar instituições globais como o FMI.",
+      "Todos são monarquias parlamentaristas.",
+      "Compartilham fronteiras terrestres, formando um bloco contínuo."
+    ],
+    "correta": "Buscam contrapor a hegemonia econômica do G7 (liderado por EUA e Europa) e reformar instituições globais como o FMI.",
+    "explicacao_base": "O BRICS é um agrupamento político-econômico de países emergentes do Sul Global que busca multipolaridade, reduzindo a dependência do dólar e da influência geopolítica norte-americana/europeia."
+  },
+  {
+    "grupo_id": 78,
+    "tema": "Energia e Termodinâmica",
+    "texto_referencia": "Os carros elétricos são mais eficientes que os carros a combustão. Enquanto um motor a gasolina aproveita apenas cerca de 30% da energia do combustível para mover as rodas (o resto vira calor), o motor elétrico aproveita cerca de 90%.",
+    "image_id": "",
+    "id": 78,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "A 'perda' de energia na forma de calor nos motores a combustão é uma consequência inevitável explicada pela:",
+    "alternativas": [
+      "Lei da Gravitação Universal.",
+      "Primeira Lei de Newton (Inércia).",
+      "Lei de Ohm.",
+      "Segunda Lei da Termodinâmica (Entropia).",
+      "Teoria da Relatividade."
+    ],
+    "correta": "Segunda Lei da Termodinâmica (Entropia).",
+    "explicacao_base": "A 2ª Lei da Termodinâmica dita que nenhuma máquina térmica pode ter 100% de eficiência; parte da energia sempre será dissipada (perde-se utilidade) na forma de calor para a fonte fria."
+  },
+  {
+    "grupo_id": 79,
+    "tema": "Literatura - Modernismo",
+    "texto_referencia": "Manuel Bandeira, no poema 'Pneumotórax', escreve: 'O médico olhou a radiografia / (...) - Diga trinta e três. / - Trinta e três… trinta e três… trinta e três… / - Respire. / (...) - O senhor tem uma escavação no pulmão esquerdo e o pulmão direito infiltrado. / - Então, doutor, não é possível tentar o pneumotórax? / - Não. A única coisa a fazer é tocar um tango argentino.'",
+    "image_id": "",
+    "id": 79,
+    "materia": "Português",
+    "dificuldade": "Média",
+    "enunciado": "Esse poema ilustra uma característica marcante da primeira fase do Modernismo brasileiro (1922-1930), que é:",
+    "alternativas": [
+      "O uso de linguagem formal, rimas ricas e métrica perfeita (sonetos).",
+      "A idealização da mulher amada e o sofrimento amoroso romântico.",
+      "A ruptura com o academicismo, uso de versos livres, linguagem coloquial e humor/ironia diante da morte.",
+      "O foco exclusivo em temas rurais e na vida no campo.",
+      "A cópia fiel do estilo parnasiano francês."
+    ],
+    "correta": "A ruptura com o academicismo, uso de versos livres, linguagem coloquial e humor/ironia diante da morte.",
+    "explicacao_base": "A 'Geração de 1922' rompeu com as formas fixas, introduziu a fala cotidiana ('diga trinta e três'), o verso livre e uma postura irreverente (ironia do 'tocar um tango' diante de um diagnóstico fatal)."
+  },
+  {
+    "grupo_id": 80,
+    "tema": "Biologia - Sistemas do Corpo",
+    "texto_referencia": "Durante uma atividade física intensa na aula de Educação Física, os músculos de um estudante precisam de muita energia. A respiração fica ofegante para captar mais oxigênio e o coração bate mais rápido.",
+    "image_id": "",
+    "id": 80,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "O sistema do corpo humano responsável por transportar esse oxigênio dos pulmões e a glicose do intestino até as células musculares é o:",
+    "alternativas": [
+      "Sistema Nervoso Central.",
+      "Sistema Cardiovascular (Circulatório).",
+      "Sistema Linfático.",
+      "Sistema Digestório.",
+      "Sistema Endócrino."
+    ],
+    "correta": "Sistema Cardiovascular (Circulatório).",
+    "explicacao_base": "O sangue (impulsionado pelo coração através dos vasos sanguíneos - Sistema Cardiovascular) é o veículo de transporte de gases, nutrientes e resíduos para todas as células do corpo."
+  },
+  {
+    "grupo_id": 81,
+    "tema": "Biologia Vegetal e Adaptação",
+    "texto_referencia": "No último quadrinho, a personagem afirma que 'em boca fechada não entra mosca', sugerindo que a planta precisa capturar insetos para 'não morrer de fome'. Biologicamente, plantas carnívoras realizam fotossíntese como qualquer outra planta verde.",
+    "image_id": "planta.png",
+    "id": 81,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "A necessidade evolutiva que levou essas plantas a desenvolverem armadilhas para capturar e digerir insetos se deve à adaptação a solos:",
+    "alternativas": [
+      "Extremamente ricos em húmus, que intoxica as raízes.",
+      "Pobres em nitrogênio e fosfatos, nutrientes que elas retiram dos animais capturados.",
+      "Desprovidos de água, obrigando a planta a absorver o líquido do sangue dos insetos.",
+      "Sem incidência de luz solar, impedindo a realização da fase química da fotossíntese.",
+      "Saturados de sal, onde os insetos funcionam como filtro osmótico."
+    ],
+    "correta": "Pobres em nitrogênio e fosfatos, nutrientes que elas retiram dos animais capturados.",
+    "explicacao_base": "Plantas carnívoras são organismos autótrofos (fazem fotossíntese e produzem glicose), mas vivem em solos ácidos e pobres em nitratos. A 'carne' dos insetos serve para complementar esses minerais, não como fonte de energia principal."
+  },
+  {
+    "grupo_id": 82,
+    "tema": "Intertextualidade e Cultura Popular",
+    "texto_referencia": "A Planta Carnívora narra uma fofoca: 'A coitada tava lá debaixo da sacada (...) mas me deu uma ojeriza do Cravo, menina!'.",
+    "image_id": "planta.png",
+    "id": 82,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "A fala da personagem constrói seu humor através da intertextualidade (diálogo entre textos), fazendo referência direta a qual manifestação da cultura popular brasileira?",
+    "alternativas": [
+      "Ao hino da Independência do Brasil.",
+      "A um poema parnasiano de Olavo Bilac.",
+      "À cantiga de roda 'O Cravo brigou com a Rosa'.",
+      "Ao romance 'Dom Casmurro', de Machado de Assis.",
+      "A uma lenda indígena do folclore amazônico."
+    ],
+    "correta": "À cantiga de roda 'O Cravo brigou com a Rosa'.",
+    "explicacao_base": "Os elementos 'Rosa', 'Cravo', 'debaixo da sacada', 'brigou' (contexto de boy lixo) remetem diretamente à cantiga: 'O Cravo brigou com a Rosa / Debaixo de uma sacada'."
+  },
+  {
+    "grupo_id": 83,
+    "tema": "Figuras de Linguagem",
+    "texto_referencia": "O efeito cômico da tirinha culmina no último quadrinho com o uso do ditado popular 'Em boca fechada não entra mosca'.",
+    "image_id": "planta.png",
+    "id": 83,
+    "materia": "Português",
+    "dificuldade": "Difícil",
+    "enunciado": "O humor é produzido pela quebra de expectativa quando o texto transforma o sentido do ditado de:",
+    "alternativas": [
+      "Literal para Figurativo.",
+      "Conotativo (figurado) para Denotativo (literal).",
+      "Metonímico para Metafórico.",
+      "Irônico para Sarcástico.",
+      "Antitético para Pleonástico."
+    ],
+    "correta": "Conotativo (figurado) para Denotativo (literal).",
+    "explicacao_base": "O provérbio é usualmente figurado (fique calado para evitar problemas/conotativo). Na tirinha, para a planta carnívora, o sentido vira literal (se fechar a boca, o inseto não entra e ela passa fome/denotativo)."
+  },
+  {
+    "grupo_id": 84,
+    "tema": "Cadeias Alimentares e Níveis Tróficos",
+    "texto_referencia": "Ao capturar e digerir a mosca mencionada na tirinha, a planta carnívora assume uma posição específica na teia alimentar.",
+    "image_id": "planta.png",
+    "id": 84,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "Considerando que a mosca é um animal herbívoro ou detritívoro, a planta carnívora, neste ato de predação, comporta-se como:",
+    "alternativas": [
+      "Produtor, exclusivamente.",
+      "Consumidor Primário.",
+      "Consumidor Secundário.",
+      "Decompositor.",
+      "Parasita."
+    ],
+    "correta": "Consumidor Secundário.",
+    "explicacao_base": "A planta é Produtora (autótrofa). Porém, ao comer a mosca (que comeu planta ou resto orgânico), ela atua momentaneamente como Consumidor Secundário (carnívora)."
+  },
+  {
+    "grupo_id": 85,
+    "tema": "Variação Linguística",
+    "texto_referencia": "Nos balões, aparecem termos como: 'tava', 'boy lixo', 'falo na lata', 'uai', 'borocochô', 'tu me conhece'.",
+    "image_id": "planta.png",
+    "id": 85,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "O conjunto dessas expressões caracteriza o uso de uma variante linguística:",
+    "alternativas": [
+      "Formal e Culta, adequada a textos acadêmicos.",
+      "Regionalista, restrita apenas ao interior de Minas Gerais.",
+      "Arcaica, recuperando o português do século XIX.",
+      "Informal ou Coloquial, marcada pela oralidade e gírias.",
+      "Técnica, específica da botânica."
+    ],
+    "correta": "Informal ou Coloquial, marcada pela oralidade e gírias.",
+    "explicacao_base": "O uso de gírias ('boy lixo'), reduções ('tava', 'pra') e expressões orais ('falo na lata') marca o registro coloquial/informal."
+  },
+  {
+    "grupo_id": 86,
+    "tema": "Fisiologia Vegetal",
+    "texto_referencia": "No primeiro quadrinho, a planta carnívora (semelhante a uma Dionaea) é representada com sua armadilha aberta, cheia de 'dentes'.",
+    "image_id": "planta.png",
+    "id": 86,
+    "materia": "Biologia",
+    "dificuldade": "Difícil",
+    "enunciado": "O movimento rápido de fechamento dessa armadilha quando um inseto toca em seus pêlos sensitivos não envolve músculos, mas sim uma alteração brusca na pressão de água dentro das células (turgor). Esse tipo de movimento vegetal reversível é classificado como:",
+    "alternativas": [
+      "Fototropismo.",
+      "Geotropismo.",
+      "Nastismo (Tigmonastia).",
+      "Fotoperiodismo.",
+      "Gutação."
+    ],
+    "correta": "Nastismo (Tigmonastia).",
+    "explicacao_base": "Movimentos de plantas que não dependem da direção do estímulo (apenas da presença dele, como o toque) e são geralmente rápidos/reversíveis são chamados de nastismos (neste caso, tigmonastia/seismonastia)."
+  },
+  {
+    "grupo_id": 87,
+    "tema": "Semântica e Vocabulário",
+    "texto_referencia": "A Planta Carnívora diz: 'Mas me deu uma ojeriza do Cravo, menina!'.",
+    "image_id": "planta.png",
+    "id": 87,
+    "materia": "Português",
+    "dificuldade": "Média",
+    "enunciado": "Substituindo a palavra destacada sem alterar o sentido da frase no contexto, a personagem sentiu pelo Cravo:",
+    "alternativas": [
+      "Uma paixão avassaladora.",
+      "Uma admiração profunda.",
+      "Uma aversão ou antipatia intensa.",
+      "Uma saudade repentina.",
+      "Uma indiferença total."
+    ],
+    "correta": "Uma aversão ou antipatia intensa.",
+    "explicacao_base": "Ojeriza é sinônimo de nojo, aversão, antipatia extrema, asco. O contexto ('boy lixo', 'fez a rosa sofrer') confirma o sentimento negativo."
+  },
+  {
+    "grupo_id": 88,
+    "tema": "Bioquímica",
+    "texto_referencia": "Para 'não morrer de fome' e digerir a mosca mencionada na tirinha, a planta carnívora secreta um líquido em sua armadilha.",
+    "image_id": "planta.png",
+    "id": 88,
+    "materia": "Química / Biologia",
+    "dificuldade": "Média",
+    "enunciado": "Esse líquido contém substâncias orgânicas especializadas em quebrar moléculas grandes (proteínas) em menores (aminoácidos), agindo como catalisadores biológicos. Essas substâncias são:",
+    "alternativas": [
+      "Hormônios (Auxinas).",
+      "Vitaminas.",
+      "Enzimas.",
+      "Lipídios.",
+      "Carboidratos."
+    ],
+    "correta": "Enzimas.",
+    "explicacao_base": "A digestão química (seja no estômago humano ou na folha da Dionaea) é realizada por enzimas (catalisadores biológicos) que quebram polímeros em monômeros."
+  },
+  {
+    "grupo_id": 89,
+    "tema": "Botânica - Grupos Vegetais",
+    "texto_referencia": "As plantas representadas na tirinha possuem folhas, raízes e flores evidentes.",
+    "image_id": "planta.png",
+    "id": 89,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "A presença de flores e frutos classifica tanto a planta carnívora quanto as margaridas que conversam com ela no grupo vegetal das:",
+    "alternativas": [
+      "Briófitas.",
+      "Pteridófitas.",
+      "Gimnospermas.",
+      "Angiospermas.",
+      "Algas Pluricelulares."
+    ],
+    "correta": "Angiospermas.",
+    "explicacao_base": "O grupo vegetal que possui flores e frutos (a tirinha mostra flores explicitamente) é o das Angiospermas."
+  },
+  {
+    "grupo_id": 90,
+    "tema": "Análise Sintática e Pronomes",
+    "texto_referencia": "No primeiro balão, a Planta diz: 'Amiga, para de sofrer por esse boy lixo! Porque tu me conhece, né?'",
+    "image_id": "planta.png",
+    "id": 90,
+    "materia": "Português",
+    "dificuldade": "Difícil",
+    "enunciado": "Na norma culta da língua portuguesa, a conjugação do verbo 'conhecer' na frase 'tu me conhece' apresenta um desvio de concordância verbal. A forma gramaticalmente correta, mantendo o pronome 'tu', seria:",
+    "alternativas": [
+      "Tu me conhecem.",
+      "Tu me conheces.",
+      "Tu me conheceis.",
+      "Tu me conheço.",
+      "Tu conhecer-me-ás."
+    ],
+    "correta": "Tu me conheces.",
+    "explicacao_base": "Na norma culta, a segunda pessoa do singular (tu) exige o verbo com 's' final no presente do indicativo: eu conheço, tu conheces, ele conhece. O uso popular 'tu conhece' mistura a pessoa do 'tu' com o verbo na 3ª pessoa (ele)."
+  }
+]

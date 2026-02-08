@@ -1,5 +1,5 @@
 {
-  "name": "VestBot",
-  "description": "Uma plataforma completa de preparação para a ETEC impulsionada por IA. Inclui planos de estudo, simulados inteligentes, gamificação e tutor virtual.",
+  "name": "EtecPro AI",
+  "description": "Plataforma completa de preparação para o Vestibulinho ETEC com Simulados, Correção de Redação via IA e Tutor Inteligente.",
   "requestFramePermissions": []
 }

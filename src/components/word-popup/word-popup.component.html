@@ -1,0 +1,32 @@
+<div 
+  *ngIf="visible" 
+  class="word-popup"
+  [ngStyle]="getPopupStyle()"
+  [class.animating]="isAnimating()">
+  
+  <div class="popup-header">
+    <h3 class="popup-title">{{ word }}</h3>
+    <button 
+      class="close-btn" 
+      (click)="closePopup()"
+      aria-label="Fechar">
+      ×
+    </button>
+  </div>
+
+  <div class="popup-content">
+    <div *ngIf="definitions && definitions.length > 0; else noDefinition">
+      <div *ngFor="let entry of definitions" class="definition-entry">
+        <p class="definition-text">{{ entry.definition }}</p>
+        <span *ngIf="entry.subject" class="subject-badge">{{ entry.subject }}</span>
+      </div>
+    </div>
+
+    <ng-template #noDefinition>
+      <p class="no-definition">
+        <span class="icon">📖</span>
+        Definição não encontrada no glossário.
+      </p>
+    </ng-template>
+  </div>
+</div>
