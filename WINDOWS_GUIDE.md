@@ -64,6 +64,26 @@ Certifique-se de ter instalado:
 
 ## 🐛 Solução de Problemas no Windows
 
+### 0. Script Fecha Imediatamente (PROBLEMA COMUM)
+
+Se o prompt abre e fecha rapidamente:
+
+**Solução: Use o Script de Debug**
+
+1. Dê duplo clique em `start-vestbot-debug.bat`
+2. Este script:
+   - Mostra cada passo detalhadamente
+   - Abre backend e frontend em janelas separadas
+   - Espera você pressionar uma tecla entre cada etapa
+   - Mostra mensagens de erro claras
+
+**O script de debug vai identificar o problema:**
+- ❌ Node.js não instalado
+- ❌ npm não encontrado
+- ❌ Arquivos do projeto ausentes
+- ❌ Erro ao instalar dependências
+- ❌ Porta já em uso
+
 ### 1. "curl não é reconhecido"
 
 Se você receber este erro, instale o curl:
@@ -114,6 +134,48 @@ Se tiver problemas de permissão:
 Alguns antivírus podem bloquear Node.js:
 - Adicione exceção para a pasta do projeto
 - Adicione exceção para Node.js
+
+### 6. Preciso Ver os Erros
+
+**Use o Script de Debug:**
+
+```
+start-vestbot-debug.bat
+```
+
+Este script:
+- ✅ Mostra versões de Node.js e npm
+- ✅ Verifica todos os arquivos necessários
+- ✅ Abre backend e frontend em janelas SEPARADAS
+- ✅ Você pode ver os erros de cada um
+- ✅ Avança passo a passo (pressione qualquer tecla)
+
+### 7. Instalação Manual (Se nada funcionar)
+
+Se os scripts .bat não funcionarem, tente manualmente:
+
+**Terminal 1 - Instalar dependências:**
+```cmd
+cd caminho\para\VestBot
+npm install --legacy-peer-deps
+```
+
+**Terminal 2 - Backend:**
+```cmd
+cd caminho\para\VestBot
+npm run server
+```
+
+**Terminal 3 - Frontend:**
+```cmd
+cd caminho\para\VestBot
+npm run dev
+```
+
+**Terminal 4 - Abrir navegador:**
+```cmd
+start http://localhost:3000
+```
 
 ---
 

@@ -2,9 +2,13 @@
 chcp 65001 >nul
 title VestBot Launcher
 
+REM ==============================================
+REM  VestBot Launcher - Windows
+REM ==============================================
+
 echo.
 echo ========================================
-echo    🚀 Iniciando VestBot...
+echo    🚀 VestBot - Iniciando...
 echo ========================================
 echo.
 
@@ -12,40 +16,102 @@ REM Salva o diretório atual
 set "PROJECT_DIR=%~dp0"
 cd /d "%PROJECT_DIR%"
 
-REM Verifica se node_modules existe
+REM ==============================================
+REM  Verificações de Prerequisitos
+REM ==============================================
+
+echo [1/5] Verificando prerequisitos...
+echo.
+
+REM Verifica se Node.js está instalado
+where node >nul 2>&1
+if errorlevel 1 (
+    echo ❌ ERRO: Node.js nao encontrado!
+    echo.
+    echo Por favor, instale Node.js de https://nodejs.org/
+    echo.
+    pause
+    exit /b 1
+)
+
+echo ✅ Node.js encontrado
+node --version
+
+REM Verifica se npm está instalado
+where npm >nul 2>&1
+if errorlevel 1 (
+    echo ❌ ERRO: npm nao encontrado!
+    echo.
+    echo Por favor, reinstale Node.js de https://nodejs.org/
+    echo.
+    pause
+    exit /b 1
+)
+
+echo ✅ npm encontrado
+npm --version
+echo.
+
+REM ==============================================
+REM  Instalação de Dependências
+REM ==============================================
+
+echo [2/5] Verificando dependencias...
+echo.
+
 if not exist "node_modules\" (
-    echo 📦 Instalando dependências...
+    echo 📦 Instalando dependencias (pode demorar alguns minutos)...
     echo.
     call npm install --legacy-peer-deps
     if errorlevel 1 (
         echo.
-        echo ❌ Erro ao instalar dependências!
+        echo ❌ ERRO ao instalar dependencias!
+        echo.
+        echo Tente executar manualmente:
+        echo   npm install --legacy-peer-deps
+        echo.
         pause
         exit /b 1
     )
+    echo.
+    echo ✅ Dependencias instaladas com sucesso!
+) else (
+    echo ✅ Dependencias ja instaladas
 )
-
-REM Inicia o backend em background
-echo 🔧 Iniciando backend server...
 echo.
-start /B npm run server
-timeout /t 2 /nobreak >nul
 
-REM Inicia o frontend em background
-echo 🔧 Iniciando frontend...
+REM ==============================================
+REM  Iniciar Backend
+REM ==============================================
+
+echo [3/5] Iniciando backend server (porta 3001)...
 echo.
-start /B npm run dev
+
+REM Mata qualquer processo Node.js anterior
+taskkill /F /IM node.exe /T >nul 2>&1
+
+REM Inicia o backend
+start "" cmd /c "npm run server"
 timeout /t 3 /nobreak >nul
 
-REM Aguarda o backend estar pronto (porta 3001)
-echo ⏳ Aguardando backend iniciar (porta 3001)...
+REM Aguarda o backend estar pronto
+echo ⏳ Aguardando backend iniciar...
 set ATTEMPTS=0
 :WAIT_BACKEND
 set /a ATTEMPTS+=1
 if %ATTEMPTS% GTR 30 (
     echo.
-    echo ⚠️  Backend não iniciou a tempo, mas continuando...
-    goto CHECK_FRONTEND
+    echo ⚠️  Backend nao iniciou em 30 segundos
+    echo.
+    echo Verifique se:
+    echo   - A porta 3001 esta livre
+    echo   - O arquivo server.cjs existe
+    echo.
+    echo Tente executar manualmente:
+    echo   npm run server
+    echo.
+    pause
+    goto CLEANUP
 )
 
 REM Verifica se a porta 3001 está respondendo
@@ -58,20 +124,35 @@ if errorlevel 1 (
 echo ✅ Backend pronto!
 echo.
 
-:CHECK_FRONTEND
-REM Aguarda o frontend estar pronto (porta 3000)
-echo ⏳ Aguardando frontend iniciar (porta 3000)...
+REM ==============================================
+REM  Iniciar Frontend
+REM ==============================================
+
+echo [4/5] Iniciando frontend (porta 3000)...
+echo.
+
+REM Inicia o frontend
+start "" cmd /c "npm run dev"
+timeout /t 3 /nobreak >nul
+
+REM Aguarda o frontend estar pronto
+echo ⏳ Aguardando frontend iniciar...
 set ATTEMPTS=0
 :WAIT_FRONTEND
 set /a ATTEMPTS+=1
-if %ATTEMPTS% GTR 30 (
+if %ATTEMPTS% GTR 40 (
     echo.
-    echo ❌ Timeout: Frontend não iniciou a tempo
+    echo ⚠️  Frontend nao iniciou em 40 segundos
     echo.
-    echo Encerrando processos...
-    taskkill /F /IM node.exe /T >nul 2>&1
+    echo Verifique se:
+    echo   - A porta 3000 esta livre
+    echo   - Angular CLI esta instalado corretamente
+    echo.
+    echo Tente executar manualmente:
+    echo   npm run dev
+    echo.
     pause
-    exit /b 1
+    goto CLEANUP
 )
 
 REM Verifica se a porta 3000 está respondendo
@@ -84,24 +165,48 @@ if errorlevel 1 (
 echo ✅ Frontend pronto!
 echo.
 
-REM Abre o navegador
-echo 🌐 Abrindo navegador...
+REM ==============================================
+REM  Abrir Navegador
+REM ==============================================
+
+echo [5/5] Abrindo navegador...
+echo.
+
+timeout /t 2 /nobreak >nul
 start http://localhost:3000
 
 echo.
 echo ========================================
-echo    ✨ VestBot está rodando!
-echo    📍 Frontend: http://localhost:3000
-echo    📍 Backend:  http://localhost:3001
+echo    ✨ VestBot esta rodando!
 echo ========================================
 echo.
-echo Pressione qualquer tecla para encerrar os servidores...
+echo    📍 Frontend: http://localhost:3000
+echo    📍 Backend:  http://localhost:3001
+echo    📄 Dados:    %PROJECT_DIR%data\data-user.txt
+echo.
+echo ========================================
+echo.
+echo ⚠️  NAO FECHE ESTA JANELA!
+echo.
+echo    Para encerrar o VestBot, pressione
+echo    qualquer tecla nesta janela.
+echo.
 pause >nul
 
-REM Encerra todos os processos Node.js
+REM ==============================================
+REM  Encerrar Servidores
+REM ==============================================
+
+:CLEANUP
 echo.
 echo 🛑 Encerrando VestBot...
+echo.
+
+REM Encerra todos os processos Node.js
 taskkill /F /IM node.exe /T >nul 2>&1
 
 echo ✅ Encerrado com sucesso!
+echo.
 timeout /t 2 /nobreak >nul
+exit /b 0
+
