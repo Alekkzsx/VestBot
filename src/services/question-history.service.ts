@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { UserDataService } from './user-data.service';
 
 /**
  * Represents a single attempt at answering a question
@@ -22,6 +23,7 @@ export interface QuestionAttempt {
 })
 export class QuestionHistoryService {
     private readonly STORAGE_KEY = 'vestbot_question_history';
+    private userDataService = inject(UserDataService);
 
     // Time intervals in milliseconds
     private readonly CORRECT_BLOCK_TIME = 3 * 24 * 60 * 60 * 1000;  // 3 days
@@ -131,10 +133,18 @@ export class QuestionHistoryService {
     }
 
     /**
-     * Get all history from localStorage
+     * Get all history from localStorage or backend
      */
     private getHistory(): QuestionAttempt[] {
         try {
+            // Try to get from backend first
+            const userData = this.userDataService.getUserData();
+
+            if (userData && userData.user.questionHistory) {
+                return userData.user.questionHistory;
+            }
+
+            // Fallback to localStorage
             const data = localStorage.getItem(this.STORAGE_KEY);
             if (!data) {
                 return [];
@@ -147,11 +157,19 @@ export class QuestionHistoryService {
     }
 
     /**
-     * Save history to localStorage
+     * Save history to backend and localStorage
      */
     private saveHistory(history: QuestionAttempt[]): void {
         try {
+            // Save to localStorage as backup
             localStorage.setItem(this.STORAGE_KEY, JSON.stringify(history));
+
+            // Save to backend
+            const userData = this.userDataService.getUserData();
+            if (userData) {
+                userData.user.questionHistory = history;
+                this.userDataService.saveUserData(userData);
+            }
         } catch (error) {
             console.error('Error saving question history:', error);
         }

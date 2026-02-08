@@ -1708,5 +1708,1905 @@
     ],
     "correta": "Tu me conheces.",
     "explicacao_base": "Na norma culta, a segunda pessoa do singular (tu) exige o verbo com 's' final no presente do indicativo: eu conheço, tu conheces, ele conhece. O uso popular 'tu conhece' mistura a pessoa do 'tu' com o verbo na 3ª pessoa (ele)."
+  },
+  {
+    "grupo_id": 91,
+    "tema": "Mudanças Climáticas e Ecologia",
+    "texto_referencia": "A Amazônia está enfrentando períodos de seca cada vez mais severos. Em 2023 e 2024, rios atingiram níveis historicamente baixos. Esse fenômeno afeta não apenas o transporte e a pesca, mas também libera grandes quantidades de carbono armazenado no solo e na vegetação morta, criando um ciclo vicioso de aquecimento.",
+    "image_id": "",
+    "id": 91,
+    "materia": "Biologia / Geografia",
+    "dificuldade": "Média",
+    "enunciado": "A liberação do carbono mencionada no texto intensifica um fenômeno natural essencial para a vida, mas que, em excesso, causa o superaquecimento do planeta. Esse fenômeno é o:",
+    "alternativas": [
+      "Efeito Estufa.",
+      "Inversão Térmica.",
+      "Ilhas de Calor.",
+      "Buraco na Camada de Ozônio.",
+      "Chuva Ácida."
+    ],
+    "correta": "Efeito Estufa.",
+    "explicacao_base": "O Efeito Estufa é um fenômeno natural de retenção de calor. A liberação excessiva de gases como o CO₂ (carbono) intensifica esse efeito, levando ao Aquecimento Global."
+  },
+  {
+    "grupo_id": 92,
+    "tema": "Matemática e Escala",
+    "texto_referencia": "Em um projeto de urbanismo, um estudante desenhou a planta de uma praça retangular. O desenho tem dimensões de 10 cm por 15 cm. A escala utilizada no projeto foi de 1:200.",
+    "image_id": "",
+    "id": 92,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "A área real dessa praça, em metros quadrados (m²), é de:",
+    "alternativas": [
+      "30 m²",
+      "300 m²",
+      "600 m²",
+      "1.200 m²",
+      "3.000 m²"
+    ],
+    "correta": "600 m²",
+    "explicacao_base": "Escala 1:200 significa que 1 cm = 200 cm (ou 2 m). Dimensões reais: 10 cm → 20 m e 15 cm → 30 m. Área = 20m × 30m = 600 m²."
+  },
+  {
+    "grupo_id": 93,
+    "tema": "Química - Tabela Periódica",
+    "texto_referencia": "O 'sal light' é uma alternativa recomendada para hipertensos. Ele contém menos cloreto de sódio (NaCl) e é enriquecido com cloreto de potássio (KCl). Na Tabela Periódica, tanto o Sódio (Na) quanto o Potássio (K) estão na mesma coluna (grupo 1).",
+    "image_id": "",
+    "id": 93,
+    "materia": "Química",
+    "dificuldade": "Fácil",
+    "enunciado": "Os elementos que pertencem a esse grupo 1 (família 1A) são classificados como:",
+    "alternativas": [
+      "Metais Alcalinoterrosos.",
+      "Gases Nobres.",
+      "Halogênios.",
+      "Metais Alcalinos.",
+      "Semimetais."
+    ],
+    "correta": "Metais Alcalinos.",
+    "explicacao_base": "A família 1 da Tabela Periódica (Li, Na, K, Rb, Cs, Fr) é denominada Metais Alcalinos."
+  },
+  {
+    "grupo_id": 94,
+    "tema": "História do Brasil - Era Vargas",
+    "texto_referencia": "Na década de 1930, o governo de Getúlio Vargas implementou uma política de substituição de importações, investindo na criação de indústrias de base nacionais, como a Companhia Siderúrgica Nacional (CSN) e a Vale do Rio Doce.",
+    "image_id": "",
+    "id": 94,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "A principal intenção econômica dessa estratégia nacionalista era:",
+    "alternativas": [
+      "Tornar o Brasil um país exclusivamente agrícola (O Celeiro do Mundo).",
+      "Privatizar todas as empresas estatais para atrair capital estrangeiro.",
+      "Reduzir a dependência de produtos manufaturados estrangeiros e impulsionar a industrialização interna.",
+      "Focar apenas na exportação de café, proibindo a indústria.",
+      "Adotar o comunismo soviético como modelo econômico."
+    ],
+    "correta": "Reduzir a dependência de produtos manufaturados estrangeiros e impulsionar a industrialização interna.",
+    "explicacao_base": "A Substituição de Importações visava produzir internamente o que antes se comprava fora, desenvolvendo a indústria nacional e a autonomia econômica."
+  },
+  {
+    "grupo_id": 95,
+    "tema": "Física - Óptica",
+    "texto_referencia": "Em dias de chuva, é comum vermos um arco-íris. Esse fenômeno ocorre quando a luz branca do Sol atravessa gotículas de água suspensas no ar, separando-se em suas sete cores componentes (espectro visível).",
+    "image_id": "",
+    "id": 95,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "Os fenômenos ópticos responsáveis, sequencialmente, pela formação do arco-íris dentro da gota são:",
+    "alternativas": [
+      "Refração e Reflexão Total.",
+      "Difração e Interferência.",
+      "Reflexão e Absorção.",
+      "Polarização e Dispersão.",
+      "Ressonância e Refração."
+    ],
+    "correta": "Refração e Reflexão Total.",
+    "explicacao_base": "A luz sofre refração (e dispersão) ao entrar na gota, reflete na parede interna (reflexão interna total) e refrata novamente ao sair, separando as cores."
+  },
+  {
+    "grupo_id": 96,
+    "tema": "Biologia - Botânica",
+    "texto_referencia": "Muitas pessoas confundem legumes com verduras ou frutas. Biologicamente, o termo 'fruto' tem um significado específico. O tomate, o pepino e a abobrinha, por exemplo, são frutos, embora culinariamente sejam tratados como legumes.",
+    "image_id": "",
+    "id": 96,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "Na botânica, considera-se um fruto verdadeiro a estrutura desenvolvida a partir:",
+    "alternativas": [
+      "Da raiz tuberosa que armazena amido.",
+      "Das pétalas fecundadas da flor.",
+      "Do desenvolvimento e amadurecimento do ovário da flor.",
+      "Do caule modificado para reserva de água.",
+      "Das folhas modificadas para proteção."
+    ],
+    "correta": "Do desenvolvimento e amadurecimento do ovário da flor.",
+    "explicacao_base": "O fruto verdadeiro é resultado exclusivo do desenvolvimento do ovário da flor após a fecundação. Estruturas vindas de outras partes (como o receptáculo na maçã) são pseudofrutos."
+  },
+  {
+    "grupo_id": 97,
+    "tema": "Interpretação de Texto - Literatura",
+    "texto_referencia": "Leia o fragmento de 'Vidas Secas', de Graciliano Ramos: 'Fabiano ia satisfeito... Sim senhor, as pernas faziam dois riscos finos no barro. O aió a tiracolo, a cuia pendurada numa correia presa ao cinturão, o facão de rasto... Fabiano sentia-se um homem.'",
+    "image_id": "",
+    "id": 97,
+    "materia": "Português",
+    "dificuldade": "Difícil",
+    "enunciado": "A obra 'Vidas Secas' pertence à segunda fase do Modernismo Brasileiro (Romance de 30). O trecho destaca uma característica central dessa escola literária, que é:",
+    "alternativas": [
+      "O uso de linguagem rebuscada parnasiana.",
+      "A denúncia social focada na realidade da seca e na desumanização do retirante nordestino.",
+      "A exaltação patriótica e ufanista da natureza tropical.",
+      "A fuga da realidade através de mundos de fantasia e sonho.",
+      "A cópia de modelos europeus sem crítica social."
+    ],
+    "correta": "A denúncia social focada na realidade da seca e na desumanização do retirante nordestino.",
+    "explicacao_base": "O regionalismo de 1930 (Graciliano, Raquel de Queiroz) foca na crítica social, na seca e na condição miserável do homem do sertão, muitas vezes 'animalizado' pela natureza hostil."
+  },
+  {
+    "grupo_id": 98,
+    "tema": "Química - Soluções e Concentração",
+    "texto_referencia": "Uma latinha de refrigerante normal (350 mL) possui cerca de 150 kcal. A versão 'Zero' do mesmo refrigerante possui 0 kcal. A diferença está na substituição do açúcar (sacarose) por adoçantes artificiais (edulcorantes) que têm poder adoçante muito maior, sendo usados em quantidades mínimas (miligramas).",
+    "image_id": "",
+    "id": 98,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "Apesar de adoçar igual ou mais, a densidade do refrigerante Zero é ligeiramente menor que a do normal. Isso ocorre porque:",
+    "alternativas": [
+      "O gás do refrigerante Zero é hélio, que é mais leve que o ar.",
+      "A massa de soluto (açúcar) dissolvida no refrigerante normal é muito grande (aprox. 37g), aumentando a densidade da solução.",
+      "A água usada no refrigerante Zero é água pesada.",
+      "O refrigerante normal tem volume menor que 350mL.",
+      "As moléculas de adoçante evaporam rapidamente."
+    ],
+    "correta": "A massa de soluto (açúcar) dissolvida no refrigerante normal é muito grande (aprox. 37g), aumentando a densidade da solução.",
+    "explicacao_base": "Densidade = Massa/Volume. No refri normal, há ~37g de açúcar dissolvido. No Zero, há miligramas de adoçante. Mais massa no mesmo volume = maior densidade."
+  },
+  {
+    "grupo_id": 99,
+    "tema": "Física - Eletricidade e Segurança",
+    "texto_referencia": "É comum ver pássaros pousados em fios de alta tensão sem serem eletrocutados. No entanto, se um humano tocar o mesmo fio estando no chão, levará um choque fatal.",
+    "image_id": "",
+    "id": 99,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "O pássaro não leva choque porque:",
+    "alternativas": [
+      "Suas patas são feitas de borracha isolante.",
+      "A corrente elétrica não passa por animais que voam.",
+      "Ao pousar em um único fio, não há diferença de potencial (ddp) ou tensão entre suas patas.",
+      "O pássaro tem uma resistência elétrica interna infinita.",
+      "Os fios de alta tensão são encapados com plástico grosso."
+    ],
+    "correta": "Ao pousar em um único fio, não há diferença de potencial (ddp) ou tensão entre suas patas.",
+    "explicacao_base": "Para haver corrente elétrica (choque), é preciso haver Diferença de Potencial (U). Com as duas patas no mesmo fio e mesmo potencial, U=0, logo i=0."
+  },
+  {
+    "grupo_id": 100,
+    "tema": "Matemática Financeira e Porcentagem",
+    "texto_referencia": "Durante a Black Friday, uma loja aumentou o preço de uma TV de R$ 2.000,00 para R$ 2.500,00 uma semana antes do evento. No dia da promoção, anunciou um desconto de 20% sobre esse novo valor de R$ 2.500,00.",
+    "image_id": "",
+    "id": 100,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "O consumidor que comprou a TV na promoção pagou, em relação ao preço original de R$ 2.000,00:",
+    "alternativas": [
+      "O mesmo valor (R$ 2.000,00), configurando a prática de 'metade do dobro'.",
+      "Um valor 20% menor.",
+      "Um valor 10% maior.",
+      "Um valor de R$ 1.800,00.",
+      "Um valor de R$ 2.200,00."
+    ],
+    "correta": "O mesmo valor (R$ 2.000,00), configurando a prática de 'metade do dobro'.",
+    "explicacao_base": "20% de 2.500 = R$ 500. Preço final = 2.500 - 500 = R$ 2.000. O preço voltou ao original, criando uma falsa sensação de desconto."
+  },
+  {
+    "grupo_id": 101,
+    "tema": "Biologia - Vacinas e Biotecnologia",
+    "texto_referencia": "O texto IV menciona o HPV (Papilomavírus Humano), um vírus sexualmente transmissível associado a diversos tipos de câncer, principalmente o de colo do útero. O SUS oferece a vacina quadrivalente para meninas e meninos.",
+    "image_id": "",
+    "id": 101,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "A principal função da vacinação em massa contra o HPV em adolescentes é:",
+    "alternativas": [
+      "Curar jovens que já estão infectados com a AIDS.",
+      "Impedir a gravidez precoce na adolescência.",
+      "Prevenir a infecção pelo vírus e reduzir a incidência futura de cânceres associados a ele.",
+      "Substituir o uso de preservativos nas relações sexuais.",
+      "Combater bactérias causadoras da sífilis."
+    ],
+    "correta": "Prevenir a infecção pelo vírus e reduzir a incidência futura de cânceres associados a ele.",
+    "explicacao_base": "A vacina contra HPV é profilática (preventiva) e visa imunizar antes do contato com o vírus, prevenindo verrugas genitais e o desenvolvimento de lesões cancerígenas."
+  },
+  {
+    "grupo_id": 102,
+    "tema": "Geografia - Urbanização e Enchentes",
+    "texto_referencia": "As grandes cidades sofrem com inundações frequentes. Além do excesso de chuvas, um fator antrópico (humano) decisivo é a impermeabilização do solo pelo asfalto e cimento.",
+    "image_id": "",
+    "id": 102,
+    "materia": "Geografia",
+    "dificuldade": "Média",
+    "enunciado": "A consequência direta da impermeabilização do solo urbano no ciclo da água é:",
+    "alternativas": [
+      "Aumento da infiltração da água no lençol freático.",
+      "Diminuição do escoamento superficial (enxurrada).",
+      "Redução drástica da evaporação dos rios.",
+      "Aumento da velocidade e do volume do escoamento superficial, sobrecarregando rios e bueiros.",
+      "Melhora na qualidade da água das chuvas."
+    ],
+    "correta": "Aumento da velocidade e do volume do escoamento superficial, sobrecarregando rios e bueiros.",
+    "explicacao_base": "Se a água não infiltra (solo selado), ela corre pela superfície (escoamento superficial) rapidamente para as áreas mais baixas, causando enchentes."
+  },
+  {
+    "grupo_id": 103,
+    "tema": "Química - Chuva Ácida",
+    "texto_referencia": "A queima de combustíveis fósseis que contêm impurezas de enxofre (como o diesel) libera dióxido de enxofre ($SO_2$) na atmosfera. Esse gás reage com o vapor d'água formando ácidos fortes.",
+    "image_id": "",
+    "id": 103,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "O fenômeno ambiental resultante dessa reação, que corrói monumentos, acidifica lagos e danifica florestas, é conhecido como:",
+    "alternativas": [
+      "Camada de Ozônio.",
+      "Chuva Ácida.",
+      "Efeito Estufa.",
+      "Smog Fotoquímico.",
+      "Eutrofização."
+    ],
+    "correta": "Chuva Ácida.",
+    "explicacao_base": "Óxidos de Enxofre ($SO_x$) e Nitrogênio ($NO_x$) reagem com a água da chuva formando Ácido Sulfúrico e Nítrico, caracterizando a Chuva Ácida (pH < 5,6)."
+  },
+  {
+    "grupo_id": 104,
+    "tema": "Física - Movimento Circular",
+    "texto_referencia": "Em um parque de diversões, o brinquedo 'Chapéu Mexicano' gira em torno de um eixo vertical. À medida que a velocidade de rotação aumenta, as cadeiras se afastam do centro.",
+    "image_id": "",
+    "id": 104,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "A força resultante que aponta para o centro da trajetória e mantém as cadeiras em movimento circular (impedindo que saiam pela tangente) é denominada:",
+    "alternativas": [
+      "Força Centrífuga.",
+      "Força Centrípeta.",
+      "Força de Atrito.",
+      "Força Elástica.",
+      "Força Gravitacional."
+    ],
+    "correta": "Força Centrípeta.",
+    "explicacao_base": "A resultante das forças que aponta para o centro da curva e muda a direção da velocidade é a Força Centrípeta ($F_{cp}$). A centrífuga é uma pseudoforça referencial."
+  },
+  {
+    "grupo_id": 105,
+    "tema": "Tecnologia - Internet das Coisas",
+    "texto_referencia": "Geladeiras que fazem compras sozinhas, relógios que monitoram o sono e lâmpadas controladas por voz. Estamos vivendo uma era onde objetos do dia a dia se conectam à internet.",
+    "image_id": "",
+    "id": 105,
+    "materia": "Informática / Atualidades",
+    "dificuldade": "Fácil",
+    "enunciado": "Esse conceito tecnológico de interconexão digital de objetos cotidianos é conhecido pela sigla:",
+    "alternativas": [
+      "IoT (Internet of Things).",
+      "VPN (Virtual Private Network).",
+      "HTML (HyperText Markup Language).",
+      "CPU (Central Processing Unit).",
+      "GPS (Global Positioning System)."
+    ],
+    "correta": "IoT (Internet of Things).",
+    "explicacao_base": "Internet das Coisas (IoT) é a rede de objetos físicos incorporados com sensores e software para conectar e trocar dados."
+  },
+  {
+    "grupo_id": 106,
+    "tema": "Biologia - Genética",
+    "texto_referencia": "O DNA de suspeitos pode ser coletado em cenas de crime (cabelo, sangue) e comparado com bancos de dados. A técnica, conhecida como 'DNA Fingerprint', baseia-se no fato de que cada pessoa (exceto gêmeos univitelinos) tem um padrão genético único.",
+    "image_id": "",
+    "id": 106,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "A molécula de DNA é encontrada, principalmente, em qual estrutura da célula animal?",
+    "alternativas": [
+      "Na membrana plasmática.",
+      "No citoplasma, solta livremente.",
+      "No núcleo, organizando os cromossomos.",
+      "Nos lisossomos.",
+      "No Complexo de Golgi."
+    ],
+    "correta": "No núcleo, organizando os cromossomos.",
+    "explicacao_base": "Em células eucariontes (como as humanas), a maior parte do material genético (DNA) fica armazenada e protegida dentro do núcleo."
+  },
+  {
+    "grupo_id": 107,
+    "tema": "Língua Portuguesa - Gêneros Textuais",
+    "texto_referencia": "Texto: 'Vende-se bicicleta seminova, aro 29, freio a disco, 21 marchas. Tratar com João. Tel: (11) 9999-9999'.",
+    "image_id": "",
+    "id": 107,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "O texto acima, por sua função de ofertar um produto e estrutura curta e objetiva, pertence ao gênero textual:",
+    "alternativas": [
+      "Crônica.",
+      "Editorial.",
+      "Classificado.",
+      "Bula de remédio.",
+      "Resenha crítica."
+    ],
+    "correta": "Classificado.",
+    "explicacao_base": "Classificados são textos breves, persuasivos e informativos usados para venda, troca ou aluguel, típicos de jornais e sites de vendas."
+  },
+  {
+    "grupo_id": 108,
+    "tema": "Matemática - Regra de Três e Nutrição",
+    "texto_referencia": "A informação nutricional de um pacote de biscoitos diz que uma porção de 30g (3 biscoitos) contém 140 kcal.",
+    "image_id": "",
+    "id": 108,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Se uma pessoa comer o pacote inteiro, que tem 150g, quantas quilocalorias (kcal) ela terá ingerido?",
+    "alternativas": [
+      "420 kcal.",
+      "560 kcal.",
+      "700 kcal.",
+      "840 kcal.",
+      "1.400 kcal."
+    ],
+    "correta": "700 kcal.",
+    "explicacao_base": "30g correspondem a 140 kcal. O pacote tem 150g (5 vezes a porção, pois 150/30 = 5). Logo, 140 × 5 = 700 kcal."
+  },
+  {
+    "grupo_id": 109,
+    "tema": "História Geral - Guerra Fria",
+    "texto_referencia": "Em 1961, foi construído um muro dividindo a cidade de Berlim em duas partes: uma sob influência capitalista e outra sob influência socialista. Esse muro tornou-se o maior símbolo da polarização mundial.",
+    "image_id": "",
+    "id": 109,
+    "materia": "História",
+    "dificuldade": "Fácil",
+    "enunciado": "O conflito ideológico, político e militar indireto entre EUA e URSS que dominou o cenário global nessa época é chamado de:",
+    "alternativas": [
+      "Segunda Guerra Mundial.",
+      "Guerra Fria.",
+      "Guerra do Vietnã.",
+      "Revolução Francesa.",
+      "Guerra dos Cem Anos."
+    ],
+    "correta": "Guerra Fria.",
+    "explicacao_base": "A Guerra Fria foi o período de tensão geopolítica entre o bloco ocidental (EUA/Capitalismo) e oriental (URSS/Socialismo) sem confronto militar direto entre as potências."
+  },
+  {
+    "grupo_id": 110,
+    "tema": "Geometria Espacial - Planificação",
+    "texto_referencia": "Uma embalagem longa vida de leite tem o formato de um paralelepípedo retângulo (uma caixa tipo tijolo). Para ser reciclada, ela deve ser aberta e achatada.",
+    "image_id": "",
+    "id": 110,
+    "materia": "Matemática",
+    "dificuldade": "Fácil",
+    "enunciado": "A planificação correta dessa embalagem é composta por:",
+    "alternativas": [
+      "6 círculos.",
+      "4 triângulos e 1 quadrado.",
+      "6 retângulos.",
+      "1 pentágono e 5 retângulos.",
+      "2 círculos e 1 retângulo enrolado."
+    ],
+    "correta": "6 retângulos.",
+    "explicacao_base": "Um paralelepípedo reto-retângulo é formado por 6 faces retangulares (4 laterais + 2 bases)."
+  },
+  {
+    "grupo_id": 111,
+    "tema": "Química - Química Ambiental",
+    "texto_referencia": "Os solos do Cerrado brasileiro são naturalmente ácidos, ricos em alumínio (tóxico para muitas plantas) e pobres em cálcio. Para viabilizar a agricultura de soja e milho nessa região, agricultores aplicam uma técnica que utiliza calcário (carbonato de cálcio e magnésio) moído.",
+    "image_id": "",
+    "id": 111,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "O principal objetivo químico dessa prática, denominada calagem, é:",
+    "alternativas": [
+      "Acidificar ainda mais o solo para matar pragas.",
+      "Elevar o pH do solo, neutralizando a acidez e fornecendo nutrientes.",
+      "Impermeabilizar o solo para reter água da chuva.",
+      "Aumentar a concentração de íons de hidrogênio (H⁺) livres.",
+      "Transformar o alumínio em adubo orgânico nitrogenado."
+    ],
+    "correta": "Elevar o pH do solo, neutralizando a acidez e fornecendo nutrientes.",
+    "explicacao_base": "O calcário ($CaCO_3$) é uma base que reage com os ácidos do solo, elevando o pH (diminuindo a acidez) e precipitando o alumínio tóxico, tornando o solo fértil."
+  },
+  {
+    "grupo_id": 112,
+    "tema": "Biologia - Fisiologia",
+    "texto_referencia": "Durante uma maratona, o corpo do atleta precisa dissipar o excesso de calor gerado pela contração muscular para manter a temperatura interna em níveis seguros (homeostase).",
+    "image_id": "",
+    "id": 112,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "O principal mecanismo fisiológico de resfriamento corporal em humanos durante o exercício é a:",
+    "alternativas": [
+      "Vasoconstrição dos vasos da pele.",
+      "Redução da frequência respiratória.",
+      "Evaporação do suor liberado pelas glândulas sudoríparas.",
+      "Diminuição da frequência cardíaca.",
+      "Ereção dos pelos corporais (arrepios)."
+    ],
+    "correta": "Evaporação do suor liberado pelas glândulas sudoríparas.",
+    "explicacao_base": "A evaporação é um processo endotérmico. Ao evaporar na pele, a água do suor 'rouba' calor do corpo, resfriando-o."
+  },
+  {
+    "grupo_id": 113,
+    "tema": "Matemática - Grandezas Proporcionais",
+    "texto_referencia": "A conta de água de uma residência apresentou um consumo excessivo. Ao investigar, o morador descobriu uma torneira gotejando. Ele mediu que, em apenas 20 minutos, o gotejamento encheu um copo de 200 mL.",
+    "image_id": "",
+    "id": 113,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Considerando o gotejamento constante, quantos litros de água são desperdiçados em um dia inteiro (24 horas)?",
+    "alternativas": [
+      "1,44 litros.",
+      "7,2 litros.",
+      "14,4 litros.",
+      "24,0 litros.",
+      "43,2 litros."
+    ],
+    "correta": "14,4 litros.",
+    "explicacao_base": "Regra de três: 200 mL em 20 min → 10 mL por minuto. Em 1 hora (60 min): 600 mL. Em 24 horas: 24 × 600 = 14.400 mL = 14,4 litros."
+  },
+  {
+    "grupo_id": 114,
+    "tema": "História do Brasil - Segundo Reinado",
+    "texto_referencia": "Em 1850, a Lei Eusébio de Queirós proibiu o tráfico transatlântico de escravizados para o Brasil. Com a interrupção da entrada de mão de obra africana, os cafeicultores paulistas precisaram encontrar uma nova força de trabalho.",
+    "image_id": "",
+    "id": 114,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "A solução adotada em larga escala pelo governo e pelos fazendeiros para substituir a mão de obra escravizada nas lavouras de café foi:",
+    "alternativas": [
+      "A mecanização completa da colheita com máquinas a vapor inglesas.",
+      "O estímulo à imigração europeia (italianos, alemães, etc.) e asiática.",
+      "A contratação de indígenas assalariados vindos da Amazônia.",
+      "O uso exclusivo de trabalhadores livres nascidos no Brasil (caboclos).",
+      "A reintrodução da escravidão indígena, permitida por lei."
+    ],
+    "correta": "O estímulo à imigração europeia (italianos, alemães, etc.) e asiática.",
+    "explicacao_base": "A imigração (primeiro por parceria, depois subvencionada) trouxe milhares de europeus (principalmente italianos) para trabalhar no Oeste Paulista."
+  },
+  {
+    "grupo_id": 115,
+    "tema": "Física - Termologia",
+    "texto_referencia": "No sul do Brasil, é comum o uso de lareiras e aquecedores no inverno. Já o ar-condicionado é instalado no alto das paredes para resfriar o ambiente de forma eficiente.",
+    "image_id": "",
+    "id": 115,
+    "materia": "Física",
+    "dificuldade": "Fácil",
+    "enunciado": "A instalação do ar-condicionado no alto se justifica pelo processo de transferência de calor denominado convecção, onde:",
+    "alternativas": [
+      "O ar frio, mais denso, desce e empurra o ar quente, menos denso, para cima, criando correntes de circulação.",
+      "O ar frio é menos denso e sobe, resfriando o teto.",
+      "A troca de calor ocorre exclusivamente por radiação infravermelha.",
+      "O ar funciona como um metal condutor de calor.",
+      "A gravidade atrai apenas o ar quente para baixo."
+    ],
+    "correta": "O ar frio, mais denso, desce e empurra o ar quente, menos denso, para cima, criando correntes de circulação.",
+    "explicacao_base": "Convecção térmica: Fluidos quentes expandem (ficam menos densos) e sobem; fluidos frios contraem (ficam mais densos) e descem."
+  },
+  {
+    "grupo_id": 116,
+    "tema": "Química - Mudanças de Estado",
+    "texto_referencia": "O gelo seco é muito usado em festas para criar efeito de fumaça rasteira. Quimicamente, ele é dióxido de carbono ($CO_2$) no estado sólido, resfriado a -78°C. Ao ser exposto à temperatura ambiente, ele passa diretamente para o estado gasoso.",
+    "image_id": "",
+    "id": 116,
+    "materia": "Química",
+    "dificuldade": "Fácil",
+    "enunciado": "Essa mudança direta de sólido para gasoso, sem passar pela fase líquida, chama-se:",
+    "alternativas": [
+      "Fusão.",
+      "Ebulição.",
+      "Condensação.",
+      "Sublimação.",
+      "Solidificação."
+    ],
+    "correta": "Sublimação.",
+    "explicacao_base": "Sublimação é a transição de fase direta de sólido para gás (e vice-versa, às vezes chamada de ressublimação) comum em iodo e gelo seco."
+  },
+  {
+    "grupo_id": 117,
+    "tema": "Geografia - Geologia",
+    "texto_referencia": "Embora o Brasil possua grande extensão territorial, a ocorrência de terremotos de grande magnitude e vulcões ativos é extremamente rara se comparada a países como Chile e Japão.",
+    "image_id": "",
+    "id": 117,
+    "materia": "Geografia",
+    "dificuldade": "Fácil",
+    "enunciado": "Essa estabilidade geológica brasileira é explicada pelo fato de o país:",
+    "alternativas": [
+      "Estar localizado inteiramente no Hemisfério Sul.",
+      "Estar situado no centro da Placa Tectônica Sul-Americana, longe das bordas de choque.",
+      "Possuir um clima tropical que resfria a crosta terrestre.",
+      "Não possuir relevo montanhoso, sendo formado apenas por planícies.",
+      "Estar protegido pela Cordilheira dos Andes que bloqueia os abalos."
+    ],
+    "correta": "Estar situado no centro da Placa Tectônica Sul-Americana, longe das bordas de choque.",
+    "explicacao_base": "Abalos sísmicos intensos e vulcanismo ocorrem nas bordas das placas (zonas de convergência). O Brasil está numa região intraplaca, geologicamente estável."
+  },
+  {
+    "grupo_id": 118,
+    "tema": "Literatura - Modernismo",
+    "texto_referencia": "Leia o trecho: 'Tupi, or not tupi that is the question. (...) Só me interessa o que não é meu. Lei do homem. Lei do antropófago.' (Manifesto Antropófago, Oswald de Andrade, 1928).",
+    "image_id": "",
+    "id": 118,
+    "materia": "Português",
+    "dificuldade": "Média",
+    "enunciado": "A paródia da célebre frase de Shakespeare ('To be or not to be') no contexto do Modernismo Brasileiro tinha como intenção:",
+    "alternativas": [
+      "Exaltar a língua inglesa como superior ao tupi.",
+      "Questionar a identidade nacional, propondo uma cultura que devora e assimila influências estrangeiras para criar algo brasileiro original.",
+      "Rejeitar qualquer influência cultural externa, pregando um nacionalismo xenófobo.",
+      "Promover a volta do domínio colonial português.",
+      "Defender o ensino de latim nas escolas públicas."
+    ],
+    "correta": "Questionar a identidade nacional, propondo uma cultura que devora e assimila influências estrangeiras para criar algo brasileiro original.",
+    "explicacao_base": "A Antropofagia Oswaldiana propunha 'comer' a cultura europeia, digeri-la e aproveitar o que fosse bom para fortalecer a cultura nacional (Tupi)."
+  },
+  {
+    "grupo_id": 119,
+    "tema": "Matemática - Geometria Plana",
+    "texto_referencia": "Um artista deseja colocar uma moldura em torno de um espelho circular. O espelho tem raio de 40 cm. A moldura será uma fita metálica que contornará toda a borda externa.",
+    "image_id": "",
+    "id": 119,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Utilizando $\\pi = 3,14$, qual o comprimento mínimo dessa fita metálica?",
+    "alternativas": [
+      "125,6 cm.",
+      "251,2 cm.",
+      "502,4 cm.",
+      "1.600 cm.",
+      "5.024 cm."
+    ],
+    "correta": "251,2 cm.",
+    "explicacao_base": "Comprimento da circunferência: $C = 2 \\cdot \\pi \\cdot r$. $C = 2 \\cdot 3,14 \\cdot 40 = 6,28 \\cdot 40 = 251,2$ cm."
+  },
+  {
+    "grupo_id": 120,
+    "tema": "Biologia - Cadeia Alimentar",
+    "texto_referencia": "Em um ecossistema de campo, capim alimenta gafanhotos, que alimentam sapos, que por sua vez alimentam cobras.",
+    "image_id": "",
+    "id": 120,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "Se uma doença eliminar drasticamente a população de sapos, a consequência imediata mais provável nesse ecossistema será:",
+    "alternativas": [
+      "A diminuição da população de gafanhotos e o aumento da de cobras.",
+      "O aumento da população de gafanhotos (praga) e a diminuição da de cobras.",
+      "A extinção do capim.",
+      "O aumento da população de cobras, pois elas comerão gafanhotos.",
+      "A estabilidade total, pois a natureza se equilibra instantaneamente."
+    ],
+    "correta": "O aumento da população de gafanhotos (praga) e a diminuição da de cobras.",
+    "explicacao_base": "Sem o predador (sapo), a presa (gafanhoto) prolifera. O predador do sapo (cobra) fica sem alimento e diminui."
+  },
+  {
+    "grupo_id": 121,
+    "tema": "Física - Óptica da Visão",
+    "texto_referencia": "A miopia é um defeito de visão onde a imagem se forma antes da retina, dificultando a visão de longe. Já a hipermetropia forma a imagem depois da retina, dificultando a visão de perto.",
+    "image_id": "",
+    "id": 121,
+    "materia": "Física",
+    "dificuldade": "Difícil",
+    "enunciado": "Para corrigir, respectivamente, miopia e hipermetropia, deve-se usar óculos com lentes:",
+    "alternativas": [
+      "Cilíndricas e Planas.",
+      "Convergentes e Divergentes.",
+      "Divergentes e Convergentes.",
+      "Biconvexas e Bifocais.",
+      "Escuras e de Contato."
+    ],
+    "correta": "Divergentes e Convergentes.",
+    "explicacao_base": "Míope (globo ocular longo/foco antes) precisa 'espalhar' a luz (Divergente). Hipermétrope (globo curto/foco depois) precisa 'juntar' a luz (Convergente)."
+  },
+  {
+    "grupo_id": 122,
+    "tema": "História - Antiguidade",
+    "texto_referencia": "A democracia nasceu em Atenas, na Grécia Antiga, no século V a.C. Porém, era uma democracia restrita e diferente da atual.",
+    "image_id": "",
+    "id": 122,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "No modelo ateniense clássico, quem NÃO tinha direito a voto e participação nas assembleias (Eclésia)?",
+    "alternativas": [
+      "Apenas os escravos estrangeiros.",
+      "Apenas as crianças.",
+      "Mulheres, estrangeiros (metecos) e escravos.",
+      "Os soldados do exército.",
+      "Os filósofos e poetas."
+    ],
+    "correta": "Mulheres, estrangeiros (metecos) e escravos.",
+    "explicacao_base": "A cidadania ateniense era exclusiva para homens, maiores de idade, filhos de pai e mãe atenienses e livres. A maioria da população era excluída."
+  },
+  {
+    "grupo_id": 123,
+    "tema": "Português - Figuras de Linguagem",
+    "texto_referencia": "Na letra da música 'O Mundo é um Moinho', Cartola diz: 'Ainda é cedo, amor, mal começaste a conhecer a vida'. O termo 'amor' exerce uma função sintática específica.",
+    "image_id": "",
+    "id": 123,
+    "materia": "Português",
+    "dificuldade": "Média",
+    "enunciado": "O termo 'amor', que serve para chamar ou interpelar o interlocutor, é classificado sintaticamente como:",
+    "alternativas": [
+      "Sujeito.",
+      "Aposto.",
+      "Vocativo.",
+      "Objeto Direto.",
+      "Predicativo do Sujeito."
+    ],
+    "correta": "Vocativo.",
+    "explicacao_base": "Vocativo é o termo isolado da oração usado para chamar a atenção da pessoa com quem se fala."
+  },
+  {
+    "grupo_id": 124,
+    "tema": "Química - Tabela e Propriedades",
+    "texto_referencia": "O aço inoxidável usado em panelas não enferruja facilmente porque contém crómio (Cr). O crómio reage com o oxigênio formando uma fina camada protetora (passivação).",
+    "image_id": "",
+    "id": 124,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "A formação da ferrugem comum no ferro (sem proteção) é uma reação química classificada como:",
+    "alternativas": [
+      "Oxidação (Redox).",
+      "Neutralização.",
+      "Evaporação.",
+      "Fissão nuclear.",
+      "Destilação."
+    ],
+    "correta": "Oxidação (Redox).",
+    "explicacao_base": "A ferrugem é óxido de ferro hidratado. Ocorre porque o ferro perde elétrons para o oxigênio do ar (oxidação) em presença de umidade."
+  },
+  {
+    "grupo_id": 125,
+    "tema": "Atualidades / Geografia - População",
+    "texto_referencia": "O Censo 2022 do IBGE revelou que a população brasileira está crescendo em ritmo mais lento e envelhecendo rapidamente. A taxa de fecundidade (filhos por mulher) caiu para níveis abaixo da reposição.",
+    "image_id": "",
+    "id": 125,
+    "materia": "Geografia",
+    "dificuldade": "Média",
+    "enunciado": "Um impacto socioeconômico direto e preocupante desse envelhecimento populacional para as próximas décadas é:",
+    "alternativas": [
+      "A falta de vagas em escolas primárias.",
+      "O aumento do déficit no sistema de Previdência Social (aposentadorias).",
+      "A explosão demográfica descontrolada nas favelas.",
+      "A diminuição da expectativa de vida do brasileiro.",
+      "O aumento da mão de obra jovem disponível para o mercado."
+    ],
+    "correta": "O aumento do déficit no sistema de Previdência Social (aposentadorias).",
+    "explicacao_base": "Menos jovens trabalhando (população economicamente ativa) e mais idosos recebendo benefícios geram um desequilíbrio fiscal na Previdência."
+  },
+  {
+    "grupo_id": 126,
+    "tema": "Biologia - Doenças",
+    "texto_referencia": "Doenças como a Leptospirose tornam-se surtos frequentes após enchentes urbanas.",
+    "image_id": "",
+    "id": 126,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "O agente causador da leptospirose e seu principal vetor de transmissão nas cidades são, respectivamente:",
+    "alternativas": [
+      "Um vírus; mosquito Aedes aegypti.",
+      "Um fungo; pombos urbanos.",
+      "Uma bactéria; urina de ratos misturada à água.",
+      "Um protozoário; picada de carrapato.",
+      "Um verme; carne de porco mal cozida."
+    ],
+    "correta": "Uma bactéria; urina de ratos misturada à água.",
+    "explicacao_base": "A *Leptospira* é uma bactéria eliminada na urina de roedores, que contamina a água de enchentes e penetra na pele humana."
+  },
+  {
+    "grupo_id": 127,
+    "tema": "Física - Mecânica (Leis de Newton)",
+    "texto_referencia": "Quando um ônibus freia bruscamente, os passageiros em pé são projetados para frente, podendo cair se não estiverem se segurando.",
+    "image_id": "",
+    "id": 127,
+    "materia": "Física",
+    "dificuldade": "Fácil",
+    "enunciado": "Esse fenômeno é explicado pela Primeira Lei de Newton, também conhecida como:",
+    "alternativas": [
+      "Lei da Ação e Reação.",
+      "Princípio da Inércia.",
+      "Lei da Gravitação.",
+      "Princípio da Conservação de Energia.",
+      "Lei de Joule."
+    ],
+    "correta": "Princípio da Inércia.",
+    "explicacao_base": "A Inércia é a tendência dos corpos de manter seu estado de movimento (neste caso, continuar indo para frente com a velocidade que o ônibus tinha)."
+  },
+  {
+    "grupo_id": 128,
+    "tema": "Matemática - Interpretação de Gráficos",
+    "texto_referencia": "Uma caixa d'água de 1000 litros apresenta um vazamento. O gráfico do volume (V) em função do tempo (t) em horas é uma linha reta decrescente. No tempo t=0, V=1000. No tempo t=10h, V=0.",
+    "image_id": "",
+    "id": 128,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "A taxa de vazamento dessa caixa (vazão) em litros por hora é de:",
+    "alternativas": [
+      "10 L/h.",
+      "50 L/h.",
+      "100 L/h.",
+      "200 L/h.",
+      "1000 L/h."
+    ],
+    "correta": "100 L/h.",
+    "explicacao_base": "A variação foi de 1000 Litros em 10 horas. Vazão = Volume / Tempo = 1000 / 10 = 100 L/h."
+  },
+  {
+    "grupo_id": 129,
+    "tema": "Inglês Instrumental (Interdisciplinar)",
+    "texto_referencia": "Um manual de instrução de uma impressora 3D diz: 'Warning: High Temperature Nozzle. Do not touch during operation.'",
+    "image_id": "",
+    "id": 129,
+    "materia": "Inglês",
+    "dificuldade": "Fácil",
+    "enunciado": "A mensagem de segurança alerta o usuário para:",
+    "alternativas": [
+      "Não desligar a máquina da tomada.",
+      "Limpar o bico injetor com água.",
+      "Não tocar no bico de alta temperatura durante o funcionamento.",
+      "Não usar a impressora em dias quentes.",
+      "Trocar o cartucho de tinta imediatamente."
+    ],
+    "correta": "Não tocar no bico de alta temperatura durante o funcionamento.",
+    "explicacao_base": "'Do not touch' (não toque), 'during operation' (durante operação/funcionamento), 'High Temperature Nozzle' (Bico de alta temperatura)."
+  },
+  {
+    "grupo_id": 130,
+    "tema": "Atualidades - Inteligência Artificial",
+    "texto_referencia": "O avanço de ferramentas como o ChatGPT e o Midjourney levanta discussões éticas. Artistas processam empresas de IA alegando que suas obras foram usadas para treinar os algoritmos sem permissão ou pagamento.",
+    "image_id": "",
+    "id": 130,
+    "materia": "Atualidades / Sociologia",
+    "dificuldade": "Média",
+    "enunciado": "A questão central debatida nesse contexto refere-se:",
+    "alternativas": [
+      "Ao aumento da velocidade da internet 5G.",
+      "Aos direitos autorais e à propriedade intelectual.",
+      "À necessidade de substituir todos os professores por robôs.",
+      "À proibição total de computadores nas escolas.",
+      "À impossibilidade técnica de IAs gerarem imagens."
+    ],
+    "correta": "Aos direitos autorais e à propriedade intelectual.",
+    "explicacao_base": "A principal polêmica envolve o uso de material protegido por direitos autorais (copyright) para alimentar bancos de dados de IA sem compensação aos criadores humanos."
+  },
+  {
+    "grupo_id": 131,
+    "tema": "Física - Ondulatória",
+    "texto_referencia": "Em dias de tempestade, é comum vermos o clarão do relâmpago antes de ouvirmos o estrondo do trovão. Um estudante observou um relâmpago e, após cronometrar, ouviu o trovão exatos 5 segundos depois. Sabendo que a velocidade da luz é praticamente instantânea para essa distância e que a velocidade do som no ar é de aproximadamente 340 m/s.",
+    "image_id": "",
+    "id": 131,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "A que distância aproximada o raio caiu do local onde o estudante estava?",
+    "alternativas": [
+      "68 metros.",
+      "170 metros.",
+      "1.700 metros.",
+      "3.400 metros.",
+      "5.000 metros."
+    ],
+    "correta": "1.700 metros.",
+    "explicacao_base": "Fórmula da velocidade média: $d = v \\cdot t$. $d = 340 \\, (\\text{m/s}) \\cdot 5 \\, (\\text{s}) = 1.700$ metros."
+  },
+  {
+    "grupo_id": 132,
+    "tema": "Biologia - Células",
+    "texto_referencia": "Antibióticos são medicamentos que matam bactérias ou impedem sua reprodução. Alguns agem destruindo a parede celular bacteriana. Vírus, por outro lado, não possuem células (acelulares) e utilizam a maquinaria das células humanas para se replicar.",
+    "image_id": "",
+    "id": 132,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "Com base nisso, o tratamento de uma gripe comum (causada por vírus Influenza) com antibióticos é:",
+    "alternativas": [
+      "Recomendado, pois o antibiótico mata qualquer microrganismo patogênico.",
+      "Ineficaz e perigoso, pois antibióticos não agem sobre vírus e seu uso incorreto seleciona bactérias resistentes.",
+      "Eficaz, pois o antibiótico destrói a cápsula de proteína do vírus.",
+      "Recomendado apenas se o paciente estiver com febre alta.",
+      "Ineficaz, a menos que o vírus tenha evoluído para uma bactéria."
+    ],
+    "correta": "Ineficaz e perigoso, pois antibióticos não agem sobre vírus e seu uso incorreto seleciona bactérias resistentes.",
+    "explicacao_base": "Antibióticos combatem seres vivos procarióticos (bactérias). Vírus não têm metabolismo próprio nem parede celular bacteriana para serem atacados."
+  },
+  {
+    "grupo_id": 133,
+    "tema": "Matemática - Geometria (Teorema de Pitágoras)",
+    "texto_referencia": "Para garantir a acessibilidade, uma rampa deve ligar a calçada à entrada de um prédio que fica 80 cm acima do nível da rua. O engenheiro projetou a rampa de forma que a distância horizontal entre o início e o fim da base da rampa seja de 150 cm.",
+    "image_id": "",
+    "id": 133,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Qual deve ser o comprimento total da superfície inclinada da rampa (hipotenusa) a ser concretada?",
+    "alternativas": [
+      "1,6 m.",
+      "1,7 m.",
+      "2,0 m.",
+      "2,3 m.",
+      "2,5 m."
+    ],
+    "correta": "1,7 m.",
+    "explicacao_base": "Converter para metros: Catetos 0,8m e 1,5m. $H^2 = (0,8)^2 + (1,5)^2 = 0,64 + 2,25 = 2,89$. $\\sqrt{2,89} = 1,7$. (Trinca pitagórica 8, 15, 17 ajustada para decimal)."
+  },
+  {
+    "grupo_id": 134,
+    "tema": "Química - Métodos de Separação",
+    "texto_referencia": "Preparar um café tradicional envolve adicionar pó de café em água quente e, em seguida, passar a mistura por um coador de papel ou pano, onde o líquido passa e a borra fica retida.",
+    "image_id": "",
+    "id": 134,
+    "materia": "Química",
+    "dificuldade": "Fácil",
+    "enunciado": "Os dois processos de separação/extração de misturas que ocorrem sequencialmente são:",
+    "alternativas": [
+      "Extração (solubilização) e Filtração.",
+      "Destilação e Decantação.",
+      "Decantação e Centrifugação.",
+      "Levigação e Filtração.",
+      "Floculação e Peneiração."
+    ],
+    "correta": "Extração (solubilização) e Filtração.",
+    "explicacao_base": "A água quente extrai substâncias solúveis (aroma/sabor) do pó (extração). O coador retém a parte sólida insolúvel (filtração)."
+  },
+  {
+    "grupo_id": 135,
+    "tema": "História do Brasil - Ditadura Militar",
+    "texto_referencia": "Entre 1968 e 1973, o Brasil viveu o chamado 'Milagre Econômico', com taxas de crescimento do PIB acima de 10% ao ano, grandes obras (como a Ponte Rio-Niterói) e a vitória na Copa de 70. Contudo, esse período teve uma face obscura social e política.",
+    "image_id": "",
+    "id": 135,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "A principal contradição social do Milagre Econômico foi:",
+    "alternativas": [
+      "A distribuição igualitária de renda entre todas as classes sociais.",
+      "O aumento do salário mínimo acima da inflação para todos os trabalhadores.",
+      "A concentração de renda ('fazer o bolo crescer para depois dividir') e o aumento da repressão política (AI-5).",
+      "A erradicação total do analfabetismo no Brasil.",
+      "A reforma agrária que deu terras aos camponeses do Nordeste."
+    ],
+    "correta": "A concentração de renda ('fazer o bolo crescer para depois dividir') e o aumento da repressão política (AI-5).",
+    "explicacao_base": "O crescimento acelerado beneficiou a elite e a classe média, mas achatou salários dos pobres, aumentando a desigualdade, sob um regime de censura e tortura."
+  },
+  {
+    "grupo_id": 136,
+    "tema": "Literatura - Realismo",
+    "texto_referencia": "Machado de Assis, em 'Memórias Póstumas de Brás Cubas', encerra o livro com a frase: 'Não tive filhos, não transmiti a nenhuma criatura o legado de nossa miséria'.",
+    "image_id": "",
+    "id": 136,
+    "materia": "Português",
+    "dificuldade": "Difícil",
+    "enunciado": "Essa postura do narrador-defunto reflete uma característica marcante do Realismo brasileiro:",
+    "alternativas": [
+      "O otimismo ingênuo sobre o futuro da humanidade.",
+      "O pessimismo, a ironia e a crítica à hipocrisia e à condição humana.",
+      "A exaltação do amor romântico capaz de curar todos os males.",
+      "A valorização da vida no campo como ideal de felicidade.",
+      "O uso de linguagem extremamente difícil para impedir a leitura pelo povo."
+    ],
+    "correta": "O pessimismo, a ironia e a crítica à hipocrisia e à condição humana.",
+    "explicacao_base": "Machado de Assis é mestre da ironia e do pessimismo. A frase sugere que a vida é tão cheia de 'miséria' (moral e existencial) que não valeria a pena continuá-la em um descendente."
+  },
+  {
+    "grupo_id": 137,
+    "tema": "Geografia - Meio Ambiente (Manguezais)",
+    "texto_referencia": "Os manguezais são ecossistemas costeiros de transição entre a terra e o mar. Suas árvores possuem raízes expostas (pneumatóforos) que permitem a troca gasosa em solo lamacento e pobre em oxigênio.",
+    "image_id": "",
+    "id": 137,
+    "materia": "Geografia / Biologia",
+    "dificuldade": "Média",
+    "enunciado": "A importância ecológica fundamental do manguezal, que lhe confere o apelido de 'berçário do mar', é:",
+    "alternativas": [
+      "Fornecer madeira nobre para a construção de navios de luxo.",
+      "Ser o único local onde tubarões se reproduzem.",
+      "Servir de local seguro e rico em nutrientes para a reprodução e crescimento de peixes, caranguejos e moluscos.",
+      "Filtrar o sal da água do mar, tornando-a potável para o consumo humano.",
+      "Impedir que os rios deságuem no mar."
+    ],
+    "correta": "Servir de local seguro e rico em nutrientes para a reprodução e crescimento de peixes, caranguejos e moluscos.",
+    "explicacao_base": "A densidade de raízes e a riqueza de matéria orgânica protegem os filhotes de predadores e garantem alimento, sendo vital para a pesca."
+  },
+  {
+    "grupo_id": 138,
+    "tema": "Física - Termologia e Energia",
+    "texto_referencia": "O aquecimento global tem intensificado o uso de aparelhos de ar-condicionado, criando um paradoxo: para esfriar ambientes internos, gastamos mais energia, liberando calor para o ambiente externo.",
+    "image_id": "",
+    "id": 138,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "A segunda Lei da Termodinâmica afirma que o fluxo espontâneo de calor ocorre sempre:",
+    "alternativas": [
+      "Do corpo mais frio para o mais quente.",
+      "Do corpo mais quente para o mais frio.",
+      "De forma aleatória, independentemente da temperatura.",
+      "Apenas entre sólidos.",
+      "Sem variação de entropia."
+    ],
+    "correta": "Do corpo mais quente para o mais frio.",
+    "explicacao_base": "Espontaneamente, a energia térmica flui da maior temperatura para a menor. O ar-condicionado inverte isso realizando *trabalho* (gastando energia elétrica)."
+  },
+  {
+    "grupo_id": 139,
+    "tema": "Matemática - Regra de Três/Medidas",
+    "texto_referencia": "A bula de um antibiótico pediátrico recomenda uma dose diária de 20 mg do princípio ativo para cada quilograma de massa corporal da criança.",
+    "image_id": "",
+    "id": 139,
+    "materia": "Matemática",
+    "dificuldade": "Fácil",
+    "enunciado": "Se o medicamento é vendido em uma suspensão (líquido) onde cada 1 mL contém 50 mg do princípio ativo, quantos mL devem ser dados por dia a uma criança que pesa 15 kg?",
+    "alternativas": [
+      "3 mL.",
+      "5 mL.",
+      "6 mL.",
+      "10 mL.",
+      "15 mL."
+    ],
+    "correta": "6 mL.",
+    "explicacao_base": "Dose necessária: $15 \\text{ kg} \\times 20 \\text{ mg/kg} = 300 \\text{ mg}$. Se $1 \\text{ mL} = 50 \\text{ mg}$, então $X \\text{ mL} = 300 \\text{ mg}$. $300 / 50 = 6 \\text{ mL}$."
+  },
+  {
+    "grupo_id": 140,
+    "tema": "Química - Modelos Atômicos",
+    "texto_referencia": "No início do século XX, Ernest Rutherford realizou um experimento bombardeando uma fina folha de ouro com partículas alfa. A maioria passava direto, mas algumas desviavam. Ele propôs um modelo que lembrava um sistema planetário.",
+    "image_id": "",
+    "id": 140,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "A principal conclusão desse modelo de Rutherford foi a descoberta de que o átomo:",
+    "alternativas": [
+      "É uma esfera maciça e indivisível (Bola de Bilhar).",
+      "É uma pasta positiva com elétrons incrustados (Pudim de Passas).",
+      "Possui grandes espaços vazios (eletrosfera) e um núcleo pequeno, denso e positivo.",
+      "Possui níveis de energia quantizados onde os elétrons saltam.",
+      "É formado apenas por nêutrons."
+    ],
+    "correta": "Possui grandes espaços vazios (eletrosfera) e um núcleo pequeno, denso e positivo.",
+    "explicacao_base": "A descoberta do núcleo (onde a massa se concentra) e da eletrosfera (vazio onde giram elétrons) rompeu com o modelo de átomo maciço ou pastoso."
+  },
+  {
+    "grupo_id": 141,
+    "tema": "Biologia - Genética (Determinação Sexual)",
+    "texto_referencia": "Historicamente, muitas rainhas e mulheres foram culpadas por não darem à luz um herdeiro homem para o trono. A genética moderna provou que essa culpa era injusta.",
+    "image_id": "",
+    "id": 141,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "Em humanos, o sexo biológico do bebê é determinado pelo gameta masculino (espermatozoide) porque:",
+    "alternativas": [
+      "As mulheres não produzem óvulos, apenas útero.",
+      "Os homens carregam apenas o cromossomo Y, que é dominante.",
+      "A mulher possui cromossomos sexuais XX (só doa X), enquanto o homem possui XY (pode doar X ou Y).",
+      "O cromossomo Y da mulher é mais fraco que o do homem.",
+      "A temperatura do corpo do homem decide o sexo no momento da concepção."
+    ],
+    "correta": "A mulher possui cromossomos sexuais XX (só doa X), enquanto o homem possui XY (pode doar X ou Y).",
+    "explicacao_base": "Se o espermatozoide carregar X, nasce mulher (XX). Se carregar Y, nasce homem (XY). O óvulo sempre tem X."
+  },
+  {
+    "grupo_id": 142,
+    "tema": "Geografia - Globalização e Blocos",
+    "texto_referencia": "O termo 'Sul Global' tem sido frequentemente usado na diplomacia para designar países em desenvolvimento da América Latina, África e Ásia, que buscam maior protagonismo nas decisões mundiais, como na cúpula do G20.",
+    "image_id": "",
+    "id": 142,
+    "materia": "Geografia / Atualidades",
+    "dificuldade": "Difícil",
+    "enunciado": "A característica socioeconômica comum à maioria dos países do chamado Sul Global é:",
+    "alternativas": [
+      "Alto desenvolvimento tecnológico e renda per capita superior à da Europa.",
+      "Histórico de colonização e desafios persistentes de desigualdade social e infraestrutura.",
+      "Localização geográfica restrita apenas ao Hemisfério Sul, abaixo da Linha do Equador.",
+      "Economias baseadas exclusivamente em serviços financeiros e bancos.",
+      "Adoção plena de energias nucleares e ausência de agricultura."
+    ],
+    "correta": "Histórico de colonização e desafios persistentes de desigualdade social e infraestrutura.",
+    "explicacao_base": "'Sul Global' é um conceito geopolítico (não apenas geográfico) que agrupa nações emergentes ou em desenvolvimento, muitas vezes ex-colônias, contrapondo-se ao 'Norte Global' (países ricos)."
+  },
+  {
+    "grupo_id": 143,
+    "tema": "Matemática - Lógica e Sistemas",
+    "texto_referencia": "Em um sítio, há galinhas e vacas. Um menino contou 20 cabeças e 56 pernas (ou patas) no total.",
+    "image_id": "",
+    "id": 143,
+    "materia": "Matemática",
+    "dificuldade": "Difícil",
+    "enunciado": "Quantas vacas e quantas galinhas, respectivamente, existem nesse sítio?",
+    "alternativas": [
+      "8 vacas e 12 galinhas.",
+      "12 vacas e 8 galinhas.",
+      "10 vacas e 10 galinhas.",
+      "6 vacas e 14 galinhas.",
+      "14 vacas e 6 galinhas."
+    ],
+    "correta": "8 vacas e 12 galinhas.",
+    "explicacao_base": "Sistema: $G + V = 20$ (cabeças). $2G + 4V = 56$ (pernas). Da primeira, $G = 20-V$. Substitui na segunda: $2(20-V) + 4V = 56 \\Rightarrow 40 - 2V + 4V = 56 \\Rightarrow 2V = 16 \\Rightarrow V = 8$. Logo, $G = 12$."
+  },
+  {
+    "grupo_id": 144,
+    "tema": "Português - Figuras de Linguagem",
+    "texto_referencia": "Em um anúncio publicitário de promoção, lê-se em letras garrafais: 'CORRA! PREÇOS DERRETENDO!' ao lado de um sorvete no verão.",
+    "image_id": "",
+    "id": 144,
+    "materia": "Português",
+    "dificuldade": "Média",
+    "enunciado": "A expressão 'preços derretendo' utiliza uma figura de linguagem chamada:",
+    "alternativas": [
+      "Antítese (ideias opostas).",
+      "Metáfora (comparação implícita com o sorvete que derrete e diminui).",
+      "Eufemismo (suavização de uma verdade).",
+      "Sinestesia (mistura de sentidos).",
+      "Pleonasmo (repetição desnecessária)."
+    ],
+    "correta": "Metáfora (comparação implícita com o sorvete que derrete e diminui).",
+    "explicacao_base": "Atribui-se a característica física 'derreter' (diminuir/desmanchar) ao conceito abstrato 'preço', criando uma metáfora visual e textual."
+  },
+  {
+    "grupo_id": 145,
+    "tema": "Biologia - Botânica e Energia",
+    "texto_referencia": "O Brasil é líder mundial na produção de biocombustíveis como o Etanol de cana-de-açúcar. Ao contrário da gasolina, que introduz 'carbono novo' na atmosfera retirado do subsolo (petróleo), o etanol recicla o carbono.",
+    "image_id": "",
+    "id": 145,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "Essa vantagem ecológica ocorre porque a cana-de-açúcar, ao crescer, realiza:",
+    "alternativas": [
+      "Respiração celular, liberando oxigênio puro.",
+      "Fotossíntese, absorvendo o $CO_2$ da atmosfera para formar sua biomassa.",
+      "Fermentação alcoólica natural no campo.",
+      "Decomposição rápida, que não libera gases.",
+      "Transpiração, resfriando o planeta diretamente."
+    ],
+    "correta": "Fotossíntese, absorvendo o $CO_2$ da atmosfera para formar sua biomassa.",
+    "explicacao_base": "O carbono emitido na queima do etanol foi previamente capturado da atmosfera pela planta durante a fotossíntese, tornando o balanço de carbono mais neutro que o fóssil."
+  },
+  {
+    "grupo_id": 146,
+    "tema": "Física - Energia Elétrica",
+    "texto_referencia": "O chuveiro elétrico é um dos grandes vilões da conta de luz. Suponha que um chuveiro de potência 6.000 W seja usado por 1 hora todos os dias.",
+    "image_id": "",
+    "id": 146,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "O consumo mensal (30 dias) desse chuveiro em quilowatts-hora (kWh) será de:",
+    "alternativas": [
+      "60 kWh.",
+      "120 kWh.",
+      "180 kWh.",
+      "360 kWh.",
+      "6.000 kWh."
+    ],
+    "correta": "180 kWh.",
+    "explicacao_base": "Potência $P = 6 \\text{ kW}$. Tempo $t = 1 \\text{ h} \\times 30 = 30 \\text{ h}$. Energia $E = P \\cdot t = 6 \\cdot 30 = 180 \\text{ kWh}$."
+  },
+  {
+    "grupo_id": 147,
+    "tema": "Química - Indicadores e pH",
+    "texto_referencia": "O repolho roxo cozido libera uma água que serve como indicador natural de pH. Em meio ácido, fica vermelha/rosa. Em meio básico, fica verde/amarela.",
+    "image_id": "",
+    "id": 147,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "Se misturarmos essa água de repolho roxo com vinagre (ácido acético) e, em outro copo, com solução de soda cáustica (hidróxido de sódio), as cores observadas serão, respectivamente:",
+    "alternativas": [
+      "Verde e Vermelha.",
+      "Vermelha e Verde.",
+      "Roxa e Azul.",
+      "Incolor e Roxa.",
+      "Amarela e Vermelha."
+    ],
+    "correta": "Vermelha e Verde.",
+    "explicacao_base": "Vinagre é ácido (pH < 7), logo a solução fica vermelha/rosa. Soda cáustica é base forte (pH > 7), logo fica verde/amarela."
+  },
+  {
+    "grupo_id": 148,
+    "tema": "História - Idade Média",
+    "texto_referencia": "Na sociedade feudal da Europa medieval, o poder político era descentralizado. A relação fundamental entre nobres baseava-se na troca de terras por lealdade militar e proteção.",
+    "image_id": "",
+    "id": 148,
+    "materia": "História",
+    "dificuldade": "Fácil",
+    "enunciado": "O termo correto para o nobre que doava a terra e para o nobre que recebia a terra e jurava fidelidade são, respectivamente:",
+    "alternativas": [
+      "Rei e Plebeu.",
+      "Patrício e Escravo.",
+      "Suserano e Vassalo.",
+      "Senhor e Servo.",
+      "Burguês e Proletário."
+    ],
+    "correta": "Suserano e Vassalo.",
+    "explicacao_base": "Suserano é quem concede o feudo (terra/benefício). Vassalo é quem recebe e deve serviço militar em troca. Servo é o camponês (não é nobre)."
+  },
+  {
+    "grupo_id": 149,
+    "tema": "Matemática - Porcentagem e Finanças",
+    "texto_referencia": "Um lojista compra um tênis por R$ 100,00 da fábrica. Para cobrir seus custos operacionais (aluguel, funcionários, impostos), ele precisa que esses custos representem 30% do preço final de venda. Além disso, ele deseja obter um lucro de 20% sobre o preço final de venda.",
+    "image_id": "",
+    "id": 149,
+    "materia": "Matemática",
+    "dificuldade": "Difícil",
+    "enunciado": "Para atingir esses objetivos, por quanto ele deve vender o tênis?",
+    "alternativas": [
+      "R$ 150,00.",
+      "R$ 180,00.",
+      "R$ 200,00.",
+      "R$ 220,00.",
+      "R$ 250,00."
+    ],
+    "correta": "R$ 200,00.",
+    "explicacao_base": "Seja $V$ o preço de venda. $V = \\text{Custo Produto} + 0,30V (\\text{Custos}) + 0,20V (\\text{Lucro})$. $V = 100 + 0,50V \\Rightarrow 0,50V = 100 \\Rightarrow V = 200$ reais. (Cuidado: as porcentagens são sobre o preço final, não sobre o de custo)."
+  },
+  {
+    "grupo_id": 150,
+    "tema": "Português - Interpretação e Publicidade",
+    "texto_referencia": "Uma placa em um estacionamento diz: 'É proibido entrar e sair de ré'. A frase, embora compreensível, apresenta um problema de lógica se analisada rigorosamente.",
+    "image_id": "",
+    "id": 150,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "A ambiguidade ou falha lógica decorre do fato de que:",
+    "alternativas": [
+      "A palavra 'ré' não existe no dicionário.",
+      "O uso do conectivo 'e' sugere que a proibição é para quem faz as duas ações simultaneamente, o que é fisicamente impossível.",
+      "Não se pode proibir manobras em locais privados.",
+      "Deveria estar escrito 'saída' e 'entrada' como substantivos.",
+      "Falta o acento na palavra 'proibido'."
+    ],
+    "correta": "O uso do conectivo 'e' sugere que a proibição é para quem faz as duas ações simultaneamente, o que é fisicamente impossível.",
+    "explicacao_base": "Ao dizer 'entrar E sair', a coordenação aditiva implica simultaneidade ou sucessão imediata da ação composta. O ideal seria 'ou', proibindo ambas as ações individualmente."
+  },
+  {
+    "grupo_id": 151,
+    "tema": "Geografia - Urbanização e Sociedade",
+    "texto_referencia": "A revitalização de centros históricos ou áreas portuárias (como o Porto Maravilha no RJ) muitas vezes eleva o custo de vida na região, expulsando os moradores antigos de baixa renda e atraindo um público de maior poder aquisitivo e comércios de luxo.",
+    "image_id": "",
+    "id": 151,
+    "materia": "Geografia / Sociologia",
+    "dificuldade": "Difícil",
+    "enunciado": "Esse fenômeno socioespacial de 'enobrecimento' urbano excludente é conhecido internacionalmente como:",
+    "alternativas": [
+      "Conurbação.",
+      "Favelização.",
+      "Gentrificação.",
+      "Macrocefalia Urbana.",
+      "Metropolização."
+    ],
+    "correta": "Gentrificação.",
+    "explicacao_base": "Do inglês *gentry* (nobreza), gentrificação é a transformação que valoriza uma área, tornando-a inacessível para a população original pobre."
+  },
+  {
+    "grupo_id": 152,
+    "tema": "Biologia - Vacinas e Genética",
+    "texto_referencia": "Para criar a vacina de RNA mensageiro (como a da Pfizer para COVID-19), os cientistas sintetizam um trecho de RNA que contém a receita de uma proteína do vírus (espícula ou *Spike*).",
+    "image_id": "",
+    "id": 152,
+    "materia": "Biologia",
+    "dificuldade": "Difícil",
+    "enunciado": "Quando essa vacina entra na célula humana, qual organela celular lê esse RNA e fabrica a proteína viral para que o sistema imune a reconheça?",
+    "alternativas": [
+      "Mitocôndria.",
+      "Lisossomo.",
+      "Ribossomo.",
+      "Cloroplasto.",
+      "Centríolo."
+    ],
+    "correta": "Ribossomo.",
+    "explicacao_base": "Ribossomos são as fábricas de proteínas da célula. Eles leem o RNA mensageiro (tradução) e montam a cadeia de aminoácidos (proteína)."
+  },
+  {
+    "grupo_id": 153,
+    "tema": "Física - Movimento e Atrito",
+    "texto_referencia": "O sistema de freios ABS (Antilock Braking System) impede que as rodas de um carro travem durante uma freada brusca. Com a roda girando (sem deslizar/derrapar), o controle do veículo é mantido.",
+    "image_id": "",
+    "id": 153,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "A eficiência do ABS se deve ao fato de que, quando a roda não desliza, o atrito que atua entre o pneu e o asfalto é do tipo:",
+    "alternativas": [
+      "Dinâmico (cinético), que é maior que o estático.",
+      "Estático, que possui um valor máximo superior ao atrito dinâmico.",
+      "Desprezível, permitindo que o carro continue andando.",
+      "Magnético, prendendo o carro ao chão.",
+      "Fluido, como se estivesse na água."
+    ],
+    "correta": "Estático, que possui um valor máximo superior ao atrito dinâmico.",
+    "explicacao_base": "O ponto do pneu que toca o chão tem velocidade zero instantânea (não arrasta). O atrito estático máximo é maior que o cinético (de arraste), freando mais eficiente."
+  },
+  {
+    "grupo_id": 154,
+    "tema": "História Geral - Grandes Navegações",
+    "texto_referencia": "As especiarias (cravo, canela, pimenta) valiam peso de ouro na Europa do século XV. O monopólio desse comércio via Mediterrâneo estava nas mãos de mercadores italianos e árabes. Isso motivou Portugal e Espanha a buscarem novas rotas.",
+    "image_id": "",
+    "id": 154,
+    "materia": "História",
+    "dificuldade": "Fácil",
+    "enunciado": "A estratégia adotada por Portugal para chegar às Índias ('périplo africano') consistiu em:",
+    "alternativas": [
+      "Atravessar o Oceano Atlântico em linha reta, chegando na América por engano.",
+      "Contornar todo o continente africano pelo Oceano Atlântico até alcançar o Índico.",
+      "Utilizar o Canal de Suez (que não existia na época).",
+      "Cruzar o norte da Europa e da Rússia a cavalo.",
+      "Pagar pedágio aos otomanos para cruzar por terra."
+    ],
+    "correta": "Contornar todo o continente africano pelo Oceano Atlântico até alcançar o Índico.",
+    "explicacao_base": "Portugal passou décadas explorando a costa africana, dobrando o Cabo da Boa Esperança (Vasco da Gama), para chegar às fontes de especiarias na Índia."
+  },
+  {
+    "grupo_id": 155,
+    "tema": "Matemática - Estatística Básica",
+    "texto_referencia": "Em um time de futsal de 5 jogadores, as alturas são: 1,70 m, 1,75 m, 1,75 m, 1,80 m e 2,00 m.",
+    "image_id": "",
+    "id": 155,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Analisando esses dados, a Média aritmética e a Moda (altura que mais se repete) das alturas são, respectivamente:",
+    "alternativas": [
+      "1,75 m e 1,75 m.",
+      "1,80 m e 1,70 m.",
+      "1,80 m e 1,75 m.",
+      "1,85 m e 2,00 m.",
+      "1,90 m e 1,75 m."
+    ],
+    "correta": "1,80 m e 1,75 m.",
+    "explicacao_base": "Média: $(1,70+1,75+1,75+1,80+2,00)/5 = 9,00/5 = 1,80$. Moda: 1,75 (aparece duas vezes)."
+  },
+  {
+    "grupo_id": 156,
+    "tema": "Química - Tabela Periódica",
+    "texto_referencia": "Marie Curie foi uma cientista pioneira no estudo da radioatividade, descobrindo elementos como o Polônio e o Rádio. A radioatividade é uma propriedade nuclear.",
+    "image_id": "",
+    "id": 156,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "Isótopos são átomos de um mesmo elemento químico (mesmo número atômico/prótons), mas que diferem em suas massas porque possuem números diferentes de:",
+    "alternativas": [
+      "Elétrons na camada de valência.",
+      "Prótons no núcleo.",
+      "Fótons na eletrosfera.",
+      "Nêutrons no núcleo.",
+      "Posítrons orbitais."
+    ],
+    "correta": "Nêutrons no núcleo.",
+    "explicacao_base": "Definição de isótopos: mesmo Z (prótons), diferente A (massa). Como $A = P + N$, a diferença está nos Nêutrons."
+  },
+  {
+    "grupo_id": 157,
+    "tema": "Atualidades - Meio Ambiente",
+    "texto_referencia": "A camada de ozônio protege a Terra dos raios ultravioleta (UV). Décadas atrás, o uso de gases CFCs (em geladeiras e aerossóis) causou um 'buraco' nessa camada. Após tratados internacionais como o Protocolo de Montreal, o uso de CFC foi banido.",
+    "image_id": "",
+    "id": 157,
+    "materia": "Química / Geografia",
+    "dificuldade": "Média",
+    "enunciado": "Diferente do $O_2$ que respiramos, o gás Ozônio é uma variedade alotrópica formada por:",
+    "alternativas": [
+      "2 átomos de Oxigênio ($O_2$).",
+      "3 átomos de Oxigênio ($O_3$).",
+      "1 átomo de Carbono e 2 de Oxigênio ($CO_2$).",
+      "Nitrogênio líquido.",
+      "Gás metano."
+    ],
+    "correta": "3 átomos de Oxigênio ($O_3$).",
+    "explicacao_base": "Ozônio é $O_3$ (alótropo do oxigênio). É tóxico se inalado na baixa atmosfera, mas essencial na estratosfera."
+  },
+  {
+    "grupo_id": 158,
+    "tema": "Português - Estrutura de Palavras",
+    "texto_referencia": "Na palavra 'Infelizmente', identificamos elementos que se juntam para formar o sentido completo: IN (negação) + FELIZ (raiz) + MENTE (modo).",
+    "image_id": "",
+    "id": 158,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "Os elementos 'IN' e 'MENTE' são classificados na morfologia, respectivamente, como:",
+    "alternativas": [
+      "Prefixo e Sufixo.",
+      "Sufixo e Prefixo.",
+      "Radical e Vogal Temática.",
+      "Desinência Verbal e Adjetivo.",
+      "Artigo e Conjunção."
+    ],
+    "correta": "Prefixo e Sufixo.",
+    "explicacao_base": "Afixos: O que vem antes da raiz (IN) é Prefixo. O que vem depois (MENTE) é Sufixo."
+  },
+  {
+    "grupo_id": 159,
+    "tema": "Biologia - Hereditariedade (Tipos Sanguíneos)",
+    "texto_referencia": "Em um acidente, uma pessoa com tipo sanguíneo O Negativo (O-) perdeu muito sangue e precisa de transfusão imediata.",
+    "image_id": "",
+    "id": 159,
+    "materia": "Biologia",
+    "dificuldade": "Difícil",
+    "enunciado": "Considerando o sistema ABO e Rh, essa pessoa pode receber sangue APENAS de doadores do tipo:",
+    "alternativas": [
+      "Qualquer tipo (AB, A, B, O), pois ela é Receptora Universal.",
+      "Apenas do tipo O Positivo (O+).",
+      "Apenas do tipo O Negativo (O-).",
+      "Dos tipos A- e B-.",
+      "Dos tipos AB- e O-."
+    ],
+    "correta": "Apenas do tipo O Negativo (O-).",
+    "explicacao_base": "O negativo é o Doador Universal (não tem antígenos A, B ou Rh), mas só pode *receber* de O- (pois tem anticorpos Anti-A, Anti-B e Anti-Rh se sensibilizado)."
+  },
+  {
+    "grupo_id": 160,
+    "tema": "Física - Óptica e Refração",
+    "texto_referencia": "Em dias muito quentes, ao olharmos para uma estrada de asfalto ao longe, temos a ilusão de ver 'poças de água' que refletem o céu. Isso acontece porque o ar próximo ao solo está muito mais quente e menos denso que o ar acima.",
+    "image_id": "",
+    "id": 160,
+    "materia": "Física",
+    "dificuldade": "Difícil",
+    "enunciado": "Esse fenômeno óptico natural, conhecido como miragem, é causado pela:",
+    "alternativas": [
+      "Difração da luz nas partículas de poeira.",
+      "Refração da luz ao passar por camadas de ar com temperaturas (e índices de refração) diferentes.",
+      "Polarização da luz pelo asfalto escuro.",
+      "Interferência destrutiva das ondas de calor.",
+      "Evaporação real da água do asfalto."
+    ],
+    "correta": "Refração da luz ao passar por camadas de ar com temperaturas (e índices de refração) diferentes.",
+    "explicacao_base": "A luz do céu curva-se (refrata) gradualmente ao passar do ar frio para o ar quente, sofrendo reflexão total antes de tocar o chão e indo para o olho, criando a imagem invertida do céu (miragem)."
+  },
+  {
+    "grupo_id": 161,
+    "tema": "Geografia Política e Regionalização",
+    "texto_referencia": "O mapa apresenta dois recortes espaciais distintos: o contorno preto espesso delimita a divisão política oficial da Região Norte do Brasil (estabelecida pelo IBGE), enquanto a área sombreada em cinza representa a extensão biogeográfica da Amazônia (Amazônia Internacional e Legal).",
+    "image_id": "mapa_norte.png",
+    "id": 161,
+    "materia": "Geografia",
+    "dificuldade": "Fácil",
+    "enunciado": "Observando a incongruência entre o contorno político (preto) e a mancha cinza (ecológica) no estado de Mato Grosso (MT), é correto afirmar que:",
+    "alternativas": [
+      "O estado de Mato Grosso não possui vegetação de Floresta Amazônica, sendo coberto exclusivamente por Caatinga.",
+      "O Mato Grosso pertence politicamente à Região Centro-Oeste, mas ambientalmente possui grandes áreas pertencentes ao bioma Amazônico, integrando a chamada Amazônia Legal.",
+      "A Região Norte, delimitada pela linha preta, excluiu o Mato Grosso porque ele não faz fronteira com a Bolívia.",
+      "O mapa contém um erro, pois todo estado que tem Floresta Amazônica é obrigado a fazer parte da Região Norte.",
+      "A área cinza no Mato Grosso representa o Pantanal, que foi confundido com a Amazônia."
+    ],
+    "correta": "O Mato Grosso pertence politicamente à Região Centro-Oeste, mas ambientalmente possui grandes áreas pertencentes ao bioma Amazônico, integrando a chamada Amazônia Legal.",
+    "explicacao_base": "A Amazônia Legal é um conceito administrativo que extrapola a Região Norte, incluindo o Mato Grosso (Centro-Oeste) e parte do Maranhão (Nordeste)."
+  },
+  {
+    "grupo_id": 162,
+    "tema": "Cartografia e Escala",
+    "texto_referencia": "A escala gráfica localizada no canto inferior esquerdo do mapa permite estimar distâncias reais. A barra completa indica uma distância de 440 km (sendo a metade, portanto, 220 km).",
+    "image_id": "mapa_norte.png",
+    "id": 162,
+    "materia": "Matemática / Geografia",
+    "dificuldade": "Média",
+    "enunciado": "Suponha que, utilizando uma régua sobre esse mapa impresso, um estudante mediu a distância em linha reta entre duas capitais e encontrou 5 cm. Se, nessa impressão, o tamanho da barra de escala que representa 440 km mede exatamente 2 cm, a distância real entre as cidades é de:",
+    "alternativas": [
+      "880 km.",
+      "1.100 km.",
+      "1.320 km.",
+      "2.200 km.",
+      "4.400 km."
+    ],
+    "correta": "1.100 km.",
+    "explicacao_base": "Regra de três com a escala: Se 2 cm (papel) correspondem a 440 km (real), então 1 cm corresponde a 220 km. Logo, 5 cm correspondem a $5 \\times 220 = 1.100$ km."
+  },
+  {
+    "grupo_id": 163,
+    "tema": "História do Brasil e Tratados",
+    "texto_referencia": "Observe o estado do Acre (AC), na ponta ocidental do mapa. Essa região nem sempre pertenceu ao Brasil. Sua incorporação ocorreu no início do século XX, durante o Ciclo da Borracha, envolvendo disputas com a Bolívia.",
+    "image_id": "mapa_norte.png",
+    "id": 163,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "O tratado diplomático, negociado pelo Barão do Rio Branco em 1903, que oficializou a compra desse território e a anexação definitiva do Acre ao Brasil, foi o:",
+    "alternativas": [
+      "Tratado de Tordesilhas.",
+      "Tratado de Madri.",
+      "Tratado de Petrópolis.",
+      "Tratado de Santo Ildefonso.",
+      "Tratado de Assunção."
+    ],
+    "correta": "Tratado de Petrópolis.",
+    "explicacao_base": "Pelo Tratado de Petrópolis (1903), o Brasil comprou o Acre da Bolívia (indenização + construção da ferrovia Madeira-Mamoré) para garantir o controle da produção de borracha."
+  },
+  {
+    "grupo_id": 164,
+    "tema": "Geografia - Biomas",
+    "texto_referencia": "O estado do Tocantins (TO), destacado no sudeste da região demarcada pela linha preta, é o mais 'jovem' do Brasil e apresenta características de transição.",
+    "image_id": "mapa_norte.png",
+    "id": 164,
+    "materia": "Biologia / Geografia",
+    "dificuldade": "Média",
+    "enunciado": "Embora politicamente pertença à Região Norte, a cobertura vegetal predominante no Tocantins não é a Floresta Equatorial, mas sim uma vegetação de savana, com árvores de casca grossa e troncos retorcidos, típica do bioma:",
+    "alternativas": [
+      "Pampa.",
+      "Mata de Araucária.",
+      "Cerrado.",
+      "Caatinga.",
+      "Manguezal."
+    ],
+    "correta": "Cerrado.",
+    "explicacao_base": "O Tocantins faz parte da fronteira agrícola do MATOPIBA, sendo predominantemente coberto pelo Cerrado, o segundo maior bioma brasileiro."
+  },
+  {
+    "grupo_id": 165,
+    "tema": "Orientação e Cartografia",
+    "texto_referencia": "A Rosa dos Ventos é representada pelo símbolo 'N' (Norte) no canto superior direito do mapa.",
+    "image_id": "mapa_norte.png",
+    "id": 165,
+    "materia": "Geografia",
+    "dificuldade": "Fácil",
+    "enunciado": "Um indigenista precisa viajar de Boa Vista, capital de Roraima (RR), para Porto Velho, capital de Rondônia (RO). Considerando a posição relativa dos estados no mapa, o rumo principal dessa viagem será o:",
+    "alternativas": [
+      "Norte.",
+      "Leste.",
+      "Sul/Sudoeste.",
+      "Noroeste.",
+      "Nordeste."
+    ],
+    "correta": "Sul/Sudoeste.",
+    "explicacao_base": "Roraima (RR) está no extremo norte. Rondônia (RO) está no sudoeste da região. Para ir de RR a RO, desce-se no mapa (sentido Sul/Sudoeste)."
+  },
+  {
+    "grupo_id": 166,
+    "tema": "Física e Meio Ambiente",
+    "texto_referencia": "A floresta representada na área cinza exerce um papel fundamental no clima do continente. Através de um processo físico-biológico, as árvores 'bombam' água do solo para a atmosfera, criando massas de umidade conhecidas como 'Rios Voadores', que levam chuva para o Sudeste.",
+    "image_id": "mapa_norte.png",
+    "id": 166,
+    "materia": "Física / Biologia",
+    "dificuldade": "Média",
+    "enunciado": "O fenômeno de mudança de estado físico da água que ocorre nas folhas das árvores, transformando água líquida em vapor e resfriando a planta, é denominado:",
+    "alternativas": [
+      "Condensação.",
+      "Solidificação.",
+      "Evapotranspiração.",
+      "Sublimação.",
+      "Fusão."
+    ],
+    "correta": "Evapotranspiração.",
+    "explicacao_base": "Evapotranspiração é a soma da evaporação da água do solo com a transpiração fisiológica das plantas, processo vital para o ciclo hidrológico amazônico."
+  },
+  {
+    "grupo_id": 167,
+    "tema": "Geopolítica e Fronteiras",
+    "texto_referencia": "A Região Norte do Brasil faz fronteira com diversos países sul-americanos e com um território ultramarino europeu, visíveis no mapa.",
+    "image_id": "mapa_norte.png",
+    "id": 167,
+    "materia": "Geografia",
+    "dificuldade": "Média",
+    "enunciado": "O estado do Amapá (AP), localizado no extremo nordeste da região, faz fronteira internacional direta com um território que utiliza o Euro como moeda oficial e é um departamento da França. Esse território é:",
+    "alternativas": [
+      "O Suriname.",
+      "A Guiana.",
+      "A Guiana Francesa.",
+      "A Venezuela.",
+      "A Colômbia."
+    ],
+    "correta": "A Guiana Francesa.",
+    "explicacao_base": "O Amapá fronteira, através do Rio Oiapoque, com a Guiana Francesa, que é um departamento ultramarino da França e parte da União Europeia."
+  },
+  {
+    "grupo_id": 168,
+    "tema": "Química Ambiental (Garimpo)",
+    "texto_referencia": "A extensa rede hidrográfica da bacia Amazônica (subentendida na área cinza) sofre com atividades ilegais de garimpo de ouro, especialmente nos estados do Pará (PA) e Roraima (RR).",
+    "image_id": "mapa_norte.png",
+    "id": 168,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "Para separar o ouro das impurezas (areia/cascalho), os garimpeiros utilizam um metal líquido tóxico que forma uma liga com o ouro. O uso indiscriminado desse metal contamina rios e peixes, causando doenças neurológicas. Esse elemento químico é o:",
+    "alternativas": [
+      "Chumbo (Pb).",
+      "Mercúrio (Hg).",
+      "Ferro (Fe).",
+      "Césio (Cs).",
+      "Sódio (Na)."
+    ],
+    "correta": "Mercúrio (Hg).",
+    "explicacao_base": "O mercúrio é usado no garimpo para formar amálgama com o ouro. Depois é queimado (vaporiza), deixando o ouro puro, mas contaminando gravemente o ecossistema (bioacumulação)."
+  },
+  {
+    "grupo_id": 169,
+    "tema": "Biologia - Saúde Pública",
+    "texto_referencia": "A região destacada no mapa possui clima Equatorial: quente e úmido o ano todo. Essas condições climáticas, somadas à floresta densa, favorecem a proliferação de mosquitos do gênero *Anopheles*.",
+    "image_id": "mapa_norte.png",
+    "id": 169,
+    "materia": "Biologia",
+    "dificuldade": "Fácil",
+    "enunciado": "Este mosquito é o vetor de uma doença endêmica grave na Região Norte, causada por um protozoário (*Plasmodium*) que destrói as hemácias (glóbulos vermelhos). Trata-se da:",
+    "alternativas": [
+      "Dengue.",
+      "Febre Amarela.",
+      "Malária.",
+      "Doença de Chagas.",
+      "Zika."
+    ],
+    "correta": "Malária.",
+    "explicacao_base": "A Malária é a doença endêmica mais associada à região Amazônica, transmitida pelo mosquito *Anopheles* e causada pelo *Plasmodium*."
+  },
+  {
+    "grupo_id": 170,
+    "tema": "Geografia Física e Fusos Horários",
+    "texto_referencia": "Devido à grande extensão longitudinal (Leste-Oeste) observada no mapa, a Região Norte do Brasil abrange diferentes fusos horários.",
+    "image_id": "mapa_norte.png",
+    "id": 170,
+    "materia": "Geografia / Física",
+    "dificuldade": "Difícil",
+    "enunciado": "Considerando o fuso horário oficial de Brasília (DF) como referência, os estados do Acre (AC) e a parte ocidental do Amazonas (AM) possuem, respectivamente, uma diferença horária padrão de:",
+    "alternativas": [
+      "+1 hora e +1 hora.",
+      "0 horas (mesmo horário).",
+      "-1 hora (atraso de uma hora).",
+      "-2 horas e -1 hora (no Amazonas em geral, a referência ocidental é -1h do fuso principal, o Acre é -2h de Brasília).",
+      "+2 horas e +2 horas."
+    ],
+    "correta": "-2 horas e -1 hora (no Amazonas em geral, a referência ocidental é -1h do fuso principal, o Acre é -2h de Brasília).",
+    "explicacao_base": "O Acre (fuso -5 GMT) e o sudoeste do Amazonas estão 2 horas atrasados em relação a Brasília (fuso -3 GMT). O resto do Amazonas está 1 hora atrasado. Obs: Simplificando para ETEC: Acre tem defasagem maior (-2h de Brasília) e o Amazonas geralmente -1h."
+  },
+  {
+    "grupo_id": 171,
+    "tema": "História do Brasil - Expansão Territorial",
+    "texto_referencia": "Observe no mapa que a grande maioria das setas escuras, que representam as expedições, parte de um único ponto geográfico no litoral sudeste. Essa vila, isolada geograficamente pela Serra do Mar e voltada para o interior, tornou-se o grande polo irradiador do bandeirismo.",
+    "image_id": "bandeirantes_mapa.png",
+    "id": 171,
+    "materia": "História",
+    "dificuldade": "Fácil",
+    "enunciado": "Identifique a vila ou cidade que serviu como ponto de partida principal para essas expedições, conforme indicado pela convergência das setas no mapa:",
+    "alternativas": [
+      "Salvador.",
+      "Rio de Janeiro.",
+      "São Paulo.",
+      "Olinda.",
+      "Laguna."
+    ],
+    "correta": "São Paulo.",
+    "explicacao_base": "O mapa mostra claramente as setas irradiando a partir da região onde está localizado o nome 'São Paulo' (Vila de São Paulo de Piratininga), centro do movimento bandeirante."
+  },
+  {
+    "grupo_id": 172,
+    "tema": "Geografia Política - Tratados",
+    "texto_referencia": "O mapa exibe uma linha vertical pontilhada identificada como 'LINHA DE TORDESILHAS'. Note que as expedições bandeirantes (setas) ultrapassam largamente essa linha em direção ao oeste (interior do continente).",
+    "image_id": "bandeirantes_mapa.png",
+    "id": 172,
+    "materia": "História / Geografia",
+    "dificuldade": "Média",
+    "enunciado": "O avanço dessas expedições para além desse limite resultou, historicamente:",
+    "alternativas": [
+      "Na perda de território brasileiro para a Espanha.",
+      "No respeito rigoroso aos acordos papais de divisão do mundo.",
+      "Na anexação de territórios que legalmente pertenciam à Espanha, expandindo as fronteiras do Brasil muito além do tratado original.",
+      "Na criação imediata dos estados do Amazonas e do Acre no século XVI.",
+      "Na expulsão dos portugueses da América do Sul."
+    ],
+    "correta": "Na anexação de territórios que legalmente pertenciam à Espanha, expandindo as fronteiras do Brasil muito além do tratado original.",
+    "explicacao_base": "O movimento bandeirante desrespeitou Tordesilhas, ocupando terras espanholas. Isso garantiu ao Brasil sua extensão territorial atual (oficializada depois pelo Tratado de Madri)."
+  },
+  {
+    "grupo_id": 173,
+    "tema": "História - Mão de Obra e Economia",
+    "texto_referencia": "A legenda do mapa classifica as setas escuras como 'Expedições de apresamento de indígenas'. Esse tipo de atividade bandeirante, predominante entre os séculos XVI e XVII, tinha uma motivação econômica específica.",
+    "image_id": "bandeirantes_mapa.png",
+    "id": 173,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "A principal finalidade do apresamento de indígenas representado no mapa era:",
+    "alternativas": [
+      "Converter os nativos ao catolicismo de forma pacífica.",
+      "Capturar mão de obra escrava para ser utilizada nas lavouras, vilas e engenhos, suprindo a escassez ou o alto custo de africanos escravizados.",
+      "Levar os indígenas para passeios turísticos na Europa.",
+      "Proteger os nativos das invasões espanholas, levando-os para refúgios no litoral.",
+      "Recrutar soldados voluntários para lutar contra a Holanda."
+    ],
+    "correta": "Capturar mão de obra escrava para ser utilizada nas lavouras, vilas e engenhos, suprindo a escassez ou o alto custo de africanos escravizados.",
+    "explicacao_base": "O 'Bandeirismo de Preação' visava caçar índios para vendê-los como escravos, base da economia paulista na época e alternativa à mão de obra africana no nordeste."
+  },
+  {
+    "grupo_id": 174,
+    "tema": "Geografia Física - Clima",
+    "texto_referencia": "O mapa traz referências latitudinais importantes: a linha do Equador (0°) ao norte e o Trópico de Capricórnio (aproximadamente 23°S) mais ao sul.",
+    "image_id": "bandeirantes_mapa.png",
+    "id": 174,
+    "materia": "Geografia",
+    "dificuldade": "Média",
+    "enunciado": "As expedições que se dirigiram para o extremo sul, identificadas no mapa como 'Sertão dos Patos' e 'Missões do Tape', adentraram uma zona climática caracterizada por:",
+    "alternativas": [
+      "Clima Equatorial, extremamente quente e úmido.",
+      "Clima Semiárido, com secas constantes.",
+      "Clima Subtropical, localizado abaixo do Trópico de Capricórnio, com temperaturas mais amenas e estações do ano mais definidas.",
+      "Clima Tropical Típico, com duas estações bem marcadas.",
+      "Clima Desértico, com ausência total de chuvas."
+    ],
+    "correta": "Clima Subtropical, localizado abaixo do Trópico de Capricórnio, com temperaturas mais amenas e estações do ano mais definidas.",
+    "explicacao_base": "O sul do Brasil (onde estão as Missões do Tape e o atual RS) situa-se geograficamente abaixo do Trópico de Capricórnio, na zona temperada do sul (Subtropical)."
+  },
+  {
+    "grupo_id": 175,
+    "tema": "História - Missões Jesuíticas",
+    "texto_referencia": "No mapa, o símbolo de 'Estrela' representa as 'Missões espanholas' (Reduções Jesuíticas), localizadas principalmente no sul e oeste (Missões do Guairá, Tape e Paraguai). Observe que muitas setas bandeirantes terminam ou atravessam essas áreas.",
+    "image_id": "bandeirantes_mapa.png",
+    "id": 175,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "As Missões Jesuíticas tornaram-se alvos preferenciais dos bandeirantes porque:",
+    "alternativas": [
+      "Os padres jesuítas pagavam em ouro para quem os protegesse.",
+      "Os indígenas das missões já eram aculturados, disciplinados para o trabalho agrícola e sedentários, o que os tornava escravos mais valiosos e fáceis de capturar.",
+      "As missões eram fortificações militares espanholas que ameaçavam invadir São Paulo.",
+      "Os bandeirantes queriam apenas assistir às missas realizadas nas reduções.",
+      "Eram locais onde se escondiam escravos africanos fugitivos."
+    ],
+    "correta": "Os indígenas das missões já eram aculturados, disciplinados para o trabalho agrícola e sedentários, o que os tornava escravos mais valiosos e fáceis de capturar.",
+    "explicacao_base": "Atacar uma missão rendia milhares de cativos 'prontos' para o trabalho, ao contrário da dificuldade de caçar tribos nômades na mata. Isso gerou conflito intenso com a Igreja."
+  },
+  {
+    "grupo_id": 176,
+    "tema": "Geografia - Hidrografia",
+    "texto_referencia": "Para penetrar o sertão desconhecido e a mata fechada, os bandeirantes utilizavam as 'estradas naturais' que partiam da região de São Paulo em direção ao interior. O traçado das setas coincide com o curso de grandes rios como o Tietê.",
+    "image_id": "bandeirantes_mapa.png",
+    "id": 176,
+    "materia": "Geografia / História",
+    "dificuldade": "Fácil",
+    "enunciado": "A característica geográfica do Rio Tietê que favoreceu sua utilização como rota de entrada para o interior do continente (Sertão dos Goiases/Mato Grosso) é o fato de que:",
+    "alternativas": [
+      "Ele corre do litoral em direção ao interior (drenagem endorreica/sentido oeste), contrariando a maioria dos rios que corre para o mar.",
+      "Ele é o único rio do Brasil que não possui cachoeiras.",
+      "Ele é um rio temporário, que seca no verão, permitindo caminhar no leito.",
+      "Ele corre do interior para o oceano, facilitando a volta dos barcos.",
+      "Ele atravessa a Floresta Amazônica inteira."
+    ],
+    "correta": "Ele corre do litoral em direção ao interior (drenagem endorreica/sentido oeste), contrariando a maioria dos rios que corre para o mar.",
+    "explicacao_base": "Devido à inclinação do planalto paulista, o Tietê corre para 'dentro' (interior), servindo como esteira natural para as expedições fluviais (Monções)."
+  },
+  {
+    "grupo_id": 177,
+    "tema": "Cartografia - Orientação",
+    "texto_referencia": "Utilizando a Rosa dos Ventos representada pela seta indicativa de 'N' (Norte) no canto inferior esquerdo do mapa, analise a direção das expedições.",
+    "image_id": "bandeirantes_mapa.png",
+    "id": 177,
+    "materia": "Geografia",
+    "dificuldade": "Fácil",
+    "enunciado": "Uma bandeira que partisse de São Paulo com o objetivo de atingir as Missões do Tape (no extremo sul do mapa) deveria seguir o rumo:",
+    "alternativas": [
+      "Norte.",
+      "Leste.",
+      "Oeste.",
+      "Sul/Sudoeste.",
+      "Nordeste."
+    ],
+    "correta": "Sul/Sudoeste.",
+    "explicacao_base": "Missões do Tape localizam-se na parte inferior do mapa em relação a São Paulo. A direção para baixo é Sul (levemente à esquerda/Sudoeste)."
+  },
+  {
+    "grupo_id": 178,
+    "tema": "Cartografia - Cálculo de Escala",
+    "texto_referencia": "No canto inferior esquerdo do mapa, há uma barra de escala gráfica que indica que aquele segmento corresponde a 370 km na realidade. Suponha que, ao medir a distância em linha reta entre a cidade de São Paulo e a cidade de Laguna com uma régua sobre o mapa, um aluno encontre exatamente o mesmo tamanho da barra de escala.",
+    "image_id": "bandeirantes_mapa.png",
+    "id": 178,
+    "materia": "Matemática",
+    "dificuldade": "Fácil",
+    "enunciado": "Nessa situação hipotética, a distância real estimada entre essas duas cidades seria de:",
+    "alternativas": [
+      "185 km.",
+      "370 km.",
+      "740 km.",
+      "1.000 km.",
+      "3.700 km."
+    ],
+    "correta": "370 km.",
+    "explicacao_base": "Se a medida na régua é igual ao tamanho da barra, a distância real é igual ao valor indicado na barra, ou seja, 370 km."
+  },
+  {
+    "grupo_id": 179,
+    "tema": "História - Consequências Demográficas",
+    "texto_referencia": "O apresamento de indígenas gerou um despovoamento em vastas áreas do interior. Além da violência direta das armas e da escravidão, o contato entre europeus (bandeirantes) e povos nativos teve um efeito biológico devastador não visível no mapa, mas conhecido pela História.",
+    "image_id": "bandeirantes_mapa.png",
+    "id": 179,
+    "materia": "Biologia / História",
+    "dificuldade": "Média",
+    "enunciado": "O principal fator biológico que contribuiu para a dizimação de populações indígenas após o contato foi:",
+    "alternativas": [
+      "O ataque de animais selvagens trazidos pelos portugueses.",
+      "A disseminação de doenças contagiosas como gripe, sarampo e varíola, para as quais os nativos não tinham imunidade natural.",
+      "A mudança na dieta alimentar, que causou obesidade generalizada.",
+      "O aumento de casos de câncer de pele devido ao desmatamento.",
+      "A introdução de plantas venenosas na agricultura indígena."
+    ],
+    "correta": "A disseminação de doenças contagiosas como gripe, sarampo e varíola, para as quais os nativos não tinham imunidade natural.",
+    "explicacao_base": "O choque epidemiológico foi a maior causa de morte. Microrganismos (vírus/bactérias) comuns na Europa eram letais para o sistema imunológico 'virgem' dos ameríndios."
+  },
+  {
+    "grupo_id": 180,
+    "tema": "Interpretação de Símbolos do Mapa",
+    "texto_referencia": "A legenda distingue dois tipos de símbolos em forma de cruz/estrela: '+' para 'Missões portuguesas' e 'Estrela' para 'Missões espanholas'. Analisando a distribuição desses símbolos no mapa.",
+    "image_id": "bandeirantes_mapa.png",
+    "id": 180,
+    "materia": "Geografia / História",
+    "dificuldade": "Difícil",
+    "enunciado": "Pode-se concluir que a presença portuguesa (símbolo +) era mais forte:",
+    "alternativas": [
+      "No extremo sul, disputando com os espanhóis na Bacia do Prata.",
+      "No litoral norte e ao longo do Rio Amazonas (Belém, São Luís), associada à extração das 'drogas do sertão'.",
+      "No centro do território, onde hoje é Brasília.",
+      "Exclusivamente no litoral do Nordeste açucareiro.",
+      "No interior do Paraguai, junto às missões jesuíticas."
+    ],
+    "correta": "No litoral norte e ao longo do Rio Amazonas (Belém, São Luís), associada à extração das 'drogas do sertão'.",
+    "explicacao_base": "Visualmente, os símbolos '+' concentram-se na região norte (Belém/São Luís/Rio Amazonas). Historicamente, isso condiz com a ocupação portuguesa da Amazônia (Fortes e Missões para coleta de cacau, baunilha, etc.)."
+  },
+  {
+    "grupo_id": 181,
+    "tema": "Física - Óptica da Visão",
+    "texto_referencia": "O olho humano funciona como uma câmara escura sofisticada. A luz entra pela pupila, passa por um sistema de lentes naturais (córnea e cristalino) e forma uma imagem na retina, uma camada de células fotossensíveis no fundo do globo ocular.",
+    "image_id": "",
+    "id": 181,
+    "materia": "Física / Biologia",
+    "dificuldade": "Difícil",
+    "enunciado": "Para que uma pessoa com visão normal enxergue nitidamente um objeto distante, a imagem formada sobre a retina deve ter as seguintes características ópticas:",
+    "alternativas": [
+      "Virtual, direita e do mesmo tamanho do objeto.",
+      "Real, invertida e maior que o objeto.",
+      "Real, invertida e menor que o objeto.",
+      "Virtual, invertida e menor que o objeto.",
+      "Real, direita e aumentada (efeito lupa)."
+    ],
+    "correta": "Real, invertida e menor que o objeto.",
+    "explicacao_base": "O olho humano atua como uma lente convergente. Para projetar uma imagem em um anteparo (a retina), a imagem precisa ser Real. Fisicamente, toda imagem real formada por uma lente convergente simples de um objeto distante é Invertida e Menor que o objeto (o cérebro desinverte depois)."
+  },
+  {
+    "grupo_id": 182,
+    "tema": "Biologia - Ciclos Biogeoquímicos",
+    "texto_referencia": "A agricultura moderna depende do nitrogênio para produzir proteínas nas plantas. Embora o ar atmosférico seja composto por 78% de gás nitrogênio ($N_2$), a maioria das plantas não consegue absorvê-lo diretamente dessa fonte.",
+    "image_id": "",
+    "id": 182,
+    "materia": "Biologia / Química",
+    "dificuldade": "Média",
+    "enunciado": "Para contornar esse problema de forma sustentável, agricultores utilizam a técnica de 'rotação de culturas', plantando leguminosas (feijão, soja, ervilha). Isso funciona porque as raízes dessas plantas possuem nódulos com:",
+    "alternativas": [
+      "Fungos parasitas que destroem pragas do solo.",
+      "Bactérias fixadoras (gênero Rhizobium) que convertem o $N_2$ do ar em amônia/nitratos assimiláveis pelas plantas.",
+      "Vírus benéficos que aceleram a fotossíntese.",
+      "Vermes que aeram o solo, facilitando a entrada de gás nitrogênio.",
+      "Células animais que realizam respiração anaeróbica."
+    ],
+    "correta": "Bactérias fixadoras (gênero Rhizobium) que convertem o $N_2$ do ar em amônia/nitratos assimiláveis pelas plantas.",
+    "explicacao_base": "O processo é a Fixação Biológica do Nitrogênio. As bactérias fixadoras vivem em mutualismo nas raízes das leguminosas, transformando o nitrogênio gasoso inerte em compostos nitrogenados úteis."
+  },
+  {
+    "grupo_id": 183,
+    "tema": "Matemática - Geometria Espacial e Volume",
+    "texto_referencia": "Um caminhão-tanque cilíndrico transporta combustível. O tanque tem 2 metros de diâmetro e 6 metros de comprimento. O motorista precisa saber a capacidade total para não exceder o limite de carga.",
+    "image_id": "",
+    "id": 183,
+    "materia": "Matemática",
+    "dificuldade": "Difícil",
+    "enunciado": "Considerando $\\pi = 3$, qual é a capacidade máxima desse tanque em litros? (Lembre-se que $1 m^3 = 1000$ litros).",
+    "alternativas": [
+      "12.000 litros.",
+      "18.000 litros.",
+      "36.000 litros.",
+      "72.000 litros.",
+      "24.000 litros."
+    ],
+    "correta": "18.000 litros.",
+    "explicacao_base": "Raio = Diâmetro/2 = 1m. Volume cilindro = $\\pi \\cdot R^2 \\cdot h$. $V = 3 \\cdot 1^2 \\cdot 6 = 18 m^3$. Convertendo: $18 m^3 = 18.000$ litros."
+  },
+  {
+    "grupo_id": 184,
+    "tema": "Geografia - Modelos Produtivos",
+    "texto_referencia": "A partir da década de 1970, o modelo industrial Fordista (produção em massa, grandes estoques) começou a ser substituído pelo modelo Toyotista (acumulação flexível), desenvolvido no Japão.",
+    "image_id": "",
+    "id": 184,
+    "materia": "Geografia / Sociologia",
+    "dificuldade": "Média",
+    "enunciado": "Uma característica central do Toyotismo, que visa evitar o desperdício e adaptar a produção à demanda exata do mercado, é o sistema:",
+    "alternativas": [
+      "Assembly Line (Linha de Montagem Fixa).",
+      "Welfare State (Estado de Bem-Estar Social).",
+      "Just in Time (No tempo certo/sem estoques).",
+      "Trust e Cartel.",
+      "Obsolescência Programada."
+    ],
+    "correta": "Just in Time (No tempo certo/sem estoques).",
+    "explicacao_base": "O Toyotismo se baseia na produção sob demanda ('puxada'), onde se produz apenas o necessário, no momento necessário, eliminando os custos de estocagem (Just in Time)."
+  },
+  {
+    "grupo_id": 185,
+    "tema": "Física - Mecânica (Energia)",
+    "texto_referencia": "Em uma montanha-russa, o carrinho é levado até o ponto mais alto do trilho e depois solto. Durante a descida, sem atrito, a velocidade aumenta.",
+    "image_id": "",
+    "id": 185,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "Segundo o Princípio da Conservação da Energia Mecânica, durante a queda do carrinho ocorre a transformação de:",
+    "alternativas": [
+      "Energia Cinética em Energia Potencial Gravitacional.",
+      "Energia Potencial Gravitacional em Energia Cinética.",
+      "Energia Térmica em Energia Elétrica.",
+      "Energia Química em Energia Nuclear.",
+      "Energia Elástica em Energia Sonora."
+    ],
+    "correta": "Energia Potencial Gravitacional em Energia Cinética.",
+    "explicacao_base": "No ponto alto, a energia é Potencial (altura). Ao descer, a altura diminui e a velocidade aumenta, transformando Potencial em Cinética (movimento)."
+  },
+  {
+    "grupo_id": 186,
+    "tema": "Português - Literatura (Pré-Modernismo)",
+    "texto_referencia": "Lima Barreto, em seu livro 'Triste Fim de Policarpo Quaresma', apresenta um protagonista nacionalista que propõe ao governo brasileiro adotar o Tupi como língua oficial, abandonando o português.",
+    "image_id": "",
+    "id": 186,
+    "materia": "Português",
+    "dificuldade": "Média",
+    "enunciado": "A proposta do major Quaresma, embora pareça cômica, carrega uma crítica social típica do Pré-Modernismo, revelando:",
+    "alternativas": [
+      "A superioridade intelectual da elite agrária paulista.",
+      "A ingenuidade de um nacionalismo ufanista, desligado da realidade multicultural e dos problemas reais do país.",
+      "A necessidade real de expulsar os descendentes de portugueses do Brasil.",
+      "O apoio irrestrito do autor à monarquia escravocrata.",
+      "A intenção de criar um dicionário de gírias urbanas cariocas."
+    ],
+    "correta": "A ingenuidade de um nacionalismo ufanista, desligado da realidade multicultural e dos problemas reais do país.",
+    "explicacao_base": "Lima Barreto usa a 'loucura' patriótica de Quaresma para criticar o nacionalismo artificial e o abismo entre os ideais das elites/intelectuais e a realidade do povo brasileiro."
+  },
+  {
+    "grupo_id": 187,
+    "tema": "Química - Concentração e Saúde",
+    "texto_referencia": "O soro fisiológico, usado para limpeza de lentes e hidratação intravenosa, é uma solução aquosa de cloreto de sódio ($NaCl$) a 0,9%. Isso significa que há uma proporção específica de massa de sal por volume de solução.",
+    "image_id": "",
+    "id": 187,
+    "materia": "Química / Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Em um frasco de 500 mL de soro fisiológico a 0,9% (massa/volume), a quantidade exata de sal dissolvida é de:",
+    "alternativas": [
+      "0,45 g.",
+      "0,9 g.",
+      "4,5 g.",
+      "9,0 g.",
+      "45,0 g."
+    ],
+    "correta": "4,5 g.",
+    "explicacao_base": "0,9% significa 0,9 g de sal em 100 mL de solução. Em 500 mL (que é 5 vezes 100), teremos $0,9 \\times 5 = 4,5$ g."
+  },
+  {
+    "grupo_id": 188,
+    "tema": "História - Antiguidade e Cultura",
+    "texto_referencia": "Os Jogos Olímpicos nasceram na Grécia Antiga, na cidade de Olímpia, em 776 a.C. Ao contrário da versão moderna focada em recordes e nações, a versão antiga tinha um caráter essencialmente religioso.",
+    "image_id": "",
+    "id": 188,
+    "materia": "História",
+    "dificuldade": "Fácil",
+    "enunciado": "Durante a realização dos Jogos na Antiguidade, uma prática sagrada conhecida como 'Ekecheiria' era instaurada entre as cidades-estado gregas (pólis). Essa prática consistia:",
+    "alternativas": [
+      "Na distribuição gratuita de vinho para todos os atletas.",
+      "Na proibição da entrada de mulheres nos estádios.",
+      "Na Trégua Sagrada, onde todas as guerras eram suspensas para garantir a segurança dos peregrinos e atletas.",
+      "No sacrifício dos atletas perdedores aos deuses.",
+      "Na unificação política definitiva da Grécia sob um único rei."
+    ],
+    "correta": "Na Trégua Sagrada, onde todas as guerras eram suspensas para garantir a segurança dos peregrinos e atletas.",
+    "explicacao_base": "A trégua olímpica paralisava os conflitos bélicos para celebrar Zeus e permitir a viagem segura dos competidores, demonstrando a união cultural (helenismo) acima das disputas políticas."
+  },
+  {
+    "grupo_id": 189,
+    "tema": "Atualidades - Geopolítica e Clima",
+    "texto_referencia": "A Conferência das Nações Unidas sobre Mudanças Climáticas (COP) reúne anualmente líderes mundiais para debater metas ambientais. Um dos temas mais tensos é o 'Mercado de Créditos de Carbono'.",
+    "image_id": "",
+    "id": 189,
+    "materia": "Geografia / Atualidades",
+    "dificuldade": "Média",
+    "enunciado": "O mecanismo de Crédito de Carbono permite que:",
+    "alternativas": [
+      "Países ricos despejem lixo atômico em países pobres pagando uma taxa.",
+      "Países ou empresas que emitem menos gases de efeito estufa vendam o 'direito de poluir' (créditos excedentes) para aqueles que não atingiram suas metas de redução.",
+      "Todo cidadão receba um cartão de crédito feito de carbono reciclado.",
+      "O carvão mineral seja substituído obrigatoriamente por energia eólica em 1 ano.",
+      "A ONU multe automaticamente quem usa carro a gasolina."
+    ],
+    "correta": "Países ou empresas que emitem menos gases de efeito estufa vendam o 'direito de poluir' (créditos excedentes) para aqueles que não atingiram suas metas de redução.",
+    "explicacao_base": "É um mecanismo de compensação financeira onde quem preserva/sequestra carbono pode vender créditos para quem emite muito, visando equilibrar as emissões globais."
+  },
+  {
+    "grupo_id": 190,
+    "tema": "Matemática - Probabilidade Básica",
+    "texto_referencia": "Em um jogo de tabuleiro, para avançar, o jogador deve lançar dois dados honestos de 6 faces simultaneamente. Ele só ganha um bônus especial se a soma dos números das faces voltadas para cima for igual a 7.",
+    "image_id": "",
+    "id": 190,
+    "materia": "Matemática",
+    "dificuldade": "Difícil",
+    "enunciado": "Qual é a probabilidade de o jogador obter exatamente a soma 7 nesse lançamento?",
+    "alternativas": [
+      "1/36 (aproximadamente 2,7%).",
+      "1/12 (aproximadamente 8,3%).",
+      "1/6 (aproximadamente 16,6%).",
+      "1/2 (50%).",
+      "7/36 (aproximadamente 19,4%)."
+    ],
+    "correta": "1/6 (aproximadamente 16,6%).",
+    "explicacao_base": "Total de combinações: $6 \\times 6 = 36$. Pares que somam 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) -> 6 casos favoráveis. Probabilidade: $6/36 = 1/6$."
   }
 ]

@@ -1,5 +1,6 @@
-import { Injectable, signal, inject } from '@angular/core';
+import { Injectable, signal, inject, effect } from '@angular/core';
 import { QuestionLoaderService } from './question-loader.service';
+import { UserDataService } from './user-data.service';
 
 export interface Question {
   id: number;
@@ -29,6 +30,7 @@ export interface StudySession {
 export class ContentService {
 
   private questionLoader = inject(QuestionLoaderService);
+  private userDataService = inject(UserDataService);
 
   // Local questions loaded from files
   private loadedQuestions = signal<Question[]>([]);
@@ -218,13 +220,66 @@ export class ContentService {
   stats = signal({
     questionsAnswered: 0,
     correctAnswers: 0,
-    currentStreak: 3,
-    xp: 340,
+    currentStreak: 0,
+    xp: 0,
     level: 1,
     essaysWritten: 0
   });
 
   schedule = signal<StudySession[]>([]);
+
+  constructor() {
+    // Load data from backend on initialization
+    this.initializeData();
+
+    // Auto-save when stats or schedule change
+    effect(() => {
+      const currentStats = this.stats();
+      const currentSchedule = this.schedule();
+
+      // Save to backend (debounced in UserDataService)
+      this.saveToBackend();
+    });
+  }
+
+  /**
+   * Initialize data from backend
+   */
+  private async initializeData(): Promise<void> {
+    try {
+      // First, try to migrate data from localStorage if it exists
+      await this.userDataService.migrateFromLocalStorage();
+
+      // Load data from backend
+      const userData = await this.userDataService.loadUserData();
+
+      // Update stats
+      this.stats.set(userData.user.stats);
+
+      // Update schedule
+      this.schedule.set(userData.user.schedule);
+
+      console.log('✅ ContentService initialized with backend data');
+    } catch (error) {
+      console.error('❌ Error initializing data:', error);
+    }
+  }
+
+  /**
+   * Save current state to backend
+   */
+  private saveToBackend(): void {
+    const userData = this.userDataService.getUserData();
+
+    if (userData) {
+      // Update with current stats and schedule
+      userData.user.stats = this.stats();
+      userData.user.schedule = this.schedule();
+
+      // Save (debounced)
+      this.userDataService.saveUserData(userData);
+    }
+  }
 
   /**
    * Load questions from local files via HTTP
@@ -303,6 +358,8 @@ export class ContentService {
         level: newLevel
       };
     });
+
+    // Auto-save is triggered by effect
   }
 
   incrementEssayCount() {
@@ -319,6 +376,8 @@ export class ContentService {
         level: newLevel
       };
     });
+
+    // Auto-save is triggered by effect
   }
 
   addScheduleItem(item: Omit<StudySession, 'id'>) {
