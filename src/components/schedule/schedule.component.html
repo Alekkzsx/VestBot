@@ -1,77 +1,56 @@
 <div class="animate-fade-in font-sans text-slate-900 max-w-6xl mx-auto">
-  
+
   <header class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
     <div>
       <h2 class="text-3xl font-bold text-slate-900 mb-1">Cronograma de Estudos</h2>
-      <p class="text-slate-500 text-sm">Organize sua semana ou peça para a IA criar um plano ideal.</p>
+      <p class="text-slate-500 text-sm">Organize sua semana adicionando atividades manualmente.</p>
     </div>
-    
-    <button 
-      (click)="generateAISchedule()"
-      [disabled]="isLoadingAI()"
-      class="bg-black hover:bg-slate-800 text-white px-6 py-3 rounded-lg font-bold shadow-lg transition-all hover:-translate-y-1 flex items-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
-    >
-      @if (isLoadingAI()) {
-        <i class="fas fa-circle-notch fa-spin mr-2"></i> Criando Plano...
-      } @else {
-        <i class="fas fa-magic mr-2"></i> Gerar com IA
-      }
-    </button>
   </header>
 
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    
+
     <!-- Left Column: Add Item Form -->
     <div class="lg:col-span-1">
       <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm sticky top-6">
         <h3 class="font-bold text-slate-900 mb-6 flex items-center">
           <i class="fas fa-plus-circle mr-2"></i> Adicionar Atividade
         </h3>
-        
+
         <div class="space-y-4">
           <div>
             <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Dia</label>
-            <select [(ngModel)]="newItem().day" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
+            <select [(ngModel)]="newItem().day"
+              class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
               @for (day of days; track day) {
-                <option [value]="day">{{ day }}</option>
+              <option [value]="day">{{ day }}</option>
               }
             </select>
           </div>
 
           <div>
             <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Matéria</label>
-            <select [(ngModel)]="newItem().subject" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
+            <select [(ngModel)]="newItem().subject"
+              class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
               @for (sub of subjects; track sub) {
-                <option [value]="sub">{{ sub }}</option>
+              <option [value]="sub">{{ sub }}</option>
               }
             </select>
           </div>
 
           <div>
             <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Tópico / Assunto</label>
-            <input 
-              type="text" 
-              [(ngModel)]="newItem().topic" 
-              placeholder="Ex: Equação de 2º Grau"
-              class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none"
-            >
+            <input type="text" [(ngModel)]="newItem().topic" placeholder="Ex: Equação de 2º Grau"
+              class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
           </div>
 
           <div>
             <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Duração</label>
-            <input 
-              type="text" 
-              [(ngModel)]="newItem().duration" 
-              placeholder="Ex: 1h 30min"
-              class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none"
-            >
+            <input type="text" [(ngModel)]="newItem().duration" placeholder="Ex: 1h 30min"
+              class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
           </div>
 
-          <button 
-            (click)="addManualItem()"
-            [disabled]="!newItem().topic"
-            class="w-full bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-700 transition-colors disabled:opacity-50 mt-2"
-          >
+          <button (click)="addManualItem()" [disabled]="!newItem().topic"
+            class="w-full bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-700 transition-colors disabled:opacity-50 mt-2">
             Adicionar
           </button>
         </div>
@@ -80,54 +59,57 @@
 
     <!-- Right Column: Schedule Display -->
     <div class="lg:col-span-2 space-y-6">
-      
-      @if (schedule().length === 0) {
-        <div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-12 text-center flex flex-col items-center justify-center h-full min-h-[400px]">
-          <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-slate-300 text-2xl mb-4 shadow-sm">
-            <i class="far fa-calendar"></i>
-          </div>
-          <p class="text-slate-500 font-medium mb-2">Seu cronograma está vazio.</p>
-          <p class="text-slate-400 text-sm max-w-xs">Adicione itens manualmente ou peça para a IA criar um plano perfeito para você.</p>
-        </div>
-      } @else {
-        @for (day of days; track day) {
-          @if (getItemsForDay(day).length > 0) {
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-              <div class="bg-slate-50 px-6 py-3 border-b border-slate-100 flex justify-between items-center">
-                <h4 class="font-bold text-slate-900">{{ day }}</h4>
-                <span class="text-xs font-bold text-slate-400 uppercase">{{ getItemsForDay(day).length }} atividades</span>
-              </div>
-              
-              <div class="divide-y divide-slate-50">
-                @for (item of getItemsForDay(day); track item.id) {
-                  <div class="p-4 hover:bg-slate-50 transition-colors flex items-center group">
-                    <!-- Color Code Bar -->
-                    <div class="w-1 h-12 rounded-full mr-4"
-                      [class.bg-blue-500]="item.subject === 'Matemática'"
-                      [class.bg-red-500]="item.subject === 'Português'"
-                      [class.bg-green-500]="item.subject === 'Ciências'"
-                      [class.bg-yellow-500]="item.subject === 'História'"
-                      [class.bg-orange-500]="item.subject === 'Geografia'"
-                      [class.bg-purple-500]="!['Matemática','Português','Ciências','História','Geografia'].includes(item.subject)"
-                    ></div>
-                    
-                    <div class="flex-1">
-                      <div class="flex items-center gap-2 mb-1">
-                        <span class="text-[10px] font-bold uppercase tracking-wide text-slate-400 border border-slate-200 px-1.5 py-0.5 rounded">{{ item.subject }}</span>
-                        <span class="text-[10px] font-bold text-slate-400 flex items-center"><i class="far fa-clock mr-1"></i> {{ item.duration }}</span>
-                      </div>
-                      <p class="font-semibold text-slate-800">{{ item.topic }}</p>
-                    </div>
 
-                    <button (click)="removeItem(item.id)" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-300 hover:text-red-500 hover:bg-red-50 transition-all opacity-0 group-hover:opacity-100">
-                      <i class="fas fa-trash-alt"></i>
-                    </button>
-                  </div>
-                }
-              </div>
+      @if (schedule().length === 0) {
+      <div
+        class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-12 text-center flex flex-col items-center justify-center h-full min-h-[400px]">
+        <div
+          class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-slate-300 text-2xl mb-4 shadow-sm">
+          <i class="far fa-calendar"></i>
+        </div>
+        <p class="text-slate-500 font-medium mb-2">Seu cronograma está vazio.</p>
+        <p class="text-slate-400 text-sm max-w-xs">Adicione itens manualmente usando o formulário ao lado.</p>
+      </div>
+      } @else {
+      @for (day of days; track day) {
+      @if (getItemsForDay(day).length > 0) {
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="bg-slate-50 px-6 py-3 border-b border-slate-100 flex justify-between items-center">
+          <h4 class="font-bold text-slate-900">{{ day }}</h4>
+          <span class="text-xs font-bold text-slate-400 uppercase">{{ getItemsForDay(day).length }} atividades</span>
+        </div>
+
+        <div class="divide-y divide-slate-50">
+          @for (item of getItemsForDay(day); track item.id) {
+          <div class="p-4 hover:bg-slate-50 transition-colors flex items-center group">
+            <!-- Color Code Bar -->
+            <div class="w-1 h-12 rounded-full mr-4" [class.bg-blue-500]="item.subject === 'Matemática'"
+              [class.bg-red-500]="item.subject === 'Português'" [class.bg-green-500]="item.subject === 'Ciências'"
+              [class.bg-yellow-500]="item.subject === 'História'" [class.bg-orange-500]="item.subject === 'Geografia'"
+              [class.bg-purple-500]="!['Matemática','Português','Ciências','História','Geografia'].includes(item.subject)">
             </div>
+
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-wide text-slate-400 border border-slate-200 px-1.5 py-0.5 rounded">{{
+                  item.subject }}</span>
+                <span class="text-[10px] font-bold text-slate-400 flex items-center"><i class="far fa-clock mr-1"></i>
+                  {{ item.duration }}</span>
+              </div>
+              <p class="font-semibold text-slate-800">{{ item.topic }}</p>
+            </div>
+
+            <button (click)="removeItem(item.id)"
+              class="w-8 h-8 rounded-full flex items-center justify-center text-slate-300 hover:text-red-500 hover:bg-red-50 transition-all opacity-0 group-hover:opacity-100">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
           }
-        }
+        </div>
+      </div>
+      }
+      }
       }
 
     </div>

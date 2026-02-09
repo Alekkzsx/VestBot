@@ -2,7 +2,6 @@ import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ContentService, StudySession } from '../../services/content.service';
-import { GeminiService } from '../../services/gemini.service';
 
 @Component({
   selector: 'app-schedule',
@@ -13,7 +12,6 @@ import { GeminiService } from '../../services/gemini.service';
 })
 export class ScheduleComponent {
   contentService = inject(ContentService);
-  geminiService = inject(GeminiService);
 
   schedule = this.contentService.schedule;
 
@@ -27,8 +25,6 @@ export class ScheduleComponent {
 
   days = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'];
   subjects = ['Matemática', 'Português', 'Ciências', 'História', 'Geografia', 'Atualidades'];
-
-  isLoadingAI = signal(false);
 
   addManualItem() {
     if (!this.newItem().topic.trim()) return;
@@ -46,38 +42,6 @@ export class ScheduleComponent {
 
   removeItem(id: string) {
     this.contentService.removeScheduleItem(id);
-  }
-
-  async generateAISchedule() {
-    if (this.schedule().length > 0) {
-      if (!confirm('Isso irá substituir seu cronograma atual. Deseja continuar?')) return;
-    }
-
-    this.isLoadingAI.set(true);
-
-    try {
-      const newScheduleRaw = await this.geminiService.generateStudySchedule();
-
-      if (!newScheduleRaw || newScheduleRaw.length === 0) {
-        alert("Não foi possível gerar o cronograma. Tente novamente mais tarde.");
-        return;
-      }
-
-      // Add IDs to the raw response
-      const formattedSchedule: StudySession[] = newScheduleRaw.map((item: any) => ({
-        id: crypto.randomUUID(),
-        day: item.day,
-        subject: item.subject,
-        topic: item.topic,
-        duration: item.duration
-      }));
-
-      this.contentService.setSchedule(formattedSchedule);
-    } catch (e) {
-      alert("Erro ao conectar com a IA.");
-    } finally {
-      this.isLoadingAI.set(false);
-    }
   }
 
   // Helper to group items by day for display

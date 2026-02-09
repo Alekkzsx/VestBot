@@ -2,7 +2,6 @@ import { Component, inject, signal, OnDestroy, computed, ChangeDetectionStrategy
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ContentService, Question } from '../../services/content.service';
-import { GeminiService } from '../../services/gemini.service';
 import { QuestionHistoryService } from '../../services/question-history.service';
 import { DictionaryService, DictionaryEntry } from '../../services/dictionary.service';
 import { WordPopupComponent } from '../word-popup/word-popup.component';
@@ -16,7 +15,6 @@ import { WordPopupComponent } from '../word-popup/word-popup.component';
 })
 export class QuizComponent implements OnDestroy {
   contentService = inject(ContentService);
-  geminiService = inject(GeminiService);
   questionHistory = inject(QuestionHistoryService);
   dictionary = inject(DictionaryService);
 
@@ -47,8 +45,7 @@ export class QuizComponent implements OnDestroy {
   timeLeft = signal(0); // in seconds
   private timerInterval: any;
 
-  // AI Explanation State
-  isExplaining = signal(false);
+  // Explanation State
   explanationText = signal<string | null>(null);
 
   // File Selection
@@ -410,7 +407,6 @@ export class QuizComponent implements OnDestroy {
     this.selectedOptionIndex.set(null);
     this.isAnswered.set(false);
     this.isCorrect.set(false);
-    this.isExplaining.set(false);
     this.explanationText.set(null);
   }
 
@@ -458,23 +454,13 @@ export class QuizComponent implements OnDestroy {
     this.quizFinished.set(false);
   }
 
-  async askAI() {
-    this.isExplaining.set(true);
+  showExplanation() {
     const q = this.questions()[this.currentIndex()];
 
-    // Try to use the built-in explanation first (offline mode)
     if (q.explanation) {
       this.explanationText.set(q.explanation);
-      this.isExplaining.set(false);
     } else {
-      // Try to get AI explanation (requires internet)
-      try {
-        const explanation = await this.geminiService.getExplanation(q.text, q.subject);
-        this.explanationText.set(explanation);
-      } catch (error) {
-        this.explanationText.set('Explicação não disponível no modo offline. Esta questão não possui explicação pré-carregada.');
-      }
-      this.isExplaining.set(false);
+      this.explanationText.set('Esta questão não possui explicação disponível.');
     }
   }
 
