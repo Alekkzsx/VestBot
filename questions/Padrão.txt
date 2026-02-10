@@ -5700,5 +5700,575 @@
     ],
     "correta": "Seleção Artificial.",
     "explicacao_base": "Diferente da Seleção Natural (onde o meio ambiente seleciona os mais aptos), na Seleção Artificial o ser humano interfere na reprodução escolhendo quais características quer preservar."
+  },
+  {
+    "grupo_id": 301,
+    "tema": "Biologia / Ecologia - Poluição e Cadeias Alimentares",
+    "texto_referencia": "Em ecossistemas aquáticos contaminados por metais pesados, como o mercúrio (utilizado em garimpos ilegais), ocorre um fenômeno onde a concentração da substância tóxica aumenta ao longo dos níveis da cadeia alimentar. Isso significa que organismos do topo da cadeia acumulam doses muito maiores do veneno do que aqueles da base.",
+    "image_id": "",
+    "id": 301,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "Ao analisar uma cadeia alimentar composta por algas → zooplâncton → peixes pequenos → peixes grandes → seres humanos, a maior concentração de mercúrio será encontrada:",
+    "alternativas": [
+      "Nas algas, pois são as primeiras a absorverem os nutrientes da água.",
+      "No zooplâncton, pois consomem grandes quantidades de algas.",
+      "Nos seres humanos e nos peixes grandes, devido ao processo de bioacumulação ou magnificação trófica.",
+      "Na água do rio, pois é onde o mercúrio é diluído originalmente.",
+      "De forma igual em todos os níveis, pois a água contamina todos simultaneamente."
+    ],
+    "correta": "Nos seres humanos e nos peixes grandes, devido ao processo de bioacumulação ou magnificação trófica.",
+    "explicacao_base": "A magnificação trófica é o acúmulo progressivo de substâncias não biodegradáveis ao longo da cadeia alimentar. Os predadores de topo (peixes grandes e humanos) ingerem a carga acumulada de todas as suas presas."
+  },
+  {
+    "grupo_id": 302,
+    "tema": "História / Geografia - Urbanização e Enchentes",
+    "texto_referencia": "As grandes cidades brasileiras sofrem frequentemente com alagamentos e inundações durante os períodos de chuvas intensas de verão. Esse fenômeno não é apenas 'natural', mas agravado pela forma como o espaço urbano foi ocupado e modificado.",
+    "image_id": "",
+    "id": 302,
+    "materia": "Geografia",
+    "dificuldade": "Fácil",
+    "enunciado": "Um dos principais fatores antrópicos (causados pelo homem) que agrava as enchentes nas grandes metrópoles, impedindo a infiltração da água no solo, é:",
+    "alternativas": [
+      "A construção de parques lineares nas margens dos rios.",
+      "A impermeabilização do solo devido ao asfaltamento e às construções de concreto.",
+      "O aumento da temperatura global causado exclusivamente pelo fenômeno El Niño.",
+      "A plantação de árvores nativas em calçadas e quintais.",
+      "A limpeza frequente das galerias de água pluvial e bueiros."
+    ],
+    "correta": "A impermeabilização do solo devido ao asfaltamento e às construções de concreto.",
+    "explicacao_base": "O asfalto e o concreto cobrem o solo, impedindo que a água da chuva seja absorvida pela terra. Sem infiltração, a água escorre superficialmente em grande velocidade e volume, causando enchentes."
+  },
+  {
+    "grupo_id": 303,
+    "tema": "Química - Métodos de Separação de Misturas",
+    "texto_referencia": "Após um vazamento de petróleo no mar, uma mancha escura flutua sobre a água, impedindo a entrada de luz e afetando a fotossíntese das algas. Para conter o avanço do óleo, utilizam-se barreiras de contenção.",
+    "image_id": "",
+    "id": 303,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "O fato de o petróleo flutuar sobre a água do mar e não se misturar com ela deve-se, respectivamente, às diferenças de:",
+    "alternativas": [
+      "Temperatura e ebulição.",
+      "Densidade e polaridade.",
+      "Volume e magnetismo.",
+      "Massa e temperatura.",
+      "Condutividade elétrica e pressão."
+    ],
+    "correta": "Densidade e polaridade.",
+    "explicacao_base": "O petróleo flutua porque é menos denso que a água. Ele não se mistura (é imiscível) porque é apolar, enquanto a água é polar (semelhante dissolve semelhante)."
+  },
+  {
+    "grupo_id": 304,
+    "tema": "Física - Eficiência Energética e Potência",
+    "texto_referencia": "A substituição de lâmpadas incandescentes por lâmpadas de LED é uma estratégia para economizar energia elétrica. Uma lâmpada incandescente antiga de 60 W (Watts) ilumina o mesmo que uma lâmpada de LED de aproximadamente 9 W.",
+    "image_id": "",
+    "id": 304,
+    "materia": "Física",
+    "dificuldade": "Fácil",
+    "enunciado": "Ao substituir a lâmpada de 60 W pela de 9 W, mantendo-se a mesma luminosidade, a economia ocorre porque:",
+    "alternativas": [
+      "A lâmpada LED aumenta a tensão da rede elétrica.",
+      "A lâmpada LED transforma quase toda energia elétrica em luz, dissipando muito menos calor que a incandescente.",
+      "A lâmpada incandescente utiliza uma corrente alternada, enquanto a LED usa energia nuclear.",
+      "A lâmpada LED possui maior resistência elétrica, consumindo mais tempo para acender.",
+      "A potência elétrica não tem relação com o consumo de energia."
+    ],
+    "correta": "A lâmpada LED transforma quase toda energia elétrica em luz, dissipando muito menos calor que a incandescente.",
+    "explicacao_base": "As lâmpadas incandescentes são ineficientes pois transformam grande parte da energia elétrica em calor (Efeito Joule), e não em luz. As LEDs são mais eficientes, gerando luz com muito menos desperdício de energia (menor potência)."
+  },
+  {
+    "grupo_id": 305,
+    "tema": "Matemática - Porcentagem e Finanças",
+    "texto_referencia": "Na Black Friday, uma loja de eletrônicos anunciou um smartphone que custava R$ 2.000,00 com um desconto de 20% para pagamento à vista no Pix. Para quem preferir parcelar, o valor volta ao preço original de R$ 2.000,00.",
+    "image_id": "",
+    "id": 305,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "O cliente que optar pelo pagamento à vista no Pix pagará pelo aparelho o valor de:",
+    "alternativas": [
+      "R$ 1.400,00",
+      "R$ 1.500,00",
+      "R$ 1.600,00",
+      "R$ 1.800,00",
+      "R$ 1.980,00"
+    ],
+    "correta": "R$ 1.600,00",
+    "explicacao_base": "O cálculo é: 20% de 2.000 = (20/100) * 2000 = 400. Subtraindo o desconto do valor original: 2000 - 400 = R$ 1.600,00."
+  },
+  {
+    "grupo_id": 306,
+    "tema": "Biologia - Saúde Pública e Imunização",
+    "texto_referencia": "Durante uma trilha na Mata Atlântica, uma pessoa foi picada por uma jararaca. Ao chegar ao hospital, o médico prescreveu a aplicação imediata de soro antiofídico, e não de uma vacina.",
+    "image_id": "",
+    "id": 306,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "A escolha pelo soro em vez da vacina deve-se ao fato de que o soro:",
+    "alternativas": [
+      "Estimula o corpo a produzir anticorpos a longo prazo.",
+      "Contém anticorpos prontos para neutralizar as toxinas imediatamente.",
+      "É produzido a partir de bactérias e previne futuras picadas.",
+      "Serve apenas para aliviar a dor, sem efeito sobre o veneno.",
+      "Cria uma memória imunológica ativa no paciente."
+    ],
+    "correta": "Contém anticorpos prontos para neutralizar as toxinas imediatamente.",
+    "explicacao_base": "A vacina é preventiva e estimula a produção ativa de anticorpos (imunização ativa, lenta). O soro é curativo e contém anticorpos prontos para agir rápido contra o veneno (imunização passiva)."
+  },
+  {
+    "grupo_id": 307,
+    "tema": "História - Brasil Colônia e Economia do Ouro",
+    "texto_referencia": "No século XVIII, o eixo econômico da colônia portuguesa na América deslocou-se do Nordeste para a região Centro-Sul. Vilas surgiram rapidamente, a sociedade tornou-se mais urbanizada e houve aumento do fluxo migratório de portugueses e de africanos escravizados.",
+    "image_id": "",
+    "id": 307,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "O evento histórico responsável por essa transformação sociopolítica e geográfica foi:",
+    "alternativas": [
+      "O início do cultivo de cana-de-açúcar em São Vicente.",
+      "A descoberta de minas de ouro e pedras preciosas em Minas Gerais.",
+      "A expansão da cultura do café no Vale do Paraíba.",
+      "A instalação das primeiras indústrias no Rio de Janeiro.",
+      "A exploração do látex na região amazônica."
+    ],
+    "correta": "A descoberta de minas de ouro e pedras preciosas em Minas Gerais.",
+    "explicacao_base": "O ciclo do ouro (século XVIII) atraiu multidões para Minas Gerais, promovendo a urbanização no interior e deslocando o centro político-econômico do Nordeste (açúcar) para o Sudeste."
+  },
+  {
+    "grupo_id": 308,
+    "tema": "Português - Figuras de Linguagem",
+    "texto_referencia": "Em um dia de verão escaldante, ao entrar em um ônibus lotado e sem ar-condicionado, um passageiro comenta: 'Que maravilha! Estou adorando derreter nesta sauna sobre rodas'.",
+    "image_id": "",
+    "id": 308,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "A figura de linguagem utilizada pelo passageiro para expressar o contrário do que suas palavras dizem, gerando um efeito de crítica ou humor, é:",
+    "alternativas": [
+      "Metáfora.",
+      "Pleonasmo.",
+      "Ironia.",
+      "Prosopopeia.",
+      "Eufemismo."
+    ],
+    "correta": "Ironia.",
+    "explicacao_base": "A ironia consiste em afirmar o contrário do que se pensa, geralmente em tom de deboche ou crítica. Ele diz 'maravilha' quando a situação é terrível."
+  },
+  {
+    "grupo_id": 309,
+    "tema": "Química - Tabela Periódica e Aplicações",
+    "texto_referencia": "O Lítio (Li), o Sódio (Na) e o Potássio (K) pertencem à mesma família na Tabela Periódica (Metais Alcalinos). Eles compartilham propriedades químicas semelhantes, como a reatividade com a água.",
+    "image_id": "",
+    "id": 309,
+    "materia": "Química",
+    "dificuldade": "Média",
+    "enunciado": "Esses elementos pertencem ao Grupo 1 da Tabela Periódica porque todos possuem:",
+    "alternativas": [
+      "Um único elétron na camada de valência.",
+      "Dois elétrons na camada de valência, tornando-os estáveis.",
+      "Sete elétrons na última camada, facilitando o ganho de um elétron.",
+      "Números atômicos iguais.",
+      "Propriedades de gases nobres."
+    ],
+    "correta": "Um único elétron na camada de valência.",
+    "explicacao_base": "Elementos do Grupo 1 (Metais Alcalinos) possuem 1 elétron na última camada (camada de valência), o que os torna muito reativos e propensos a perder esse elétron para formar íons positivos (+1)."
+  },
+  {
+    "grupo_id": 310,
+    "tema": "Física / Biologia - Regulação Térmica",
+    "texto_referencia": "Quando realizamos exercícios físicos intensos, nossa temperatura corporal tende a subir. Como mecanismo de defesa, o corpo produz suor. Ao chegar à superfície da pele, o suor passa do estado líquido para o gasoso.",
+    "image_id": "",
+    "id": 310,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "O processo físico responsável por resfriar o corpo através do suor é a evaporação, que ocorre porque:",
+    "alternativas": [
+      "A evaporação é um processo exotérmico, que libera calor para o corpo.",
+      "A água do suor cria uma barreira isolante que impede o calor de entrar.",
+      "A evaporação é um processo endotérmico, onde o suor retira calor do corpo para passar para o estado gasoso.",
+      "O suor condensa na pele, absorvendo a temperatura ambiente.",
+      "O suor sofre solidificação rápida, esfriando a pele."
+    ],
+    "correta": "A evaporação é um processo endotérmico, onde o suor retira calor do corpo para passar para o estado gasoso.",
+    "explicacao_base": "Para evaporar (virar vapor), o líquido precisa de energia. No caso do suor, ele 'rouba' energia térmica (calor) da pele, causando a sensação de resfriamento."
+  },
+  {
+    "grupo_id": 311,
+    "tema": "Química - Ácidos e Bases no Cotidiano",
+    "texto_referencia": "Quando sentimos azia estomacal, o suco gástrico (que contém ácido clorídrico, HCl) está em excesso ou atingindo o esôfago. Para aliviar o desconforto, os médicos recomendam o uso de antiácidos, medicamentos compostos por substâncias como o Hidróxido de Magnésio ou Bicarbonato de Sódio.",
+    "image_id": "",
+    "id": 311,
+    "materia": "Química",
+    "dificuldade": "Fácil",
+    "enunciado": "A reação química que ocorre entre o ácido do estômago e o medicamento antiácido, resultando na formação de água e um sal, é classificada como:",
+    "alternativas": [
+      "Oxidação, pois há troca de elétrons.",
+      "Neutralização, que ocorre entre um ácido e uma base.",
+      "Combustão, que libera calor no trato digestório.",
+      "Decomposição térmica, pois quebra moléculas complexas.",
+      "Síntese, pois forma um novo ácido mais forte."
+    ],
+    "correta": "Neutralização, que ocorre entre um ácido e uma base.",
+    "explicacao_base": "A reação entre um ácido (HCl) e uma base (Hidróxidos ou Carbonatos presentes no remédio) para reduzir a acidez é chamada de neutralização (ácido + base → sal + água)."
+  },
+  {
+    "grupo_id": 312,
+    "tema": "Geografia - Fusos Horários",
+    "texto_referencia": "Um empresário sai de São Paulo (Fuso Horário GMT -3) às 08h00 da manhã em direção a Londres (Fuso Horário GMT 0) para uma reunião. O tempo total de voo é de 11 horas.",
+    "image_id": "",
+    "id": 312,
+    "materia": "Geografia",
+    "dificuldade": "Média",
+    "enunciado": "Desconsiderando horários de verão, o empresário chegará a Londres no horário local de:",
+    "alternativas": [
+      "19h00.",
+      "20h00.",
+      "22h00.",
+      "16h00.",
+      "05h00 do dia seguinte."
+    ],
+    "correta": "22h00.",
+    "explicacao_base": "Londres está 3 horas à frente de São Paulo (-3 para 0). Se ele sai às 08h SP, em Londres são 11h. Somando 11 horas de voo: 11h (horário local partida) + 11h (voo) = 22h."
+  },
+  {
+    "grupo_id": 313,
+    "tema": "Física - Óptica e Visão",
+    "texto_referencia": "Para corrigir defeitos de visão como a miopia e a hipermetropia, a oftalmologia utiliza lentes que desviam a trajetória da luz antes que ela entre no olho, permitindo que a imagem se forme exatamente sobre a retina.",
+    "image_id": "",
+    "id": 313,
+    "materia": "Física",
+    "dificuldade": "Média",
+    "enunciado": "O fenômeno ondulatório predominante que ocorre quando a luz atravessa do ar para a lente dos óculos (mudança de meio) e muda sua velocidade de propagação é a:",
+    "alternativas": [
+      "Refração.",
+      "Reflexão.",
+      "Difração.",
+      "Polarização.",
+      "Interferência."
+    ],
+    "correta": "Refração.",
+    "explicacao_base": "A refração é o fenômeno que ocorre quando uma onda (luz) muda de meio de propagação (do ar para o vidro da lente), alterando sua velocidade e, geralmente, sua direção."
+  },
+  {
+    "grupo_id": 314,
+    "tema": "Biologia - Vacinas de RNA",
+    "texto_referencia": "Durante a pandemia de COVID-19, uma nova tecnologia de imunizantes ganhou destaque: as vacinas de RNA mensageiro (mRNA). Diferente das vacinas tradicionais que usam vírus inativados, estas introduzem uma molécula que 'ensina' as células a produzirem uma proteína do vírus.",
+    "image_id": "",
+    "id": 314,
+    "materia": "Biologia",
+    "dificuldade": "Difícil",
+    "enunciado": "Essa tecnologia funciona porque o mRNA inserido na célula é lido por qual organela celular responsável pela síntese de proteínas?",
+    "alternativas": [
+      "Lisossomo, que digere o RNA e libera anticorpos.",
+      "Mitocôndria, que converte o RNA em energia.",
+      "Ribossomo, que traduz o código do RNA para construir a proteína viral.",
+      "Complexo de Golgi, que armazena o vírus vivo.",
+      "Núcleo, que incorpora o RNA ao DNA humano permanentemente."
+    ],
+    "correta": "Ribossomo, que traduz o código do RNA para construir a proteína viral.",
+    "explicacao_base": "Os ribossomos são as organelas responsáveis por ler o RNA mensageiro e montar as proteínas (tradução). O sistema imunológico então reconhece essa proteína estranha e cria defesas."
+  },
+  {
+    "grupo_id": 315,
+    "tema": "História - Era Vargas e Industrialização",
+    "texto_referencia": "Na década de 1940, o Brasil deu um passo decisivo em sua industrialização com a criação da Companhia Siderúrgica Nacional (CSN) em Volta Redonda. O aço produzido ali era essencial para outras indústrias e para o crescimento urbano.",
+    "image_id": "",
+    "id": 315,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "A política econômica de Getúlio Vargas nesse período, focada na criação de estatais e no desenvolvimento de indústrias de base (como aço e petróleo) em detrimento da importação, é conhecida como:",
+    "alternativas": [
+      "Neoliberalismo.",
+      "Substituição de Importações (Nacional-Desenvolvimentismo).",
+      "Globalização Econômica.",
+      "Liberalismo Clássico.",
+      "Economia Agroexportadora do Café."
+    ],
+    "correta": "Substituição de Importações (Nacional-Desenvolvimentismo).",
+    "explicacao_base": "O modelo visava produzir internamente o que antes era importado, com forte intervenção estatal em setores estratégicos (indústria de base), característica da Era Vargas."
+  },
+  {
+    "grupo_id": 316,
+    "tema": "Matemática - Geometria Espacial (Volumes)",
+    "texto_referencia": "Para combater a seca em uma região do Nordeste, a prefeitura instalou uma cisterna (reservatório de água) no formato de um paralelepípedo retângulo, com as seguintes dimensões internas: 2 metros de comprimento, 3 metros de largura e 1,5 metros de profundidade.",
+    "image_id": "",
+    "id": 316,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Considerando que a cisterna esteja completamente cheia, a capacidade total de armazenamento de água, em litros, é de:",
+    "alternativas": [
+      "650 litros.",
+      "6.500 litros.",
+      "9.000 litros.",
+      "900 litros.",
+      "12.000 litros."
+    ],
+    "correta": "9.000 litros.",
+    "explicacao_base": "Volume = comprimento x largura x profundidade. V = 2 x 3 x 1,5 = 9 metros cúbicos (m³). Sabendo que 1 m³ equivale a 1.000 litros, então 9 x 1.000 = 9.000 litros."
+  },
+  {
+    "grupo_id": 317,
+    "tema": "Biologia / Botânica - Biomas",
+    "texto_referencia": "Este bioma ocupa cerca de 11% do território brasileiro e caracteriza-se por um clima semiárido, chuvas escassas e irregulares. A vegetação, chamada xerófila, perde as folhas na seca para economizar água e muitas plantas possuem espinhos no lugar de folhas.",
+    "image_id": "",
+    "id": 317,
+    "materia": "Geografia",
+    "dificuldade": "Fácil",
+    "enunciado": "A descrição refere-se ao bioma exclusivamente brasileiro conhecido como:",
+    "alternativas": [
+      "Mata Atlântica.",
+      "Pantanal.",
+      "Pampa.",
+      "Caatinga.",
+      "Cerrado."
+    ],
+    "correta": "Caatinga.",
+    "explicacao_base": "A Caatinga é o único bioma exclusivamente brasileiro, adaptado à falta de água (semiárido) com vegetação caducifólia (perde folhas) e cactáceas."
+  },
+  {
+    "grupo_id": 318,
+    "tema": "Física - Leis de Newton (Inércia)",
+    "texto_referencia": "O cinto de segurança é um dispositivo obrigatório em veículos e tem a função de proteger os ocupantes em caso de colisão ou frenagem brusca. Sem o cinto, o passageiro tende a continuar em movimento para a frente.",
+    "image_id": "",
+    "id": 318,
+    "materia": "Física",
+    "dificuldade": "Fácil",
+    "enunciado": "O princípio físico que explica a tendência do passageiro de continuar seu movimento para frente quando o carro freia bruscamente é a:",
+    "alternativas": [
+      "Lei da Ação e Reação (3ª Lei de Newton).",
+      "Lei da Gravitação Universal.",
+      "Lei da Inércia (1ª Lei de Newton).",
+      "Lei de Ohm.",
+      "Lei da Conservação da Massa."
+    ],
+    "correta": "Lei da Inércia (1ª Lei de Newton).",
+    "explicacao_base": "A 1ª Lei de Newton afirma que um corpo em movimento tende a permanecer em movimento retilíneo uniforme a menos que uma força externa (como o cinto) atue sobre ele."
+  },
+  {
+    "grupo_id": 319,
+    "tema": "Português / Linguagem - Variação Linguística",
+    "texto_referencia": "Numa mensagem de WhatsApp para um amigo, João escreve: 'E aí, mano! Bora no cinema hj? Vai tá top!'. Ao escrever um e-mail solicitando um estágio, João redige: 'Prezado Senhor, gostaria de candidatar-me à vaga de estágio disponível.'",
+    "image_id": "",
+    "id": 319,
+    "materia": "Português",
+    "dificuldade": "Média",
+    "enunciado": "A diferença entre os dois textos de João demonstra sua competência em utilizar a língua adequadamente conforme o contexto, o que chamamos de:",
+    "alternativas": [
+      "Vício de linguagem.",
+      "Erro gramatical proposital.",
+      "Variação linguística diafásica (registro formal e informal).",
+      "Preconceito linguístico.",
+      "Neologismo literário."
+    ],
+    "correta": "Variação linguística diafásica (registro formal e informal).",
+    "explicacao_base": "A variação diafásica diz respeito à adequação da fala ou escrita à situação de comunicação (formalidade no trabalho vs. informalidade com amigos). Não é erro, é adequação."
+  },
+  {
+    "grupo_id": 320,
+    "tema": "Biologia - Genética e Hereditariedade",
+    "texto_referencia": "O albinismo é uma condição genética recessiva que impede a produção de melanina. Considere 'A' como o alelo dominante (pele normal) e 'a' como o alelo recessivo (albinismo). Um casal onde ambos os pais são heterozigotos (Aa) e têm pigmentação normal deseja ter um filho.",
+    "image_id": "",
+    "id": 320,
+    "materia": "Biologia",
+    "dificuldade": "Difícil",
+    "enunciado": "A probabilidade de esse casal ter uma criança albina é de:",
+    "alternativas": [
+      "0% (nenhuma chance).",
+      "25% (1/4).",
+      "50% (1/2).",
+      "75% (3/4).",
+      "100% (certeza absoluta)."
+    ],
+    "correta": "25% (1/4).",
+    "explicacao_base": "No cruzamento Aa x Aa, os genótipos possíveis são: AA, Aa, Aa, aa. Apenas 'aa' resulta em albinismo. Como é 1 caso em 4 possibilidades, a probabilidade é de 1/4 ou 25%."
+  },
+  {
+    "grupo_id": 321,
+    "tema": "Português - Variação Linguística",
+    "texto_referencia": "O texto da imagem 'Doce mistura' expõe como um mesmo prato (creme amarelo de milho) recebe denominações distintas como 'curau', 'canjica', 'jimbelê' ou 'papa de milho', dependendo da localidade do Brasil.",
+    "image_id": "canjica.png",
+    "id": 321,
+    "materia": "Português",
+    "dificuldade": "Fácil",
+    "enunciado": "Esse fenômeno, que ilustra a diversidade do português brasileiro quanto ao vocabulário utilizado em diferentes regiões geográficas, é classificado pelos estudos da linguagem como:",
+    "alternativas": [
+      "Variação histórica ou diacrônica, pois as palavras mudaram de sentido ao longo dos séculos.",
+      "Variação diatópica ou regional, marcada pelas diferenças de léxico entre lugares.",
+      "Variação diafásica ou estilística, dependendo se o falante está em situação formal ou informal.",
+      "Variação diastrática ou social, relacionada à escolaridade e classe social dos falantes.",
+      "Linguagem denotativa, pois todas as palavras mantêm o sentido literal de dicionário."
+    ],
+    "correta": "Variação diatópica ou regional, marcada pelas diferenças de léxico entre lugares.",
+    "explicacao_base": "A variação diatópica (ou regional) refere-se às diferenças linguísticas que ocorrem em função da localização geográfica dos falantes, como o uso de 'curau' no Sudeste e 'canjica' no Nordeste/Norte para o mesmo alimento."
+  },
+  {
+    "grupo_id": 322,
+    "tema": "Lógica e Interpretação de Texto",
+    "texto_referencia": "Segundo o texto: 'o que lá no norte é canjica, lá no sul é curau' e 'o creme branco com grãos inteiros de milho, no sul, é canjica, e, no norte, curau'.",
+    "image_id": "canjica.png",
+    "id": 322,
+    "materia": "Matemática",
+    "dificuldade": "Difícil",
+    "enunciado": "Um turista paranaense (Região Sul), acostumado a chamar o creme amarelo de 'curau' e o doce branco com grãos de 'canjica', viaja para uma cidade da Região Norte. Ao chegar em uma padaria local, ele aponta para o creme amarelo da vitrine e pede: 'Por favor, me vê uma canjica'. Considerando as informações do texto, o atendente da padaria, agindo conforme sua própria cultura local, provavelmente:",
+    "alternativas": [
+      "Servirá exatamente o creme amarelo que o turista apontou, pois no Norte esse doce se chama canjica.",
+      "Servirá o creme branco com grãos inteiros, pois é isso que 'canjica' significa para ele.",
+      "Ficará confuso, pois no Norte não existe nenhum doce chamado canjica.",
+      "Corrigirá o turista, dizendo que o nome correto do doce amarelo é curau.",
+      "Servirá um prato salgado, pois canjica no Norte é uma carne."
+    ],
+    "correta": "Servirá exatamente o creme amarelo que o turista apontou, pois no Norte esse doce se chama canjica.",
+    "explicacao_base": "Esta é uma questão de lógica e atenção. No Norte (cultura do atendente), o 'creme amarelo' chama-se 'canjica'. O turista apontou para o creme amarelo e pediu 'uma canjica'. O atendente ouve o nome 'canjica' e associa ao objeto correto em sua cultura (creme amarelo). Portanto, o pedido e a ação coincidem, e o turista recebe o que queria (o creme amarelo), mesmo que em sua terra natal ele chamasse aquele doce por outro nome."
+  },
+  {
+    "grupo_id": 323,
+    "tema": "Geografia - Regionalização Brasileira",
+    "texto_referencia": "A imagem associa o nome 'Curau' aos estados de Minas Gerais (MG), São Paulo (SP), Mato Grosso (MT) e Goiás (GO).",
+    "image_id": "canjica.png",
+    "id": 323,
+    "materia": "Geografia",
+    "dificuldade": "Média",
+    "enunciado": "Com base na divisão regional do IBGE, os estados onde o termo 'Curau' é predominante pertencem, respectivamente, às macrorregiões:",
+    "alternativas": [
+      "Nordeste e Centro-Oeste.",
+      "Sul e Norte.",
+      "Sudeste e Centro-Oeste.",
+      "Sudeste e Sul.",
+      "Centro-Oeste e Norte."
+    ],
+    "correta": "Sudeste e Centro-Oeste.",
+    "explicacao_base": "Minas Gerais (MG) e São Paulo (SP) fazem parte da Região Sudeste. Mato Grosso (MT) e Goiás (GO) fazem parte da Região Centro-Oeste."
+  },
+  {
+    "grupo_id": 324,
+    "tema": "Biologia - Botânica",
+    "texto_referencia": "O alimento base para todas as receitas citadas na imagem é o milho (*Zea mays*), um cereal de grande importância econômica e nutricional.",
+    "image_id": "canjica.png",
+    "id": 324,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "Do ponto de vista botânico, o milho é classificado como uma angiosperma monocotiledônea. Uma característica morfológica que confirma essa classificação e que pode ser observada na planta do milho é:",
+    "alternativas": [
+      "As folhas apresentarem nervuras reticuladas (em rede).",
+      "A raiz ser do tipo axial ou pivotante, com uma raiz principal profunda.",
+      "As sementes possuírem dois cotilédones.",
+      "As folhas apresentarem nervuras paralelas e a raiz ser fasciculada (cabeleira).",
+      "As flores apresentarem pétalas em múltiplos de quatro ou cinco (tetrâmeras ou pentâmeras)."
+    ],
+    "correta": "As folhas apresentarem nervuras paralelas e a raiz ser fasciculada (cabeleira).",
+    "explicacao_base": "Plantas monocotiledôneas (como milho, grama, arroz) possuem nervuras paralelas nas folhas, raízes fasciculadas (sem eixo principal), sementes com um cotilédone e flores trímeras."
+  },
+  {
+    "grupo_id": 325,
+    "tema": "História - Raízes Culturais",
+    "texto_referencia": "A variedade de nomes (como jimbelê, corá, piruruca) e a onipresença do milho nas receitas doces brasileiras revelam a riqueza da formação cultural do país.",
+    "image_id": "canjica.png",
+    "id": 325,
+    "materia": "História",
+    "dificuldade": "Média",
+    "enunciado": "Historicamente, o uso do milho como base da alimentação no território brasileiro é uma herança direta da cultura:",
+    "alternativas": [
+      "Europeia, trazida pelos colonizadores portugueses no século XVI.",
+      "Asiática, introduzida pelos imigrantes japoneses no século XX.",
+      "Indígena, sendo a base da dieta de diversas etnias nativas muito antes da colonização.",
+      "Africana, incorporada apenas após o início do ciclo da cana-de-açúcar.",
+      "Norte-americana, influenciada pela importação de fast-food nas últimas décadas."
+    ],
+    "correta": "Indígena, sendo a base da dieta de diversas etnias nativas muito antes da colonização.",
+    "explicacao_base": "O milho é um cereal nativo das Américas e domesticado por povos indígenas. Ele já era a base da alimentação ameríndia antes da chegada dos europeus e foi incorporado à culinária brasileira mestiça."
+  },
+  {
+    "grupo_id": 326,
+    "tema": "Química - Compostos Orgânicos e Nutrição",
+    "texto_referencia": "O 'creme amarelo' (curau) adquire sua consistência espessa devido ao cozimento do milho.",
+    "image_id": "canjica.png",
+    "id": 326,
+    "materia": "Química",
+    "dificuldade": "Fácil",
+    "enunciado": "O principal macronutriente presente no milho, responsável pelo fornecimento de energia e pelo espessamento do creme ao ser aquecido (devido à gelatinização), é um polissacarídeo denominado:",
+    "alternativas": [
+      "Proteína (Glúten).",
+      "Lipídio (Óleo).",
+      "Amido.",
+      "Sacarose.",
+      "Celulose."
+    ],
+    "correta": "Amido.",
+    "explicacao_base": "O milho é rico em amido, um carboidrato complexo (polissacarídeo) que funciona como reserva energética vegetal e, na culinária, atua como espessante quando aquecido em água ou leite."
+  },
+  {
+    "grupo_id": 327,
+    "tema": "Interpretação de Dados (Conjuntos)",
+    "texto_referencia": "Analise o diagrama da imagem, que conecta os nomes regionais do prato aos estados onde são utilizados.",
+    "image_id": "canjica.png",
+    "id": 327,
+    "materia": "Matemática",
+    "dificuldade": "Média",
+    "enunciado": "Considere o conjunto A formado pelos nomes usados em Minas Gerais (MG) e o conjunto B formado pelos nomes usados no Rio de Janeiro (RJ). A interseção entre os conjuntos A e B (nomes usados em ambos os estados simultaneamente para este prato) contém os elementos:",
+    "alternativas": [
+      "Coral e papa de milho.",
+      "Canjiquinha e Jimbelê.",
+      "Curau e Corá.",
+      "Piruruca e Canjica de milho verde.",
+      "Curau e Canjiquinha."
+    ],
+    "correta": "Coral e papa de milho.",
+    "explicacao_base": "Observando a imagem, as setas indicam que em MG usam-se: Curau, Corá, Piruruca, Pururuca, Jimbelê, Coral e Papa de milho. No RJ usam-se: Canjiquinha, Coral e Papa de milho. Os termos comuns (interseção) são 'Coral' e 'Papa de milho'."
+  },
+  {
+    "grupo_id": 328,
+    "tema": "Geografia / Economia - Produção Agrícola",
+    "texto_referencia": "Os estados de Goiás (GO) e Mato Grosso (MT) aparecem na imagem associados ao nome 'Curau'.",
+    "image_id": "canjica.png",
+    "id": 328,
+    "materia": "Geografia",
+    "dificuldade": "Fácil",
+    "enunciado": "Esses dois estados do Centro-Oeste são atualmente protagonistas na economia brasileira por serem os maiores produtores nacionais de grãos, especialmente soja e milho. O bioma predominante nessas regiões, que sofreu intenso desmatamento para dar lugar à agricultura mecanizada, é:",
+    "alternativas": [
+      "Mata de Araucárias.",
+      "Caatinga.",
+      "Manguezal.",
+      "Mata Atlântica.",
+      "Cerrado."
+    ],
+    "correta": "Cerrado.",
+    "explicacao_base": "O Cerrado é o bioma predominante no Centro-Oeste (GO, MT) e é a principal área de expansão da fronteira agrícola brasileira (soja e milho) nas últimas décadas."
+  },
+  {
+    "grupo_id": 329,
+    "tema": "Física / Biologia - Sentidos e Estímulos",
+    "texto_referencia": "O texto menciona que o doce é 'servido polvilhado com canela'.",
+    "image_id": "canjica.png",
+    "id": 329,
+    "materia": "Biologia",
+    "dificuldade": "Média",
+    "enunciado": "A canela é uma especiaria rica em óleos essenciais voláteis (como o cinamaldeído), que se dispersam facilmente no ar. A percepção do aroma característico da canela antes mesmo de provar o doce ocorre porque esses compostos químicos estimulam receptores sensoriais localizados:",
+    "alternativas": [
+      "Nas papilas gustativas da língua.",
+      "No epitélio olfatório na cavidade nasal.",
+      "No córtex visual do cérebro.",
+      "Nas terminações táteis dos lábios.",
+      "No nervo auditivo."
+    ],
+    "correta": "No epitélio olfatório na cavidade nasal.",
+    "explicacao_base": "O aroma (cheiro) é percebido pelo olfato. Moléculas voláteis entram pelo nariz e estimulam o epitélio olfatório. O sabor complexo dos alimentos é uma combinação de gosto (língua) e olfato (nariz)."
+  },
+  {
+    "grupo_id": 330,
+    "tema": "Português - Figuras de Linguagem",
+    "texto_referencia": "No primeiro parágrafo do texto, lê-se: 'A canjica... é prova da diversidade do Brasil, pelas variações em seu nome de batismo.'",
+    "image_id": "canjica.png",
+    "id": 330,
+    "materia": "Português",
+    "dificuldade": "Difícil",
+    "enunciado": "A expressão 'nome de batismo' foi empregada no texto com sentido figurado, atribuindo a um alimento uma característica típica de seres humanos (receber um nome ao nascer). A figura de linguagem predominante nesse trecho é:",
+    "alternativas": [
+      "Antítese.",
+      "Metáfora.",
+      "Metonímia.",
+      "Hipérbole.",
+      "Eufemismo."
+    ],
+    "correta": "Metáfora.",
+    "explicacao_base": "O autor usa 'batismo' metaforicamente para se referir à 'denominação' ou 'nomeação' do prato, criando uma comparação implícita entre nomear um prato e batizar uma pessoa, sem usar conectivos de comparação."
   }
 ]

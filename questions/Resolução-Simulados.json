@@ -168,5 +168,1692 @@
                 "content": "Essa tensão foi o argumento principal usado pelo governo russo para justificar a invasão da Ucrânia em 2022."
             }
         ]
+    },
+    {
+        "questionId": 11,
+        "steps": [
+            {
+                "title": "🔍 Cálculo do Pix",
+                "content": "10% de R$ 2.500 é R$ 250. O valor à vista fica R$ 2.500 - R$ 250 = R$ 2.250."
+            },
+            {
+                "title": "💡 Cálculo do Cartão",
+                "content": "5% de acréscimo sobre R$ 2.500 é R$ 125. O valor a prazo fica R$ 2.500 + R$ 125 = R$ 2.625."
+            },
+            {
+                "title": "🛠️ Diferença Real",
+                "content": "Subtraia o menor do maior: R$ 2.625 - R$ 2.250 = R$ 375 de diferença total."
+            }
+        ]
+    },
+    {
+        "questionId": 12,
+        "steps": [
+            {
+                "title": "🔍 pH e Acidez",
+                "content": "Acidificação significa que a água ficou com pH mais baixo. Isso ocorre pela absorção de CO2."
+            },
+            {
+                "title": "💡 Reação Química",
+                "content": "O ácido carbônico formado reage com o Carbonato de Cálcio, que é a 'matéria-prima' das conchas."
+            },
+            {
+                "title": "🛠️ Impacto Biológico",
+                "content": "Com as conchas se dissolvendo ou sem conseguir se formar, a vida marinha calcária fica seriamente ameaçada."
+            }
+        ]
+    },
+    {
+        "questionId": 13,
+        "steps": [
+            {
+                "title": "🔍 Conceito de Imaterial",
+                "content": "Patrimônio imaterial não é um objeto ou prédio, mas um saber, uma celebração ou uma prática cultural."
+            },
+            {
+                "title": "💡 Eliminação",
+                "content": "Cristo Redentor, Ouro Preto e Brasília são bens 'materiais' (concretos)."
+            },
+            {
+                "title": "🛠️ Identificação",
+                "content": "A Roda de Capoeira é uma expressão viva, um saber transmitido, logo, é patrimônio imaterial."
+            }
+        ]
+    },
+    {
+        "questionId": 14,
+        "steps": [
+            {
+                "title": "🔍 Potência em kW",
+                "content": "Para calcular em kWh, primeiro transforme 1.500 W em 1,5 kW (divida por 1.000)."
+            },
+            {
+                "title": "💡 Horas Mensais",
+                "content": "30 min por dia dá 15 horas no mês (30 dias x 0,5 hora)."
+            },
+            {
+                "title": "🛠️ Conta de Luz",
+                "content": "Energia = 1,5 kW x 15h = 22,5 kWh. Multiplicando pelo preço (0,80), temos R$ 18,00."
+            }
+        ]
+    },
+    {
+        "questionId": 15,
+        "steps": [
+            {
+                "title": "🔍 Regra de Ligação",
+                "content": "No DNA, as bases se atraem aos pares: Adenina com Timina (A-T) e Citosina com Guanina (C-G)."
+            },
+            {
+                "title": "💡 Tradução da Fita",
+                "content": "Dada a fita A-T-G-C-T-A, trocamos cada letra pelo seu par correspondente."
+            },
+            {
+                "title": "🛠️ Resultado Final",
+                "content": "A sequência complementar é T - A - C - G - A - T."
+            }
+        ]
+    },
+    {
+        "questionId": 16,
+        "steps": [
+            {
+                "title": "🔍 Localização do Lítio",
+                "content": "O 'ouro branco' (lítio) é extraído de salares em regiões de alta altitude nos Andes."
+            },
+            {
+                "title": "💡 Os Três Grande",
+                "content": "Essa região estratégica abrange partes da Argentina, da Bolívia e do Chile."
+            },
+            {
+                "title": "🛠️ Importância",
+                "content": "Como esses países formam um triângulo geográfico de depósitos, ganharam esse nome econômico."
+            }
+        ]
+    },
+    {
+        "questionId": 17,
+        "steps": [
+            {
+                "title": "🔍 Metáfora do Comer",
+                "content": "Oswald de Andrade não falava de canibalismo real, mas de 'comer' a cultura europeia."
+            },
+            {
+                "title": "💡 Digestão Cultural",
+                "content": "A ideia era absorver as técnicas modernas de fora e misturá-las com a nossa raíz indígena e brasileira."
+            },
+            {
+                "title": "🛠️ Originalidade",
+                "content": "O resultado não é cópia, mas uma arte nova e genuinamente nacional."
+            }
+        ]
+    },
+    {
+        "questionId": 18,
+        "steps": [
+            {
+                "title": "🔍 Geometria no Poste",
+                "content": "A escada inclinada forma a hipotenusa (10m) e o chão forma a base (6m)."
+            },
+            {
+                "title": "💡 Aplicando Pitágoras",
+                "content": "Alt² + 6² = 10². Isso vira: Alt² + 36 = 100."
+            },
+            {
+                "title": "🛠️ Raíz Quadrada",
+                "content": "Alt² = 64. A raíz quadrada de 64 é 8 metros de altura."
+            }
+        ]
+    },
+    {
+        "questionId": 19,
+        "steps": [
+            {
+                "title": "🔍 Repouso da Mistura",
+                "content": "Quando deixamos a sujeira 'descansar' na água, os flocos mais pesados descem sozinhos."
+            },
+            {
+                "title": "💡 Densidade e Gravidade",
+                "content": "A sujeira é mais densa que a água, por isso se deposita no fundo do tanque."
+            },
+            {
+                "title": "🛠️ Nome do Processo",
+                "content": "Esse ato de esperar a fase sólida assentar no fundo é chamado de Decantação."
+            }
+        ]
+    },
+    {
+        "questionId": 20,
+        "steps": [
+            {
+                "title": "🔍 Tempos Diferentes",
+                "content": "Cuidado! Não tire a média de 75 e 50. Calcule o tempo de cada parte: 150/75 = 2h e 150/50 = 3h."
+            },
+            {
+                "title": "💡 Viagem Total",
+                "content": "O ônibus demorou 5 horas totais (2 + 3) para percorrer os 300 km."
+            },
+            {
+                "title": "🛠️ Velocidade Real",
+                "content": "V = 300km / 5h. A velocidade média foi de 60 km/h."
+            }
+        ]
+    },
+    {
+        "questionId": 21,
+        "steps": [
+            {
+                "title": "🔍 Fluxo de Energia",
+                "content": "Note que o texto fala sobre toxinas que aumentam ao subir na cadeia alimentar (do plâncton para os humanos)."
+            },
+            {
+                "title": "💡 Acúmulo Progressivo",
+                "content": "Substâncias que o corpo não consegue eliminar vão se concentrando em quem está no topo da cadeia."
+            },
+            {
+                "title": "🛠️ Termo Técnico",
+                "content": "Esse acúmulo biológico progressivo é chamado de Magnificação Trófica ou Bioacumulação."
+            }
+        ]
+    },
+    {
+        "questionId": 22,
+        "steps": [
+            {
+                "title": "🔍 Primeiro Aumento",
+                "content": "R$ 30 + 10% (3,00) = R$ 33,00. Esse é o novo valor base."
+            },
+            {
+                "title": "💡 Segundo Aumento",
+                "content": "Agora calcule 20% sobre o novo valor: 20% de R$ 33 é R$ 6,60. Valor final: R$ 39,60."
+            },
+            {
+                "title": "🛠️ Porcentagem Real",
+                "content": "O aumento total foi de R$ 9,60. Ao comparar com os R$ 30 originais, chegamos a 32% (não 30!)."
+            }
+        ]
+    },
+    {
+        "questionId": 23,
+        "steps": [
+            {
+                "title": "🔍 Pistas da Flora",
+                "content": "Troncos tortuosos, cascas grossas e raízes profundas são adaptações clássicas contra o fogo e a seca."
+            },
+            {
+                "title": "💡 Hidrografia",
+                "content": "Sendo a 'caixa d'água' do Brasil e localizado no centro, esse bioma alimenta grandes bacias."
+            },
+            {
+                "title": "🛠️ Identificação",
+                "content": "Essas características definem o Cerrado, a savana brasileira."
+            }
+        ]
+    },
+    {
+        "questionId": 24,
+        "steps": [
+            {
+                "title": "🔍 Lei de Ohm",
+                "content": "Use a fórmula P (Potência) = U (Voltagem) x i (Corrente)."
+            },
+            {
+                "title": "💡 Aplicando os Valores",
+                "content": "i = 5.500 W / 220 V. Divida os valores para achar a amperagem."
+            },
+            {
+                "title": "🛠️ Corrente Mínima",
+                "content": "O resultado é 25 Amperes. O disjuntor deve aguentar pelo menos esse valor."
+            }
+        ]
+    },
+    {
+        "questionId": 25,
+        "steps": [
+            {
+                "title": "🔍 Controle Social",
+                "content": "O imperador dava comida (pão) e diversão (circo) para a plebe."
+            },
+            {
+                "title": "💡 Motivação Política",
+                "content": "O objetivo era desviar a atenção do povo dos problemas reais e das decisões do governo."
+            },
+            {
+                "title": "🛠️ Efeito",
+                "content": "Isso evitava revoltas e mantinha a massa sob controle através da 'alienação'."
+            }
+        ]
+    },
+    {
+        "title": "️ Nome da Família",
+        "content": "Neônio, Hélio e Argônio são os Gases Nobres (Família 18)."
+    },
+    {
+        "questionId": 27,
+        "steps": [
+            {
+                "title": "🔍 Reprodução",
+                "content": "O mosquito deposita seus ovos na borda de recipientes com água limpa e parada."
+            },
+            {
+                "title": "💡 Fases Iniciais",
+                "content": "Os ovos viram larvas que vivem e se alimentam exclusivamente dentro da água."
+            },
+            {
+                "title": "🛠️ Prevenção",
+                "content": "Tirar a água mata as larvas por dessecação e impede que o ciclo chegue à fase adulta."
+            }
+        ]
+    },
+    {
+        "questionId": 28,
+        "steps": [
+            {
+                "title": "🔍 Entendendo a 'Alucinação'",
+                "content": "Na IA, alucinar significa inventar um fato que não existe fingindo que ele é verdade."
+            },
+            {
+                "title": "💡 Risco da Ferramenta",
+                "content": "Se o usuário acredita cegamente no que a tela diz, ele acaba espalhando mentiras."
+            },
+            {
+                "title": "🛠️ Consequência",
+                "content": "O perigo direto é a propagação de Fake News por falta de verificação humana."
+            }
+        ]
+    },
+    {
+        "questionId": 29,
+        "steps": [
+            {
+                "title": "🔍 Proporção Inicial",
+                "content": "Temos 37g de açúcar para cada 350ml de refrigerante."
+            },
+            {
+                "title": "💡 Volume da Garrafa",
+                "content": "Pense: 2 litros são 2.000ml. Quantas vezes o 350ml 'cabe' nos 2.000ml?"
+            },
+            {
+                "title": "🛠️ Regra de Três",
+                "content": "Multiplique 2.000 por 37 e divida por 350. O resultado aproximado é 211 gramas."
+            }
+        ]
+    },
+    {
+        "questionId": 30,
+        "steps": [
+            {
+                "title": "🔍 Comparação Direta",
+                "content": "O slogan diz 'o carro é uma arma'. Ele não diz 'como uma arma'."
+            },
+            {
+                "title": "💡 Sentido Figurado",
+                "content": "A ideia é transferir a periculosidade da arma para o carro de forma instantânea."
+            },
+            {
+                "title": "🛠️ Nome da Figura",
+                "content": "Essa comparação mental direta, sem conectivos, é a definição clássica de Metáfora."
+            }
+        ]
+    },
+    {
+        "questionId": 31,
+        "steps": [
+            {
+                "title": "🔍 Cálculo da Economia Anual",
+                "content": "Sabendo que economiza R$ 250 por mês, multiplique por 12 para saber quanto economiza em um ano (R$ 3.000)."
+            },
+            {
+                "title": "💡 Payback (Retorno)",
+                "content": "Para saber em quanto tempo o investimento se paga, divida o custo total (R$ 12.000) pela economia anual (R$ 3.000)."
+            },
+            {
+                "title": "🛠️ Resultado",
+                "content": "12.000 / 3.000 = 4. Portanto, em 4 anos o sistema se paga completamente."
+            }
+        ]
+    },
+    {
+        "questionId": 32,
+        "steps": [
+            {
+                "title": "🔍 Identificando o Mecanismo",
+                "content": "O texto fala que o antibiótico elimina as sensíveis e deixa as que já tinham mutação vivas. Elas não 'aprendem' a ser resistentes; algumas já nascem assim."
+            },
+            {
+                "title": "💡 Variabilidade e Pressão",
+                "content": "O remédio apenas seleciona as 'fortes'. Esse processo de sobrevivência do mais apto sob uma pressão do meio é a definição de Seleção Natural."
+            },
+            {
+                "title": "🛠️ Conceito Darwinista",
+                "content": "Lembre-se: O meio seleciona a característica favorável preexistente, ele não a induz."
+            }
+        ]
+    },
+    {
+        "questionId": 33,
+        "steps": [
+            {
+                "title": "🔍 O que são Commodities?",
+                "content": "Produtos básicos (soja, ferro, petróleo) cujos preços variam conforme o humor do mercado mundial."
+            },
+            {
+                "title": "💡 Perigos da Dependência",
+                "content": "Se o preço cai lá fora, o país perde muito dinheiro. Além disso, trocar 'matéria-prima' por 'tecnologia cara' gera dívida técnica."
+            },
+            {
+                "title": "🛠️ Vulnerabilidade",
+                "content": "A economia fica vulnerável às oscilações de preços e depende de importações de alto valor agregado."
+            }
+        ]
+    },
+    {
+        "questionId": 34,
+        "steps": [
+            {
+                "title": "🔍 Viagem da Luz",
+                "content": "Para a internet ser rápida, a luz deve viajar dentro do vidro sem 'vazar' para fora das laterais."
+            },
+            {
+                "title": "💡 Ângulo Crítico",
+                "content": "A luz bate na 'parede' interna do cabo e volta, como se fosse um espelho, sem nunca atravessar para o exterior."
+            },
+            {
+                "title": "🛠️ Termo da Óptica",
+                "content": "Esse fenômeno de 'bate e volta' total dentro de um meio é chamado de Reflexão Interna Total."
+            }
+        ]
+    },
+    {
+        "questionId": 35,
+        "steps": [
+            {
+                "title": "🔍 Composição da Água",
+                "content": "A água é H₂O, ou seja, dois átomos de Hidrogênio e um de Oxigênio."
+            },
+            {
+                "title": "💡 Quebra da Molécula",
+                "content": "A eletrólise 'separa' os gases. Se um eletrodo solta o Hidrogênio (H₂), o que o outro pode soltar?"
+            },
+            {
+                "title": "🛠️ Gás Vital",
+                "content": "Só pode sobrar Oxigênio (O₂), que é justamente o gás essencial para a nossa respiração."
+            }
+        ]
+    },
+    {
+        "questionId": 36,
+        "steps": [
+            {
+                "title": "🔍 Contexto Histórico",
+                "content": "A CLT foi criada na Era Vargas (anos 40), época do início dos grandes direitos industriais urbanos."
+            },
+            {
+                "title": "💡 Análise das Opções",
+                "content": "Salário, férias e jornada fixa são pilares antigos. A carteira de trabalho também nasceu ali."
+            },
+            {
+                "title": "🛠️ O que é Moderno?",
+                "content": "O 'Home Office' é uma modalidade de trabalho do século XXI, que não existia e nem era tema nos anos 40."
+            }
+        ]
+    },
+    {
+        "questionId": 37,
+        "steps": [
+            {
+                "title": "🔍 Variação vs Erro",
+                "content": "Dizer 'a gente fomos' é uma variação da língua comum em contextos informais e populares."
+            },
+            {
+                "title": "💡 Julgamento de Valor",
+                "content": "Quando alguém discrimina ou ridiculariza o outro pelo jeito de falar, ela ignora que a língua é viva."
+            },
+            {
+                "title": "🛠️ Termo Específico",
+                "content": "Esse tipo de discriminação baseada na fala é tecnicamente chamado de Preconceito Linguístico."
+            }
+        ]
+    },
+    {
+        "questionId": 38,
+        "steps": [
+            {
+                "title": "🔍 Contraste Urbano",
+                "content": "Por que o centro da cidade é mais quente que um parque ou o interior na mesma hora do dia?"
+            },
+            {
+                "title": "💡 Asfalto e Concreto",
+                "content": "Esses materiais absorvem muito o calor do sol e não o liberam facilmente. A falta de árvores impede o resfriamento."
+            },
+            {
+                "title": "🛠️ Local de Calor",
+                "content": "Forma-se uma zona de temperatura elevada sobre a cidade, chamada de Ilha de Calor."
+            }
+        ]
+    },
+    {
+        "questionId": 39,
+        "steps": [
+            {
+                "title": "🔍 Excesso de Nutrientes",
+                "content": "Esgoto e fertilizantes agem como 'comida' para as algas, que crescem e viram um tapete verde na superfície."
+            },
+            {
+                "title": "💡 Falta de Oxigênio",
+                "content": "O tapete corta a luz, mata as plantas do fundo e a decomposição de tudo isso consome o oxigênio do lago."
+            },
+            {
+                "title": "🛠️ Nome Técnico",
+                "content": "Esse processo de 'morte por excesso de nutrientes' é a Eutrofização."
+            }
+        ]
+    },
+    {
+        "questionId": 40,
+        "steps": [
+            {
+                "title": "🔍 Geometria do Cilindro",
+                "content": "O volume de um cilindro é calculado por: Área da Base x Altura (V = π x r² x h)."
+            },
+            {
+                "title": "💡 Substituindo os Dados",
+                "content": "O raio (r) é 2, então r² = 4. O π é 3 e a altura (h) é 3. A conta fica: 3 x 4 x 3."
+            },
+            {
+                "title": "🛠️ Cálculo Final",
+                "content": "3 x 4 = 12. E 12 x 3 = 36. O reservatório comporta 36 m³ de água."
+            }
+        ]
+    },
+    {
+        "questionId": 41,
+        "steps": [
+            {
+                "title": "🔍 Linha do Tempo",
+                "content": "Lembre-se que dinossauros e humanos estão separados por um abismo de tempo de milhões de anos."
+            },
+            {
+                "title": "💡 Extinção em Massa",
+                "content": "Os dinossauros foram extintos há 65 milhões de anos, enquanto nossa espécie surgiu há apenas alguns milhões."
+            },
+            {
+                "title": "🛠️ Anacronismo",
+                "content": "Dizer que viveram juntos é um erro cronológico chamado anacronismo, pois nunca se encontraram."
+            }
+        ]
+    },
+    {
+        "questionId": 42,
+        "steps": [
+            {
+                "title": "🔍 Vínculo Social",
+                "content": "Note que o dinossauro segue o primeiro ser que viu (Piteco) como se fosse sua mãe."
+            },
+            {
+                "title": "💡 Fase Crítica",
+                "content": "Muitas espécies têm um aprendizado rápido e irreversível logo ao nascer para garantir a sobrevivência."
+            },
+            {
+                "title": "🛠️ Nome Técnico",
+                "content": "O nome desse fenômeno, famoso nos estudos de Konrad Lorenz, é Imprinting ou Estampagem."
+            }
+        ]
+    },
+    {
+        "questionId": 43,
+        "steps": [
+            {
+                "title": "🔍 Som Grafado",
+                "content": "'Plic' e 'Tric' são palavras usadas para representar sons de quebra ou estalo."
+            },
+            {
+                "title": "💡 Recurso Visual",
+                "content": "As Histórias em Quadrinhos dependem dessas palavras para 'fazer o leitor ouvir' a cena."
+            },
+            {
+                "title": "🛠️ Figura Correta",
+                "content": "A reprodução de sons naturais ou de objetos por meio de escrita é a Onomatopeia."
+            }
+        ]
+    },
+    {
+        "questionId": 44,
+        "steps": [
+            {
+                "title": "🔍 Conquista da Terra",
+                "content": "Para viver longe de lagos, o filhote precisa de um ambiente úmido para se desenvolver sem secar."
+            },
+            {
+                "title": "💡 Proteção e Nutrição",
+                "content": "O ovo com casca (amniótico) guarda líquido e nutrientes, permitindo o nascimento em terra firme."
+            },
+            {
+                "title": "🛠️ Vantagem Evolutiva",
+                "content": "Isso permitiu que os répteis conquistassem definitivamente o ambiente terrestre."
+            }
+        ]
+    },
+    {
+        "questionId": 45,
+        "steps": [
+            {
+                "title": "🔍 Contexto da Fala",
+                "content": "Piteco diz 'Seu bebê', mas ele não é o dono do filhote. Ele está apenas sendo amigável."
+            },
+            {
+                "title": "💡 Pronome vs Tratamento",
+                "content": "Em contextos coloquiais, a palavra 'Seu' funciona como uma forma curta de 'Senhor'."
+            },
+            {
+                "title": "🛠️ Identificação",
+                "content": "Trata-se de um pronome de tratamento coloquial e não de uma indicação de posse."
+            }
+        ]
+    },
+    {
+        "questionId": 46,
+        "steps": [
+            {
+                "title": "🔍 Tipo de Onda",
+                "content": "O som precisa de um meio material (como o ar) para vibrar. No vácuo, não há som."
+            },
+            {
+                "title": "💡 Direção da Vibração",
+                "content": "As partículas de ar vibram para frente e para trás, na mesma direção que o som viaja."
+            },
+            {
+                "title": "🛠️ Definição Física",
+                "content": "Por essas características, o som é uma onda mecânica e longitudinal."
+            }
+        ]
+    },
+    {
+        "questionId": 47,
+        "steps": [
+            {
+                "title": "🔍 Símbolos Visuais",
+                "content": "Corações flutuando são o código universal para expressar amor ou afeição na linguagem visual."
+            },
+            {
+                "title": "💡 Linhas de Movimento",
+                "content": "Os tracinhos perto dos pés são 'linhas cinéticas', usadas para indicar que o personagem está andando."
+            },
+            {
+                "title": "🛠️ Tradução da Cena",
+                "content": "O dinossauro gosta do Piteco e está caminhando atrás dele."
+            }
+        ]
+    },
+    {
+        "questionId": 48,
+        "steps": [
+            {
+                "title": "🔍 Dureza da Casca",
+                "content": "A casca protege o embrião, então precisa ser feita de um mineral resistente."
+            },
+            {
+                "title": "💡 Composição Mineral",
+                "content": "É a mesma substância que forma o calcário, as estalagmites e as conchas marinhas."
+            },
+            {
+                "title": "🛠️ Fórmula Chave",
+                "content": "O componente químico principal é o Carbonato de Cálcio (CaCO₃)."
+            }
+        ]
+    },
+    {
+        "questionId": 49,
+        "steps": [
+            {
+                "title": "🔍 Formato da Narrativa",
+                "content": "A história é contada em poucos quadros sequenciais com texto e imagem misturados."
+            },
+            {
+                "title": "💡 Objetivo e Publicação",
+                "content": "O objetivo é contar algo rápido, geralmente com humor, em jornais ou revistas."
+            },
+            {
+                "title": "🛠️ Gênero Têxtual",
+                "content": "Esse gênero curto e horizontal é chamado de Tirinha (ou Tira de Quadrinhos)."
+            }
+        ]
+    },
+    {
+        "questionId": 50,
+        "steps": [
+            {
+                "title": "🔍 Viagem no Tempo",
+                "content": "Para um registro durar milhões de anos, a matéria orgânica deve ser substituída por minerais."
+            },
+            {
+                "title": "💡 Preservação na Rocha",
+                "content": "O resto do ser vivo acaba virando pedra dentro das camadas de sedimentos da Terra."
+            },
+            {
+                "title": "🛠️ Nome do Processo",
+                "content": "Esse conjunto de processos que 'imortaliza' vestígios de vida antiga é a Fossilização."
+            }
+        ]
+    },
+    {
+        "questionId": 51,
+        "steps": [
+            {
+                "title": "🔍 Volume do Prisma",
+                "content": "Primeiro, calcule o volume multiplicando comprimento x largura x altura: 2m x 0,24m x 0,16m = 0,0768 m³."
+            },
+            {
+                "title": "💡 Densidade e Massa",
+                "content": "Massa é volume vezes densidade. Multiplique 0,0768 pelo peso do eucalipto (800 kg/m³)."
+            },
+            {
+                "title": "🛠️ Resultado",
+                "content": "O resultado da conta é 61,44 kg por dormente."
+            }
+        ]
+    },
+    {
+        "questionId": 52,
+        "steps": [
+            {
+                "title": "🔍 História e Economia",
+                "content": "Pense em qual produto precisava de transporte rápido e em massa do interior de SP para o mar no século XIX."
+            },
+            {
+                "title": "💡 Expansão Paulista",
+                "content": "O desenvolvimento de cidades como Jundiaí e Campinas girou em torno de um único motor econômico exportador."
+            },
+            {
+                "title": "🛠️ O Ciclo",
+                "content": "As ferrovias foram as artérias do Ciclo do Café no Brasil."
+            }
+        ]
+    },
+    {
+        "questionId": 53,
+        "steps": [
+            {
+                "title": "🔍 Calor e Metal",
+                "content": "O aço dos trilhos esquenta muito sob o sol e com o atrito das rodas. Tudo que esquenta tende a aumentar de tamanho."
+            },
+            {
+                "title": "💡 O Perigo",
+                "content": "Se as barras estivessem coladas, ao 'crescer', elas se empurrariam e entortariam a linha inteira."
+            },
+            {
+                "title": "🛠️ Fenômeno Físico",
+                "content": "A fresta existe para acomodar a 'Dilatação Linear' do metal sem causar acidentes."
+            }
+        ]
+    },
+    {
+        "questionId": 54,
+        "steps": [
+            {
+                "title": "🔍 Funções da Planta",
+                "content": "A madeira do tronco precisa carregar água (seiva bruta) e também dar força para a árvore não cair."
+            },
+            {
+                "title": "💡 Tecido Morto",
+                "content": "O miolo do tronco é formado por canais que perderam o citoplasma e ficaram apenas com a 'casca' dura de lignina."
+            },
+            {
+                "title": "🛠️ Nome Botânico",
+                "content": "Esse tecido, essencial para a indústria da madeira, é o Xilema Secundário (ou lenho)."
+            }
+        ]
+    },
+    {
+        "questionId": 55,
+        "steps": [
+            {
+                "title": "🔍 Área e Pressão",
+                "content": "A pressão é a força dividida pela área onde ela encosta. Quanto mais fino o apoio, maior a pressão."
+            },
+            {
+                "title": "💡 Função do Dormente",
+                "content": "O trilho é fino, mas o dormente é largo. Ele pega o peso do trem e 'espalha' por uma área maior no chão de pedras."
+            },
+            {
+                "title": "🛠️ Consequência",
+                "content": "Ao aumentar a área, a pressão diminui, evitando que o trilho afunde ou desloque as pedras."
+            }
+        ]
+    },
+    {
+        "questionId": 56,
+        "steps": [
+            {
+                "title": "🔍 Unidades",
+                "content": "O trajeto tem 15 km, que equivalem a 15.000 metros totais."
+            },
+            {
+                "title": "💡 Lógica de Espaçamento",
+                "content": "Se você coloca um a cada 60 cm (0,6 m), basta dividir o total pelo tamanho de cada 'passo'."
+            },
+            {
+                "title": "🛠️ Quantidade",
+                "content": "15.000 dividido por 0,6 resulta em 25.000 dormentes necessários."
+            }
+        ]
+    },
+    {
+        "questionId": 57,
+        "steps": [
+            {
+                "title": "🔍 Ferro + Carbono",
+                "content": "O trilho não é ferro puro (que seria mole e enferrujaria fácil). Ele é uma mistura trabalhada para ser dura."
+            },
+            {
+                "title": "💡 Mistura Sólida",
+                "content": "Quando misturamos metais (ou metal com carbono) para ganhar propriedades melhores, temos uma categoria específica."
+            },
+            {
+                "title": "🛠️ Classificação",
+                "content": "O Aço é o exemplo mais clássico de uma Liga Metálica."
+            }
+        ]
+    },
+    {
+        "questionId": 58,
+        "steps": [
+            {
+                "title": "🔍 Faces do Prisma",
+                "content": "Imagine uma caixa com 6 lados. Você precisa calcular a área de cada par de lados (topo/fundo, frente/atrás, laterais)."
+            },
+            {
+                "title": "💡 Áreas Parciais",
+                "content": "Calcule: (2 x 0,24), (2 x 0,16) e (0,24 x 0,16). Some tudo e multiplique por 2."
+            },
+            {
+                "title": "🛠️ Resultado Total",
+                "content": "A soma das áreas de todas as superfícies resulta em, aproximadamente, 1,68 m²."
+            }
+        ]
+    },
+    {
+        "questionId": 59,
+        "steps": [
+            {
+                "title": "🔍 Sustentabilidade",
+                "content": "Cortar árvores nativas para fazer ferrovia é um problema ambiental do passado. Precisamos de 'lixo' útil."
+            },
+            {
+                "title": "💡 Tecnologia Verde",
+                "content": "Hoje é possível derreter plásticos e resíduos e transformá-los em vigas tão fortes quanto a madeira."
+            },
+            {
+                "title": "🛠️ Material Futurista",
+                "content": "O uso de Polímeros (Plástico Reciclado) é a grande alternativa ecológica para os dormentes."
+            }
+        ]
+    },
+    {
+        "questionId": 60,
+        "steps": [
+            {
+                "title": "🔍 Escala 1:50",
+                "content": "Isso significa que a maquete é 50 vezes menor que o objeto de verdade."
+            },
+            {
+                "title": "💡 De Metro para Centímetro",
+                "content": "O dormente real tem 2 metros, ou seja, 200 centímetros."
+            },
+            {
+                "title": "🛠️ Cálculo da Miniatura",
+                "content": "Divida o real pelo fator da escala: 200 cm / 50 = 4 cm de comprimento na maquete."
+            }
+        ]
+    },
+    {
+        "questionId": 61,
+        "steps": [
+            {
+                "title": "🔍 Simulação de Valor",
+                "content": "Suponha R$ 100. Com aumento de 20%, vai para R$ 120."
+            },
+            {
+                "title": "💡 Desconto sobre o Novo",
+                "content": "Tirar 20% de R$ 120 é o mesmo que multiplicar por 0,8. Resultado: R$ 96."
+            },
+            {
+                "title": "🛠️ Comparação Final",
+                "content": "Se era R$ 100 e agora é R$ 96, o preço final ficou 4% mais barato que o original."
+            }
+        ]
+    },
+    {
+        "questionId": 62,
+        "steps": [
+            {
+                "title": "🔍 Concentração",
+                "content": "O sal do tempero deixa o lado de fora da folha muito mais concentrado que o lado de dentro."
+            },
+            {
+                "title": "💡 Murchamento",
+                "content": "Para tentar equilibrar, a água sai da alface e vai para a tigela, fazendo a planta murchar."
+            },
+            {
+                "title": "🛠️ Nome do Fenômeno",
+                "content": "Esse transporte de água através da membrana é a Osmose."
+            }
+        ]
+    },
+    {
+        "questionId": 63,
+        "steps": [
+            {
+                "title": "🔍 Represa",
+                "content": "A água parada no alto possui Energia Potencial Gravitacional acumulada."
+            },
+            {
+                "title": "💡 Queda",
+                "content": "Ao cair e mover as turbinas, essa energia vira Energia Cinética (movimento)."
+            },
+            {
+                "title": "🛠️ Conversão",
+                "content": "O gerador transforma o movimento em Energia Elétrica para nossas casas."
+            }
+        ]
+    },
+    {
+        "questionId": 64,
+        "steps": [
+            {
+                "title": "🔍 Ebulição",
+                "content": "Diferentes partes do petróleo fervem em temperaturas diferentes."
+            },
+            {
+                "title": "💡 Torre de Refino",
+                "content": "Os vapores sobem na torre e vão condensando conforme esfriam, separando as partes (frações)."
+            },
+            {
+                "title": "🛠️ Método Técnico",
+                "content": "Para separar líquidos misturados como esses, usa-se a Destilação Fracionada."
+            }
+        ]
+    },
+    {
+        "questionId": 65,
+        "steps": [
+            {
+                "title": "🔍 Sentimento",
+                "content": "O autor, longe de casa, sente uma saudade profunda da pátria (exílio)."
+            },
+            {
+                "title": "💡 Exaltação",
+                "content": "Ele descreve a natureza do Brasil como perfeita e superior a qualquer outra."
+            },
+            {
+                "title": "🛠️ Fase Romântica",
+                "content": "Essa idealização patriótica é típica do Nacionalismo Ufanista da 1ª Geração."
+            }
+        ]
+    },
+    {
+        "questionId": 66,
+        "steps": [
+            {
+                "title": "🔍 Contexto",
+                "content": "Na Revolução Industrial, os operários viam as máquinas como 'inimigas' que tiravam seus empregos."
+            },
+            {
+                "title": "💡 Reação",
+                "content": "Em vez de greves de braços cruzados, eles decidiram atacar diretamente a tecnologia."
+            },
+            {
+                "title": "🛠️ Ação Prática",
+                "content": "O movimento dos 'quebradores de máquinas' é conhecido como Ludismo."
+            }
+        ]
+    },
+    {
+        "questionId": 67,
+        "steps": [
+            {
+                "title": "🔍 Entendendo a Escala",
+                "content": "1:500.000 significa que 1 cm no papel vale 500.000 cm na terra (ou seja, 5 km)."
+            },
+            {
+                "title": "💡 Multiplicação",
+                "content": "Se a régua marcou 8 cm, basta fazer 8 x 5 km."
+            },
+            {
+                "title": "🛠️ Resultado em km",
+                "content": "A distância real em linha reta entre as cidades é de 40 quilômetros."
+            }
+        ]
+    },
+    {
+        "questionId": 68,
+        "steps": [
+            {
+                "title": "🔍 Sensores e Conexão",
+                "content": "Imagine geladeiras e relógios enviando informações sozinhos pela rede."
+            },
+            {
+                "title": "💡 Automação",
+                "content": "Os objetos trocam dados entre si para facilitar a vida sem que você precise mandar."
+            },
+            {
+                "title": "🛠️ Nome do Termo",
+                "content": "Esse ecossistema conectado é a Internet das Coisas (IoT)."
+            }
+        ]
+    },
+    {
+        "questionId": 69,
+        "steps": [
+            {
+                "title": "🔍 Aceleração",
+                "content": "O avião ganha 3 metros por segundo de velocidade a cada segundo que passa."
+            },
+            {
+                "title": "💡 Conta Simples",
+                "content": "Após 30 segundos, basta multiplicar a aceleração pelo tempo total."
+            },
+            {
+                "title": "🛠️ Velocidade Final",
+                "content": "3 x 30 = 90. No momento da decolagem, ele está a 90 m/s."
+            }
+        ]
+    },
+    {
+        "questionId": 70,
+        "steps": [
+            {
+                "title": "🔍 Homem",
+                "content": "A interrupção dos canais que levam os espermatozoides é a Vasectomia."
+            },
+            {
+                "title": "💡 Mulher",
+                "content": "A interrupção das tubas por onde passa o óvulo é a Laqueadura."
+            },
+            {
+                "title": "🛠️ Objetivo",
+                "content": "Ambos são métodos cirúrgicos definitivos de esterilização ou contracepção."
+            }
+        ]
+    },
+    {
+        "questionId": 71,
+        "steps": [
+            {
+                "title": "🔍 Preço por Grama",
+                "content": "Antes: R$ 5,00 por 100g = R$ 0,05/g. Depois: R$ 5,00 por 80g = R$ 0,0625/g."
+            },
+            {
+                "title": "💡 Variação Real",
+                "content": "Para achar o aumento, divida o novo pelo antigo: 0,0625 / 0,05 = 1,25."
+            },
+            {
+                "title": "🛠️ Percentual",
+                "content": "Isso significa que o chocolate ficou 25% mais caro para o seu bolso (Reduflação)."
+            }
+        ]
+    },
+    {
+        "questionId": 72,
+        "steps": [
+            {
+                "title": "🔍 Mensageiro",
+                "content": "O RNA mensageiro é como um 'bilhete' que sai do DNA (o manual) e vai para a fábrica da célula."
+            },
+            {
+                "title": "💡 Fábrica de Proteína",
+                "content": "Os Ribossomos leem esse bilhete para construir as proteínas de que o corpo precisa."
+            },
+            {
+                "title": "🛠️ Ação da Vacina",
+                "content": "A vacina envia esse código para que nossas próprias células fabriquem a proteína da 'capa' do vírus para o sistema imune aprender."
+            }
+        ]
+    },
+    {
+        "questionId": 73,
+        "steps": [
+            {
+                "title": "🔍 Ondas Opostas",
+                "content": "O fone cria uma onda de som que é o 'espelho' do ruído lá de fora."
+            },
+            {
+                "title": "💡 Encontro de Fases",
+                "content": "Quando a crista de uma onda encontra o vale de outra, elas se anulam mutuamente."
+            },
+            {
+                "title": "🛠️ Nome Físico",
+                "content": "Esse fenômeno de silenciar um som usando outro som oposto é a Interferência Destrutiva."
+            }
+        ]
+    },
+    {
+        "questionId": 74,
+        "steps": [
+            {
+                "title": "🔍 SP contra Vargas",
+                "content": "Em 1932, São Paulo se revoltou contra o governo autoritário da época."
+            },
+            {
+                "title": "💡 Pedido de Lei",
+                "content": "O povo queria que o Brasil voltasse a ter uma Constituição e democracia."
+            },
+            {
+                "title": "🛠️ O Conflito",
+                "content": "Esse evento é a Revolução Constitucionalista, celebrada no feriado de 9 de julho."
+            }
+        ]
+    },
+    {
+        "questionId": 75,
+        "steps": [
+            {
+                "title": "🔍 Lantanídeos",
+                "content": "A maioria desses elementos está naquelas linhas separadas 'fora' do corpo principal da tabela."
+            },
+            {
+                "title": "💡 Localização",
+                "content": "Eles pertencem ao bloco f da Tabela Periódica, situados no Período 6."
+            },
+            {
+                "title": "🛠️ Classificação",
+                "content": "Pela sua posição, são chamados de Metais de Transição Interna."
+            }
+        ]
+    },
+    {
+        "questionId": 76,
+        "steps": [
+            {
+                "title": "🔍 Montando a Função",
+                "content": "O ganho (G) é igual ao fixo (20) mais o variável (1,50 por km). Logo, G = 1,50K + 20."
+            },
+            {
+                "title": "💡 Resolvendo a Conta",
+                "content": "Para ganhar 170: 170 = 1,50K + 20. Subtraindo o fixo: 150 = 1,50K."
+            },
+            {
+                "title": "🛠️ Resultado",
+                "content": "K = 150 / 1,50 = 100. O motorista precisa rodar 100 km."
+            }
+        ]
+    },
+    {
+        "questionId": 77,
+        "steps": [
+            {
+                "title": "🔍 Sul Global",
+                "content": "O BRICS une países que não fazem parte do eixo tradicional de poder (EUA/Europa)."
+            },
+            {
+                "title": "💡 Objetivo Político",
+                "content": "Eles querem que o mundo tenha mais centros de poder e menos dependência do dólar."
+            },
+            {
+                "title": "🛠️ Geopolítica",
+                "content": "A união serve para contrapor a influência econômica do G7 e das potências ocidentais."
+            }
+        ]
+    },
+    {
+        "questionId": 78,
+        "steps": [
+            {
+                "title": "🔍 Calor é Perda",
+                "content": "Em física, o calor que sai do motor é energia que não serviu para empurrar o carro."
+            },
+            {
+                "title": "💡 Impossibilidade",
+                "content": "É impossível criar uma máquina que transforme 100% de calor em movimento."
+            },
+            {
+                "title": "🛠️ Lei da Natureza",
+                "content": "Essa desordem e perda inevitável de energia é explicada pela 2ª Lei da Termodinâmica (Entropia)."
+            }
+        ]
+    },
+    {
+        "questionId": 79,
+        "steps": [
+            {
+                "title": "🔍 Linguagem Nova",
+                "content": "O poema usa frases do dia a dia, como se fosse uma conversa no consultório."
+            },
+            {
+                "title": "💡 Humor e Realidade",
+                "content": "O autor brinca com a própria doença grave usando ironia ('tocar um tango')."
+            },
+            {
+                "title": "🛠️ Estilo Modernista",
+                "content": "Essas rupturas com a poesia antiga são marcas da 1ª Fase do Modernismo no Brasil."
+            }
+        ]
+    },
+    {
+        "questionId": 80,
+        "steps": [
+            {
+                "title": "🔍 Entrega de Carga",
+                "content": "Imagine o sangue como uma rede de caminhões levando oxigênio e comida para os músculos."
+            },
+            {
+                "title": "💡 O Motor",
+                "content": "O coração é a bomba que faz esse sistema todo circular sem parar."
+            },
+            {
+                "title": "🛠️ Nome do Sistema",
+                "content": "O responsável por essa logística vital é o Sistema Cardiovascular (ou Circulatório)."
+            }
+        ]
+    },
+    {
+        "questionId": 81,
+        "steps": [
+            {
+                "title": "🔍 Nutrientes do Solo",
+                "content": "Plantas carnívoras fazem fotossíntese (produzem açúcar), mas o solo onde vivem é pobre em 'comida mineral'."
+            },
+            {
+                "title": "💡 Suplemento Alimentar",
+                "content": "Elas comem insetos para conseguir Nitrogênio e Fósforo, que não acham na terra ácida."
+            },
+            {
+                "title": "🛠️ Adaptação",
+                "content": "Capturar bichos foi a solução evolutiva para sobreviver em solos pobres de nutrientes."
+            }
+        ]
+    },
+    {
+        "questionId": 82,
+        "steps": [
+            {
+                "title": "🔍 Rosa e Cravo",
+                "content": "A planta fala de uma briga entre uma Rosa e um Cravo debaixo de uma sacada."
+            },
+            {
+                "title": "💡 Memória de Infância",
+                "content": "Esses elementos são a letra exata de uma das cantigas de roda mais famosas do Brasil."
+            },
+            {
+                "title": "🛠️ Intertextualidade",
+                "content": "O humor vem de tratar os personagens da música infantil como se fossem pessoas reais em um drama de fofoca."
+            }
+        ]
+    },
+    {
+        "questionId": 83,
+        "steps": [
+            {
+                "title": "🔍 Ditado Popular",
+                "content": "'Em boca fechada não entra mosca' costuma significar 'fique calado para não ter problemas'."
+            },
+            {
+                "title": "💡 Sentido Próprio",
+                "content": "Para a planta carnívora, se a boca (armadilha) ficar fechada, ela literalmente não come e morre de fome."
+            },
+            {
+                "title": "🛠️ Mudança de Sentido",
+                "content": "O humor nasce ao trocar o sentido figurado (conotativo) pelo sentido literal (denotativo)."
+            }
+        ]
+    },
+    {
+        "questionId": 84,
+        "steps": [
+            {
+                "title": "🔍 Produtor x Consumidor",
+                "content": "A planta é sempre produtora porque faz fotossíntese."
+            },
+            {
+                "title": "💡 Na Teia Alimentar",
+                "content": "Ao comer um inseto (que é o consumidor primário), a planta 'sobe um degrau' na cadeia."
+            },
+            {
+                "title": "🛠️ Nível Trófico",
+                "content": "Nesse momento específico de predação, ela atua como Consumidor Secundário."
+            }
+        ]
+    },
+    {
+        "questionId": 85,
+        "steps": [
+            {
+                "title": "🔍 Gírias e Reduções",
+                "content": "Note palavras como 'boy lixo', 'tava' e 'pra'."
+            },
+            {
+                "title": "💡 Fala do Dia a Dia",
+                "content": "Esse jeito de falar é típico de conversas relaxadas entre amigos, sem preocupação com regras rígidas."
+            },
+            {
+                "title": "🛠️ Variante",
+                "content": "É a linguagem Informal ou Coloquial, que prioriza a comunicação rápida e a oralidade."
+            }
+        ]
+    },
+    {
+        "questionId": 86,
+        "steps": [
+            {
+                "title": "🔍 Movimento sem Músculo",
+                "content": "A planta fecha a 'boca' muito rápido, mas ela não tem nervos ou músculos como nós."
+            },
+            {
+                "title": "💡 Pressão de Água",
+                "content": "O toque do inseto faz as células mudarem a pressão interna (água) de repente, fechando a armadilha."
+            },
+            {
+                "title": "🛠️ Nome Botânico",
+                "content": "Esse tipo de movimento que depende de um estímulo (toque), mas não da direção dele, é o Nastismo (Tigmonastia)."
+            }
+        ]
+    },
+    {
+        "questionId": 87,
+        "steps": [
+            {
+                "title": "🔍 Palavra Difícil",
+                "content": "A planta diz que sentiu 'ojeriza' pelo Cravo."
+            },
+            {
+                "title": "💡 Sentimento Negativo",
+                "content": "Pelo contexto de 'boy lixo' e 'fazer sofrer', sabemos que não é algo bom."
+            },
+            {
+                "title": "🛠️ Sinônimo",
+                "content": "Ojeriza significa ter nojo, aversão ou uma antipatia muito forte por alguém."
+            }
+        ]
+    },
+    {
+        "questionId": 88,
+        "steps": [
+            {
+                "title": "🔍 Líquido Digestivo",
+                "content": "Para 'derreter' a mosca, a planta solta um caldo especial."
+            },
+            {
+                "title": "💡 Tesouras Químicas",
+                "content": "Esse caldo tem substâncias que cortam as proteínas do bicho em pedaços minúsculos que a planta absorve."
+            },
+            {
+                "title": "🛠️ Termo Chave",
+                "content": "Esses catalisadores naturais que aceleram a digestão são as Enzimas."
+            }
+        ]
+    },
+    {
+        "questionId": 89,
+        "steps": [
+            {
+                "title": "🔍 Flores e Frutos",
+                "content": "A tirinha mostra flores nas plantas que conversam."
+            },
+            {
+                "title": "💡 Grupos de Plantas",
+                "content": "Nem toda planta tem flor (como samambaias) ou fruto (como pinheiros)."
+            },
+            {
+                "title": "🛠️ Classificação Final",
+                "content": "O único grupo que 'inventou' a flor e o fruto para proteger a semente é o das Angiospermas."
+            }
+        ]
+    },
+    {
+        "questionId": 90,
+        "steps": [
+            {
+                "title": "🔍 Tu e Você",
+                "content": "Na fala comum dizemos 'tu conhece', mas as regras da gramática são diferentes."
+            },
+            {
+                "title": "💡 Conjugação correta",
+                "content": "Para o pronome 'Tu', o verbo quase sempre termina em 's'."
+            },
+            {
+                "title": "🛠️ Norma Culta",
+                "content": "O correto seria dizer 'Tu me conheces' para concordar com a pessoa que fala."
+            }
+        ]
+    },
+    {
+        "questionId": 91,
+        "steps": [
+            {
+                "title": "🔍 Processo Natural",
+                "content": "O Efeito Estufa é fundamental para manter a Terra aquecida, mas o excesso de poluentes o torna perigoso."
+            },
+            {
+                "title": "💡 Ciclo do Carbono",
+                "content": "A queima de florestas ou solo seco libera CO2, que prende o calor do Sol na atmosfera."
+            },
+            {
+                "title": "🛠️ Consequência",
+                "content": "Esse acúmulo excessivo leva ao Aquecimento Global e a mudanças no clima do planeta."
+            }
+        ]
+    },
+    {
+        "questionId": 92,
+        "steps": [
+            {
+                "title": "🔍 Lados Reais",
+                "content": "Na escala 1:200, 1 cm vale 2 metros. Logo, 10 cm = 20 m e 15 cm = 30 m."
+            },
+            {
+                "title": "💡 Cálculo de Área",
+                "content": "A área de um retângulo é largura vezes comprimento: 20 m x 30 m."
+            },
+            {
+                "title": "🛠️ Resultado Final",
+                "content": "A área real da praça é de 600 metros quadrados (m²)."
+            }
+        ]
+    },
+    {
+        "questionId": 93,
+        "steps": [
+            {
+                "title": "🔍 Mesma Família",
+                "content": "Sódio (Na) e Potássio (K) estão no Grupo 1 (coluna mais à esquerda) da tabela."
+            },
+            {
+                "title": "💡 Propriedades",
+                "content": "Elementos do mesmo grupo possuem reações químicas semelhantes e o mesmo número de elétrons na última camada."
+            },
+            {
+                "title": "🛠️ Nome do Grupo",
+                "content": "Essa família de metais extremamente reativos é chamada de Metais Alcalinos."
+            }
+        ]
+    },
+    {
+        "questionId": 94,
+        "steps": [
+            {
+                "title": "🔍 Crise de 1929",
+                "content": "Com a crise mundial, ficou difícil importar produtos. Vargas decidiu que o Brasil deveria produzi-los."
+            },
+            {
+                "title": "💡 Indústria de Base",
+                "content": "O governo investiu em aço (CSN) e petróleo para dar suporte às outras fábricas."
+            },
+            {
+                "title": "🛠️ Modelo Econômico",
+                "content": "Essa estratégia de trocar o produto estrangeiro pelo nacional é a Substituição de Importações."
+            }
+        ]
+    },
+    {
+        "questionId": 95,
+        "steps": [
+            {
+                "title": "🔍 Entrada na Gota",
+                "content": "A luz do sol muda de do ar para a água, sofrendo Refração e se dividindo em cores."
+            },
+            {
+                "title": "💡 Parede Interna",
+                "content": "Lá dentro, ela bate na parede da gota e volta (como um espelho), sofrendo Reflexão Total."
+            },
+            {
+                "title": "🛠️ Saída",
+                "content": "Ao sair da gota, ela refrata de novo, formando o arco colorido que vemos no céu."
+            }
+        ]
+    },
+    {
+        "questionId": 96,
+        "steps": [
+            {
+                "title": "🔍 Origem do Fruto",
+                "content": "Na botânica, o fruto é 'quase sempre' o resultado da flor que deu certo."
+            },
+            {
+                "title": "💡 Parte Específica",
+                "content": "A semente vem do óvulo, mas a 'carne' do fruto (a parte que comemos) vem de uma bolsa específica."
+            },
+            {
+                "title": "🛠️ Conclusão",
+                "content": "O fruto verdadeiro é, por definição, o Ovário da flor amadurecido após a fecundação."
+            }
+        ]
+    },
+    {
+        "questionId": 97,
+        "steps": [
+            {
+                "title": "🔍 Regionalismo",
+                "content": "Na fase de 1930, os autores queriam mostrar o Brasil real, sem enfeites, principalmente o Nordeste."
+            },
+            {
+                "title": "💡 Personagens",
+                "content": "Fabiano é o retrato do homem 'embrutecido' pela miséria e pela falta de direitos."
+            },
+            {
+                "title": "🛠️ Objetivo Literário",
+                "content": "A obra foca na Denúncia Social e na luta contra a exploração e a seca desumana."
+            }
+        ]
+    },
+    {
+        "questionId": 98,
+        "steps": [
+            {
+                "title": "🔍 Açúcar vs Adoçante",
+                "content": "O refri normal tem quase 40g de açúcar pesado. O Zero tem miligramas de um pó leve."
+            },
+            {
+                "title": "💡 Massa no Volume",
+                "content": "Se você coloca muita massa (açúcar) no mesmo espaço (latinha), a mistura fica mais 'densa'."
+            },
+            {
+                "title": "🛠️ Explicação Física",
+                "content": "A densidade maior do normal se deve à grande quantidade de açúcar dissolvido comparada ao Zero."
+            }
+        ]
+    },
+    {
+        "questionId": 99,
+        "steps": [
+            {
+                "title": "🔍 Circuito Aberto",
+                "content": "Para a eletricidade fluir e dar choque, ela precisa de um caminho do 'mais' para o 'menos'."
+            },
+            {
+                "title": "💡 Pontos de Contato",
+                "content": "O pássaro toca um fio só. Suas duas patas estão no mesmo potêncial elétrico (tensão)."
+            },
+            {
+                "title": "🛠️ Razão do Choque",
+                "content": "Sem Diferença de Potencial (ddp) entre as patas, a corrente não atravessa o corpo do animal."
+            }
+        ]
+    },
+    {
+        "questionId": 100,
+        "steps": [
+            {
+                "title": "🔍 Manobra de Preço",
+                "content": "Subir de 2.000 para 2.500 é um aumento de R$ 500 (que é 25% do original)."
+            },
+            {
+                "title": "💡 O Desconto",
+                "content": "Tirar 20% de 2.500 também dá exatos R$ 500."
+            },
+            {
+                "title": "🛠️ Verdadeiro Valor",
+                "content": "2.500 - 500 = 2.000. O preço 'promocional' é o mesmo de antes, sem desconto real."
+            }
+        ]
+    },
+    {
+        "questionId": 101,
+        "steps": [
+            {
+                "title": "🔍 O Vírus HPV",
+                "content": "Este vírus é transmitido principalmente por contato sexual e pode causar cânceres silenciosos anos depois."
+            },
+            {
+                "title": "💡 Prevenção Blindada",
+                "content": "A vacina cria anticorpos que impedem o vírus de entrar nas células, agindo antes de qualquer contato."
+            },
+            {
+                "title": "🛠️ Benefício a Longo Prazo",
+                "content": "Vacinar adolescentes reduz drasticamente a chance de desenvolverem câncer de colo de útero no futuro."
+            }
+        ]
+    },
+    {
+        "questionId": 102,
+        "steps": [
+            {
+                "title": "🔍 Solo Selado",
+                "content": "Asfalto e cimento são como capas de chuva para a terra: eles impedem que a água entre no chão."
+            },
+            {
+                "title": "💡 Caminho da Água",
+                "content": "Sem conseguir infiltrar, a água corre toda pela superfície com muita força e velocidade."
+            },
+            {
+                "title": "🛠️ Resultado",
+                "content": "BUEIROS e rios ficam sobrecarregados em poucos minutos, causando as enchentes urbanas."
+            }
+        ]
+    },
+    {
+        "questionId": 103,
+        "steps": [
+            {
+                "title": "🔍 Poluição no Ar",
+                "content": "A queima de diesel solta gases de enxofre que 'se misturam' com a umidade das nuvens."
+            },
+            {
+                "title": "💡 Reação Química",
+                "content": "Essa mistura cria ácidos fortes que caem junto com a chuva comum."
+            },
+            {
+                "title": "🛠️ Impacto Ambiental",
+                "content": "A Chuva Ácida 'queima' folhas, mata peixes em lagos e até mói estátuas de pedra aos poucos."
+            }
+        ]
+    },
+    {
+        "questionId": 104,
+        "steps": [
+            {
+                "title": "🔍 Curva Forçada",
+                "content": "Para qualquer objeto girar, algo precisa 'puxar' ele sempre em direção ao centro."
+            },
+            {
+                "title": "💡 A Luta contra a Tangente",
+                "content": "Sem essa força, o brinquedo sairia voando em linha reta (pela tangente)."
+            },
+            {
+                "title": "🛠️ Nome da Força",
+                "content": "Essa força resultante que aponta para o meio da curva é a Força Centrípeta."
+            }
+        ]
+    },
+    {
+        "questionId": 105,
+        "steps": [
+            {
+                "title": "🔍 Objetos Falantes",
+                "content": "Imagine sua geladeira ou seu ar-condicionado trocando mensagens pela web."
+            },
+            {
+                "title": "💡 Rede de Coisas",
+                "content": "Não são apenas computadores e celulares conectados, mas objetos do cotidiano."
+            },
+            {
+                "title": "🛠️ Sigla",
+                "content": "Esse ecossistema é chamado de IoT (Internet of Things - Internet das Coisas)."
+            }
+        ]
+    },
+    {
+        "questionId": 106,
+        "steps": [
+            {
+                "title": "🔍 Centro de Comando",
+                "content": "O DNA é o manual de instruções da vida e fica bem guardado na parte mais 'segura' da célula."
+            },
+            {
+                "title": "💡 Organização",
+                "content": "Lá dentro, ele se enrola em proteínas para formar os cromossomos."
+            },
+            {
+                "title": "🛠️ Localização",
+                "content": "A estrutura que protege e abriga esse material genético é o Núcleo celular."
+            }
+        ]
+    },
+    {
+        "questionId": 107,
+        "steps": [
+            {
+                "title": "🔍 Texto de Venda",
+                "content": "O texto é curto, direto ao ponto e quer vender um produto específico."
+            },
+            {
+                "title": "💡 Estrutura",
+                "content": "Geralmente tem descrição, preço e contato, tudo em poucas linhas."
+            },
+            {
+                "title": "🛠️ Gênero",
+                "content": "Esse tipo de anúncio de jornais e sites é o Classificado."
+            }
+        ]
+    },
+    {
+        "questionId": 108,
+        "steps": [
+            {
+                "title": "🔍 Proporção",
+                "content": "Se 30g dão 140 kcal, precisamos saber quanto 150g (o pacote todo) dá."
+            },
+            {
+                "title": "💡 Multiplicador",
+                "content": "150g é exatamente 5 vezes maior que 30g (30 x 5 = 150)."
+            },
+            {
+                "title": "🛠️ Resultado",
+                "content": "Basta multiplicar as calorias da porção por 5: 140 x 5 = 700 kcal."
+            }
+        ]
+    },
+    {
+        "questionId": 109,
+        "steps": [
+            {
+                "title": "🔍 Mundo Bipolar",
+                "content": "Após 1945, o mundo se dividiu entre os 'amigos' dos EUA e os 'amigos' da URSS."
+            },
+            {
+                "title": "💡 Sem Tiros Diretos",
+                "content": "Eles nunca se enfrentaram cara a cara com exércitos, mas competiam em tudo (espaço, esportes, armas)."
+            },
+            {
+                "title": "🛠️ Nome do Período",
+                "content": "Essa 'briga gelada' de ideologias é a Guerra Fria."
+            }
+        ]
+    },
+    {
+        "questionId": 110,
+        "steps": [
+            {
+                "title": "🔍 Anatomia da Caixa",
+                "content": "A caixa de leite tem topo, fundo, frente, trás e duas laterais."
+            },
+            {
+                "title": "💡 Formas Planas",
+                "content": "Se você desmontar e achatar essa caixa, verá apenas formas de 4 lados com ângulos retos."
+            },
+            {
+                "title": "🛠️ Resultado",
+                "content": "A planificação de um paralelepípedo resulta em 6 Retângulos."
+            }
+        ]
     }
 ]
