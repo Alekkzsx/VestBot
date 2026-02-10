@@ -1,5 +1,5 @@
 <div class="min-h-screen flex flex-col md:flex-row font-sans text-slate-800 bg-slate-50">
-  
+
   <!-- Mobile Header -->
   <div class="md:hidden bg-white p-4 border-b border-slate-200 flex justify-between items-center z-20 sticky top-0">
     <div class="font-bold text-xl text-black tracking-tight">
@@ -9,8 +9,9 @@
       <button class="relative text-slate-600 hover:text-black transition-colors group">
         <i class="far fa-bell text-xl"></i>
         <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-        <div class="absolute top-full right-0 mt-2 w-48 bg-black text-white text-xs rounded-lg py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-             Em breve: Notificações.
+        <div
+          class="absolute top-full right-0 mt-2 w-48 bg-black text-white text-xs rounded-lg py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+          Em breve: Notificações.
         </div>
       </button>
       <button (click)="toggleSidebar()" class="text-slate-600 hover:text-black focus:outline-none">
@@ -20,181 +21,191 @@
   </div>
 
   <!-- Sidebar (Clean White) -->
-  <aside 
+  <aside
     class="bg-white h-screen fixed md:sticky top-0 left-0 border-r border-slate-200 w-64 transform transition-transform duration-300 z-30 flex flex-col shrink-0"
-    [class.-translate-x-full]="!sidebarOpen()"
-    [class.md:translate-x-0]="true"
-    [class.w-64]="!isCollapsed()"
-    [class.w-20]="isCollapsed()"
-  >
+    [class.-translate-x-full]="!sidebarOpen()" [class.md:translate-x-0]="true" [class.w-64]="!isCollapsed()"
+    [class.w-20]="isCollapsed()">
     <!-- Logo Area -->
     <div class="h-24 flex items-center px-8 shrink-0">
       @if (!isCollapsed()) {
-        <h1 class="font-bold text-2xl tracking-tight text-black flex items-center">
-          <div class="w-8 h-8 bg-black rounded-lg mr-3 flex items-center justify-center text-white text-xs">
-            <i class="fas fa-layer-group"></i>
-          </div>
-          ETECPRO
-        </h1>
-      } @else {
-        <div class="w-full flex justify-center">
-           <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white text-xs">
-            <i class="fas fa-layer-group"></i>
-          </div>
+      <h1 class="font-bold text-2xl tracking-tight text-black flex items-center">
+        <div class="w-8 h-8 bg-black rounded-lg mr-3 flex items-center justify-center text-white text-xs">
+          <i class="fas fa-layer-group"></i>
         </div>
+        ETECPRO
+      </h1>
+      } @else {
+      <div class="w-full flex justify-center">
+        <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white text-xs">
+          <i class="fas fa-layer-group"></i>
+        </div>
+      </div>
       }
     </div>
 
     <!-- Nav Links -->
     <nav class="flex-1 py-4 space-y-2 px-4">
       @for (item of navItems; track item.id) {
-        <button (click)="setView(item.id)" 
-          class="w-full text-left px-4 py-3.5 rounded-xl transition-all font-medium flex items-center text-sm group relative"
-          [class.bg-slate-100]="currentView() === item.id"
-          [class.text-black]="currentView() === item.id"
-          [class.font-semibold]="currentView() === item.id"
-          [class.text-slate-500]="currentView() !== item.id"
-          [class.hover:bg-slate-50]="currentView() !== item.id"
-          [class.hover:text-slate-900]="currentView() !== item.id"
-          [class.justify-center]="isCollapsed()"
-        >
-          <i class="fas w-5 text-center text-lg transition-colors" [class]="item.icon" 
-             [class.mr-3]="!isCollapsed()"
-             [class.text-black]="currentView() === item.id"
-             [class.text-slate-400]="currentView() !== item.id"
-          ></i>
-          
-          @if (!isCollapsed()) {
-            <span>{{ item.label }}</span>
-            @if (item.isNew) {
-              <span class="ml-auto bg-black text-white text-[9px] font-bold px-2 py-0.5 rounded-full">NOVO</span>
-            }
-          }
-          
-          <!-- Tooltip -->
-          @if (isCollapsed()) {
-             <div class="absolute left-full ml-4 bg-black text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 shadow-xl">
-               {{ item.label }}
-             </div>
-          }
-        </button>
+      <button (click)="setView(item.id)"
+        class="w-full text-left px-4 py-3.5 rounded-xl transition-all font-medium flex items-center text-sm group relative"
+        [class.bg-slate-100]="currentView() === item.id" [class.text-black]="currentView() === item.id"
+        [class.font-semibold]="currentView() === item.id" [class.text-slate-500]="currentView() !== item.id"
+        [class.hover:bg-slate-50]="currentView() !== item.id" [class.hover:text-slate-900]="currentView() !== item.id"
+        [class.justify-center]="isCollapsed()">
+        <i class="fas w-5 text-center text-lg transition-colors" [class]="item.icon" [class.mr-3]="!isCollapsed()"
+          [class.text-black]="currentView() === item.id" [class.text-slate-400]="currentView() !== item.id"></i>
+
+        @if (!isCollapsed()) {
+        <span>{{ item.label }}</span>
+        @if (item.isNew) {
+        <span class="ml-auto bg-black text-white text-[9px] font-bold px-2 py-0.5 rounded-full">NOVO</span>
+        }
+        }
+
+        <!-- Tooltip -->
+        @if (isCollapsed()) {
+        <div
+          class="absolute left-full ml-4 bg-black text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+          {{ item.label }}
+        </div>
+        }
+      </button>
       }
     </nav>
 
     <!-- Sidebar Footer -->
     <div class="p-6 border-t border-slate-100">
-       @if (!isCollapsed()) {
-         <div class="flex items-center">
-            <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="ml-3">
-              <p class="text-sm font-bold text-black">Estudante</p>
-              <p class="text-xs text-slate-500">Nível {{ stats().level }}</p>
-            </div>
-         </div>
-       } @else {
-         <div class="flex justify-center">
-            <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs">
-              <i class="fas fa-user"></i>
-            </div>
-         </div>
-       }
-       <button (click)="toggleCollapse()" class="mt-4 w-full flex items-center justify-center text-slate-400 hover:text-black transition-colors">
-         <i class="fas" [class.fa-chevron-left]="!isCollapsed()" [class.fa-chevron-right]="isCollapsed()"></i>
-       </button>
+      @if (!isCollapsed()) {
+      <div class="flex items-center">
+        <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm font-bold text-black">Estudante</p>
+          <p class="text-xs text-slate-500">Nível {{ stats().level }}</p>
+        </div>
+      </div>
+      } @else {
+      <div class="flex justify-center">
+        <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+      }
+      <button (click)="toggleCollapse()"
+        class="mt-4 w-full flex items-center justify-center text-slate-400 hover:text-black transition-colors">
+        <i class="fas" [class.fa-chevron-left]="!isCollapsed()" [class.fa-chevron-right]="isCollapsed()"></i>
+      </button>
     </div>
   </aside>
 
   <!-- Overlay for Mobile -->
   @if (sidebarOpen()) {
-    <div (click)="toggleSidebar()" class="fixed inset-0 bg-black/20 backdrop-blur-sm z-20 md:hidden transition-opacity"></div>
+  <div (click)="toggleSidebar()" class="fixed inset-0 bg-black/20 backdrop-blur-sm z-20 md:hidden transition-opacity">
+  </div>
   }
 
   <!-- Main Content -->
   <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
-    
+
     <!-- Top Bar (Desktop) -->
     <div class="hidden md:flex justify-end items-center px-12 py-8 gap-4 shrink-0">
-        <!-- Global Timer -->
-        <div class="bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm text-sm font-medium text-slate-600 flex items-center">
-          <i class="far fa-clock mr-2 text-slate-400"></i>
-          Prova em: <span class="text-black font-bold ml-1">{{ timeLeft().days }} dias</span>
-        </div>
+      <!-- Global Timer -->
+      <div
+        class="bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm text-sm font-medium text-slate-600 flex items-center">
+        <i class="far fa-clock mr-2 text-slate-400"></i>
+        Prova em: <span class="text-black font-bold ml-1">{{ timeLeft().days }} dias</span>
+      </div>
 
-        <!-- Notification Bell -->
-        <button class="w-10 h-10 bg-white rounded-full shadow-sm border border-slate-200 flex items-center justify-center text-slate-500 hover:text-black hover:scale-105 transition-all relative group">
-           <i class="far fa-bell text-lg"></i>
-           <span class="absolute top-2.5 right-3 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-           
-           <div class="absolute top-full right-0 mt-2 w-56 bg-white border border-slate-100 shadow-xl rounded-xl p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-left">
-             <p class="text-xs font-bold text-slate-900 mb-1">Notificações</p>
-             <p class="text-[10px] text-slate-500">Em breve você receberá alertas sobre datas de inscrição e dicas diárias aqui.</p>
-           </div>
-        </button>
+      <!-- Notification Bell -->
+      <button
+        class="w-10 h-10 bg-white rounded-full shadow-sm border border-slate-200 flex items-center justify-center text-slate-500 hover:text-black hover:scale-105 transition-all relative group">
+        <i class="far fa-bell text-lg"></i>
+        <span class="absolute top-2.5 right-3 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+
+        <div
+          class="absolute top-full right-0 mt-2 w-56 bg-white border border-slate-100 shadow-xl rounded-xl p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-left">
+          <p class="text-xs font-bold text-slate-900 mb-1">Notificações</p>
+          <p class="text-[10px] text-slate-500">Em breve você receberá alertas sobre datas de inscrição e dicas diárias
+            aqui.</p>
+        </div>
+      </button>
     </div>
 
     <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
       @switch (currentView()) {
-        @case ('dashboard') { <app-dashboard (navigate)="setView($event)" /> }
-        @case ('quiz') { <app-quiz /> }
-        @case ('interpretation') { <app-text-interpretation /> }
-        @case ('schedule') { <app-schedule /> }
-        
-        @case ('performance') {
-           <div class="animate-fade-in font-sans">
-              <header class="mb-8">
-                <h2 class="text-3xl font-bold text-slate-900 mb-1">Desempenho</h2>
-                <p class="text-slate-500 text-sm">Métricas detalhadas do seu progresso.</p>
-              </header>
-              
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                 <!-- Mock Stat Card 1 -->
-                 <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <h3 class="font-bold text-slate-900 mb-6">Precisão por Matéria</h3>
-                    <div class="space-y-6">
-                       <div>
-                         <div class="flex justify-between text-sm font-medium mb-2">
-                           <span>Português</span>
-                           <span class="font-bold text-black">85%</span>
-                         </div>
-                         <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                           <div class="h-full bg-black w-[85%] rounded-full"></div>
-                         </div>
-                       </div>
-                       <div>
-                         <div class="flex justify-between text-sm font-medium mb-2">
-                           <span>Matemática</span>
-                           <span class="font-bold text-black">62%</span>
-                         </div>
-                         <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                           <div class="h-full bg-slate-400 w-[62%] rounded-full"></div>
-                         </div>
-                       </div>
-                       <div>
-                         <div class="flex justify-between text-sm font-medium mb-2">
-                           <span>Ciências</span>
-                           <span class="font-bold text-black">78%</span>
-                         </div>
-                         <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                           <div class="h-full bg-slate-600 w-[78%] rounded-full"></div>
-                         </div>
-                       </div>
-                    </div>
-                 </div>
+      @case ('dashboard') { <app-dashboard (navigate)="setView($event)" /> }
+      @case ('quiz') { <app-quiz /> }
+      @case ('interpretation') { <app-text-interpretation /> }
+      @case ('schedule') { <app-schedule /> }
+      @case ('resolutions') {
+      <div class="flex flex-col items-center justify-center h-full text-center">
+        <div class="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mb-6 text-slate-400">
+          <i class="fas fa-check-double text-4xl"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900">Resoluções</h2>
+        <p class="text-slate-500 mt-2 max-w-md">Esta funcionalidade permitirá ver resoluções detalhadas das questões. Em
+          breve!</p>
+      </div>
+      }
 
-                 <!-- Mock Stat Card 2 -->
-                 <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-center items-center text-center">
-                    <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4 text-slate-300">
-                      <i class="fas fa-lock text-xl"></i>
-                    </div>
-                    <h3 class="font-bold text-slate-900 mb-2">Análise Avançada</h3>
-                    <p class="text-slate-500 text-sm max-w-xs mb-6">Continue estudando para desbloquear gráficos de evolução histórica e previsão de nota.</p>
-                    <button class="bg-slate-100 text-slate-400 font-bold px-6 py-2 rounded-lg text-sm cursor-not-allowed">Bloqueado</button>
-                 </div>
+      @case ('performance') {
+      <div class="animate-fade-in font-sans">
+        <header class="mb-8">
+          <h2 class="text-3xl font-bold text-slate-900 mb-1">Desempenho</h2>
+          <p class="text-slate-500 text-sm">Métricas detalhadas do seu progresso.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Mock Stat Card 1 -->
+          <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="font-bold text-slate-900 mb-6">Precisão por Matéria</h3>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between text-sm font-medium mb-2">
+                  <span>Português</span>
+                  <span class="font-bold text-black">85%</span>
+                </div>
+                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-black w-[85%] rounded-full"></div>
+                </div>
               </div>
-           </div>
-        }
+              <div>
+                <div class="flex justify-between text-sm font-medium mb-2">
+                  <span>Matemática</span>
+                  <span class="font-bold text-black">62%</span>
+                </div>
+                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-slate-400 w-[62%] rounded-full"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm font-medium mb-2">
+                  <span>Ciências</span>
+                  <span class="font-bold text-black">78%</span>
+                </div>
+                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-slate-600 w-[78%] rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mock Stat Card 2 -->
+          <div
+            class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-center items-center text-center">
+            <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4 text-slate-300">
+              <i class="fas fa-lock text-xl"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2">Análise Avançada</h3>
+            <p class="text-slate-500 text-sm max-w-xs mb-6">Continue estudando para desbloquear gráficos de evolução
+              histórica e previsão de nota.</p>
+            <button
+              class="bg-slate-100 text-slate-400 font-bold px-6 py-2 rounded-lg text-sm cursor-not-allowed">Bloqueado</button>
+          </div>
+        </div>
+      </div>
+      }
       }
     </div>
   </main>

@@ -312,12 +312,40 @@ export class ContentService {
   }
 
   /**
-   * Get unique subjects from available questions
+   * Standard ETEC subjects (main matérias only, not sub-themes)
+   */
+  private readonly STANDARD_SUBJECTS = [
+    'Matemática',
+    'Português',
+    'Biologia',
+    'Física',
+    'Química',
+    'História',
+    'Geografia',
+    'Sociologia',
+    'Filosofia',
+    'Inglês',
+    'Artes',
+    'Atualidades',
+  ];
+
+  /**
+   * Get main subjects that have questions available.
+   * Only returns standard matérias (not sub-themes like "Saúde" or "Tecnologia").
+   * The quiz filter already handles composite subjects like "Química / Saúde"
+   * by matching them to "Química".
    */
   getSubjects(): string[] {
     const questions = this.getQuestions();
-    const subjects = new Set(questions.map(q => q.subject));
-    return Array.from(subjects);
+
+    // Return only standard subjects that have at least one question
+    return this.STANDARD_SUBJECTS.filter(subject => {
+      return questions.some(q =>
+        q.subject === subject ||
+        q.subject.startsWith(subject + ' /') ||
+        q.subject.includes('/ ' + subject)
+      );
+    });
   }
 
   /**

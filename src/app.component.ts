@@ -6,7 +6,7 @@ import { TextInterpretationComponent } from './components/text-interpretation/te
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ContentService } from './services/content.service';
 
-type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule';
+type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule' | 'resolutions';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { id: 'schedule', label: 'Cronograma', icon: 'fa-calendar-alt', isNew: false },
     { id: 'quiz', label: 'Simulado', icon: 'fa-pen-square', isNew: false },
     { id: 'interpretation', label: 'Interpretação', icon: 'fa-book-open', isNew: true },
+    { id: 'resolutions', label: 'Resoluções', icon: 'fa-check-double', isNew: true },
     { id: 'performance', label: 'Desempenho', icon: 'fa-chart-line', isNew: false }
   ];
 

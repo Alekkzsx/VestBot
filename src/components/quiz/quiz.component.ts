@@ -20,7 +20,7 @@ export class QuizComponent implements OnDestroy {
   dictionary = inject(DictionaryService);
 
   // Configuration State
-  availableSubjects = this.contentService.getSubjects();
+  availableSubjects = signal<string[]>(this.contentService.getSubjects());
   config = signal({
     selectedSubjects: [] as string[],
     questionCount: 50, // ETEC Standard
@@ -60,7 +60,7 @@ export class QuizComponent implements OnDestroy {
   popupPosition = signal({ x: 0, y: 0 });
 
   constructor() {
-    this.config.update(c => ({ ...c, selectedSubjects: [...this.availableSubjects] }));
+    this.config.update(c => ({ ...c, selectedSubjects: [...this.availableSubjects()] }));
 
     // Load all questions from local files on initialization
     this.loadLocalQuestions();
@@ -72,6 +72,11 @@ export class QuizComponent implements OnDestroy {
       await this.contentService.loadQuestionsFromFiles();
       const stats = this.contentService.getQuestions().length;
       console.log(`QuizComponent: ${stats} questions available for quizzes`);
+
+      // Update subjects after questions are loaded
+      const subjects = this.contentService.getSubjects();
+      this.availableSubjects.set(subjects);
+      this.config.update(c => ({ ...c, selectedSubjects: [...subjects] }));
     } catch (error) {
       console.error('Failed to load questions from files, using fallback:', error);
     }
@@ -109,7 +114,7 @@ export class QuizComponent implements OnDestroy {
   }
 
   setStandardSubjects() {
-    this.config.update(c => ({ ...c, selectedSubjects: [...this.availableSubjects] }));
+    this.config.update(c => ({ ...c, selectedSubjects: [...this.availableSubjects()] }));
   }
 
   /**

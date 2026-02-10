@@ -35,7 +35,7 @@
           </div>
 
           <div class="flex flex-wrap gap-2">
-            @for (subject of availableSubjects; track subject) {
+            @for (subject of availableSubjects(); track subject) {
             <button (click)="toggleSubject(subject)"
               class="px-4 py-2 rounded-lg text-sm font-medium transition-all border"
               [class.bg-black]="config().selectedSubjects.includes(subject)"
