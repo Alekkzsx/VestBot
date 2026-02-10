@@ -425,8 +425,21 @@
         ]
     },
     {
-        "title": "️ Nome da Família",
-        "content": "Neônio, Hélio e Argônio são os Gases Nobres (Família 18)."
+        "questionId": 26,
+        "steps": [
+            {
+                "title": "🔍 Gases Inertes",
+                "content": "O Neônio e seus 'primos' são conhecidos por não reagirem com quase nada. Eles são estáveis por natureza."
+            },
+            {
+                "title": "💡 Camada de Valência",
+                "content": "Isso ocorre porque eles já têm a última camada de elétrons completa, não precisando ganhar nem perder átomos."
+            },
+            {
+                "title": "🛠️ Nome da Família",
+                "content": "Pela sua estabilidade e 'nobreza' química, o grupo 18 é chamado de Gases Nobres."
+            }
+        ]
     },
     {
         "questionId": 27,
@@ -1853,6 +1866,176 @@
             {
                 "title": "🛠️ Resultado",
                 "content": "A planificação de um paralelepípedo resulta em 6 Retângulos."
+            }
+        ]
+    },
+    {
+        "questionId": 111,
+        "steps": [
+            {
+                "title": "🔍 Solo do Cerrado",
+                "content": "A terra nessa região é naturalmente ácida e contém alumínio, o que dificulta o crescimento de plantas como a soja."
+            },
+            {
+                "title": "💡 O Corretivo",
+                "content": "A calagem usa calcário (uma base) para reagir com os ácidos e 'limpar' o solo, aumentando o pH."
+            },
+            {
+                "title": "🛠️ Resultado",
+                "content": "O objetivo é neutralizar a acidez e fornecer cálcio e magnésio, tornando a terra fértil para a plantação."
+            }
+        ]
+    },
+    {
+        "questionId": 112,
+        "steps": [
+            {
+                "title": "🔍 Calor em Movimento",
+                "content": "Quando corremos, nossos músculos esquentam muito. O corpo precisa de um jeito de soltar esse calor para não 'ferver'."
+            },
+            {
+                "title": "💡 Roubo de Energia",
+                "content": "A água do suor precisa de calor para virar vapor. Ela puxa essa energia diretamente da sua pele."
+            },
+            {
+                "title": "🛠️ Resfriamento",
+                "content": "Por isso, a evaporação do suor é o nosso 'ar-condicionado natural' mais eficiente durante o exercício."
+            }
+        ]
+    },
+    {
+        "questionId": 113,
+        "steps": [
+            {
+                "title": "🔍 Vazamento Lento",
+                "content": "A torneira perde 200 ml a cada 20 minutos. Isso significa que, em 1 hora (60 min), ela perde 600 ml."
+            },
+            {
+                "title": "💡 Conta Diária",
+                "content": "Um dia tem 24 horas. Multiplicando 600 ml por 24, temos 14.400 ml de desperdício."
+            },
+            {
+                "title": "🛠️ Resultado Final",
+                "content": "Transformando para litros, a casa perde 14,4 litros de água por dia só com esse gotejamento."
+            }
+        ]
+    },
+    {
+        "questionId": 114,
+        "steps": [
+            {
+                "title": "🔍 Fim do Tráfico",
+                "content": "Com a proibição da vinda de escravizados em 1850, as fazendas de café ficaram sem trabalhadores."
+            },
+            {
+                "title": "💡 A 'Solução' da Época",
+                "content": "O governo brasileiro passou a incentivar a vinda de famílias de outros países para trabalhar na lavoura."
+            },
+            {
+                "title": "🛠️ Mudança Social",
+                "content": "Isso gerou as grandes ondas de imigração europeia (como italianos e alemães) e asiática para o Brasil."
+            }
+        ]
+    },
+    {
+        "questionId": 115,
+        "steps": [
+            {
+                "title": "🔍 Peso do Ar",
+                "content": "O ar frio é mais 'pesado' (denso) que o ar quente."
+            },
+            {
+                "title": "💡 Fluxo Natural",
+                "content": "Quando o ar sai gelado do aparelho lá no alto, ele desce naturalmente, empurrando o ar quente para cima."
+            },
+            {
+                "title": "🛠️ Convecção",
+                "content": "Esse movimento de 'quem está frio desce' cria uma corrente que resfria o quarto inteiro de forma uniforme."
+            }
+        ]
+    },
+    {
+        "questionId": 116,
+        "steps": [
+            {
+                "title": "🔍 Gelo de Gás",
+                "content": "O gelo seco é, na verdade, gás carbônico congelado em temperatura baixíssima (-78°C)."
+            },
+            {
+                "title": "💡 Mudança Direta",
+                "content": "Ao tocar o ar quente, ele 'pula' a fase líquida e vira fumaça (gás) na hora."
+            },
+            {
+                "title": "🛠️ Nome Técnico",
+                "content": "Esse salto do estado sólido direto para o gasoso é chamado de Sublimação."
+            }
+        ]
+    },
+    {
+        "questionId": 117,
+        "steps": [
+            {
+                "title": "🔍 Chão Firme",
+                "content": "O Brasil quase não tem terremotos fortes ou vulcões porque não estamos na borda de encontro de placas."
+            },
+            {
+                "title": "💡 Localização Segura",
+                "content": "Nosso país fica bem no centro da placa Sul-Americana, longe das 'rachaduras' onde a terra treme."
+            },
+            {
+                "title": "🛠️ Estabilidade",
+                "content": "Estar longe das bordas garante uma geologia muito mais calma e estável que a de países como o Chile."
+            }
+        ]
+    },
+    {
+        "questionId": 118,
+        "steps": [
+            {
+                "title": "🔍 Comer Cultura",
+                "content": "Oswald de Andrade não falava de canibalismo real, mas de 'comer' a cultura que vinha de fora."
+            },
+            {
+                "title": "💡 Digestão Criativa",
+                "content": "A ideia era pegar as técnicas modernas da Europa e misturá-las com a nossa raíz tupi e brasileira."
+            },
+            {
+                "title": "🛠️ Objetivo",
+                "content": "Ao fazer isso, o Brasil criaria uma arte única e original, em vez de apenas copiar os estrangeiros."
+            }
+        ]
+    },
+    {
+        "questionId": 119,
+        "steps": [
+            {
+                "title": "🔍 Contorno do Círculo",
+                "content": "Para saber o tamanho da fita, usamos a fórmula do comprimento: 2 x π x Raio."
+            },
+            {
+                "title": "💡 Substituindo",
+                "content": "O raio é 40 cm e o π é 3,14. A conta fica: 2 x 3,14 x 40."
+            },
+            {
+                "title": "🛠️ Resultado",
+                "content": "Multiplicando os valores, descobrimos que a fita precisa ter 251,2 cm de comprimento."
+            }
+        ]
+    },
+    {
+        "questionId": 120,
+        "steps": [
+            {
+                "title": "🔍 Quem come Quem",
+                "content": "O capim alimenta o gafanhoto, que alimenta o sapo, que alimenta a cobra."
+            },
+            {
+                "title": "💡 Desequilíbrio",
+                "content": "Se os sapos somem, as cobras ficam sem comida e os gafanhotos perdem seu único inimigo."
+            },
+            {
+                "title": "🛠️ Consequência",
+                "content": "O resultado é uma praga de gafanhotos devorando o mato e as cobras passando fome."
             }
         ]
     }
