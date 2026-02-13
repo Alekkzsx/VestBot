@@ -5,9 +5,10 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { TextInterpretationComponent } from './components/text-interpretation/text-interpretation.component';
 import { ResolutionsComponent } from './components/resolutions/resolutions.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { ContentService } from './services/content.service';
 
-type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule' | 'resolutions';
+type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule' | 'resolutions' | 'analytics';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule'
     QuizComponent,
     TextInterpretationComponent,
     ResolutionsComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    AnalyticsComponent
   ],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -37,6 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { id: 'quiz', label: 'Simulado', icon: 'fa-pen-square', isNew: false },
     { id: 'interpretation', label: 'Interpretação', icon: 'fa-book-open', isNew: true },
     { id: 'resolutions', label: 'Resoluções', icon: 'fa-check-double', isNew: true },
+    { id: 'analytics', label: 'Analytics', icon: 'fa-chart-bar', isNew: true },
     { id: 'performance', label: 'Desempenho', icon: 'fa-chart-line', isNew: false }
   ];
 
