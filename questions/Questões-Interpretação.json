@@ -1,0 +1,116 @@
+[
+    {
+        "id": 1,
+        "grupo_id": 1,
+        "tema": "Conflitos Socioambientais na Amazônia",
+        "materia": "História",
+        "dificuldade": "Média",
+        "texto_referencia": "No coração da Amazônia, durante a segunda metade do século XX, a figura de Chico Mendes emergiu como um símbolo da luta pela preservação da floresta e pelos direitos dos povos que nela vivem. Seringueiro desde a infância, Mendes organizou seus companheiros para resistir ao avanço do desmatamento, que era impulsionado pela expansão da pecuária e pela extração predatória de madeira. A principal tática de resistência utilizada por eles eram os 'empates', manifestações pacíficas em que os seringueiros se colocavam à frente das motosserras para impedir o corte das árvores. Essa luta não era apenas pela natureza, mas também por um modelo de desenvolvimento sustentável. A proposta de Mendes e seus companheiros era a criação de 'Reservas Extrativistas', áreas onde os recursos naturais, como a castanha e o látex, poderiam ser explorados de forma sustentável pelas populações tradicionais, garantindo tanto a sua subsistência quanto a conservação do ecossistema. Essa visão de 'floresta em pé' desafiava o modelo econômico dominante, que enxergava a Amazônia apenas como uma fronteira de recursos a serem explorados até o esgotamento, gerando violentos conflitos com fazendeiros e madeireiros.",
+        "image_id": "",
+        "enunciado": "De acordo com o texto, a principal causa dos conflitos que levaram à organização liderada por Chico Mendes foi:",
+        "alternativas": [
+            "a disputa entre seringueiros e povos indígenas por territórios de caça.",
+            "o confronto entre o modelo de desenvolvimento extrativista sustentável e os interesses da expansão agropecuária predatória.",
+            "a falta de regulamentação do governo federal sobre a extração de ouro na região.",
+            "a proibição da coleta de castanha e látex imposta por ONGs ambientalistas internacionais.",
+            "o avanço de projetos de urbanização e construção de rodovias que atravessavam as áreas dos seringais."
+        ],
+        "correta": "o confronto entre o modelo de desenvolvimento extrativista sustentável e os interesses da expansão agropecuária predatória.",
+        "explicacao_base": "O texto deixa claro que o conflito central era entre os seringueiros, que defendiam um uso sustentável da floresta, e o avanço do desmatamento promovido por fazendeiros (pecuária) e madeireiros."
+    },
+    {
+        "id": 2,
+        "grupo_id": 1,
+        "tema": "Conflitos Socioambientais na Amazônia",
+        "materia": "Língua Portuguesa",
+        "dificuldade": "Fácil",
+        "texto_referencia": "No coração da Amazônia, durante a segunda metade do século XX, a figura de Chico Mendes emergiu como um símbolo da luta pela preservação da floresta e pelos direitos dos povos que nela vivem. Seringueiro desde a infância, Mendes organizou seus companheiros para resistir ao avanço do desmatamento, que era impulsionado pela expansão da pecuária e pela extração predatória de madeira. A principal tática de resistência utilizada por eles eram os 'empates', manifestações pacíficas em que os seringueiros se colocavam à frente das motosserras para impedir o corte das árvores. Essa luta não era apenas pela natureza, mas também por um modelo de desenvolvimento sustentável. A proposta de Mendes e seus companheiros era a criação de 'Reservas Extrativistas', áreas onde os recursos naturais, como a castanha e o látex, poderiam ser explorados de forma sustentável pelas populações tradicionais, garantindo tanto a sua subsistência quanto a conservação do ecossistema. Essa visão de 'floresta em pé' desafiava o modelo econômico dominante, que enxergava a Amazônia apenas como uma fronteira de recursos a serem explorados até o esgotamento, gerando violentos conflitos com fazendeiros e madeireiros.",
+        "image_id": "",
+        "enunciado": "No contexto da luta dos seringueiros, o termo 'empates' significa:",
+        "alternativas": [
+            "negociações financeiras para a venda de terras.",
+            "conflitos armados que resultavam em um número igual de baixas para ambos os lados.",
+            "a construção de barreiras físicas para impedir a passagem de tratores.",
+            "uma forma de protesto não-violento para obstruir o desmatamento.",
+            "a criação de acordos legais que terminavam sem uma decisão favorável para nenhuma das partes."
+        ],
+        "correta": "uma forma de protesto não-violento para obstruir o desmatamento.",
+        "explicacao_base": "O texto explica que os 'empates' eram 'manifestações pacíficas em que os seringueiros se colocavam à frente das motosserras', ou seja, uma forma de resistência pacífica para impedir a ação dos desmatadores."
+    },
+    {
+        "id": 3,
+        "grupo_id": 1,
+        "tema": "Conflitos Socioambientais na Amazônia",
+        "materia": "Geografia",
+        "dificuldade": "Média",
+        "texto_referencia": "No coração da Amazônia, durante a segunda metade do século XX, a figura de Chico Mendes emergiu como um símbolo da luta pela preservação da floresta e pelos direitos dos povos que nela vivem. Seringueiro desde a infância, Mendes organizou seus companheiros para resistir ao avanço do desmatamento, que era impulsionado pela expansão da pecuária e pela extração predatória de madeira. A principal tática de resistência utilizada por eles eram os 'empates', manifestações pacíficas em que os seringueiros se colocavam à frente das motosserras para impedir o corte das árvores. Essa luta não era apenas pela natureza, mas também por um modelo de desenvolvimento sustentável. A proposta de Mendes e seus companheiros era a criação de 'Reservas Extrativistas', áreas onde os recursos naturais, como a castanha e o látex, poderiam ser explorados de forma sustentável pelas populações tradicionais, garantindo tanto a sua subsistência quanto a conservação do ecossistema. Essa visão de 'floresta em pé' desafiava o modelo econômico dominante, que enxergava a Amazônia apenas como uma fronteira de recursos a serem explorados até o esgotamento, gerando violentos conflitos com fazendeiros e madeireiros.",
+        "image_id": "",
+        "enunciado": "O modelo das 'Reservas Extrativistas', defendido por Chico Mendes, é um exemplo de:",
+        "alternativas": [
+            "preservação integral, onde qualquer atividade humana é proibida.",
+            "desenvolvimento sustentável, que busca conciliar a atividade econômica das comunidades locais com a conservação ambiental.",
+            "reforma agrária tradicional, focada na distribuição de terras para o cultivo de monoculturas.",
+            "exploração mineral, que permite a mineração controlada em áreas de floresta.",
+            "parque nacional, cujo objetivo principal é o turismo ecológico e a pesquisa científica sem exploração de recursos."
+        ],
+        "correta": "desenvolvimento sustentável, que busca conciliar a atividade econômica das comunidades locais com a conservação ambiental.",
+        "explicacao_base": "O texto descreve as Reservas Extrativistas como locais onde os recursos são explorados de forma sustentável para garantir a subsistência das populações e, ao mesmo tempo, conservar o ecossistema, o que se alinha perfeitamente com o conceito de desenvolvimento sustentável."
+    },
+    {
+        "id": 4,
+        "grupo_id": 2,
+        "tema": "A Revolta da Vacina e o Saneamento no Rio de Janeiro",
+        "materia": "História",
+        "dificuldade": "Média",
+        "texto_referencia": "No início do século XX, o Rio de Janeiro, então capital do Brasil, enfrentava graves problemas sanitários. Doenças como febre amarela, peste bubônica e varíola dizimavam a população. Para modernizar e 'higienizar' a cidade, o presidente Rodrigues Alves nomeou o prefeito Pereira Passos, que promoveu uma ampla reforma urbana, e o médico sanitarista Oswaldo Cruz, que liderou uma intensa campanha de saneamento. A estratégia de Oswaldo Cruz envolvia ações enérgicas, como a criação de brigadas de 'mata-mosquitos' que entravam nas casas à força para desinfecção. O estopim para a revolta popular, contudo, foi a aprovação, em 1904, de uma lei que tornava obrigatória a vacinação contra a varíola. A população, já insatisfeita com as demolições autoritárias da reforma urbana (o famoso 'Bota-Abaixo'), a falta de informação sobre a vacina e desconfiada dos métodos do governo, reagiu com violência. A Revolta da Vacina não foi apenas uma recusa à imunização, mas a expressão de uma insatisfação popular mais ampla contra a exclusão social e o autoritarismo do Estado, que impunha suas políticas de forma vertical, sem diálogo com a sociedade.",
+        "image_id": "",
+        "enunciado": "Analisando o texto, é correto afirmar que a Revolta da Vacina foi:",
+        "alternativas": [
+            "um movimento causado exclusivamente pela ignorância da população sobre os benefícios da vacinação.",
+            "uma manifestação de insatisfação popular que combinou a oposição à vacinação obrigatória com a revolta contra a reforma urbana autoritária e a exclusão social.",
+            "uma rebelião organizada por médicos que eram contra os métodos de Oswaldo Cruz.",
+            "um protesto pacífico que visava apenas obter mais informações sobre a segurança da vacina contra a varíola.",
+            "um conflito restrito à ação das brigadas 'mata-mosquitos', sem relação com a vacinação ou as reformas urbanas."
+        ],
+        "correta": "uma manifestação de insatisfação popular que combinou a oposição à vacinação obrigatória com a revolta contra a reforma urbana autoritária e a exclusão social.",
+        "explicacao_base": "O texto enfatiza que a revolta teve múltiplos fatores, sendo o 'estopim' a vacina, mas motivada também pela insatisfação com a reforma urbana ('Bota-Abaixo') e o autoritarismo do governo."
+    },
+    {
+        "id": 5,
+        "grupo_id": 2,
+        "tema": "A Revolta da Vacina e o Saneamento no Rio de Janeiro",
+        "materia": "Língua Portuguesa",
+        "dificuldade": "Fácil",
+        "texto_referencia": "No início do século XX, o Rio de Janeiro, então capital do Brasil, enfrentava graves problemas sanitários. Doenças como febre amarela, peste bubônica e varíola dizimavam a população. Para modernizar e 'higienizar' a cidade, o presidente Rodrigues Alves nomeou o prefeito Pereira Passos, que promoveu uma ampla reforma urbana, e o médico sanitarista Oswaldo Cruz, que liderou uma intensa campanha de saneamento. A estratégia de Oswaldo Cruz envolvia ações enérgicas, como a criação de brigadas de 'mata-mosquitos' que entravam nas casas à força para desinfecção. O estopim para a revolta popular, contudo, foi a aprovação, em 1904, de uma lei que tornava obrigatória a vacinação contra a varíola. A população, já insatisfeita com as demolições autoritárias da reforma urbana (o famoso 'Bota-Abaixo'), a falta de informação sobre a vacina e desconfiada dos métodos do governo, reagiu com violência. A Revolta da Vacina não foi apenas uma recusa à imunização, mas a expressão de uma insatisfação popular mais ampla contra a exclusão social e o autoritarismo do Estado, que impunha suas políticas de forma vertical, sem diálogo com a sociedade.",
+        "image_id": "",
+        "enunciado": "A palavra 'estopim' no texto, refere-se:",
+        "alternativas": [
+            "à principal causa do problema sanitário.",
+            "à solução final encontrada para o conflito.",
+            "ao evento que iniciou de forma imediata a revolta popular.",
+            "à opinião do médico Oswaldo Cruz sobre a vacinação.",
+            "ao nome dado às brigadas de 'mata-mosquitos'."
+        ],
+        "correta": "ao evento que iniciou de forma imediata a revolta popular.",
+        "explicacao_base": "'Estopim' é uma figura de linguagem (metáfora) que se refere ao gatilho, ao evento que deflagra uma situação que já estava prestes a acontecer. No caso, a obrigatoriedade da vacina foi o gatilho para a revolta."
+    },
+    {
+        "id": 6,
+        "grupo_id": 2,
+        "tema": "A Revolta da Vacina e o Saneamento no Rio de Janeiro",
+        "materia": "Ciências — Biologia",
+        "dificuldade": "Média",
+        "texto_referencia": "No início do século XX, o Rio de Janeiro, então capital do Brasil, enfrentava graves problemas sanitários. Doenças como febre amarela, peste bubônica e varíola dizimavam a população. Para modernizar e 'higienizar' a cidade, o presidente Rodrigues Alves nomeou o prefeito Pereira Passos, que promoveu uma ampla reforma urbana, e o médico sanitarista Oswaldo Cruz, que liderou uma intensa campanha de saneamento. A estratégia de Oswaldo Cruz envolvia ações enérgicas, como a criação de brigadas de 'mata-mosquitos' que entravam nas casas à força para desinfecção. O estopim para a revolta popular, contudo, foi a aprovação, em 1904, de uma lei que tornava obrigatória a vacinação contra a varíola. A população, já insatisfeita com as demolições autoritárias da reforma urbana (o famoso 'Bota-Abaixo'), a falta de informação sobre a vacina e desconfiada dos métodos do governo, reagiu com violência. A Revolta da Vacina não foi apenas uma recusa à imunização, mas a expressão de uma insatisfação popular mais ampla contra a exclusão social e o autoritarismo do Estado, que impunha suas políticas de forma vertical, sem diálogo com a sociedade.",
+        "image_id": "",
+        "enunciado": "A campanha de vacinação contra a varíola, liderada por Oswaldo Cruz, era uma medida de saúde pública fundamental porque a vacinação:",
+        "alternativas": [
+            "funciona como um tratamento que cura os doentes já infectados pela varíola.",
+            "estimula o sistema imunológico a produzir anticorpos, criando uma memória de defesa contra o vírus e prevenindo futuras infecções.",
+            "elimina os mosquitos transmissores da varíola, assim como as brigadas faziam com o vetor da febre amarela.",
+            "é um tipo de soro que contém anticorpos prontos, garantindo proteção imediata, mas de curta duração.",
+            "impedia o contágio ao criar uma barreira química na pele da pessoa vacinada."
+        ],
+        "correta": "estimula o sistema imunológico a produzir anticorpos, criando uma memória de defesa contra o vírus e prevenindo futuras infecções.",
+        "explicacao_base": "O princípio da vacinação é introduzir um agente infeccioso (atenuado ou inativado) no corpo para que o sistema imunológico aprenda a combatê-lo, produzindo anticorpos e células de memória, garantindo proteção futura (imunização ativa)."
+    }
+]

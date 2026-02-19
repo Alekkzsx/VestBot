@@ -34,7 +34,7 @@ export class QuestionLoaderService {
 
     // Available question files
     availableFiles: QuestionFile[] = [
-        { name: 'Padrão.txt', displayName: 'Todas as Questões', path: '/questions/Padrão.txt', loaded: false, questionCount: 0 }
+        { name: 'Questões-Simulado.json', displayName: 'Simulado', path: '/questions/Questões-Simulado.json', loaded: false, questionCount: 0 }
     ];
 
     // Cache of loaded questions

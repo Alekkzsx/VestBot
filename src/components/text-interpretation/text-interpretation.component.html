@@ -140,45 +140,15 @@
       <!-- Options -->
       <div class="options-list">
         @for (option of question.options; track $index) {
-        <label class="option-item" [class.selected]="isSelected($index)" [class.correct]="isCorrectOption($index)"
-          [class.wrong]="isWrongOption($index)" [class.disabled]="hasAnswered()">
+        <label class="option-item" [class.selected]="isSelected($index)" [class.disabled]="hasAnswered()">
           <input type="radio" [name]="'current-question'" [value]="$index" [checked]="isSelected($index)"
             [disabled]="hasAnswered()" (change)="selectAnswer($index)">
           <span class="option-letter">{{ getOptionLetter($index) }}</span>
           <span class="option-text" [innerHTML]="option | latex"></span>
-          @if (isCorrectOption($index)) {
-          <i class="fas fa-check-circle result-icon"></i>
-          }
-          @if (isWrongOption($index)) {
-          <i class="fas fa-times-circle result-icon"></i>
-          }
         </label>
         }
       </div>
 
-      <!-- Explanation (após verificar) -->
-      @if (hasAnswered() && question.explanation) {
-      <div class="explanation-box" [@slideDown]>
-        <div class="explanation-header">
-          <i class="fas fa-lightbulb"></i>
-          <strong>Explicação</strong>
-        </div>
-        <p [innerHTML]="question.explanation | latex"></p>
-      </div>
-      }
-
-      <!-- Feedback Banner -->
-      @if (hasAnswered()) {
-      <div class="feedback-banner" [class.correct]="isCorrect()" [class.wrong]="!isCorrect()">
-        @if (isCorrect()) {
-        <i class="fas fa-check-circle"></i>
-        <span>Correto! Parabéns!</span>
-        } @else {
-        <i class="fas fa-times-circle"></i>
-        <span>Incorreto. Veja a explicação acima.</span>
-        }
-      </div>
-      }
     </div>
 
     <!-- Action Buttons -->
@@ -194,6 +164,35 @@
         <i class="fas fa-arrow-right"></i>
       </button>
       }
+    </div>
+  </div>
+  }
+
+  <!-- RESULT SCREEN -->
+  @else if (viewState() === 'result') {
+  <div class="result-screen">
+    <div class="result-card">
+      <div class="result-header">
+        <div class="result-icon-wrap">
+          <i class="fas fa-flag-checkered"></i>
+        </div>
+        <h2>Atividade Concluída!</h2>
+        <p class="result-subtitle">Você respondeu {{ totalAnswered() }} questão(ões)</p>
+      </div>
+
+      <div class="result-score-box">
+        <span class="score-number">{{ totalCorrect() }}/{{ totalAnswered() }}</span>
+        <span class="score-pct">{{ totalAnswered() > 0 ? (totalCorrect() / totalAnswered() * 100 | number:'1.0-0') : 0
+          }}% de aproveitamento</span>
+        @if (celebrationXP() > 0) {
+        <span class="bonus-xp">+{{ celebrationXP() }} XP bônus</span>
+        }
+      </div>
+
+      <button class="start-button" (click)="finishAndReturn()">
+        <i class="fas fa-redo"></i>
+        Nova Atividade
+      </button>
     </div>
   </div>
   }

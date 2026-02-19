@@ -42,7 +42,7 @@ export class ContentService {
   // Fallback database focused on ETEC themes (kept for backward compatibility)
   private fallbackQuestions: Question[] = [
     {
-      id: 1,
+      id: 90001,
       subject: 'Ciências',
       text: 'O conceito de desenvolvimento sustentável, fundamental para a preservação do meio ambiente, propõe:',
       options: [
@@ -56,7 +56,7 @@ export class ContentService {
       difficulty: 'Fácil'
     },
     {
-      id: 2,
+      id: 90002,
       subject: 'Matemática',
       text: 'Para reciclar alumínio, gasta-se apenas 5% da energia necessária para produzi-lo a partir do minério. Se a produção inicial gasta 100 kWh, quanta energia é economizada ao reciclar?',
       options: ['5 kWh', '95 kWh', '50 kWh', '20 kWh', '10 kWh'],
@@ -64,8 +64,8 @@ export class ContentService {
       difficulty: 'Médio'
     },
     {
-      id: 3,
-      subject: 'História/Geo',
+      id: 90003,
+      subject: 'Geografia',
       text: 'A cidadania no Brasil implica direitos e deveres. Qual das alternativas representa um dever fundamental do cidadão em relação ao meio ambiente, segundo a Constituição?',
       options: [
         'Desmatar áreas privadas para construção.',
@@ -78,15 +78,15 @@ export class ContentService {
       difficulty: 'Fácil'
     },
     {
-      id: 4,
-      subject: 'Português',
+      id: 90004,
+      subject: 'Língua Portuguesa',
       text: 'Na frase "A reciclagem é vital, PORÉM, poucos praticam", a conjunção destacada expressa ideia de:',
       options: ['Adição', 'Explicação', 'Conclusão', 'Oposição', 'Alternância'],
       correctIndex: 3,
       difficulty: 'Médio'
     },
     {
-      id: 5,
+      id: 90005,
       subject: 'Ciências',
       text: 'O aquecimento global é agravado pelo efeito estufa. Qual gás é o principal responsável por esse fenômeno quando emitido em excesso pela queima de combustíveis fósseis?',
       options: ['Oxigênio (O2)', 'Nitrogênio (N2)', 'Dióxido de Carbono (CO2)', 'Hélio (He)', 'Hidrogênio (H2)'],
@@ -94,7 +94,7 @@ export class ContentService {
       difficulty: 'Médio'
     },
     {
-      id: 6,
+      id: 90006,
       subject: 'Atualidades',
       text: 'Qual das alternativas abaixo é uma prática recomendada para combater o desperdício de água nas cidades?',
       options: [
@@ -108,7 +108,7 @@ export class ContentService {
       difficulty: 'Fácil'
     },
     {
-      id: 7,
+      id: 90007,
       subject: 'Matemática',
       text: 'Um tanque com 1000 litros de água vaza 50ml por minuto. Em quanto tempo o tanque perderá 3 litros?',
       options: ['30 minutos', '45 minutos', '60 minutos', '15 minutos', '90 minutos'],
@@ -116,23 +116,23 @@ export class ContentService {
       difficulty: 'Difícil'
     },
     {
-      id: 8,
-      subject: 'História/Geo',
+      id: 90008,
+      subject: 'Geografia',
       text: 'O processo de urbanização no Brasil se intensificou a partir da década de 1950. Qual foi o principal fator impulsionador?',
       options: ['Reforma Agrária', 'Industrialização', 'Êxodo Urbano', 'Mineração', 'Turismo'],
       correctIndex: 1,
       difficulty: 'Médio'
     },
     {
-      id: 9,
-      subject: 'História/Geo',
+      id: 90009,
+      subject: 'História',
       text: 'A Revolução Industrial transformou as relações de trabalho. Qual classe social surgiu com o fortalecimento das indústrias?',
       options: ['Nobreza', 'Clero', 'Proletariado', 'Feudal', 'Escravos'],
       correctIndex: 2,
       difficulty: 'Fácil'
     },
     {
-      id: 10,
+      id: 90010,
       subject: 'Matemática',
       text: 'Se um produto custa R$ 120,00 e tem um desconto de 20%, qual o valor final?',
       options: ['R$ 100,00', 'R$ 96,00', 'R$ 90,00', 'R$ 110,00', 'R$ 24,00'],
@@ -140,7 +140,7 @@ export class ContentService {
       difficulty: 'Fácil'
     },
     {
-      id: 11,
+      id: 90011,
       subject: 'Ciências',
       text: 'Qual é a principal função da fotossíntese para as plantas?',
       options: ['Produzir oxigênio para os humanos', 'Produzir seu próprio alimento (glicose)', 'Absorver calor', 'Proteger contra pragas', 'Consumir terra'],
@@ -148,15 +148,15 @@ export class ContentService {
       difficulty: 'Médio'
     },
     {
-      id: 12,
-      subject: 'Português',
+      id: 90012,
+      subject: 'Língua Portuguesa',
       text: 'Assinale a alternativa onde o uso da crase está CORRETO:',
       options: ['Vou à comprar pão.', 'Fomos à pé.', 'Chegamos à cidade.', 'Ela falou à todos.', 'Entreguei o livro à ele.'],
       correctIndex: 2,
       difficulty: 'Difícil'
     },
     {
-      id: 13,
+      id: 90013,
       subject: 'Atualidades',
       text: 'Qual bioma brasileiro tem sofrido com recordes de queimadas nos últimos anos, afetando a biodiversidade do Centro-Oeste?',
       options: ['Amazônia', 'Pampas', 'Caatinga', 'Pantanal', 'Mata de Araucárias'],
@@ -164,7 +164,7 @@ export class ContentService {
       difficulty: 'Médio'
     },
     {
-      id: 14,
+      id: 90014,
       subject: 'Ciências',
       text: 'A energia cinética está relacionada ao:',
       options: ['Calor', 'Movimento', 'Altura', 'Som', 'Luz'],
@@ -172,7 +172,7 @@ export class ContentService {
       difficulty: 'Fácil'
     },
     {
-      id: 15,
+      id: 90015,
       subject: 'Ciências',
       text: 'A água é uma substância composta por dois elementos químicos. Quais são?',
       options: ['Hélio e Oxigênio', 'Hidrogênio e Nitrogênio', 'Carbono e Oxigênio', 'Hidrogênio e Oxigênio', 'Nitrogênio e Carbono'],
@@ -180,7 +180,7 @@ export class ContentService {
       difficulty: 'Fácil'
     },
     {
-      id: 16,
+      id: 90016,
       subject: 'Ciências',
       text: 'Qual organela celular é responsável pela respiração celular e produção de energia?',
       options: ['Ribossomo', 'Lisossomo', 'Mitocôndria', 'Complexo de Golgi', 'Núcleo'],
@@ -188,23 +188,23 @@ export class ContentService {
       difficulty: 'Difícil'
     },
     {
-      id: 17,
-      subject: 'História/Geo',
+      id: 90017,
+      subject: 'História',
       text: 'Quem foi o presidente do Brasil conhecido como "Pai dos Pobres" e criador da CLT?',
       options: ['Juscelino Kubitschek', 'Getúlio Vargas', 'Marechal Deodoro', 'Dom Pedro II', 'Lula'],
       correctIndex: 1,
       difficulty: 'Médio'
     },
     {
-      id: 18,
-      subject: 'História/Geo',
+      id: 90018,
+      subject: 'Geografia',
       text: 'A Mata Atlântica é um bioma que abrange a costa brasileira. Qual sua principal característica atual?',
       options: ['Está intocada.', 'É o bioma mais preservado.', 'Resta menos de 15% da cobertura original.', 'É um deserto.', 'Só existe no sul.'],
       correctIndex: 2,
       difficulty: 'Médio'
     },
     {
-      id: 19,
+      id: 90019,
       subject: 'Matemática',
       text: 'A área de um quadrado de lado 5cm é:',
       options: ['10 cm²', '20 cm²', '25 cm²', '15 cm²', '5 cm²'],
@@ -212,8 +212,8 @@ export class ContentService {
       difficulty: 'Fácil'
     },
     {
-      id: 20,
-      subject: 'Português',
+      id: 90020,
+      subject: 'Língua Portuguesa',
       text: 'Identifique o sujeito na frase: "Os alunos da ETEC passaram no vestibulinho."',
       options: ['Passaram', 'Vestibulinho', 'Os alunos da ETEC', 'ETEC', 'Indeterminado'],
       correctIndex: 2,
@@ -318,40 +318,31 @@ export class ContentService {
   }
 
   /**
-   * Standard ETEC subjects (main matérias only, not sub-themes)
+   * Standard ETEC subjects
    */
   private readonly STANDARD_SUBJECTS = [
+    'Língua Portuguesa',
     'Matemática',
-    'Português',
-    'Biologia',
-    'Física',
-    'Química',
+    'Ciências',
     'História',
     'Geografia',
-    'Sociologia',
-    'Filosofia',
-    'Inglês',
-    'Artes',
     'Atualidades',
   ];
 
   /**
-   * Get main subjects that have questions available.
-   * Only returns standard matérias (not sub-themes like "Saúde" or "Tecnologia").
-   * The quiz filter already handles composite subjects like "Química / Saúde"
-   * by matching them to "Química".
+   * Get main subjects for the ETEC vestibulinho.
+   * Reflects exactly the subjects present in the question dataset.
    */
   getSubjects(): string[] {
-    const questions = this.getQuestions();
-
-    // Return only standard subjects that have at least one question
-    return this.STANDARD_SUBJECTS.filter(subject => {
-      return questions.some(q =>
-        q.subject === subject ||
-        q.subject.startsWith(subject + ' /') ||
-        q.subject.includes('/ ' + subject)
-      );
-    });
+    return [
+      'Língua Portuguesa',
+      'Matemática',
+      'Ciências — Biologia',
+      'Ciências — Química',
+      'Ciências — Física',
+      'História',
+      'Geografia'
+    ];
   }
 
   /**
@@ -375,10 +366,23 @@ export class ContentService {
     return this.questionLoader.loadingProgress();
   }
 
-  updateStats(isCorrect: boolean, subject?: string) {
+  updateStats(isCorrect: boolean, difficulty: string = 'Médio', subject?: string) {
     this.stats.update(val => {
-      // XP Calculation: 50 XP for correct answer, 10 XP for effort (wrong answer)
-      const earnedXp = isCorrect ? 50 : 10;
+      // Cálculo de XP: Máximo 20 XP por acerto, dependendo da dificuldade
+      let earnedXp = 0;
+      if (isCorrect) {
+        if (difficulty === 'Fácil') earnedXp = 10;
+        else if (difficulty === 'Médio') earnedXp = 15;
+        else if (difficulty === 'Difícil') earnedXp = 20;
+        else earnedXp = 15;
+      } else {
+        // XP de esforço ao errar
+        if (difficulty === 'Fácil') earnedXp = 2;
+        else if (difficulty === 'Médio') earnedXp = 3;
+        else if (difficulty === 'Difícil') earnedXp = 5;
+        else earnedXp = 3;
+      }
+
       const newXp = val.xp + earnedXp;
 
       // Level Calculation: 1000 XP per level
@@ -438,5 +442,31 @@ export class ContentService {
 
   setSchedule(items: StudySession[]) {
     this.schedule.set(items);
+  }
+
+  /**
+   * Shuffles the options of a question and updates the correctIndex
+   */
+  shuffleQuestion(question: Question): Question {
+    if (!question || !question.options || question.options.length === 0) {
+      return question;
+    }
+
+    const options = [...question.options];
+    const correctOptionText = options[question.correctIndex];
+
+    // Fisher-Yates shuffle
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [options[i], options[j]] = [options[j], options[i]];
+    }
+
+    const newCorrectIndex = options.indexOf(correctOptionText);
+
+    return {
+      ...question,
+      options,
+      correctIndex: newCorrectIndex !== -1 ? newCorrectIndex : question.correctIndex
+    };
   }
 }

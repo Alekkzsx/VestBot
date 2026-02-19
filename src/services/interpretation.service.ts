@@ -58,7 +58,7 @@ export class InterpretationService {
 
             // Carregar arquivo JSON
             const response = await firstValueFrom(
-                this.http.get<any[]>('/questions/Interpretação.txt')
+                this.http.get<any[]>('/questions/Questões-Interpretação.json')
             );
 
             console.log(`✓ Loaded ${response.length} interpretation questions`);

@@ -5,6 +5,7 @@ import { ContentService, Question } from '../../services/content.service';
 import { QuestionHistoryService } from '../../services/question-history.service';
 import { DictionaryService, DictionaryEntry } from '../../services/dictionary.service';
 import { ActivitySessionService } from '../../services/activity-session.service';
+import { ResolutionsService } from '../../services/resolutions.service';
 import { WordPopupComponent } from '../word-popup/word-popup.component';
 import { CelebrationComponent, CelebrationType } from '../celebration/celebration.component';
 import { LatexPipe } from '../../pipes/latex.pipe';
@@ -21,6 +22,7 @@ export class QuizComponent implements OnDestroy {
   questionHistory = inject(QuestionHistoryService);
   dictionary = inject(DictionaryService);
   activitySession = inject(ActivitySessionService);
+  resolutionsService = inject(ResolutionsService);
 
   // Configuration State
   availableSubjects = signal<string[]>(this.contentService.getSubjects());
@@ -40,6 +42,10 @@ export class QuizComponent implements OnDestroy {
   isCorrect = signal(false);
   score = signal(0);
   quizFinished = signal(false);
+  answeredIndices = signal<Set<number>>(new Set());
+  userAnswers = signal<Map<number, number>>(new Map());
+  currentHint = signal<any | null>(null);
+  currentHintStepIndex = signal(0);
 
   // Celebration State
   showCelebration = signal(false);
@@ -85,6 +91,9 @@ export class QuizComponent implements OnDestroy {
       const subjects = this.contentService.getSubjects();
       this.availableSubjects.set(subjects);
       this.config.update(c => ({ ...c, selectedSubjects: [...subjects] }));
+
+      // Load resolutions in background
+      this.resolutionsService.loadResolutions();
     } catch (error) {
       console.error('Failed to load questions from files, using fallback:', error);
     }
@@ -148,7 +157,6 @@ export class QuizComponent implements OnDestroy {
     selectedSubjects: string[],
     difficultyFilter?: 'Fácil' | 'Médio' | 'Difícil'
   ): Question[] {
-    // Aplicar filtro de dificuldade se fornecido
     let filteredPool = difficultyFilter
       ? pool.filter(q => q.difficulty === difficultyFilter)
       : pool;
@@ -162,18 +170,13 @@ export class QuizComponent implements OnDestroy {
     const baseQuota = Math.floor(targetCount / selectedSubjects.length);
     const extraSlots = targetCount % selectedSubjects.length;
 
-    // Embaralhar matérias para distribuição justa das sobras
     const shuffledSubjects = this.shuffleArray([...selectedSubjects]);
 
-    // Fase 1: Distribuir cota base para cada matéria
+    // Fase 1: Distribuir cota base para cada matéria (match direto)
     for (const subject of shuffledSubjects) {
-      // FILTRO INTELIGENTE: aceita matérias exatas e compostas
-      const subjectPool = filteredPool.filter(q => {
-        const matchesSubject = q.subject === subject ||
-          q.subject.includes(subject + ' /') ||  // "Matéria / Outra"
-          q.subject.includes('/ ' + subject);    // "Outra / Matéria"
-        return matchesSubject && !usedIds.has(q.id);
-      });
+      const subjectPool = filteredPool.filter(q =>
+        q.subject === subject && !usedIds.has(q.id)
+      );
 
       if (subjectPool.length === 0) continue;
 
@@ -186,29 +189,23 @@ export class QuizComponent implements OnDestroy {
       }
     }
 
-    // Fase 2: Distribuir sobras priorizando matérias com menos questões
+    // Fase 2: Distribuir sobras
     if (finalSelection.length < targetCount && extraSlots > 0) {
-      // Contar questões por matéria
       const subjectCounts = new Map<string, number>();
       shuffledSubjects.forEach(s => {
         subjectCounts.set(s, finalSelection.filter(q => q.subject === s).length);
       });
 
-      // Ordenar matérias: menos questões primeiro
       const sortedSubjects = [...shuffledSubjects].sort((a, b) =>
         (subjectCounts.get(a) || 0) - (subjectCounts.get(b) || 0)
       );
 
-      // Adicionar uma questão para cada matéria com menos representação
       for (const subject of sortedSubjects) {
         if (finalSelection.length >= targetCount) break;
 
-        const available = filteredPool.filter(q => {
-          const matchesSubject = q.subject === subject ||
-            q.subject.includes(subject + ' /') ||  // "Matéria / Outra"
-            q.subject.includes('/ ' + subject);    // "Outra / Matéria"
-          return matchesSubject && !usedIds.has(q.id);
-        });
+        const available = filteredPool.filter(q =>
+          q.subject === subject && !usedIds.has(q.id)
+        );
 
         if (available.length > 0) {
           const shuffled = this.shuffleArray(available);
@@ -278,17 +275,10 @@ export class QuizComponent implements OnDestroy {
 
       console.log(`🔄 Spaced repetition: ${allQuestions.length - availableQuestions.length} questions blocked`);
 
-      // Filtrar questões por matérias selecionadas (FILTRO INTELIGENTE)
-      // Aceita tanto matérias exatas quanto compostas
-      // Ex: Se selecionou "Matemática", pega "Matemática" E "Matemática / Física"
-      let pool = availableQuestions.filter(q => {
-        return selectedSubjects.some(selectedMat => {
-          // Aceita se a matéria é exata OU se contém a matéria selecionada
-          return q.subject === selectedMat ||
-            q.subject.includes(selectedMat + ' /') ||  // "Matemática / Física"
-            q.subject.includes('/ ' + selectedMat);    // "Física / Matemática"
-        });
-      });
+      // Filtrar questões por matérias selecionadas — match direto com subjects do dataset
+      let pool = availableQuestions.filter(q =>
+        selectedSubjects.includes(q.subject)
+      );
 
       let finalSelection: Question[] = [];
 
@@ -373,7 +363,8 @@ export class QuizComponent implements OnDestroy {
       console.log('📊 Distribuição do Simulado:', stats);
 
       // Iniciar o quiz
-      this.questions.set(finalSelection);
+      const shuffledSelection = finalSelection.map(q => this.contentService.shuffleQuestion(q));
+      this.questions.set(shuffledSelection);
       this.currentIndex.set(0);
       this.score.set(0);
       this.quizFinished.set(false);
@@ -437,10 +428,22 @@ export class QuizComponent implements OnDestroy {
   // --- Quiz Methods ---
 
   resetQuestionState() {
-    this.selectedOptionIndex.set(null);
-    this.isAnswered.set(false);
-    this.isCorrect.set(false);
+    const currentIdx = this.currentIndex();
+    const savedAnswer = this.userAnswers().get(currentIdx);
+
+    if (savedAnswer !== undefined) {
+      this.selectedOptionIndex.set(savedAnswer);
+      this.isAnswered.set(true);
+      const currentQ = this.questions()[currentIdx];
+      this.isCorrect.set(savedAnswer === currentQ.correctIndex);
+    } else {
+      this.selectedOptionIndex.set(null);
+      this.isAnswered.set(false);
+      this.isCorrect.set(false);
+    }
     this.explanationText.set(null);
+    this.currentHint.set(null);
+    this.currentHintStepIndex.set(0);
   }
 
   selectOption(index: number) {
@@ -451,11 +454,25 @@ export class QuizComponent implements OnDestroy {
   submitAnswer() {
     if (this.selectedOptionIndex() === null) return;
 
-    const currentQ = this.questions()[this.currentIndex()];
+    const currentIdx = this.currentIndex();
+    const currentQ = this.questions()[currentIdx];
     const correct = this.selectedOptionIndex() === currentQ.correctIndex;
 
     this.isCorrect.set(correct);
     this.isAnswered.set(true);
+
+    // Marcar como respondida para a grade e persistir escolha
+    this.answeredIndices.update(set => {
+      const newSet = new Set(set);
+      newSet.add(currentIdx);
+      return newSet;
+    });
+
+    this.userAnswers.update(map => {
+      const newMap = new Map(map);
+      newMap.set(currentIdx, this.selectedOptionIndex()!);
+      return newMap;
+    });
 
     if (correct) {
       this.score.update(s => s + 1);
@@ -473,7 +490,7 @@ export class QuizComponent implements OnDestroy {
 
     // Record question in session and update stats with subject
     this.activitySession.recordQuestion(currentQ.difficulty);
-    this.contentService.updateStats(correct, currentQ.subject);
+    this.contentService.updateStats(correct, currentQ.difficulty, currentQ.subject);
   }
 
   nextQuestion() {
@@ -482,6 +499,24 @@ export class QuizComponent implements OnDestroy {
       this.resetQuestionState();
     } else {
       this.finishQuiz();
+    }
+  }
+
+  previousQuestion() {
+    if (this.currentIndex() > 0) {
+      this.currentIndex.update(i => i - 1);
+      this.resetQuestionState();
+    }
+  }
+
+  skipQuestion() {
+    this.nextQuestion();
+  }
+
+  goToQuestion(index: number) {
+    if (index >= 0 && index < this.questions().length) {
+      this.currentIndex.set(index);
+      this.resetQuestionState();
     }
   }
 
@@ -522,6 +557,37 @@ export class QuizComponent implements OnDestroy {
       this.explanationText.set(q.explanation);
     } else {
       this.explanationText.set('Esta questão não possui explicação disponível.');
+    }
+  }
+
+  showHint() {
+    const q = this.questions()[this.currentIndex()];
+    const resolution = this.resolutionsService.getResolutionForQuestion(q.id, 'quiz');
+
+    if (resolution) {
+      this.currentHint.set(resolution);
+      this.currentHintStepIndex.set(0);
+    } else {
+      this.currentHint.set({
+        steps: [{ title: 'Dica', content: 'Infelizmente não temos uma resolução detalhada para esta questão ainda.' }]
+      });
+      this.currentHintStepIndex.set(0);
+    }
+  }
+
+  // Limite máximo de passos visíveis nas dicas durante o simulado
+  private readonly MAX_HINT_STEPS = 2;
+
+  nextHintStep() {
+    const maxIndex = Math.min(this.MAX_HINT_STEPS - 1, this.currentHint().steps.length - 1);
+    if (this.currentHint() && this.currentHintStepIndex() < maxIndex) {
+      this.currentHintStepIndex.update(idx => idx + 1);
+    }
+  }
+
+  prevHintStep() {
+    if (this.currentHintStepIndex() > 0) {
+      this.currentHintStepIndex.update(idx => idx - 1);
     }
   }
 

@@ -31,10 +31,10 @@ export class QuestionHistoryService {
     private userDataService = inject(UserDataService);
 
     // Time intervals in milliseconds
-    private readonly QUIZ_CORRECT_BLOCK_TIME = 3 * 60 * 60 * 1000;  // 3 hours
-    private readonly QUIZ_INCORRECT_BLOCK_TIME = 30 * 60 * 1000;    // 30 minutes
-    private readonly RESOLUTION_CORRECT_REDUCTION = 30 * 60 * 1000;  // 30 minutes (reduced from 3h)
-    private readonly RESOLUTION_INCORRECT_REDUCTION = 10 * 60 * 1000; // 10 minutes (reduced from 30min)
+    private readonly QUIZ_CORRECT_BLOCK_TIME = 20 * 60 * 1000;  // 20 minutes
+    private readonly QUIZ_INCORRECT_BLOCK_TIME = 10 * 60 * 1000;    // 2 minutes
+    private readonly RESOLUTION_CORRECT_REDUCTION = 1 * 60 * 1000;  // 30 minutes (reduced from 3h)
+    private readonly RESOLUTION_INCORRECT_REDUCTION = 1 * 60 * 1000; // 10 minutes (reduced from 30min)
 
     constructor() {
         this.cleanupOldEntries();

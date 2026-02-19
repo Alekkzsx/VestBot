@@ -1,19 +1,19 @@
-import { Component, inject, signal, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, signal, computed, OnInit, ChangeDetectionStrategy, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InterpretationService } from '../../services/interpretation.service';
-import { ContentService } from '../../services/content.service';
+import { ContentService, Question } from '../../services/content.service';
 import { QuestionHistoryService } from '../../services/question-history.service';
 import { ActivitySessionService } from '../../services/activity-session.service';
 import { CelebrationComponent, CelebrationType } from '../celebration/celebration.component';
 import { LatexPipe } from '../../pipes/latex.pipe';
 
-type ViewState = 'config' | 'activity' | 'loading' | 'error';
+type ViewState = 'config' | 'activity' | 'loading' | 'error' | 'result';
 
 @Component({
   selector: 'app-text-interpretation',
   standalone: true,
-  imports: [CommonModule, FormsModule, CelebrationComponent, LatexPipe],
+  imports: [CommonModule, FormsModule, LatexPipe],
   templateUrl: './text-interpretation.component.html',
   styleUrl: './text-interpretation.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -23,6 +23,19 @@ export class TextInterpretationComponent implements OnInit {
   private contentService = inject(ContentService);
   private questionHistory = inject(QuestionHistoryService);
   private activitySession = inject(ActivitySessionService);
+
+  constructor() {
+    // Automatic shuffling of questions in the group whenever it changes
+    effect(() => {
+      const group = this.currentGroup();
+      if (group) {
+        const shuffled = group.questions.map(q => this.contentService.shuffleQuestion(q));
+        this.shuffledQuestions.set(shuffled);
+      } else {
+        this.shuffledQuestions.set([]);
+      }
+    }, { allowSignalWrites: true });
+  }
 
   // View state
   viewState = signal<ViewState>('loading');
@@ -40,10 +53,21 @@ export class TextInterpretationComponent implements OnInit {
   // Activity state
   currentGroup = this.interpretationService.currentGroup;
   currentQuestionIndex = signal(0); // Índice da questão atual dentro do grupo
+
+  // Local list of shuffled questions for the current group
+  shuffledQuestions = signal<Question[]>([]);
+
   currentQuestion = computed(() => {
-    const group = this.currentGroup();
-    if (!group) return null;
-    return group.questions[this.currentQuestionIndex()];
+    const questions = this.activeQuestions();
+    if (questions.length === 0) return null;
+    return questions[this.currentQuestionIndex()];
+  });
+
+  // Questões limitadas pela configuração do usuário
+  activeQuestions = computed(() => {
+    const all = this.shuffledQuestions();
+    const limit = this.selectedQuestionCount();
+    return all.slice(0, limit);
   });
 
   // User answers
@@ -58,16 +82,6 @@ export class TextInterpretationComponent implements OnInit {
   async ngOnInit() {
     try {
       await this.interpretationService.loadInterpretations();
-
-      // DEBUG: Verificar dados carregados
-      const testGroup = this.interpretationService.getCurrentGroup();
-      if (testGroup) {
-        console.log('✓ Grupo carregado:', testGroup);
-        console.log('✓ Primeira questão:', testGroup.questions[0]);
-        console.log('  - options:', testGroup.questions[0].options);
-        console.log('  - explanation:', testGroup.questions[0].explanation);
-      }
-
       this.viewState.set('config');
     } catch (error) {
       console.error('Error loading interpretations:', error);
@@ -129,9 +143,9 @@ export class TextInterpretationComponent implements OnInit {
 
     if (correct) {
       this.totalCorrect.update(n => n + 1);
-      this.contentService.updateStats(true, question.subject);
+      this.contentService.updateStats(true, question.difficulty, question.subject);
     } else {
-      this.contentService.updateStats(false, question.subject);
+      this.contentService.updateStats(false, question.difficulty, question.subject);
     }
 
     // Record question in session
@@ -145,21 +159,15 @@ export class TextInterpretationComponent implements OnInit {
    * Avança para próxima questão
    */
   nextQuestion() {
-    const group = this.currentGroup();
-    if (!group) return;
+    const activeQs = this.activeQuestions();
+    if (!activeQs.length) return;
 
-    // Se ainda há questões no grupo atual
-    if (this.currentQuestionIndex() < group.questions.length - 1) {
+    // Se ainda há questões dentro do limite escolhido
+    if (this.currentQuestionIndex() < activeQs.length - 1) {
       this.currentQuestionIndex.update(i => i + 1);
       this.resetQuestionState();
-    }
-    // Se acabaram as questões, vai para próximo grupo
-    else if (this.interpretationService.nextGroup()) {
-      this.currentQuestionIndex.set(0);
-      this.resetQuestionState();
-    }
-    // Se não há mais grupos, volta para config
-    else {
+    } else {
+      // Todas as questões respondidas — mostrar resultado
       this.showFinalResults();
     }
   }
@@ -182,8 +190,14 @@ export class TextInterpretationComponent implements OnInit {
     if (bonusXP > 0) {
       console.log(`🎊 Interpretação completa! Bônus: +${bonusXP} XP`);
     }
+    this.celebrationXP.set(bonusXP);
+    this.viewState.set('result');
+  }
 
-    alert(`Atividade concluída!\n\nVocê acertou ${this.totalCorrect()} de ${this.totalAnswered()} questões.\nPercentual: ${Math.round((this.totalCorrect() / this.totalAnswered()) * 100)}%\nBônus de conclusão: +${bonusXP} XP`);
+  /**
+   * Finaliza e retorna à config
+   */
+  finishAndReturn() {
     this.backToConfig();
   }
 

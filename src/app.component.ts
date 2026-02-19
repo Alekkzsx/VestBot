@@ -6,9 +6,11 @@ import { TextInterpretationComponent } from './components/text-interpretation/te
 import { ResolutionsComponent } from './components/resolutions/resolutions.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { LessonsComponent } from './components/lessons/lessons.component';
+import { AIDictionaryComponent } from './components/ai-dictionary/ai-dictionary.component';
 import { ContentService } from './services/content.service';
 
-type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule' | 'resolutions' | 'analytics';
+type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule' | 'resolutions' | 'analytics' | 'lessons';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +22,9 @@ type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule'
     TextInterpretationComponent,
     ResolutionsComponent,
     ScheduleComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    LessonsComponent,
+    AIDictionaryComponent
   ],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -36,6 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
   navItems = [
     { id: 'dashboard', label: 'Início', icon: 'fa-home', isNew: false },
     { id: 'schedule', label: 'Cronograma', icon: 'fa-calendar-alt', isNew: false },
+    { id: 'lessons', label: 'Aulas', icon: 'fa-play-circle', isNew: true },
     { id: 'quiz', label: 'Simulado', icon: 'fa-pen-square', isNew: false },
     { id: 'interpretation', label: 'Interpretação', icon: 'fa-book-open', isNew: true },
     { id: 'resolutions', label: 'Resoluções', icon: 'fa-check-double', isNew: true },

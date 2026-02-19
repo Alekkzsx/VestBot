@@ -1,8 +1,9 @@
 import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResolutionsService, ResolutionMode, ResolutionFilter, QuestionResolution } from '../../services/resolutions.service';
-import { Question } from '../../services/content.service';
+import { ContentService, Question } from '../../services/content.service';
 import { QuestionHistoryService } from '../../services/question-history.service';
+import { InterpretationService } from '../../services/interpretation.service';
 import { LatexPipe } from '../../pipes/latex.pipe';
 
 type ViewState = 'selection' | 'list' | 'viewer' | 'empty';
@@ -18,6 +19,8 @@ type ViewState = 'selection' | 'list' | 'viewer' | 'empty';
 export class ResolutionsComponent {
     private resolutionsService = inject(ResolutionsService);
     private questionHistory = inject(QuestionHistoryService);
+    private contentService = inject(ContentService);
+    private interpretationService = inject(InterpretationService);
 
     // View state
     viewState = signal<ViewState>('selection');
@@ -50,6 +53,12 @@ export class ResolutionsComponent {
         if (!mode) return;
 
         this.selectedFilter.set(filter);
+
+        // Garantir que o serviço de interpretação está carregado antes de buscar questões
+        if (mode === 'interpretation') {
+            await this.interpretationService.loadInterpretations();
+        }
+
         const questions = await this.resolutionsService.getFilteredQuestions(mode, filter);
 
         if (questions.length === 0) {
@@ -70,7 +79,8 @@ export class ResolutionsComponent {
         await this.resolutionsService.loadResolutions();
         const resolution = this.resolutionsService.getResolutionForQuestion(question.id, mode);
 
-        this.currentQuestion.set(question);
+        // Embaralhar opções também na visualização da resolução para consistência
+        this.currentQuestion.set(this.contentService.shuffleQuestion(question));
         this.currentResolution.set(resolution);
         this.visibleStepsCount.set(0);
         this.showCorrectAnswer.set(false);

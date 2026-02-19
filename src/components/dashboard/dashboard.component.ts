@@ -1,6 +1,7 @@
-import { Component, inject, computed, signal, output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, computed, signal, output, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentService } from '../../services/content.service';
+import { AIService } from '../../services/ai.service';
 import { LevelIndicatorComponent } from '../level-indicator/level-indicator.component';
 import { ChallengesCardComponent } from '../challenges-card/challenges-card.component';
 import { AchievementModalComponent } from '../achievement-modal/achievement-modal.component';
@@ -14,8 +15,9 @@ import type { Achievement } from '../../types/gamification.types';
   templateUrl: './dashboard.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   contentService = inject(ContentService);
+  aiService = inject(AIService);
   private achievementsService = inject(AchievementsService);
 
   stats = this.contentService.stats;
@@ -64,5 +66,49 @@ export class DashboardComponent {
 
   onStartQuiz() {
     this.navigate.emit('quiz');
+  }
+
+  async ngOnInit() {
+    // Automatically sync with AI on load (uses 12h cache internally)
+    this.syncWithAI();
+  }
+
+  async syncWithAI() {
+    try {
+      const data = await this.aiService.getExamCalendar();
+      if (data && data.length > 0) {
+        const updatedExams = data.map((exam, index) => ({
+          name: exam.name,
+          date: new Date(exam.date),
+          color: index === 0 ? 'bg-black' : 'bg-slate-700',
+          icon: index === 0 ? 'fa-graduation-cap' : 'fa-university'
+        }));
+        this.exams.set(updatedExams);
+      }
+    } catch (error) {
+      console.error('Failed to sync dates via AI');
+    }
+  }
+
+  // --- Exam Dates ---
+  exams = signal([
+    {
+      name: 'ETEC 2027/1',
+      date: new Date('2026-08-14'),
+      color: 'bg-black',
+      icon: 'fa-graduation-cap'
+    },
+    {
+      name: 'IFSP Jundiaí',
+      date: new Date('2026-08-21'),
+      color: 'bg-slate-700',
+      icon: 'fa-university'
+    }
+  ]);
+
+  getDaysRemaining(targetDate: Date): number {
+    const today = new Date();
+    const diffTime = targetDate.getTime() - today.getTime();
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   }
 }

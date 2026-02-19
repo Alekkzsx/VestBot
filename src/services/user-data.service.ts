@@ -50,6 +50,12 @@ export interface UserData {
                 correct: number;
             }>;
         };
+        lessonsHistory: Array<{
+            lessonId: string;
+            completedAt: number;
+            watchedDuration: number;
+            isCompleted: boolean;
+        }>;
     };
 }
 
@@ -77,6 +83,7 @@ export class UserDataService {
     private resolutionsUpdate$ = new Subject<any[]>();
     private scheduleUpdate$ = new Subject<any[]>();
     private gamificationUpdate$ = new Subject<any>();
+    private lessonsUpdate$ = new Subject<any[]>();
 
     constructor() {
         this.setupDebouncedSaves();
@@ -211,6 +218,27 @@ export class UserDataService {
             this.syncStatus.set('synced');
             this.lastSaved.set(new Date());
         });
+
+        // Debounced Lessons Save
+        this.lessonsUpdate$.pipe(
+            debounceTime(2000),
+            switchMap(history => {
+                this.syncStatus.set('saving');
+                return fetch(`${this.API_BASE}/lessons`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(history)
+                }).then(res => res.json());
+            }),
+            catchError(err => {
+                console.error('❌ Error saving lessons history:', err);
+                this.syncStatus.set('error');
+                return of(null);
+            })
+        ).subscribe(() => {
+            this.syncStatus.set('synced');
+            this.lastSaved.set(new Date());
+        });
     }
 
     /**
@@ -312,6 +340,18 @@ export class UserDataService {
         this.gamificationUpdate$.next(gamification);
     }
 
+    /**
+     * Save Lessons HISTORY
+     */
+    saveUserLessonsHistory(history: any[]): void {
+        this.userData.update(current => {
+            if (!current) return current;
+            return { ...current, user: { ...current.user, lessonsHistory: history } };
+        });
+
+        this.lessonsUpdate$.next(history);
+    }
+
     getUserData(): UserData | null {
         return this.userData();
     }
@@ -332,7 +372,8 @@ export class UserDataService {
                     completedSessions: [],
                     consecutiveCorrect: 0,
                     subjectStats: [],
-                }
+                },
+                lessonsHistory: []
             }
         };
     }

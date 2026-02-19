@@ -1,0 +1,762 @@
+[
+    {
+        "id": 1,
+        "grupo_id": 1,
+        "tema": "Interpretação de texto e vocabulário em contexto",
+        "materia": "Língua Portuguesa",
+        "dificuldade": "Fácil",
+        "texto_referencia": "Todo mundo sabe que a natureza tem seus próprios horários. As flores abrem para receber as abelhas, os pássaros cantam ao amanhecer e as estrelas só aparecem quando o sol decide ir descansar. Mas parece que os seres humanos insistem em ignorar esses ritmos. Acordamos na madrugada com notificações, dormimos com a luz da tela acesa, comemos quando o aplicativo lembra — não quando o corpo pede. Fomos nos tornando estranhos a nós mesmos, tão ocupados em estar conectados ao mundo que esquecemos de nos conectar com a vida.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "No trecho \"Fomos nos tornando estranhos a nós mesmos\", a expressão em destaque indica que os seres humanos",
+        "alternativas": [
+            "passaram a se desconhecer fisicamente em razão do excesso de atividades ao ar livre.",
+            "perderam a noção de sua identidade cultural ao adotar costumes de outros países.",
+            "tornaram-se alienados de si próprios ao priorizar a conexão digital em detrimento da vivência interior.",
+            "desenvolveram doenças psicológicas causadas pela falta de interação presencial com outras pessoas.",
+            "afastaram-se dos demais por preferirem a solidão ao convívio social nas redes digitais."
+        ],
+        "correta": "tornaram-se alienados de si próprios ao priorizar a conexão digital em detrimento da vivência interior.",
+        "explicacao_base": "O texto critica o modo como os seres humanos perderam o contato com seus próprios ritmos naturais ao se submeter à lógica das tecnologias digitais (notificações, aplicativos, telas). A expressão 'estranhos a nós mesmos' indica um processo de alienação interior, ou seja, as pessoas deixaram de se conhecer e de atender às próprias necessidades ao priorizar a conexão com o mundo digital. A alternativa C expressa exatamente essa ideia."
+    },
+    {
+        "id": 2,
+        "grupo_id": 2,
+        "tema": "Estatística básica — média aritmética",
+        "materia": "Matemática",
+        "dificuldade": "Média",
+        "texto_referencia": "Uma cooperativa de energia solar instalou painéis fotovoltaicos em três residências de um bairro periférico. Durante o primeiro semestre de funcionamento, as residências geraram, respectivamente, 480 kWh, 360 kWh e 540 kWh de energia elétrica. A meta estabelecida pela cooperativa era que a média de geração por residência fosse de, no mínimo, 450 kWh no semestre para que o projeto fosse considerado viável.",
+        "image_id": "",
+        "enunciado": "Com base nos dados apresentados, é correto afirmar que",
+        "alternativas": [
+            "a meta não foi atingida, pois a média de geração foi de 426 kWh.",
+            "a meta não foi atingida, pois a média de geração foi de 440 kWh.",
+            "a meta foi atingida, pois a média de geração por residência foi de 460 kWh.",
+            "a meta foi atingida, pois a média de geração por residência foi de 480 kWh.",
+            "a meta foi atingida, pois a média de geração por residência foi de 540 kWh."
+        ],
+        "correta": "a meta foi atingida, pois a média de geração por residência foi de 460 kWh.",
+        "explicacao_base": "A média aritmética é calculada somando todos os valores e dividindo pelo número de parcelas. Soma: 480 + 360 + 540 = 1.380 kWh. Dividindo pelo número de residências: 1.380 ÷ 3 = 460 kWh. Como 460 > 450, a meta mínima foi atingida. Portanto, a alternativa C é a correta."
+    },
+    {
+        "id": 3,
+        "grupo_id": 3,
+        "tema": "Relações ecológicas entre seres vivos",
+        "materia": "Ciências — Biologia",
+        "dificuldade": "Difícil",
+        "texto_referencia": "Na Caatinga, é comum observar a relação entre o gavião-carcará e o gado bovino: enquanto o boi se alimenta no pasto, suas pisadas espantam insetos do solo, que são imediatamente capturados pelo gavião — o boi não é beneficiado nem prejudicado nessa interação. Já a relação entre o carrapato e o boi é amplamente conhecida: o carrapato se alimenta do sangue do boi, causando-lhe danos como anemia e transmissão de doenças. Existe ainda a relação entre certas espécies de fungos e as raízes das árvores: os fungos auxiliam a árvore na absorção de água e nutrientes minerais do solo, enquanto recebem dela os açúcares produzidos durante a fotossíntese.\n\n<https://tinyurl.com/exemplo> Acesso em: 10.01.2025. Adaptado.",
+        "image_id": "",
+        "enunciado": "Considerando as relações ecológicas descritas no texto, assinale a alternativa que apresenta, respectivamente e na ordem em que aparecem no texto, a classificação correta de cada uma delas.",
+        "alternativas": [
+            "Mutualismo, predatismo e parasitismo.",
+            "Comensalismo, parasitismo e mutualismo.",
+            "Parasitismo, comensalismo e mutualismo.",
+            "Mutualismo, parasitismo e comensalismo.",
+            "Comensalismo, mutualismo e parasitismo."
+        ],
+        "correta": "Comensalismo, parasitismo e mutualismo.",
+        "explicacao_base": "1ª relação (gavião-carcará e boi): comensalismo — o gavião se beneficia ao capturar os insetos espantados, enquanto o boi não é beneficiado nem prejudicado (+/0). 2ª relação (carrapato e boi): parasitismo — o carrapato se beneficia alimentando-se do sangue do hospedeiro, que é prejudicado com anemia e doenças (+/-). 3ª relação (fungos e raízes): mutualismo — ambos os organismos se beneficiam: o fungo obtém açúcares e a árvore melhora a absorção de água e nutrientes (+/+). Portanto, a sequência correta é comensalismo, parasitismo e mutualismo."
+    },
+    {
+        "id": 4,
+        "grupo_id": 4,
+        "tema": "Ditadura Militar no Brasil e o AI-5",
+        "materia": "História",
+        "dificuldade": "Média",
+        "texto_referencia": "Em 1964, o Brasil vivenciou um golpe de Estado que depôs o presidente João Goulart e instaurou um regime militar que duraria 21 anos. Durante esse período, foram editados diversos Atos Institucionais que restringiam progressivamente os direitos políticos e civis dos cidadãos. O AI-5, promulgado em dezembro de 1968, é considerado o mais severo desses atos: determinou o fechamento do Congresso Nacional, suspendeu o habeas corpus para crimes políticos, intensificou a censura aos meios de comunicação e autorizou o governo a cassar mandatos e direitos políticos de cidadãos sem qualquer processo judicial.",
+        "image_id": "",
+        "enunciado": "Com base no texto e em seus conhecimentos sobre o período histórico, é correto afirmar que o AI-5",
+        "alternativas": [
+            "foi o primeiro Ato Institucional editado pelo regime e marcou o início formal da ditadura militar no Brasil, em 1964.",
+            "garantiu maior liberdade de expressão ao suspender a censura prévia exercida sobre os meios de comunicação.",
+            "representou o período de maior repressão da ditadura, suprimindo direitos fundamentais dos cidadãos brasileiros sem processo judicial.",
+            "foi criado exclusivamente para proteger o Congresso Nacional de invasões promovidas por grupos armados de esquerda.",
+            "estabeleceu eleições diretas para presidente da República, garantindo a participação popular no processo político."
+        ],
+        "correta": "representou o período de maior repressão da ditadura, suprimindo direitos fundamentais dos cidadãos brasileiros sem processo judicial.",
+        "explicacao_base": "O AI-5, de 1968, é reconhecido pelos historiadores como o ápice da repressão durante a Ditadura Militar brasileira. Ele fechou o Congresso, suspendeu o habeas corpus, intensificou (não suspendeu) a censura e permitiu cassações sem processo judicial. Não foi o primeiro Ato Institucional (este foi o AI-1, de 1964), e não estabeleceu eleições diretas. A alternativa C resume corretamente o caráter repressivo do ato."
+    },
+    {
+        "id": 5,
+        "grupo_id": 5,
+        "tema": "Geometria espacial — volume do cilindro",
+        "materia": "Matemática",
+        "dificuldade": "Difícil",
+        "texto_referencia": "Uma indústria de sucos naturais armazena sua produção em tanques cilíndricos de aço inoxidável. O modelo atual possui raio da base igual a 2 metros e altura igual a 5 metros. Para ampliar a capacidade de armazenamento, a empresa decidiu encomendar um novo tanque mantendo a mesma altura, porém com o dobro do raio da base em relação ao modelo atual.\n\nDado: Volume do cilindro = π × r² × h",
+        "image_id": "",
+        "enunciado": "Quantas vezes o volume do novo tanque é maior que o volume do tanque atual?",
+        "alternativas": [
+            "2 vezes.",
+            "3 vezes.",
+            "4 vezes.",
+            "6 vezes.",
+            "8 vezes."
+        ],
+        "correta": "4 vezes.",
+        "explicacao_base": "Volume do tanque atual: V₁ = π × 2² × 5 = π × 4 × 5 = 20π m³. O novo tanque tem o dobro do raio (r = 4 m) e a mesma altura (h = 5 m). Volume do novo tanque: V₂ = π × 4² × 5 = π × 16 × 5 = 80π m³. Razão entre os volumes: V₂ ÷ V₁ = 80π ÷ 20π = 4. Portanto, o novo tanque tem volume 4 vezes maior. Observação importante: ao dobrar o raio, o volume quadruplica (não dobra), pois o raio aparece elevado ao quadrado na fórmula."
+    },
+    {
+        "id": 6,
+        "grupo_id": 6,
+        "tema": "Figuras de linguagem — metáfora e hipérbole",
+        "materia": "Língua Portuguesa",
+        "dificuldade": "Média",
+        "texto_referencia": "Leia o poema.\n\nA cidade é uma selva de pedra\nonde ninguém se olha nos olhos.\nEsperei mil anos num semáforo\nenquanto o mundo passava por mim\ncomo rio que não conhece margem.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Assinale a alternativa que identifica correta e respectivamente as figuras de linguagem presentes nos versos \"A cidade é uma selva de pedra\" e \"Esperei mil anos num semáforo\".",
+        "alternativas": [
+            "Metonímia e ironia.",
+            "Metáfora e hipérbole.",
+            "Comparação e metáfora.",
+            "Hipérbole e metonímia.",
+            "Ironia e comparação."
+        ],
+        "correta": "Metáfora e hipérbole.",
+        "explicacao_base": "No verso 'A cidade é uma selva de pedra', há uma metáfora: a cidade é identificada diretamente com uma selva, sem uso de conectivo comparativo como 'como' ou 'parece'. Trata-se de uma comparação implícita que atribui à cidade as características caóticas e impiedosas de uma selva. Já em 'Esperei mil anos num semáforo', o exagero intencional de 'mil anos' para expressar uma longa espera caracteriza a hipérbole. Portanto, a sequência correta é metáfora e hipérbole."
+    },
+    {
+        "id": 7,
+        "grupo_id": 7,
+        "tema": "Regra de três composta — consumo de água",
+        "materia": "Matemática",
+        "dificuldade": "Difícil",
+        "texto_referencia": "A Organização Mundial da Saúde (OMS) recomenda que cada pessoa consuma, no mínimo, 2 litros de água por dia. Em um acampamento escolar, 30 estudantes consumiram juntos 180 litros de água em 3 dias. Para o próximo acampamento, a escola pretende levar 45 estudantes por 5 dias.",
+        "image_id": "",
+        "enunciado": "Considerando que o consumo de água por estudante se manterá igual ao do acampamento anterior, a quantidade de litros de água que a escola deverá levar para o próximo acampamento é",
+        "alternativas": [
+            "270 litros.",
+            "300 litros.",
+            "375 litros.",
+            "450 litros.",
+            "540 litros."
+        ],
+        "correta": "450 litros.",
+        "explicacao_base": "Primeiramente, calcula-se o consumo diário por estudante: 180 litros ÷ 30 estudantes ÷ 3 dias = 2 litros por estudante por dia. Para o próximo acampamento: 45 estudantes × 5 dias × 2 litros = 450 litros. Também é possível resolver por regra de três composta: 30 estudantes → 3 dias → 180 litros / 45 estudantes → 5 dias → x litros. Como estudantes e dias são grandezas diretamente proporcionais ao consumo: x = (180 × 45 × 5) ÷ (30 × 3) = 40.500 ÷ 90 = 450 litros."
+    },
+    {
+        "id": 8,
+        "grupo_id": 8,
+        "tema": "Sistema circulatório humano e tipos de vasos sanguíneos",
+        "materia": "Ciências — Biologia",
+        "dificuldade": "Média",
+        "texto_referencia": "O sistema circulatório humano é responsável por transportar nutrientes, gases, hormônios e resíduos metabólicos por todo o organismo. Ele é composto por três tipos principais de vasos sanguíneos, cada um com características estruturais e funções distintas. As artérias conduzem o sangue do coração para os órgãos e possuem paredes espessas e elásticas, capazes de suportar a pressão do bombeamento cardíaco. As veias retornam o sangue dos órgãos ao coração e possuem válvulas internas que impedem o refluxo do sangue. Já os capilares são vasos de parede muito fina, responsáveis pelas trocas de substâncias entre o sangue e as células dos tecidos.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base no texto, assinale a alternativa que apresenta uma afirmação correta sobre o sistema circulatório humano.",
+        "alternativas": [
+            "As veias conduzem o sangue do coração para os órgãos e possuem paredes espessas para suportar a alta pressão sanguínea.",
+            "Os capilares possuem válvulas internas que impedem o refluxo do sangue e garantem sua circulação em sentido único.",
+            "As artérias retornam o sangue dos órgãos ao coração, sendo por isso chamadas de vasos de retorno.",
+            "Os capilares são os vasos onde ocorrem as trocas de substâncias entre o sangue e as células, graças à espessura reduzida de suas paredes.",
+            "As artérias e as veias possuem estrutura idêntica, diferenciando-se apenas pela direção em que o sangue nelas circula."
+        ],
+        "correta": "Os capilares são os vasos onde ocorrem as trocas de substâncias entre o sangue e as células, graças à espessura reduzida de suas paredes.",
+        "explicacao_base": "De acordo com o texto, os capilares possuem paredes muito finas, o que facilita as trocas de substâncias (gases, nutrientes, resíduos) entre o sangue e as células dos tecidos. As demais alternativas apresentam informações trocadas ou incorretas: as veias (não as artérias) retornam o sangue ao coração; as válvulas estão nas veias (não nos capilares); as artérias (não as veias) possuem paredes espessas; artérias e veias têm estruturas diferentes."
+    },
+    {
+        "id": 9,
+        "grupo_id": 9,
+        "tema": "Urbanização brasileira e êxodo rural",
+        "materia": "Geografia",
+        "dificuldade": "Média",
+        "texto_referencia": "Nas décadas de 1950 e 1960, o Brasil passou por um intenso processo de industrialização, sobretudo na região Sudeste. A implantação de fábricas, especialmente na Grande São Paulo, atraiu milhões de trabalhadores oriundos do campo, principalmente do Nordeste e de Minas Gerais, em busca de emprego e melhores condições de vida. Esse deslocamento em massa da população rural para os centros urbanos ficou conhecido como êxodo rural e transformou profundamente o perfil demográfico do país: em 1950, cerca de 64% dos brasileiros viviam no campo; em 2010, esse número havia se invertido, com mais de 84% da população vivendo em cidades.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base no texto e em seus conhecimentos sobre o processo de urbanização brasileiro, é correto afirmar que",
+        "alternativas": [
+            "o êxodo rural foi causado exclusivamente pela mecanização da agricultura, que expulsou os trabalhadores do campo ao tornar o trabalho humano desnecessário.",
+            "a industrialização concentrada na região Sul do Brasil foi o principal fator de atração da população rural para os centros urbanos nas décadas de 1950 e 1960.",
+            "o processo de urbanização acelerada contribuiu para o surgimento de problemas como a favelização e a sobrecarga dos serviços públicos nas grandes cidades.",
+            "o êxodo rural resultou no esvaziamento completo do campo brasileiro, inviabilizando a produção agrícola no país a partir da década de 1970.",
+            "a população brasileira já era majoritariamente urbana em 1950, com mais de 60% vivendo nas cidades, conforme indicado pelo texto."
+        ],
+        "correta": "o processo de urbanização acelerada contribuiu para o surgimento de problemas como a favelização e a sobrecarga dos serviços públicos nas grandes cidades.",
+        "explicacao_base": "O êxodo rural gerou um crescimento urbano acelerado e desordenado, sem que as cidades estivessem preparadas para absorver tamanha demanda por moradia, transporte, saneamento e serviços públicos. Isso resultou em problemas estruturais como a favelização, desemprego e precarização das condições de vida nas periferias. As demais alternativas estão incorretas: o texto indica que o principal fator de atração foi a industrialização no Sudeste (não no Sul); em 1950, a maioria ainda vivia no campo (64%); e a produção agrícola não foi inviabilizada."
+    },
+    {
+        "id": 10,
+        "grupo_id": 10,
+        "tema": "Métodos de separação de misturas",
+        "materia": "Ciências — Química",
+        "dificuldade": "Difícil",
+        "texto_referencia": "Em um laboratório escolar, os estudantes receberam quatro amostras diferentes para separar:\n\nAmostra I: Mistura de areia e água.\nAmostra II: Mistura de álcool e água.\nAmostra III: Mistura de limalha de ferro e areia.\nAmostra IV: Mistura de sal dissolvido em água.\n\nCada amostra exige um método de separação específico, baseado nas propriedades físicas dos componentes da mistura.",
+        "image_id": "",
+        "enunciado": "Assinale a alternativa que apresenta, correta e respectivamente, os métodos de separação mais adequados para as amostras I, II, III e IV.",
+        "alternativas": [
+            "Filtração, destilação fracionada, levigação e evaporação.",
+            "Decantação, evaporação, imantação e filtração.",
+            "Filtração, destilação fracionada, imantação e evaporação.",
+            "Evaporação, filtração, flotação e destilação fracionada.",
+            "Centrifugação, decantação, imantação e cristalização."
+        ],
+        "correta": "Filtração, destilação fracionada, imantação e evaporação.",
+        "explicacao_base": "Amostra I (areia + água): mistura heterogênea sólido-líquido separada por filtração, que retém o sólido no filtro enquanto o líquido passa. Amostra II (álcool + água): mistura homogênea de dois líquidos miscíveis com pontos de ebulição diferentes (álcool ≈ 78°C; água ≈ 100°C), separada por destilação fracionada. Amostra III (limalha de ferro + areia): o ferro é atraído por ímã, enquanto a areia não é, permitindo a separação por imantação. Amostra IV (sal dissolvido em água): mistura homogênea separada por evaporação da água, deixando o sal cristalizado. Portanto, a sequência correta é: filtração, destilação fracionada, imantação e evaporação."
+    },
+    {
+        "id": 11,
+        "grupo_id": 11,
+        "tema": "Variação linguística e preconceito linguístico",
+        "materia": "Língua Portuguesa",
+        "dificuldade": "Média",
+        "texto_referencia": "Leia o trecho de uma crônica.\n\nDona Conceição chegou à reunião de pais com o filho do lado e, antes mesmo de sentar, disse para a professora: — A senhora me desculpe, mas eu num tive tempo de vim mais cedo, que eu trabalho até tardão.\nA professora sorriu, anotou o nome do menino e respondeu com toda a calma: — Fique à vontade, dona Conceição. O importante é que a senhora veio.\nDo lado de fora, uma mãe sussurrou para outra: — Você ouviu como ela fala? Que absurdo.\nO absurdo, porém, era outro: quem julgava não entendia que língua não é uniforme, e que a forma como falamos carrega a história de onde viemos.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base na crônica, assinale a alternativa que apresenta a interpretação mais adequada sobre o comportamento da mãe que criticou a fala de dona Conceição.",
+        "alternativas": [
+            "A mãe agiu corretamente ao identificar erros gramaticais graves na fala de dona Conceição, que deveria se expressar de forma culta em ambientes escolares.",
+            "A mãe demonstrou preconceito linguístico, pois tratou a variante regional e social de dona Conceição como inferior, ignorando que todas as variedades da língua têm valor e lógica próprios.",
+            "A atitude da mãe foi justificada, pois o ambiente escolar exige o uso exclusivo da norma culta da língua, e qualquer desvio deve ser corrigido.",
+            "A crítica da mãe foi pertinente porque dona Conceição deveria ter aprendido a norma padrão da língua para participar de reuniões em instituições de ensino.",
+            "O narrador da crônica concorda com a crítica da mãe, pois o texto deixa claro que a fala de dona Conceição era inadequada para o contexto."
+        ],
+        "correta": "A mãe demonstrou preconceito linguístico, pois tratou a variante regional e social de dona Conceição como inferior, ignorando que todas as variedades da língua têm valor e lógica próprios.",
+        "explicacao_base": "O texto conclui explicitamente que 'língua não é uniforme, e que a forma como falamos carrega a história de onde viemos', posicionando-se contra a atitude da mãe. A fala de dona Conceição representa uma variante linguística legítima, marcada por características regionais e sociais como 'num tive' e 'vim'. Tratar essa variedade como absurda ou inferior configura preconceito linguístico. O narrador claramente critica a mãe, não dona Conceição."
+    },
+    {
+        "id": 12,
+        "grupo_id": 12,
+        "tema": "Equação do 2º grau — aplicação em contexto",
+        "materia": "Matemática",
+        "dificuldade": "Difícil",
+        "texto_referencia": "Uma horta comunitária urbana tem formato retangular. Sabe-se que o comprimento da horta é 3 metros maior que sua largura. A área total da horta é de 40 m².\n\nDado: Para uma equação do tipo ax² + bx + c = 0, as raízes podem ser encontradas por tentativa ou pela fórmula de Bhaskara: x = (−b ± √(b² − 4ac)) ÷ 2a",
+        "image_id": "",
+        "enunciado": "Com base nas informações, qual é a medida da largura da horta comunitária, em metros?",
+        "alternativas": [
+            "4 metros.",
+            "5 metros.",
+            "6 metros.",
+            "7 metros.",
+            "8 metros."
+        ],
+        "correta": "5 metros.",
+        "explicacao_base": "Sendo a largura = x, o comprimento = x + 3. A área é: x · (x + 3) = 40, o que resulta em x² + 3x − 40 = 0. Aplicando Bhaskara: discriminante Δ = 3² − 4·(1)·(−40) = 9 + 160 = 169. √169 = 13. x = (−3 + 13) ÷ 2 = 10 ÷ 2 = 5 ou x = (−3 − 13) ÷ 2 = −8 (descartado, pois medida não pode ser negativa). Portanto, a largura é 5 metros e o comprimento é 8 metros. Verificação: 5 × 8 = 40 m². ✓"
+    },
+    {
+        "id": 13,
+        "grupo_id": 13,
+        "tema": "Ciclo da água e sistemas hidrográficos do Brasil",
+        "materia": "Geografia",
+        "dificuldade": "Fácil",
+        "texto_referencia": "O Brasil é um dos países mais ricos em recursos hídricos do mundo. Possui a maior bacia hidrográfica do planeta em extensão e volume de água — a Bacia Amazônica —, além de outras importantes bacias como a do Rio Paraná, a do Rio São Francisco e a do Rio Tocantins-Araguaia. No entanto, essa abundância não se distribui de maneira uniforme pelo território: enquanto a Amazônia concentra grande parte da água superficial do país, regiões como o Semiárido nordestino sofrem com longos períodos de estiagem e acesso limitado à água potável.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base no texto e em seus conhecimentos sobre a hidrografia brasileira, é correto afirmar que",
+        "alternativas": [
+            "a Bacia do Rio São Francisco é a maior bacia hidrográfica do Brasil e a que concentra o maior volume de água superficial do país.",
+            "a abundância de recursos hídricos no Brasil garante o acesso igualitário à água potável em todas as regiões do território nacional.",
+            "a Bacia Amazônica é a maior bacia hidrográfica do planeta, porém a distribuição da água no Brasil é desigual, com escassez hídrica em algumas regiões.",
+            "o Semiárido nordestino possui grande disponibilidade de águas subterrâneas que suprem completamente a necessidade hídrica da população local.",
+            "a Bacia do Rio Paraná está localizada inteiramente na região Norte do Brasil e contribui para o abastecimento de água da Amazônia."
+        ],
+        "correta": "a Bacia Amazônica é a maior bacia hidrográfica do planeta, porém a distribuição da água no Brasil é desigual, com escassez hídrica em algumas regiões.",
+        "explicacao_base": "O texto afirma diretamente que a Bacia Amazônica é 'a maior bacia hidrográfica do planeta em extensão e volume de água' e que a abundância hídrica 'não se distribui de maneira uniforme pelo território', com o Semiárido sofrendo estiagens prolongadas. As demais alternativas contradizem informações do texto ou apresentam dados incorretos: a Bacia do São Francisco não é a maior; o acesso à água não é igualitário; a Bacia do Paraná não está na região Norte."
+    },
+    {
+        "id": 14,
+        "grupo_id": 14,
+        "tema": "Eletricidade — Lei de Ohm e potência elétrica",
+        "materia": "Ciências — Física",
+        "dificuldade": "Difícil",
+        "texto_referencia": "Em um projeto de eficiência energética desenvolvido por estudantes de uma Etec, foi analisado o consumo de um chuveiro elétrico residencial. O chuveiro opera com uma tensão de 220 V e possui resistência elétrica de 11 Ω.\n\nDados úteis:\n• Lei de Ohm: U = R · i (onde U = tensão em volts, R = resistência em ohms, i = corrente em ampères)\n• Potência elétrica: P = U · i (onde P = potência em watts)",
+        "image_id": "",
+        "enunciado": "Com base nos dados fornecidos, a corrente elétrica que percorre o chuveiro e sua potência elétrica são, respectivamente,",
+        "alternativas": [
+            "10 A e 1 100 W.",
+            "20 A e 2 200 W.",
+            "20 A e 4 400 W.",
+            "10 A e 2 200 W.",
+            "22 A e 4 840 W."
+        ],
+        "correta": "20 A e 4 400 W.",
+        "explicacao_base": "Pela Lei de Ohm: i = U ÷ R = 220 ÷ 11 = 20 A. Em seguida, calcula-se a potência: P = U · i = 220 × 20 = 4.400 W. Portanto, a corrente elétrica é de 20 A e a potência é de 4.400 W (equivalente a 4,4 kW). Vale observar que 4.400 W corresponde a um chuveiro no modo quente/inverno, valor típico e realista para chuveiros de 220 V, o que torna a questão contextualmente verossímil."
+    },
+    {
+        "id": 15,
+        "grupo_id": 15,
+        "tema": "Revolução Francesa — causas e consequências",
+        "materia": "História",
+        "dificuldade": "Média",
+        "texto_referencia": "No final do século XVIII, a França vivia uma profunda crise: a nobreza e o clero eram isentos de impostos enquanto o povo, chamado de Terceiro Estado, suportava toda a carga tributária do reino. A fome assolava as cidades, e as ideias iluministas — que defendiam liberdade, igualdade e fraternidade — ganhavam força entre os cidadãos. Em 1789, a tomada da Bastilha marcou o início de uma revolução que abalaria não apenas a França, mas toda a ordem política europeia, colocando fim ao Antigo Regime e lançando as bases do mundo contemporâneo.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "De acordo com o texto e com seus conhecimentos sobre a Revolução Francesa, assinale a alternativa que apresenta corretamente uma de suas principais causas e uma de suas principais consequências.",
+        "alternativas": [
+            "Causa: o enriquecimento excessivo do Terceiro Estado com o comércio colonial. Consequência: a proclamação de uma república liderada por Napoleão Bonaparte desde o início da revolução.",
+            "Causa: a desigualdade social e tributária entre os estamentos, com o povo arcando com impostos enquanto a nobreza era isenta. Consequência: o fim do Antigo Regime e a difusão dos ideais de liberdade e igualdade.",
+            "Causa: a invasão do território francês pelas tropas inglesas, que desestabilizou a economia e gerou desemprego em massa. Consequência: a unificação política da Europa sob o comando da França.",
+            "Causa: a recusa do rei Luís XVI em adotar as ideias iluministas e modernizar voluntariamente a estrutura política da França. Consequência: a formação da primeira república socialista da história europeia.",
+            "Causa: a crise religiosa provocada pelo confronto entre católicos e protestantes na França. Consequência: a separação entre Igreja e Estado e o fim da influência do clero na política europeia."
+        ],
+        "correta": "Causa: a desigualdade social e tributária entre os estamentos, com o povo arcando com impostos enquanto a nobreza era isenta. Consequência: o fim do Antigo Regime e a difusão dos ideais de liberdade e igualdade.",
+        "explicacao_base": "O texto menciona diretamente como causas a desigualdade tributária (nobreza e clero isentos, Terceiro Estado sobrecarregado), a fome e as ideias iluministas. Como consequência, o texto cita o fim do Antigo Regime e a disseminação dos princípios de liberdade, igualdade e fraternidade. As demais alternativas apresentam distorções históricas: Napoleão só assumiu o poder em 1799, após o período revolucionário; a invasão inglesa não foi a causa central; a revolução não instalou o socialismo; e a crise religiosa não foi o gatilho do movimento."
+    },
+    {
+        "id": 16,
+        "grupo_id": 16,
+        "tema": "Concordância verbal — sujeito composto e invertido",
+        "materia": "Língua Portuguesa",
+        "dificuldade": "Difícil",
+        "texto_referencia": "Leia as frases a seguir, retiradas de diferentes contextos comunicativos.\n\nI. Tanto o diretor quanto os professores assinou o documento.\nII. Chegaram ao evento a cantora e seu empresário.\nIII. Faz muitos anos que aquelas crianças não visitam os avós.\nIV. Haviam muitas pessoas esperando na fila do posto de saúde.\n\n(Frases de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Analisando as frases acima quanto à concordância verbal, assinale a alternativa correta.",
+        "alternativas": [
+            "Apenas a frase II está correta; as demais apresentam desvio em relação à norma culta.",
+            "As frases II e III estão corretas; as frases I e IV apresentam desvio em relação à norma culta.",
+            "As frases I e IV estão corretas; as frases II e III apresentam desvio em relação à norma culta.",
+            "Todas as frases estão corretas de acordo com a norma culta da língua portuguesa.",
+            "Apenas a frase III está correta; as demais apresentam desvio em relação à norma culta."
+        ],
+        "correta": "As frases II e III estão corretas; as frases I e IV apresentam desvio em relação à norma culta.",
+        "explicacao_base": "Frase I — INCORRETA: com sujeito composto ligado por 'tanto... quanto', o verbo deve concordar no plural: 'assinaram'. Frase II — CORRETA: quando o sujeito composto vem após o verbo, este pode concordar com o núcleo mais próximo ('a cantora'), uso aceito pela norma culta. Frase III — CORRETA: o verbo 'fazer' indicando tempo decorrido é impessoal e fica no singular ('faz'), mesmo que pareça ter sujeito. Frase IV — INCORRETA: o verbo 'haver' com sentido de 'existir' é impessoal e deve ficar no singular: 'Havia muitas pessoas'."
+    },
+    {
+        "id": 17,
+        "grupo_id": 17,
+        "tema": "Porcentagem — desconto e acréscimo sucessivos",
+        "materia": "Matemática",
+        "dificuldade": "Difícil",
+        "texto_referencia": "Uma loja de materiais esportivos promoveu uma liquidação em duas etapas. Na primeira etapa, todos os produtos receberam 20% de desconto. Na segunda etapa, aplicou-se um acréscimo de 10% sobre o preço já reduzido, em razão do aumento nos custos de importação. Uma raquete de tênis custava originalmente R$ 250,00 antes da liquidação.",
+        "image_id": "",
+        "enunciado": "Após as duas etapas de alteração de preço, o valor final da raquete e a variação percentual em relação ao preço original são, respectivamente,",
+        "alternativas": [
+            "R$ 225,00 e redução de 10%.",
+            "R$ 220,00 e redução de 12%.",
+            "R$ 230,00 e redução de 8%.",
+            "R$ 200,00 e redução de 20%.",
+            "R$ 275,00 e acréscimo de 10%."
+        ],
+        "correta": "R$ 220,00 e redução de 12%.",
+        "explicacao_base": "1ª etapa — desconto de 20%: R$ 250,00 × 0,80 = R$ 200,00. 2ª etapa — acréscimo de 10% sobre R$ 200,00: R$ 200,00 × 1,10 = R$ 220,00. Variação em relação ao preço original: (250 − 220) ÷ 250 × 100 = 30 ÷ 250 × 100 = 12% de redução. Atenção: o erro clássico é somar e subtrair as porcentagens diretamente (−20% + 10% = −10%), chegando erroneamente a R$ 225,00. Porcentagens sucessivas não se somam aritmeticamente, pois incidem sobre bases diferentes."
+    },
+    {
+        "id": 18,
+        "grupo_id": 18,
+        "tema": "Tabela periódica — propriedades dos elementos e ligações químicas",
+        "materia": "Ciências — Química",
+        "dificuldade": "Média",
+        "texto_referencia": "A tabela periódica organiza os elementos químicos de acordo com seu número atômico crescente e agrupa aqueles com propriedades semelhantes em famílias (colunas) e períodos (linhas). Os metais alcalinos, presentes na família 1, possuem apenas 1 elétron na camada de valência e tendem a perdê-lo com facilidade, formando íons positivos. Os halogênios, família 17, possuem 7 elétrons na última camada e tendem a ganhar 1 elétron, formando íons negativos. Quando um metal alcalino reage com um halogênio, forma-se um composto iônico estável.\n\nDados: Sódio (Na) — número atômico 11 / Cloro (Cl) — número atômico 17",
+        "image_id": "",
+        "enunciado": "Considerando as informações do texto e os dados fornecidos sobre o sódio e o cloro, é correto afirmar que a reação entre esses dois elementos forma",
+        "alternativas": [
+            "uma ligação covalente, pois ambos os elementos precisam ganhar elétrons para atingir estabilidade.",
+            "um composto molecular, pois o sódio compartilha seu elétron de valência com o cloro.",
+            "um composto iônico, no qual o sódio perde 1 elétron para o cloro, formando os íons Na⁺ e Cl⁻.",
+            "um composto metálico, caracterizado pela livre movimentação de elétrons entre os átomos de sódio e cloro.",
+            "uma ligação covalente polar, pois o cloro atrai o elétron do sódio sem que haja transferência definitiva."
+        ],
+        "correta": "um composto iônico, no qual o sódio perde 1 elétron para o cloro, formando os íons Na⁺ e Cl⁻.",
+        "explicacao_base": "O texto afirma que metais alcalinos (família 1, como o sódio) perdem 1 elétron facilmente, formando íons positivos, e que halogênios (família 17, como o cloro) ganham 1 elétron, formando íons negativos. Quando há transferência definitiva de elétrons entre os átomos, forma-se uma ligação iônica — não covalente (que envolve compartilhamento). A reação Na + Cl forma o cloreto de sódio (NaCl), o sal de cozinha, um composto iônico clássico com os íons Na⁺ e Cl⁻."
+    },
+    {
+        "id": 19,
+        "grupo_id": 19,
+        "tema": "Era Vargas — direitos trabalhistas e Consolidação das Leis do Trabalho",
+        "materia": "História",
+        "dificuldade": "Média",
+        "texto_referencia": "Getúlio Vargas governou o Brasil em dois períodos: de 1930 a 1945 e de 1951 a 1954. Durante seu primeiro governo, especialmente a partir do Estado Novo (1937–1945), Vargas implantou uma série de medidas que transformaram as relações de trabalho no país. Em 1943, foi promulgada a Consolidação das Leis do Trabalho (CLT), que reuniu e sistematizou os direitos dos trabalhadores urbanos, como a jornada de trabalho de 8 horas diárias, o salário mínimo, o direito a férias remuneradas e a regulamentação do trabalho feminino e infantil. Vargas ficou conhecido entre os trabalhadores como 'pai dos pobres', embora sua relação com os sindicatos fosse marcada pelo controle e pela restrição à organização autônoma dos trabalhadores.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base no texto, é correto afirmar que a Era Vargas",
+        "alternativas": [
+            "garantiu plena autonomia aos sindicatos para organizar greves e negociar diretamente com os empregadores, sem qualquer intervenção do Estado.",
+            "promoveu avanços nos direitos dos trabalhadores rurais, que foram os principais beneficiados pela CLT de 1943.",
+            "representou um período de avanços nos direitos trabalhistas urbanos, mas com controle estatal sobre a organização sindical dos trabalhadores.",
+            "foi marcada pelo fortalecimento da democracia e pela ampla liberdade política, o que permitiu a criação da CLT com participação popular direta.",
+            "restringiu completamente os direitos dos trabalhadores ao proibir a formação de sindicatos e criminalizar qualquer forma de organização operária."
+        ],
+        "correta": "representou um período de avanços nos direitos trabalhistas urbanos, mas com controle estatal sobre a organização sindical dos trabalhadores.",
+        "explicacao_base": "O texto indica claramente dois aspectos contraditórios da Era Vargas: por um lado, a conquista de direitos trabalhistas importantes reunidos na CLT (jornada de 8h, salário mínimo, férias, etc.); por outro, a relação com os sindicatos era 'marcada pelo controle e pela restrição à organização autônoma'. Isso caracteriza o trabalhismo varguista: concessão de direitos pelo Estado de cima para baixo, sem que os trabalhadores os conquistassem de forma autônoma. Os rurais não foram contemplados pela CLT, e o período do Estado Novo foi uma ditadura, não democrático."
+    },
+    {
+        "id": 20,
+        "grupo_id": 20,
+        "tema": "Cinemática — velocidade média e espaço percorrido",
+        "materia": "Ciências — Física",
+        "dificuldade": "Média",
+        "texto_referencia": "Durante as aulas de Educação Física, uma professora propôs um desafio de atletismo para seus alunos. Mariana percorreu uma pista retilínea de 400 metros em 1 minuto e 20 segundos. Seu colega Pedro percorreu a mesma distância em 1 minuto e 40 segundos.\n\nDado: Velocidade média = distância ÷ tempo",
+        "image_id": "",
+        "enunciado": "Com base nos dados fornecidos, a velocidade média de Mariana e a diferença entre a velocidade média de Mariana e a de Pedro são, respectivamente,",
+        "alternativas": [
+            "4 m/s e 0,5 m/s.",
+            "5 m/s e 1,0 m/s.",
+            "5 m/s e 0,5 m/s.",
+            "4 m/s e 1,0 m/s.",
+            "6 m/s e 2,0 m/s."
+        ],
+        "correta": "5 m/s e 1,0 m/s.",
+        "explicacao_base": "Primeiro, converte-se os tempos para segundos. Mariana: 1 min 20 s = 80 s. Pedro: 1 min 40 s = 100 s. Velocidade média de Mariana: v = 400 ÷ 80 = 5 m/s. Velocidade média de Pedro: v = 400 ÷ 100 = 4 m/s. Diferença entre as velocidades: 5 − 4 = 1,0 m/s. O erro mais comum é esquecer de converter minutos para segundos, o que levaria a cálculos incorretos. A resposta correta é 5 m/s e diferença de 1,0 m/s."
+    },
+    {
+        "id": 21,
+        "grupo_id": 21,
+        "tema": "Funções da linguagem — função poética e referencial",
+        "materia": "Língua Portuguesa",
+        "dificuldade": "Média",
+        "texto_referencia": "Leia os dois textos a seguir.\n\nTexto I\nA dengue é uma doença infecciosa causada pelo vírus do tipo Flavivírus e transmitida pela picada da fêmea do mosquito Aedes aegypti infectado. Os principais sintomas são febre alta, dores no corpo e manchas vermelhas na pele. A prevenção consiste em eliminar focos de água parada.\n\nTexto II\nO mosquito veio,\nbebeu meu sangue quente,\nme deixou a dor\ne foi embora levemente,\ncomo quem rouba o sol\nde uma tarde inocente.\n\n(Textos de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Considerando as funções da linguagem predominantes em cada texto, assinale a alternativa correta.",
+        "alternativas": [
+            "O Texto I predomina a função emotiva, pois o emissor expressa seus sentimentos em relação à dengue; o Texto II predomina a função referencial, pois descreve objetivamente a doença.",
+            "Ambos os textos predominam a função referencial, pois os dois abordam o mesmo tema: a dengue e seus efeitos no ser humano.",
+            "O Texto I predomina a função referencial, pois transmite informações objetivas sobre a dengue; o Texto II predomina a função poética, pois a mensagem é elaborada com recursos estéticos como a metáfora.",
+            "O Texto I predomina a função conativa, pois busca convencer o leitor a se vacinar contra a dengue; o Texto II predomina a função fática, pois estabelece contato entre o poeta e o leitor.",
+            "Ambos os textos predominam a função poética, pois os dois utilizam linguagem figurada para abordar o tema da dengue de forma indireta."
+        ],
+        "correta": "O Texto I predomina a função referencial, pois transmite informações objetivas sobre a dengue; o Texto II predomina a função poética, pois a mensagem é elaborada com recursos estéticos como a metáfora.",
+        "explicacao_base": "A função referencial (ou denotativa) predomina quando o texto foca na transmissão de informações objetivas sobre um referente externo, sem marcas subjetivas — exatamente o que ocorre no Texto I, que informa sobre causas, sintomas e prevenção da dengue de forma técnica. A função poética predomina quando a mensagem se volta para si mesma, explorando recursos estéticos como ritmo, sonoridade e figuras de linguagem — o Texto II usa metáfora ('como quem rouba o sol'), ritmo e rimas, características típicas da função poética."
+    },
+    {
+        "id": 22,
+        "grupo_id": 22,
+        "tema": "Teorema de Pitágoras — aplicação prática",
+        "materia": "Matemática",
+        "dificuldade": "Média",
+        "texto_referencia": "Uma equipe de técnicos em edificações precisa instalar um cabo de fibra óptica entre dois pontos de uma cidade. Os pontos estão localizados em posições que formam um triângulo retângulo: a distância horizontal entre eles é de 40 metros e a distância vertical (diferença de altura entre os dois pontos) é de 30 metros. Para evitar obstáculos no percurso, o cabo será instalado em linha reta, ligando diretamente os dois pontos.\n\nDado: Em um triângulo retângulo, o quadrado da hipotenusa é igual à soma dos quadrados dos catetos (a² = b² + c²).",
+        "image_id": "",
+        "enunciado": "O comprimento mínimo do cabo de fibra óptica necessário para essa instalação é de",
+        "alternativas": [
+            "35 metros.",
+            "42 metros.",
+            "45 metros.",
+            "50 metros.",
+            "70 metros."
+        ],
+        "correta": "50 metros.",
+        "explicacao_base": "Os dois catetos do triângulo retângulo são as distâncias horizontal (40 m) e vertical (30 m). Aplicando o Teorema de Pitágoras para encontrar a hipotenusa (o cabo): a² = 40² + 30² = 1.600 + 900 = 2.500. Portanto, a = √2.500 = 50 metros. Trata-se de uma das ternas pitagóricas mais clássicas: 3-4-5 (multiplicada por 10: 30-40-50). O cabo deve ter no mínimo 50 metros de comprimento."
+    },
+    {
+        "id": 23,
+        "grupo_id": 23,
+        "tema": "Mitose e meiose — diferenças e funções",
+        "materia": "Ciências — Biologia",
+        "dificuldade": "Difícil",
+        "texto_referencia": "A divisão celular é um processo fundamental para os seres vivos. Existem dois tipos principais: a mitose e a meiose. A mitose é responsável pelo crescimento dos organismos, pela regeneração de tecidos e pela reprodução assexuada. Nela, uma célula-mãe diplóide (2n) origina duas células-filhas geneticamente idênticas entre si e à célula original, também diplóides (2n). Já a meiose ocorre nas células reprodutivas e resulta na formação de quatro células-filhas haplóides (n), com metade do número de cromossomos da célula original. Além disso, durante a meiose ocorre a recombinação genética, o que gera variabilidade entre as células produzidas.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base no texto, assinale a alternativa que apresenta uma comparação correta entre mitose e meiose.",
+        "alternativas": [
+            "Tanto a mitose quanto a meiose produzem células-filhas haplóides, diferenciando-se apenas pelo número de divisões celulares realizadas.",
+            "A mitose produz quatro células-filhas com variabilidade genética, enquanto a meiose produz duas células-filhas geneticamente idênticas à célula original.",
+            "A mitose gera células-filhas diplóides e geneticamente idênticas à célula-mãe, enquanto a meiose gera células haplóides com variabilidade genética.",
+            "A meiose é responsável pelo crescimento e pela regeneração de tecidos, enquanto a mitose ocorre exclusivamente nas células reprodutivas dos organismos.",
+            "Mitose e meiose produzem o mesmo número de células-filhas e são igualmente responsáveis pela reprodução sexuada dos organismos."
+        ],
+        "correta": "A mitose gera células-filhas diplóides e geneticamente idênticas à célula-mãe, enquanto a meiose gera células haplóides com variabilidade genética.",
+        "explicacao_base": "O texto descreve claramente: na mitose, a célula-mãe diplóide (2n) origina duas células-filhas diplóides (2n) geneticamente idênticas. Na meiose, a célula-mãe diplóide origina quatro células-filhas haplóides (n), com variabilidade genética devido à recombinação. Os distratores invertem propositalmente as características dos dois processos ou afirmam que ambos produzem haplóides — erros clássicos cometidos por quem confunde os dois tipos de divisão."
+    },
+    {
+        "id": 24,
+        "grupo_id": 24,
+        "tema": "Grandes Navegações e o papel de Portugal",
+        "materia": "História",
+        "dificuldade": "Fácil",
+        "texto_referencia": "No século XV, Portugal se tornou pioneiro nas Grandes Navegações europeias. Impulsionados pelo desejo de encontrar uma rota marítima para as Índias — e assim ter acesso direto às especiarias orientais, como pimenta, cravo e canela, sem depender dos intermediários árabes e italianos —, os portugueses avançaram progressivamente pela costa africana. Esse processo foi sustentado por avanços técnicos como o aperfeiçoamento da caravela, o uso do astrolábio e da bússola, e pelo apoio financeiro e estratégico da Coroa portuguesa. Em 1498, Vasco da Gama chegou à Índia contornando o continente africano pelo Cabo da Boa Esperança, concretizando o objetivo central das navegações portuguesas.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "De acordo com o texto, um dos principais objetivos que motivou Portugal a investir nas Grandes Navegações foi",
+        "alternativas": [
+            "conquistar militarmente os reinos africanos para expandir o território português além da Península Ibérica.",
+            "encontrar uma rota marítima direta para as Índias e assim acessar as especiarias orientais sem depender de intermediários comerciais.",
+            "descobrir novos continentes habitados por povos desconhecidos para convertê-los ao islamismo.",
+            "competir com a Espanha pela posse das ilhas do Mediterrâneo, ricas em ouro e pedras preciosas.",
+            "desenvolver novas tecnologias de navegação para vender embarcações às demais nações europeias."
+        ],
+        "correta": "encontrar uma rota marítima direta para as Índias e assim acessar as especiarias orientais sem depender de intermediários comerciais.",
+        "explicacao_base": "O texto afirma explicitamente que o objetivo central era 'encontrar uma rota marítima para as Índias' para ter 'acesso direto às especiarias orientais, como pimenta, cravo e canela, sem depender dos intermediários árabes e italianos'. Esse interesse era essencialmente comercial e econômico. A chegada de Vasco da Gama à Índia em 1498 concretizou esse objetivo. As demais alternativas apresentam motivações que não constam no texto ou são historicamente incorretas para o contexto português do século XV."
+    },
+    {
+        "id": 25,
+        "grupo_id": 25,
+        "tema": "Mudanças de estado físico da matéria e temperatura",
+        "materia": "Ciências — Química",
+        "dificuldade": "Fácil",
+        "texto_referencia": "A água é uma substância que pode se apresentar nos três estados físicos da matéria: sólido (gelo), líquido (água) e gasoso (vapor d'água). As mudanças de estado ocorrem quando há variação de temperatura ou pressão. Ao ganhar energia térmica, as partículas se movimentam mais e a substância muda para um estado de maior energia. Ao perder energia, o processo inverso ocorre. As mudanças de estado têm nomes específicos: fusão (sólido → líquido), vaporização (líquido → gasoso), solidificação (líquido → sólido), condensação (gasoso → líquido) e sublimação (sólido → gasoso diretamente).\n\nObserve a situação: Uma pessoa retira cubos de gelo do freezer e os coloca em um copo. Com o tempo, o gelo derrete completamente e, após horas sob o sol, parte da água do copo desaparece.",
+        "image_id": "",
+        "enunciado": "As mudanças de estado físico que ocorreram, respectivamente, quando o gelo derreteu e quando a água do copo desapareceu sob o sol são denominadas",
+        "alternativas": [
+            "solidificação e condensação.",
+            "condensação e sublimação.",
+            "fusão e vaporização.",
+            "vaporização e fusão.",
+            "sublimação e solidificação."
+        ],
+        "correta": "fusão e vaporização.",
+        "explicacao_base": "Quando o gelo (sólido) derrete e se transforma em água (líquido), ocorre a fusão — mudança do estado sólido para o líquido, com absorção de energia térmica do ambiente. Quando a água líquida do copo 'desaparece' sob o sol, transformando-se em vapor d'água (gasoso), ocorre a vaporização — mudança do estado líquido para o gasoso, também com absorção de energia. Portanto, as mudanças são: fusão (sólido → líquido) e vaporização (líquido → gasoso)."
+    },
+    {
+        "id": 26,
+        "grupo_id": 26,
+        "tema": "Leitura de HQ — duplo sentido e humor",
+        "materia": "Língua Portuguesa",
+        "dificuldade": "Média",
+        "texto_referencia": "Observe a tirinha 'Cientrinhas #143', de Merlin (Dragões de Garagem). Nela, personagens participam de um 'Encontro Anual de Primos' e usam camisetas com números. Um personagem diz ao outro: 'Saudades, primo. Você é um cara ímpar!' Mais adiante, dois personagens comentam sobre a turma: 'É uma galera que não se deixa dividir por qualquer fator.' No último quadro, ao verem um personagem com números muito grandes na camiseta, alguém diz: 'Ouvi dizer que ele trabalha com criptografia.'\n\nFonte: <https://tinyurl.com/y2xxx63q> Acesso em: 07.10.2019.",
+        "image_id": "pi.png",
+        "enunciado": "O humor da tirinha é construído principalmente pelo uso do duplo sentido de certas palavras. Assinale a alternativa que explica corretamente o recurso de linguagem utilizado e o efeito de sentido produzido.",
+        "alternativas": [
+            "A tirinha usa ironia: os personagens fingem não saber que são números primos, criando uma crítica à ignorância matemática da sociedade.",
+            "A tirinha explora a hipérbole ao exagerar as qualidades dos números primos, comparando-os a pessoas excepcionais e insubstituíveis.",
+            "A tirinha utiliza o duplo sentido (ambiguidade): palavras como 'primo', 'ímpar' e 'não se deixa dividir' funcionam simultaneamente como termos do cotidiano e como conceitos matemáticos, gerando o efeito humorístico.",
+            "A tirinha faz uso da metonímia ao substituir os nomes dos personagens por números, representando a desumanização causada pela tecnologia e pela matemática.",
+            "O humor é produzido pela função fática da linguagem, pois os personagens apenas trocam cumprimentos sem transmitir nenhuma informação relevante."
+        ],
+        "correta": "A tirinha utiliza o duplo sentido (ambiguidade): palavras como 'primo', 'ímpar' e 'não se deixa dividir' funcionam simultaneamente como termos do cotidiano e como conceitos matemáticos, gerando o efeito humorístico.",
+        "explicacao_base": "O recurso central da tirinha é a ambiguidade (duplo sentido): 'primo' significa tanto parente quanto número primo; 'ímpar' significa tanto 'singular/especial' quanto número não divisível por 2; 'não se deixa dividir por qualquer fator' remete tanto à união do grupo quanto à definição matemática de número primo (divisível apenas por 1 e por si mesmo). O último quadro estende o humor ao campo da criptografia, que realmente utiliza números primos muito grandes em algoritmos de segurança digital (como o RSA). Não há ironia, hipérbole, metonímia ou função fática predominante — o recurso é a ambiguidade lexical a serviço do humor."
+    },
+    {
+        "id": 27,
+        "grupo_id": 27,
+        "tema": "Números primos — identificação e propriedades",
+        "materia": "Matemática",
+        "dificuldade": "Fácil",
+        "texto_referencia": "Na tirinha 'Cientrinhas #143', todos os personagens do 'Encontro Anual de Primos' vestem camisetas com números. Os números visíveis nas camisetas são: 2, 23, 37, 61, 73 e 137. O humor da tirinha se baseia nas propriedades matemáticas dos números primos: aqueles que são divisíveis apenas por 1 e por si mesmos.\n\nFonte: <https://tinyurl.com/y2xxx63q> Acesso em: 07.10.2019.",
+        "image_id": "pi.png",
+        "enunciado": "Assinale a alternativa que apresenta um conjunto formado exclusivamente por números primos.",
+        "alternativas": [
+            "{4, 7, 11, 15}",
+            "{2, 9, 13, 17}",
+            "{3, 11, 23, 37}",
+            "{5, 21, 29, 41}",
+            "{7, 13, 27, 31}"
+        ],
+        "correta": "{3, 11, 23, 37}",
+        "explicacao_base": "Um número primo é divisível apenas por 1 e por si mesmo. Verificando cada alternativa: A) 4 = 2×2 e 15 = 3×5 — não são primos. B) 9 = 3×3 — não é primo. C) 3 ✓, 11 ✓, 23 ✓, 37 ✓ — todos primos. D) 21 = 3×7 — não é primo. E) 27 = 3×3×3 — não é primo. Portanto, apenas o conjunto {3, 11, 23, 37} é formado exclusivamente por números primos, assim como os números nas camisetas dos personagens da tirinha (2, 23, 37, 61, 73 e 137 são todos primos)."
+    },
+    {
+        "id": 28,
+        "grupo_id": 28,
+        "tema": "Energia mecânica — cinética e potencial gravitacional",
+        "materia": "Ciências — Física",
+        "dificuldade": "Difícil",
+        "texto_referencia": "Durante uma aula prática, estudantes observaram uma bolinha de 2 kg sendo solta do repouso do alto de uma rampa com 5 metros de altura em relação ao solo. À medida que a bolinha desce, sua energia potencial gravitacional se transforma em energia cinética. Considerando que não há perda de energia por atrito, a energia mecânica total do sistema se conserva.\n\nDados:\n• Energia potencial gravitacional: Ep = m × g × h\n• Energia cinética: Ec = (m × v²) ÷ 2\n• Aceleração da gravidade: g = 10 m/s²\n• A bolinha parte do repouso (velocidade inicial = 0)",
+        "image_id": "",
+        "enunciado": "Quando a bolinha atinge o solo (h = 0), toda a energia potencial gravitacional foi convertida em energia cinética. Nessa situação, a velocidade da bolinha ao chegar ao solo é de",
+        "alternativas": [
+            "5 m/s.",
+            "8 m/s.",
+            "10 m/s.",
+            "12 m/s.",
+            "20 m/s."
+        ],
+        "correta": "10 m/s.",
+        "explicacao_base": "No alto da rampa, a energia potencial é: Ep = m × g × h = 2 × 10 × 5 = 100 J. Como não há atrito, toda essa energia se converte em cinética ao chegar ao solo: Ec = 100 J. Aplicando a fórmula da energia cinética: 100 = (2 × v²) ÷ 2 → 100 = v² → v = √100 = 10 m/s. O erro mais comum é calcular a velocidade como v = g × h = 50 m/s (confusão com cinemática sem usar as fórmulas de energia), ou calcular apenas a Ep sem igualar à Ec."
+    },
+    {
+        "id": 29,
+        "grupo_id": 29,
+        "tema": "Constituição de 1988 e redemocratização do Brasil",
+        "materia": "História",
+        "dificuldade": "Média",
+        "texto_referencia": "Após mais de duas décadas de ditadura militar (1964–1985), o Brasil iniciou um lento processo de abertura política que culminou na eleição indireta de Tancredo Neves em 1985 e, após sua morte, na posse de José Sarney como primeiro presidente civil após o regime. Em 1988, foi promulgada a nova Constituição Federal, chamada por Ulysses Guimarães de 'Constituição Cidadã', por ampliar significativamente os direitos individuais e coletivos dos brasileiros. Entre as conquistas previstas no texto constitucional estão: o voto direto e universal para todos os cidadãos maiores de 16 anos, a criação do Sistema Único de Saúde (SUS), o direito à educação pública e gratuita, a criminalização do racismo e a garantia de direitos aos trabalhadores.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base no texto, assinale a alternativa que apresenta corretamente uma característica da Constituição Federal de 1988 e o contexto histórico em que ela foi criada.",
+        "alternativas": [
+            "A Constituição de 1988 foi elaborada durante o governo militar e visava principalmente fortalecer o poder das Forças Armadas sobre as instituições civis.",
+            "Conhecida como 'Constituição Cidadã', foi promulgada logo após o fim da ditadura e ampliou direitos como o voto direto a partir dos 16 anos, a criação do SUS e a criminalização do racismo.",
+            "A Constituição de 1988 manteve as restrições políticas da ditadura militar, mas garantiu liberdade econômica aos cidadãos brasileiros pela primeira vez.",
+            "Tancredo Neves foi o presidente responsável por promulgar a Constituição de 1988 após vencer as primeiras eleições diretas do processo de redemocratização.",
+            "A 'Constituição Cidadã' reduziu os direitos trabalhistas para estimular o crescimento econômico, priorizando o combate à inflação herdada do regime militar."
+        ],
+        "correta": "Conhecida como 'Constituição Cidadã', foi promulgada logo após o fim da ditadura e ampliou direitos como o voto direto a partir dos 16 anos, a criação do SUS e a criminalização do racismo.",
+        "explicacao_base": "O texto confirma todos os elementos desta alternativa: a Constituição foi promulgada em 1988, após o regime militar; recebeu o apelido de 'Constituição Cidadã' de Ulysses Guimarães; e entre seus avanços estão o voto a partir dos 16 anos, o SUS e a criminalização do racismo. As demais alternativas contradizem o texto ou a história: Tancredo Neves morreu antes de assumir e não promulgou a Constituição; ela não manteve restrições da ditadura; e ampliou (não reduziu) direitos trabalhistas."
+    },
+    {
+        "id": 30,
+        "grupo_id": 30,
+        "tema": "Biomas brasileiros — características e localização",
+        "materia": "Geografia",
+        "dificuldade": "Média",
+        "texto_referencia": "O Brasil possui seis biomas terrestres principais: Amazônia, Cerrado, Mata Atlântica, Caatinga, Pampa e Pantanal. Cada um apresenta características climáticas, de vegetação e de fauna próprias. A Amazônia é o maior bioma do país, com clima equatorial e enorme biodiversidade. O Cerrado, considerado a savana mais rica do mundo em biodiversidade, sofre forte pressão do agronegócio. A Caatinga é o único bioma exclusivamente brasileiro e está adaptada ao clima semiárido do Nordeste. O Pantanal, localizado no Centro-Oeste, é a maior planície alagável do planeta. A Mata Atlântica, um dos biomas mais devastados, hoje cobre menos de 15% de sua área original. O Pampa, restrito ao Rio Grande do Sul, é caracterizado por campos abertos e pecuária extensiva.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base no texto, analise as afirmações abaixo.\n\nI. A Caatinga é o único bioma exclusivamente brasileiro e está adaptada ao clima semiárido.\nII. O Pantanal é a maior floresta tropical do planeta, localizado na região Norte do Brasil.\nIII. A Mata Atlântica encontra-se altamente preservada, cobrindo mais de 80% de sua área original.\nIV. O Cerrado é considerado a savana mais rica do mundo em biodiversidade.\n\nEstão corretas apenas as afirmações",
+        "alternativas": [
+            "I e II.",
+            "II e III.",
+            "III e IV.",
+            "I e IV.",
+            "II e IV."
+        ],
+        "correta": "I e IV.",
+        "explicacao_base": "Afirmação I — CORRETA: o texto afirma que a Caatinga 'é o único bioma exclusivamente brasileiro' e está adaptada ao 'clima semiárido do Nordeste'. Afirmação II — INCORRETA: o texto define o Pantanal como 'a maior planície alagável do planeta', não como floresta tropical, e o localiza no Centro-Oeste (não no Norte). Afirmação III — INCORRETA: o texto diz que a Mata Atlântica 'cobre menos de 15% de sua área original' — o oposto do que a afirmação diz. Afirmação IV — CORRETA: o texto define o Cerrado como 'a savana mais rica do mundo em biodiversidade'. Portanto, estão corretas apenas I e IV."
+    },
+    {
+        "id": 31,
+        "grupo_id": 31,
+        "tema": "Uso da crase — regras e exceções",
+        "materia": "Língua Portuguesa",
+        "dificuldade": "Difícil",
+        "texto_referencia": "Leia as frases abaixo.\n\nI. O médico encaminhou o paciente à clínica especializada.\nII. Ela foi a pé até a padaria toda manhã.\nIII. O relatório foi entregue à distância, por meio digital.\nIV. Refiro-me à aluna que apresentou o projeto ontem.\nV. Vou a São Paulo amanhã para uma reunião de negócios.\n\n(Frases de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Considerando as regras do uso da crase na norma culta da língua portuguesa, assinale a alternativa que indica corretamente todas as frases em que o emprego da crase está correto.",
+        "alternativas": [
+            "Apenas I e V.",
+            "Apenas II e III.",
+            "I, IV e V.",
+            "I, III e IV.",
+            "Todas as frases estão corretas."
+        ],
+        "correta": "I, III e IV.",
+        "explicacao_base": "Frase I — CORRETA: 'à clínica' = preposição 'a' + artigo feminino 'a' exigido pelo verbo 'encaminhou' (encaminhar a). Frase II — INCORRETA: 'a pé' é locução adverbial que não admite crase; o correto é 'a pé' sem acento grave. Frase III — CORRETA: 'à distância' é locução adverbial feminina que admite crase (a + a distância). Frase IV — CORRETA: 'à aluna' = preposição 'a' + artigo feminino 'a' exigido pelo verbo 'referir-se' (referir-se a). Frase V — INCORRETA: não se usa crase antes de nomes de cidades que não admitem artigo; 'São Paulo' não é precedido de artigo definido, portanto: 'Vou a São Paulo'. Corretas: I, III e IV."
+    },
+    {
+        "id": 32,
+        "grupo_id": 32,
+        "tema": "Geometria plana — área de figura composta",
+        "materia": "Matemática",
+        "dificuldade": "Difícil",
+        "texto_referencia": "Uma empresa de paisagismo foi contratada para reformar a praça central de um bairro. A praça tem formato retangular com 30 metros de comprimento e 20 metros de largura. No centro da praça, será instalado um canteiro circular com 7 metros de raio. A área restante da praça (fora do canteiro) será calçada com pedras portuguesas.\n\nDados:\n• Área do retângulo = comprimento × largura\n• Área do círculo = π × r²\n• Use π = 3,14",
+        "image_id": "",
+        "enunciado": "A área da praça que será calçada com pedras portuguesas, em metros quadrados, é de",
+        "alternativas": [
+            "446,14 m²",
+            "446,86 m²",
+            "600,00 m²",
+            "153,86 m²",
+            "507,86 m²"
+        ],
+        "correta": "446,14 m²",
+        "explicacao_base": "Área do retângulo: 30 × 20 = 600 m². Área do canteiro circular: π × r² = 3,14 × 7² = 3,14 × 49 = 153,86 m². Área a ser calçada (área composta): 600 − 153,86 = 446,14 m². O erro mais comum é calcular apenas uma das áreas ou usar o diâmetro (14) no lugar do raio (7), o que quadruplicaria a área do círculo e levaria a resposta negativa ou absurda. A resposta correta é 446,14 m²."
+    },
+    {
+        "id": 33,
+        "grupo_id": 33,
+        "tema": "Cadeia alimentar e transferência de energia nos ecossistemas",
+        "materia": "Ciências — Biologia",
+        "dificuldade": "Média",
+        "texto_referencia": "Em um ecossistema de cerrado, um pesquisador identificou as seguintes relações alimentares entre os organismos: o capim é consumido pelo gafanhoto; o gafanhoto é consumido pelo lagarto; o lagarto é consumido pela gavião-carcará. Sabe-se que, a cada nível trófico, apenas 10% da energia disponível é transferida para o nível seguinte; o restante é perdido principalmente como calor.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base nas informações, analise as afirmações abaixo.\n\nI. O capim ocupa o primeiro nível trófico e é classificado como produtor.\nII. O gavião-carcará é um consumidor primário, pois se alimenta diretamente dos produtores.\nIII. Se o capim armazenar 10.000 kcal de energia, o lagarto receberá 100 kcal ao se alimentar de gafanhotos.\nIV. A energia flui em sentido único na cadeia alimentar, do sol para os produtores e destes para os consumidores.\n\nEstão corretas apenas as afirmações",
+        "alternativas": [
+            "I e II.",
+            "I, II e IV.",
+            "II e III.",
+            "I, III e IV.",
+            "III e IV."
+        ],
+        "correta": "I, III e IV.",
+        "explicacao_base": "Afirmação I — CORRETA: o capim realiza fotossíntese, sendo produtor e ocupando o 1º nível trófico. Afirmação II — INCORRETA: o gavião-carcará se alimenta do lagarto (3º nível), sendo consumidor terciário, não primário. Afirmação III — CORRETA: 10.000 kcal no capim → 10% = 1.000 kcal para o gafanhoto (consumidor primário) → 10% = 100 kcal para o lagarto (consumidor secundário). Afirmação IV — CORRETA: a energia flui de forma unidirecional, do sol → produtores → consumidores, sendo degradada a cada nível como calor e não retornando aos níveis anteriores. Corretas: I, III e IV."
+    },
+    {
+        "id": 34,
+        "grupo_id": 34,
+        "tema": "Brasil Colônia — escravidão africana e resistência",
+        "materia": "História",
+        "dificuldade": "Média",
+        "texto_referencia": "A escravidão africana foi a base da economia colonial brasileira por mais de três séculos. Estima-se que cerca de 4 a 5 milhões de africanos foram trazidos forçadamente ao Brasil entre os séculos XVI e XIX, tornando o país o maior importador de escravizados das Américas. Os africanos escravizados eram utilizados nas lavouras de cana-de-açúcar, nas minas de ouro e diamantes e nas fazendas de café. Diante das condições desumanas de trabalho, os escravizados desenvolveram diversas formas de resistência: as fugas individuais e coletivas, a formação de quilombos — comunidades independentes habitadas por escravizados fugidos —, levantes e revoltas, além da preservação de sua cultura, religião e língua.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base no texto, assinale a alternativa que apresenta uma afirmação correta sobre a escravidão no Brasil colonial.",
+        "alternativas": [
+            "A escravidão africana no Brasil foi um fenômeno de curta duração, restrito ao século XVII, e envolveu um número reduzido de africanos trazidos ao país.",
+            "Os africanos escravizados aceitaram passivamente as condições impostas pela escravidão, sem desenvolver formas organizadas de resistência.",
+            "O Brasil foi o maior importador de africanos escravizados das Américas, e os escravizados resistiram à opressão de diversas formas, incluindo a formação de quilombos.",
+            "Os quilombos eram comunidades formadas por colonos portugueses que discordavam do sistema escravista e acolhiam africanos fugidos.",
+            "A resistência dos escravizados no Brasil limitou-se a revoltas armadas, não havendo registros de preservação cultural ou religiosa africana no período colonial."
+        ],
+        "correta": "O Brasil foi o maior importador de africanos escravizados das Américas, e os escravizados resistiram à opressão de diversas formas, incluindo a formação de quilombos.",
+        "explicacao_base": "O texto confirma que o Brasil foi 'o maior importador de escravizados das Américas', com 4 a 5 milhões de africanos trazidos forçadamente, e descreve diversas formas de resistência, incluindo a formação de quilombos — definidos como 'comunidades independentes habitadas por escravizados fugidos'. As demais alternativas contradizem o texto: a escravidão durou mais de três séculos; os escravizados resistiram ativamente; quilombos não eram fundados por colonos portugueses; e a resistência incluiu preservação cultural e religiosa, não apenas revoltas armadas."
+    },
+    {
+        "id": 35,
+        "grupo_id": 35,
+        "tema": "Globalização — impactos econômicos e culturais",
+        "materia": "Geografia",
+        "dificuldade": "Fácil",
+        "texto_referencia": "A globalização é um processo de integração econômica, política, cultural e tecnológica entre os países do mundo, intensificado a partir da segunda metade do século XX com o avanço das telecomunicações, da internet e do transporte internacional. Ela permite que produtos, capitais, informações e pessoas circulem com muito mais rapidez entre as nações. Ao mesmo tempo em que aproxima culturas e mercados, a globalização também é criticada por ampliar as desigualdades entre países ricos e pobres, por ameaçar culturas locais com a homogeneização cultural promovida pelos grandes conglomerados de mídia e entretenimento, e por intensificar a exploração de recursos naturais nos países em desenvolvimento.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "De acordo com o texto, a globalização é um processo que",
+        "alternativas": [
+            "trouxe apenas benefícios para todos os países do mundo, eliminando as desigualdades econômicas entre nações ricas e pobres.",
+            "é um fenômeno exclusivamente cultural, sem qualquer relação com a economia, a política ou o avanço tecnológico.",
+            "promove integração entre os países e facilita a circulação de produtos e informações, mas também pode ampliar desigualdades e ameaçar culturas locais.",
+            "afeta somente os países desenvolvidos, pois os países em desenvolvimento não participam do comércio e da comunicação globais.",
+            "teve início no século XIX com a Revolução Industrial e atingiu seu auge no período entre as duas Guerras Mundiais."
+        ],
+        "correta": "promove integração entre os países e facilita a circulação de produtos e informações, mas também pode ampliar desigualdades e ameaçar culturas locais.",
+        "explicacao_base": "O texto apresenta explicitamente os dois lados da globalização: os aspectos positivos ('permite que produtos, capitais, informações e pessoas circulem com muito mais rapidez') e os aspectos negativos ('ampliar as desigualdades entre países ricos e pobres', 'ameaçar culturas locais'). A alternativa correta sintetiza essas duas dimensões presentes no texto. As demais alternativas são incorretas: o texto não afirma que a globalização só traz benefícios; ela é multidimensional (não apenas cultural); afeta países em desenvolvimento inclusive; e se intensificou na segunda metade do século XX, não no XIX."
+    },
+    {
+        "id": 36,
+        "grupo_id": 36,
+        "tema": "Leitura de HQ — inferência, humor e contexto histórico",
+        "materia": "Língua Portuguesa",
+        "dificuldade": "Média",
+        "texto_referencia": "Observe a tirinha do personagem Piteco, de Mauricio de Sousa. Na cena, personagens pré-históricos encontram uma pedra que está 'estalando' e 'picando'. Um deles exclama: 'Ora, ora! Quem diria? Era um ovo de dinossauro semi-enterrado...'. Do ovo nasce um filhote que emite o som 'GRUMM?', e o personagem se despede dizendo 'Bem, seu bebê! Até a vista... e felicidades!'. No último quadro, ao ver o filhote, o personagem pensa: 'Ah! Eu estudava um modo de assustar a Thuga!'\n\nFonte: <https://tinyurl.com/muvuuzb> Acesso em: 24.05.2025.",
+        "image_id": "piteco.png",
+        "enunciado": "O humor do último quadro da tirinha é produzido principalmente porque",
+        "alternativas": [
+            "o personagem demonstra medo do filhote de dinossauro e decide fugir, revelando sua covardia diante dos animais pré-históricos.",
+            "o filhote de dinossauro fala a mesma língua dos personagens pré-históricos, o que surpreende o leitor pela impossibilidade linguística.",
+            "o personagem percebe que o filhote de dinossauro pode ser usado para assustar alguém chamado Thuga, transformando uma situação inesperada em uma oportunidade cômica e pessoal.",
+            "o personagem reconhece o dinossauro como um animal doméstico comum na pré-história, o que revela sua familiaridade com a fauna da época.",
+            "a cena critica o comportamento humano de explorar animais selvagens, usando o humor para transmitir uma mensagem ecológica ao leitor."
+        ],
+        "correta": "o personagem percebe que o filhote de dinossauro pode ser usado para assustar alguém chamado Thuga, transformando uma situação inesperada em uma oportunidade cômica e pessoal.",
+        "explicacao_base": "O humor do último quadro é construído pela virada cômica: diante de algo que poderia ser assustador (um filhote de dinossauro recém-nascido), o personagem não demonstra medo — pelo contrário, pensa imediatamente em como usar o animal para um objetivo pessoal e trivial: assustar 'a Thuga'. Esse contraste entre o inusitado da situação (ovo de dinossauro eclodindo) e a reação prosaica e oportunista do personagem é o recurso central do humor. Não há crítica ecológica explícita, nem o filhote fala, nem o personagem foge."
+    },
+    {
+        "id": 37,
+        "grupo_id": 37,
+        "tema": "Pré-história e evolução — hominídeos e era dos dinossauros",
+        "materia": "História",
+        "dificuldade": "Média",
+        "texto_referencia": "Na tirinha do Piteco, de Mauricio de Sousa, seres humanos pré-históricos convivem com dinossauros — situação que sempre foi um elemento de fantasia e humor nas histórias do personagem. Na realidade científica, porém, os dinossauros não-avianos se extinguiram há aproximadamente 66 milhões de anos, ao final do período Cretáceo, enquanto os primeiros hominídeos do gênero Homo surgiram há cerca de 2 a 3 milhões de anos. O período em que os seres humanos e seus ancestrais diretos habitaram a Terra é chamado de Pré-história, dividido em Paleolítico, Mesolítico e Neolítico.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "piteco.png",
+        "enunciado": "Com base no texto e em seus conhecimentos sobre pré-história e evolução, assinale a alternativa correta.",
+        "alternativas": [
+            "Humanos e dinossauros coexistiram no período Neolítico, quando os hominídeos aprenderam a domesticar animais, incluindo grandes répteis.",
+            "A tirinha do Piteco representa fielmente a realidade científica, pois registros fósseis confirmam que humanos e dinossauros viveram na mesma época.",
+            "A convivência entre humanos e dinossauros na tirinha é um recurso de ficção e humor, pois cientificamente há uma diferença de dezenas de milhões de anos entre a extinção dos dinossauros e o surgimento dos hominídeos.",
+            "Os dinossauros se extinguiram há cerca de 2 milhões de anos, período coincidente com o surgimento dos primeiros hominídeos, o que torna a tirinha cientificamente possível.",
+            "O período Paleolítico foi marcado pela convivência de humanos com grandes dinossauros carnívoros, que eram caçados como fonte de alimento pelas tribos pré-históricas."
+        ],
+        "correta": "A convivência entre humanos e dinossauros na tirinha é um recurso de ficção e humor, pois cientificamente há uma diferença de dezenas de milhões de anos entre a extinção dos dinossauros e o surgimento dos hominídeos.",
+        "explicacao_base": "O texto é explícito: os dinossauros se extinguiram há ~66 milhões de anos (fim do Cretáceo), enquanto os primeiros hominídeos do gênero Homo surgiram há apenas 2 a 3 milhões de anos. Há, portanto, uma diferença de mais de 60 milhões de anos entre os dois grupos — tornando qualquer convivência cientificamente impossível. A tirinha do Piteco usa essa impossibilidade propositalmente como recurso de humor e fantasia, sem nenhuma pretensão de precisão histórica ou científica."
+    },
+    {
+        "id": 38,
+        "grupo_id": 38,
+        "tema": "Frações — operações e simplificação",
+        "materia": "Matemática",
+        "dificuldade": "Média",
+        "texto_referencia": "Em uma escola técnica, a professora de matemática propôs o seguinte problema para os alunos:\n\n'Em uma turma, 2/5 dos alunos escolheram o curso de Informática, 1/4 escolheram Administração e o restante escolheu Enfermagem. Sabendo que a turma tem 80 alunos no total, quantos alunos escolheram Enfermagem?'",
+        "image_id": "",
+        "enunciado": "O número de alunos que escolheram o curso de Enfermagem é",
+        "alternativas": [
+            "20 alunos.",
+            "22 alunos.",
+            "26 alunos.",
+            "28 alunos.",
+            "30 alunos."
+        ],
+        "correta": "28 alunos.",
+        "explicacao_base": "Alunos de Informática: 2/5 × 80 = 32 alunos. Alunos de Administração: 1/4 × 80 = 20 alunos. Total em Informática e Administração: 32 + 20 = 52 alunos. Alunos de Enfermagem (restante): 80 − 52 = 28 alunos. Verificação pela fração: 32/80 + 20/80 = 52/80, restando 28/80 = 7/20 da turma para Enfermagem. 7/20 × 80 = 28. ✓"
+    },
+    {
+        "id": 39,
+        "grupo_id": 39,
+        "tema": "Sistema digestório — órgãos e funções",
+        "materia": "Ciências — Biologia",
+        "dificuldade": "Fácil",
+        "texto_referencia": "O sistema digestório humano é responsável por transformar os alimentos ingeridos em nutrientes que possam ser absorvidos pelo organismo. Esse processo ocorre ao longo de um conjunto de órgãos que formam o tubo digestório e de glândulas anexas. A digestão começa na boca, onde os dentes trituram o alimento e a saliva inicia a quebra do amido. Em seguida, o alimento passa pelo esôfago até chegar ao estômago, onde o suco gástrico — rico em ácido clorídrico e enzimas — realiza a digestão das proteínas. O intestino delgado é o principal local de digestão química e de absorção de nutrientes. Já o intestino grosso absorve água e sais minerais, formando as fezes que serão eliminadas pelo ânus.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "De acordo com o texto, assinale a alternativa que descreve corretamente a função de um dos órgãos do sistema digestório.",
+        "alternativas": [
+            "O estômago é o principal local de absorção de nutrientes, graças à grande superfície de contato proporcionada pelas vilosidades intestinais.",
+            "O esôfago produz o suco gástrico, rico em ácido clorídrico, responsável pela digestão das proteínas ingeridas.",
+            "A boca inicia o processo digestivo por meio da trituração dos alimentos pelos dentes e da ação da saliva sobre o amido.",
+            "O intestino grosso é responsável pela digestão química completa dos alimentos e pela absorção de todos os nutrientes.",
+            "O ânus produz enzimas digestivas que completam a quebra das gorduras antes de sua eliminação do organismo."
+        ],
+        "correta": "A boca inicia o processo digestivo por meio da trituração dos alimentos pelos dentes e da ação da saliva sobre o amido.",
+        "explicacao_base": "O texto afirma claramente: 'A digestão começa na boca, onde os dentes trituram o alimento e a saliva inicia a quebra do amido.' As demais alternativas invertem propositalmente as funções dos órgãos: é o intestino delgado (não o estômago) o principal local de absorção; é o estômago (não o esôfago) que produz suco gástrico; é o intestino delgado (não o grosso) o principal local de digestão e absorção; e o ânus não produz enzimas."
+    },
+    {
+        "id": 40,
+        "grupo_id": 40,
+        "tema": "Reflexão da luz — espelhos planos e formação de imagens",
+        "materia": "Ciências — Física",
+        "dificuldade": "Difícil",
+        "texto_referencia": "A reflexão da luz ocorre quando um raio de luz incide sobre uma superfície e é devolvido ao meio de origem. Em espelhos planos, a imagem formada possui características específicas: é virtual (formada atrás do espelho, onde a luz não passa de fato), direita (mesma orientação vertical do objeto), do mesmo tamanho que o objeto e simétrica em relação ao espelho (a distância da imagem ao espelho é igual à distância do objeto ao espelho). Uma propriedade curiosa dos espelhos planos é a inversão lateral: a imagem aparece invertida da esquerda para a direita — por isso, ao levantar a mão direita diante de um espelho, a imagem parece levantar a mão esquerda.\n\n(Texto de autoria própria para fins de avaliação.)",
+        "image_id": "",
+        "enunciado": "Com base no texto, analise as afirmações abaixo sobre a imagem formada em um espelho plano.\n\nI. A imagem é real, pois pode ser projetada em uma superfície colocada atrás do espelho.\nII. A imagem tem o mesmo tamanho que o objeto e se encontra à mesma distância do espelho que o objeto.\nIII. A imagem formada é direita e apresenta inversão lateral em relação ao objeto.\nIV. Se um objeto estiver a 30 cm do espelho, sua imagem estará a 60 cm do objeto.\n\nEstão corretas apenas as afirmações",
+        "alternativas": [
+            "I e III.",
+            "I e IV.",
+            "II e III.",
+            "I, II e III.",
+            "II, III e IV."
+        ],
+        "correta": "II, III e IV.",
+        "explicacao_base": "Afirmação I — INCORRETA: o texto diz que a imagem é VIRTUAL ('formada atrás do espelho, onde a luz não passa de fato'), não real. Imagens reais podem ser projetadas em anteparos; as virtuais não. Afirmação II — CORRETA: 'do mesmo tamanho que o objeto' e 'a distância da imagem ao espelho é igual à distância do objeto ao espelho'. Afirmação III — CORRETA: o texto confirma que a imagem é 'direita' e apresenta 'inversão lateral' (esquerda ↔ direita). Afirmação IV — CORRETA: se o objeto está a 30 cm do espelho, a imagem está a 30 cm atrás do espelho — portanto, a distância total entre objeto e imagem é 30 + 30 = 60 cm. Corretas: II, III e IV."
+    }
+]
