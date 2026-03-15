@@ -10,8 +10,30 @@
     <app-level-indicator></app-level-indicator>
   </header>
 
-  <!-- Challenges Card -->
-  <app-challenges-card></app-challenges-card>
+  <!-- Tabs Navigation -->
+  <div class="flex gap-1 bg-white p-1 rounded-xl border border-slate-200 mb-8 w-fit shadow-sm">
+    <button (click)="activeTab.set('resumo')"
+      class="px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2"
+      [class.bg-black]="activeTab() === 'resumo'"
+      [class.text-white]="activeTab() === 'resumo'"
+      [class.text-slate-500]="activeTab() !== 'resumo'"
+      [class.hover:bg-slate-50]="activeTab() !== 'resumo'">
+      <i class="fas fa-chart-pie"></i> Resumo
+    </button>
+    <button (click)="activeTab.set('desafios')"
+      class="px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 relative"
+      [class.bg-black]="activeTab() === 'desafios'"
+      [class.text-white]="activeTab() === 'desafios'"
+      [class.text-slate-500]="activeTab() !== 'desafios'"
+      [class.hover:bg-slate-50]="activeTab() !== 'desafios'">
+      <i class="fas fa-bullseye"></i> Desafios
+      @if (challengesService.getUnclaimedRewards().length > 0) {
+        <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white animate-pulse"></span>
+      }
+    </button>
+  </div>
+
+  @if (activeTab() === 'resumo') {
 
   <!-- Metric Cards Row -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -195,14 +217,17 @@
 
       <div class="flex-1 flex items-end justify-between gap-2 px-2 pb-2">
         <!-- Bars -->
-        @let bars = [20, 45, 10, 80, 50, 90, 30];
-        @let labels = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
-        @for (val of bars; track $index) {
+        @for (day of frequencyData(); track day.label) {
         <div class="flex flex-col items-center flex-1 h-full justify-end group cursor-pointer">
+          @if (day.value > 0) {
+            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-2 bg-black text-white text-[10px] px-2 py-1 rounded font-bold transition-opacity whitespace-nowrap">
+              {{ day.value }} questões
+            </div>
+          }
           <div
             class="w-full bg-slate-900 rounded-t-sm transition-all duration-500 relative group-hover:bg-black group-hover:shadow-lg"
-            [style.height.%]="val"></div>
-          <span class="text-[10px] text-slate-400 font-bold mt-2">{{ labels[$index] }}</span>
+            [style.height.%]="day.percentage"></div>
+          <span class="text-[10px] text-slate-400 font-bold mt-2">{{ day.label }}</span>
         </div>
         }
       </div>
@@ -213,46 +238,23 @@
       <h3 class="font-bold text-lg text-slate-900 mb-6">Foco de Estudo</h3>
 
       <div class="space-y-4 flex-1 overflow-y-auto pr-2 custom-scrollbar">
-        <!-- Mock Data for Visual Balance -->
+        @for (item of subjectDistribution(); track item.name) {
         <div>
           <div class="flex justify-between text-xs font-bold mb-1">
-            <span class="text-slate-700">Matemática</span>
-            <span class="text-slate-400">40%</span>
+            <span class="text-slate-700">{{ item.name }}</span>
+            <span class="text-slate-400">{{ item.percentage }}%</span>
           </div>
           <div class="w-full bg-slate-100 rounded-full h-2">
-            <div class="bg-blue-600 h-2 rounded-full" style="width: 40%"></div>
+            <div [class]="item.color + ' h-2 rounded-full transition-all duration-500'" [style.width.%]="item.percentage"></div>
           </div>
         </div>
-
-        <div>
-          <div class="flex justify-between text-xs font-bold mb-1">
-            <span class="text-slate-700">Português</span>
-            <span class="text-slate-400">35%</span>
+        }
+        @if (subjectDistribution().length === 0 || (subjectDistribution().length === 1 && subjectDistribution()[0].percentage === 0)) {
+          <div class="h-full flex flex-col items-center justify-center text-slate-400 opacity-60">
+            <i class="fas fa-layer-group text-2xl mb-2"></i>
+            <p class="text-[10px] uppercase font-bold tracking-widest text-center">Nenhum dado<br>disponível</p>
           </div>
-          <div class="w-full bg-slate-100 rounded-full h-2">
-            <div class="bg-red-500 h-2 rounded-full" style="width: 35%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="flex justify-between text-xs font-bold mb-1">
-            <span class="text-slate-700">Ciências Naturais</span>
-            <span class="text-slate-400">15%</span>
-          </div>
-          <div class="w-full bg-slate-100 rounded-full h-2">
-            <div class="bg-green-500 h-2 rounded-full" style="width: 15%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="flex justify-between text-xs font-bold mb-1">
-            <span class="text-slate-700">Humanas</span>
-            <span class="text-slate-400">10%</span>
-          </div>
-          <div class="w-full bg-slate-100 rounded-full h-2">
-            <div class="bg-yellow-500 h-2 rounded-full" style="width: 10%"></div>
-          </div>
-        </div>
+        }
       </div>
     </div>
 
@@ -281,7 +283,37 @@
       </div>
     </div>
 
-  </div>
+    </div>
+  } @else {
+    <!-- Challenges Tab -->
+    <div class="animate-fade-in">
+        <app-challenges-card></app-challenges-card>
+        
+        <!-- Premium Challenges Intro -->
+        <div class="mt-8 bg-black p-10 rounded-3xl text-white relative overflow-hidden group">
+            <div class="absolute -right-20 -top-20 w-80 h-80 bg-slate-800 rounded-full blur-3xl opacity-50 group-hover:scale-110 transition-transform duration-1000"></div>
+            
+            <div class="relative z-10 max-w-2xl">
+                <span class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4 block">Sistema de Metas</span>
+                <h3 class="text-4xl font-black mb-6 tracking-tight">Desafios que impulsionam sua nota</h3>
+                <p class="text-slate-300 mb-8 leading-relaxed">
+                    Nossos desafios são gerados algoritmicamente para garantir que você cubra todos os tópicos do Vestibulinho ETEC. 
+                    Ganhe bônus de XP ao completar metas diárias e mensais.
+                </p>
+                <div class="flex gap-4">
+                    <div class="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10">
+                        <p class="text-2xl font-black text-white mb-1">2x</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase">Multiplicador XP</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10">
+                        <p class="text-2xl font-black text-white mb-1">Daily</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase">Metas Frescas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  }
 
   <!-- Achievement Modal -->
   @if (showAchievementModal() && currentAchievement()) {

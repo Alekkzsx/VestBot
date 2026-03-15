@@ -242,6 +242,25 @@ export class UserDataService {
     }
 
     /**
+     * Force immediate save of history, bypassing debounce
+     */
+    async forceSaveHistory(history: any[]): Promise<void> {
+        this.syncStatus.set('saving');
+        try {
+            await fetch(`${this.API_BASE}/history`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(history)
+            });
+            this.syncStatus.set('synced');
+            this.lastSaved.set(new Date());
+        } catch (err) {
+            console.error('❌ Error force saving history:', err);
+            this.syncStatus.set('error');
+        }
+    }
+
+    /**
      * Load full user data from the File Database (V4)
      */
     async loadUserData(): Promise<UserData> {

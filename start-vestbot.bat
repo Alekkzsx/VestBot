@@ -1,79 +1,34 @@
 @echo off
-setlocal EnableDelayedExpansion
-chcp 65001 >nul
-title VestBot Launcher - Sistema de Estudos
+setlocal
+cd /d "%~dp0"
 
-REM ==============================================
-REM  1. Configuração de Diretório
-REM ==============================================
-
-:: Usar o diretório onde o script está localizado (%~dp0)
-set "PROJECT_DIR=%~dp0"
-cd /d "%PROJECT_DIR%"
-
-echo.
 echo ========================================
-echo    🚀 VestBot - Iniciando Modo Estendido
-echo    (Sem Timeout de 30 minutos)
-echo    Diretório: %PROJECT_DIR%
+echo    🚀 VESTBOT - INICIALIZAÇÃO AUTOMÁTICA
 echo ========================================
-echo.
 
-REM ==============================================
-REM  2. Validação e Pré-requisitos
-REM ==============================================
-
+:: 1. Verificação de segurança
 if not exist "package.json" (
-    echo ❌ ERRO: O arquivo 'package.json' não foi encontrado em:
-    echo "%PROJECT_DIR%"
+    echo [!] ERRO: package.json não encontrado.
     pause
-    exit /b 1
+    exit
 )
 
-where node >nul 2>&1
-if errorlevel 1 (
-    echo ❌ ERRO: Node.js não instalado ou não está no PATH!
-    pause
-    exit /b 1
-)
+:: 2. Inicia o servidor em uma NOVA JANELA para não travar este script
+echo [*] Iniciando servidores em segundo plano...
+start "Servidor VestBot" cmd /k "npm run dev-extended"
 
-REM ==============================================
-REM  3. Dependências e Servidores
-REM ==============================================
-
-if not exist "node_modules\" (
-    echo 📦 Instalando dependências (isso pode demorar na primeira vez)...
-    call npm install --legacy-peer-deps
-)
-
-echo [3/4] Limpando processos antigos...
-:: Mata qualquer processo node que possa estar travado
-taskkill /F /IM node.exe /T >nul 2>&1
-timeout /t 2 /nobreak >nul
-
-echo [4/4] Iniciando Servidores (Frontend + Backend)...
-:: O script 'dev-extended' já inicia ambos (ng serve + node server.cjs)
-:: Usamos polling de 2s para evitar o idle timeout de 30min do Angular CLI
-start "VestBot SISTEMA" /MIN cmd /k "npm run dev-extended"
-
-REM ==============================================
-REM  4. Finalização
-REM ==============================================
-
-echo ⏳ Aguardando inicialização (aprox. 15s)...
+:: 3. Aguarda o servidor ficar online
+:: (Ajuste os segundos se o seu PC demorar mais para compilar)
+echo [*] Aguardando inicialização do sistema (15s)...
 timeout /t 15 /nobreak >nul
 
-echo 🌐 Abrindo navegador...
+:: 4. Abre o navegador na porta correta
+echo [*] Abrindo o navegador...
 start http://localhost:3000
 
 echo.
-echo ✅ SISTEMA EM EXECUÇÃO (MODO CONTÍNUO)
+echo ✅ Tudo pronto! O servidor está rodando na outra janela.
+echo [!] Não feche a janela do "Servidor VestBot" enquanto estuda.
 echo.
-echo NOTA: Não feche a janela minimizada do terminal enquanto estiver estudando.
-echo.
-echo Pressione qualquer tecla para ENCERRAR os servidores e sair.
-pause >nul
+pause
 
-echo 🛑 Encerrando processos...
-taskkill /F /IM node.exe /T >nul 2>&1
-exit /b 0

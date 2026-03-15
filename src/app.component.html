@@ -50,7 +50,10 @@
         class="w-full text-left px-4 py-3.5 rounded-xl transition-all font-medium flex items-center text-sm group relative"
         [class.bg-slate-100]="currentView() === item.id" [class.text-black]="currentView() === item.id"
         [class.font-semibold]="currentView() === item.id" [class.text-slate-500]="currentView() !== item.id"
-        [class.hover:bg-slate-50]="currentView() !== item.id" [class.hover:text-slate-900]="currentView() !== item.id"
+        [class.hover:bg-slate-50]="currentView() !== item.id && !activitySession.hasActiveSession()"
+        [class.hover:text-slate-900]="currentView() !== item.id && !activitySession.hasActiveSession()"
+        [class.opacity-40]="activitySession.hasActiveSession() && currentView() !== item.id"
+        [class.cursor-not-allowed]="activitySession.hasActiveSession() && currentView() !== item.id"
         [class.justify-center]="isCollapsed()">
         <i class="fas w-5 text-center text-lg transition-colors" [class]="item.icon" [class.mr-3]="!isCollapsed()"
           [class.text-black]="currentView() === item.id" [class.text-slate-400]="currentView() !== item.id"></i>
@@ -62,13 +65,11 @@
         }
         }
 
-        <!-- Tooltip -->
-        @if (isCollapsed()) {
+        <!-- Tooltip (Locked or Normal) -->
         <div
-          class="absolute left-full ml-4 bg-black text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 shadow-xl">
-          {{ item.label }}
+          class="absolute left-full ml-4 bg-black text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 shadow-xl transition-opacity">
+          {{ activitySession.hasActiveSession() && currentView() !== item.id ? 'Finalize o simulado para navegar' : item.label }}
         </div>
-        }
       </button>
       }
     </nav>

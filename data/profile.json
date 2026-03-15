@@ -1,12 +1,12 @@
 {
   "version": "4.0.0",
-  "lastUpdated": "2026-02-19T22:48:09.488Z",
+  "lastUpdated": "2026-03-15T18:39:52.633Z",
   "stats": {
-    "questionsAnswered": 7,
-    "correctAnswers": 2,
-    "currentStreak": 0,
-    "xp": 150,
     "level": 1,
+    "xp": 0,
+    "questionsAnswered": 0,
+    "correctAnswers": 0,
+    "currentStreak": 0,
     "essaysWritten": 0
   }
 }

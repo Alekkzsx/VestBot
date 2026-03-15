@@ -9,6 +9,7 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
 import { AIDictionaryComponent } from './components/ai-dictionary/ai-dictionary.component';
 import { ContentService } from './services/content.service';
+import { ActivitySessionService } from './services/activity-session.service';
 
 type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule' | 'resolutions' | 'analytics' | 'lessons';
 
@@ -31,6 +32,7 @@ type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule'
 })
 export class AppComponent implements OnInit, OnDestroy {
   contentService = inject(ContentService);
+  activitySession = inject(ActivitySessionService);
 
   currentView = signal<View>('dashboard');
   sidebarOpen = signal(false); // Mobile drawer
@@ -100,6 +102,11 @@ export class AppComponent implements OnInit, OnDestroy {
   nextLevelThreshold = computed(() => this.stats().level * 1000);
 
   setView(view: string) {
+    // Bloquear navegação se houver sessão ativa (Simulado/Interpretação)
+    if (this.activitySession.hasActiveSession() && this.currentView() !== view) {
+      return;
+    }
+    
     this.currentView.set(view as View);
     this.sidebarOpen.set(false); // Close sidebar on mobile after selection
   }

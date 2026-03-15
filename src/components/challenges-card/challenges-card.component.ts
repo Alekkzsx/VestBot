@@ -236,9 +236,18 @@ export class ChallengesCardComponent {
     private challengesService = inject(ChallengesService);
 
     activeChallenges = computed(() => {
-        return this.challengesService.userChallenges()
-            .filter(uc => !uc.claimed)
-            .slice(0, 5); // Show max 5
+        const active = this.challengesService.activeChallenges();
+        const userProgress = this.challengesService.userChallenges();
+        
+        return active.map(challenge => {
+            const progress = userProgress.find(up => up.challengeId === challenge.id);
+            return {
+                challengeId: challenge.id,
+                progress: progress?.progress || 0,
+                completed: progress?.completed || false,
+                claimed: progress?.claimed || false
+            };
+        }).filter(c => !c.claimed).slice(0, 5);
     });
 
     getChallenge(challengeId: string) {

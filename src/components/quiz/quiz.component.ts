@@ -46,6 +46,7 @@ export class QuizComponent implements OnDestroy {
   userAnswers = signal<Map<number, number>>(new Map());
   currentHint = signal<any | null>(null);
   currentHintStepIndex = signal(0);
+  isReviewMode = signal(false);
 
   // Celebration State
   showCelebration = signal(false);
@@ -101,6 +102,11 @@ export class QuizComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.stopTimer();
+    // Force save history when component is destroyed (e.g. sidebar navigation)
+    const userData = (this.questionHistory as any).userDataService.getUserData();
+    if (userData && userData.user.questionHistory) {
+      (this.questionHistory as any).userDataService.forceSaveHistory(userData.user.questionHistory);
+    }
   }
 
   // --- Configuration Methods ---
@@ -364,10 +370,15 @@ export class QuizComponent implements OnDestroy {
 
       // Iniciar o quiz
       const shuffledSelection = finalSelection.map(q => this.contentService.shuffleQuestion(q));
+      
+      // Reset COMPLETE state before starting new quiz
       this.questions.set(shuffledSelection);
       this.currentIndex.set(0);
       this.score.set(0);
+      this.userAnswers.set(new Map());
+      this.answeredIndices.set(new Set());
       this.quizFinished.set(false);
+      this.isReviewMode.set(false);
       this.quizActive.set(true);
       this.resetQuestionState();
 
@@ -447,8 +458,15 @@ export class QuizComponent implements OnDestroy {
   }
 
   selectOption(index: number) {
-    if (this.isAnswered()) return;
+    if (this.isReviewMode()) return; // Impedir alteração em modo de revisão
+
+    // Permite trocar a opção mesmo se já respondeu (UX melhorada)
     this.selectedOptionIndex.set(index);
+    
+    // Se já estava respondida, atualizar na hora pro usuário ver o feedback visual
+    if (this.isAnswered()) {
+        this.submitAnswer();
+    }
   }
 
   submitAnswer() {
@@ -456,7 +474,21 @@ export class QuizComponent implements OnDestroy {
 
     const currentIdx = this.currentIndex();
     const currentQ = this.questions()[currentIdx];
-    const correct = this.selectedOptionIndex() === currentQ.correctIndex;
+    const newSelectedOption = this.selectedOptionIndex();
+    const correct = newSelectedOption === currentQ.correctIndex;
+
+    // Lógica de ajuste de score para re-submissão
+    const previousAnswer = this.userAnswers().get(currentIdx);
+    if (previousAnswer !== undefined) {
+      const wasPreviouslyCorrect = previousAnswer === currentQ.correctIndex;
+      if (wasPreviouslyCorrect && !correct) {
+        this.score.update(s => Math.max(0, s - 1)); // Mudou de certa para errada
+      } else if (!wasPreviouslyCorrect && correct) {
+        this.score.update(s => s + 1); // Mudou de errada para certa
+      }
+    } else if (correct) {
+      this.score.update(s => s + 1); // Primeira vez e está certa
+    }
 
     this.isCorrect.set(correct);
     this.isAnswered.set(true);
@@ -470,19 +502,15 @@ export class QuizComponent implements OnDestroy {
 
     this.userAnswers.update(map => {
       const newMap = new Map(map);
-      newMap.set(currentIdx, this.selectedOptionIndex()!);
+      newMap.set(currentIdx, newSelectedOption!);
       return newMap;
     });
 
-    if (correct) {
-      this.score.update(s => s + 1);
-
-      // Show celebration only every 10 correct answers
-      if (this.score() % 10 === 0) {
-        this.celebrationType.set('streak');
-        this.celebrationXP.set(50);
-        this.showCelebration.set(true);
-      }
+    // Show celebration only every 10 correct answers (primeira vez correta)
+    if (correct && previousAnswer === undefined && this.score() % 10 === 0 && this.score() > 0) {
+      this.celebrationType.set('streak');
+      this.celebrationXP.set(50);
+      this.showCelebration.set(true);
     }
 
     // Record attempt for spaced repetition
@@ -543,11 +571,25 @@ export class QuizComponent implements OnDestroy {
   exitQuiz() {
     this.stopTimer();
 
+    // Force immediate save of history before exiting
+    const userData = (this.questionHistory as any).userDataService.getUserData();
+    if (userData && userData.user.questionHistory) {
+      (this.questionHistory as any).userDataService.forceSaveHistory(userData.user.questionHistory);
+    }
+
     // Abandon session (no bonus XP)
     this.activitySession.abandonSession();
 
     this.quizActive.set(false);
     this.quizFinished.set(false);
+    this.isReviewMode.set(false);
+  }
+
+  enterReviewMode() {
+    this.quizFinished.set(false);
+    this.isReviewMode.set(true);
+    this.currentIndex.set(0);
+    this.resetQuestionState();
   }
 
   showExplanation() {
