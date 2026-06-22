@@ -10,6 +10,8 @@ import { LessonsComponent } from './components/lessons/lessons.component';
 import { AIDictionaryComponent } from './components/ai-dictionary/ai-dictionary.component';
 import { ContentService } from './services/content.service';
 import { ActivitySessionService } from './services/activity-session.service';
+import { AIService } from './services/ai.service';
+
 
 type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule' | 'resolutions' | 'analytics' | 'lessons';
 
@@ -33,6 +35,7 @@ type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule'
 export class AppComponent implements OnInit, OnDestroy {
   contentService = inject(ContentService);
   activitySession = inject(ActivitySessionService);
+  private aiService = inject(AIService);
 
   currentView = signal<View>('dashboard');
   sidebarOpen = signal(false); // Mobile drawer
@@ -53,14 +56,31 @@ export class AppComponent implements OnInit, OnDestroy {
   // Gamification State
   stats = this.contentService.stats;
 
-  // Global Timer State
-  targetDate = new Date('2025-06-08T13:30:00');
+  // Global Timer State (Default fallback: Dec 6, 2026)
+  targetDate = new Date('2026-12-06T13:30:00');
   timeLeft = signal({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   private intervalId: any;
 
   ngOnInit() {
     this.updateTimer();
     this.intervalId = setInterval(() => this.updateTimer(), 1000);
+    this.loadExamCalendar();
+  }
+
+  async loadExamCalendar() {
+    try {
+      const dates = await this.aiService.getExamCalendar();
+      const etec = dates.find(d => d.name.toLowerCase().includes('etec'));
+      if (etec && etec.date && etec.date !== 'Nada até o momento') {
+        const parsedDate = new Date(`${etec.date}T13:30:00`);
+        if (!isNaN(parsedDate.getTime())) {
+          this.targetDate = parsedDate;
+          this.updateTimer();
+        }
+      }
+    } catch (e) {
+      console.error('Failed to sync global exam date', e);
+    }
   }
 
   ngOnDestroy() {

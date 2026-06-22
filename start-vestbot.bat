@@ -13,7 +13,16 @@ if not exist "package.json" (
     exit
 )
 
-:: 2. Inicia o servidor em uma NOVA JANELA para não travar este script
+:: 2. Instalação e verificação de dependências
+echo [*] Verificando e instalando dependências do projeto...
+call npm install --legacy-peer-deps
+if %errorlevel% neq 0 (
+    echo [!] ERRO: Falha ao instalar dependências.
+    pause
+    exit
+)
+
+:: 3. Inicia o servidor em uma NOVA JANELA para não travar este script
 echo [*] Iniciando servidores em segundo plano...
 start "Servidor VestBot" cmd /k "npm run dev-extended"
 

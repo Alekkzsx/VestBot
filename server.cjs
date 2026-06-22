@@ -17,8 +17,10 @@ const FILES = {
   SCHEDULE: path.join(DATA_DIR, 'schedule.json'),
   GAMIFICATION: path.join(DATA_DIR, 'gamification.json'),
   LESSONS: path.join(DATA_DIR, 'lessons-history.json'),
+  CALENDAR_CACHE: path.join(DATA_DIR, 'calendar-cache.json'),
   LEGACY: path.join(DATA_DIR, 'data-user.txt')
 };
+
 
 app.use(cors());
 app.use(express.json({ limit: '50mb' })); // Increased limit for large history files
@@ -291,7 +293,7 @@ async function callGemini(prompt) {
 
   for (let i = 0; i < maxRetries; i++) {
     const key = keys[currentKeyIndex];
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${key}`;
 
     try {
       const response = await fetch(url, {
@@ -331,32 +333,105 @@ async function callGemini(prompt) {
  */
 app.get('/api/ai/exam-calendar', async (req, res) => {
   try {
+    // 1. Verificar se existe cache válido (menor que 24 horas)
+    const cached = await readJson(FILES.CALENDAR_CACHE, null);
+    if (cached && cached.lastUpdated && cached.data) {
+      const age = Date.now() - cached.lastUpdated;
+      if (age < 24 * 60 * 60 * 1000) {
+        console.log('📅 AI Calendar: Servindo do cache local de 24h');
+        return res.json(cached.data);
+      }
+    }
+
+    console.log('📅 AI Calendar: Cache expirado ou inexistente. Iniciando busca real no Google...');
+
+    // 2. Realizar as pesquisas no Google com até 3 tentativas
+    let etecSnippets = [];
+    let ifspSnippets = [];
+
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      console.log(`🔍 [Google Scraper] ETEC - Tentativa ${attempt}/3...`);
+      etecSnippets = await getGoogleSearchSnippets('etec vestibulinho ensino médio 2027 data da prova');
+      if (etecSnippets && etecSnippets.length > 0) break;
+      if (attempt < 3) await new Promise(r => setTimeout(r, 1000));
+    }
+
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      console.log(`🔍 [Google Scraper] IFSP - Tentativa ${attempt}/3...`);
+      ifspSnippets = await getGoogleSearchSnippets('ifsp ensino médio 2027 data da prova');
+      if (ifspSnippets && ifspSnippets.length > 0) break;
+      if (attempt < 3) await new Promise(r => setTimeout(r, 1000));
+    }
+
+    // Se após 3 tentativas ambas as buscas não acharem nada
+    if (etecSnippets.length === 0 && ifspSnippets.length === 0) {
+      console.log('📅 AI Calendar: Nenhuma informação encontrada na web após 3 tentativas de busca.');
+      const calendarData = [
+        { name: 'ETEC 2027/1', date: 'Nada até o momento', modality: 'Ensino Médio / Técnico' },
+        { name: 'IFSP Jundiaí 2027/1', date: 'Nada até o momento', modality: 'Ensino Médio Técnico' }
+      ];
+
+      const cacheToSave = {
+        lastUpdated: Date.now(),
+        data: calendarData
+      };
+      await atomicWrite(FILES.CALENDAR_CACHE, cacheToSave);
+      return res.json(calendarData);
+    }
+
+    const context = [
+      ...etecSnippets.map(s => `[ETEC Search] ${s.title}: ${s.snippet}`),
+      ...ifspSnippets.map(s => `[IFSP Search] ${s.title}: ${s.snippet}`)
+    ].join('\n\n');
+
+    // 3. Elaborar prompt para o Gemini
     const systemPrompt = `
       Você é um assistente especializado nos vestibulinhos ETEC e IFSP (Campus Jundiaí - Ensino Médio Técnico).
-      Sua tarefa é retornar um JSON com a data estimada ou oficial da próxima prova para o 1º Semestre de 2027.
+      Sua tarefa é retornar um JSON com a data oficial ou estimada da próxima prova para o 1º Semestre de 2027 (ingresso em 2027), baseando-se nos resultados de pesquisa do Google fornecidos abaixo.
       
-      Contexto Atual: Hoje é 13 de Fevereiro de 2026.
+      Resultados de Pesquisa Google:
+      ${context}
       
-      Datas de referência baseadas em anos anteriores para 2027/1:
-      - ETEC: Geralmente ocorre no início de Dezembro de 2026.
-      - IFSP Jundiaí (Médio Técnico): Geralmente ocorre em Dezembro de 2026.
+      Instruções:
+      1. Analise cuidadosamente as informações para encontrar a data da prova do Ensino Médio para ETEC e IFSP Jundiaí (geralmente ocorrem no final de 2026, entre novembro e dezembro de 2026).
+      2. Se houver uma data oficial anunciada, use-a.
+      3. Caso contrário, se houver uma estimativa ou período citado (como "dezembro de 2026"), projete a data provável (um domingo).
+      4. Se após analisar as notícias você não encontrar nenhuma menção a datas ou se os resultados não trouxerem nenhuma informação válida para a prova de 2027/1, defina o campo "date" correspondente exatamente como a string "Nada até o momento".
       
-      Retorne EXATAMENTE este formato JSON:
+      Retorne EXATAMENTE este formato JSON (sem formatação markdown como \`\`\`json):
       [
-        { "name": "ETEC 2027/1", "date": "YYYY-MM-DD", "modality": "Ensino Médio / Técnico" },
-        { "name": "IFSP Jundiaí 2027/1", "date": "YYYY-MM-DD", "modality": "Ensino Médio Técnico" }
+        { "name": "ETEC 2027/1", "date": "YYYY-MM-DD ou a string 'Nada até o momento'", "modality": "Ensino Médio / Técnico" },
+        { "name": "IFSP Jundiaí 2027/1", "date": "YYYY-MM-DD ou a string 'Nada até o momento'", "modality": "Ensino Médio Técnico" }
       ]
-      
-      Se não houver data oficial, use sua lógica de IA para projetar a data mais provável baseada nos domínios históricos (domingo).
     `;
 
     const aiResponse = await callGemini(systemPrompt);
-    const calendarData = JSON.parse(aiResponse);
+    const jsonMatch = aiResponse.match(/\[[\s\S]*\]/);
+    const calendarData = JSON.parse(jsonMatch ? jsonMatch[0] : aiResponse);
 
+    // 4. Gravar cache localmente
+    const cacheToSave = {
+      lastUpdated: Date.now(),
+      data: calendarData
+    };
+    await atomicWrite(FILES.CALENDAR_CACHE, cacheToSave);
+
+    console.log('📅 AI Calendar: Busca concluída e salva no cache.');
     res.json(calendarData);
   } catch (error) {
     console.error('AI Calendar Error:', error);
-    // Fallback static data if AI fails
+    
+    // Tentar ler cache mesmo que expirado em caso de erro
+    try {
+      const cached = await readJson(FILES.CALENDAR_CACHE, null);
+      if (cached && cached.data) {
+        console.log('📅 AI Calendar: Retornando cache expirado devido a falha na pesquisa/IA.');
+        return res.json(cached.data);
+      }
+    } catch (e) {}
+
+    // Fallback estático se nada mais funcionar
+    console.log('📅 AI Calendar: Usando fallback estático.');
     res.json([
       { name: 'ETEC 2027/1', date: '2026-12-06', modality: 'Ensino Médio / Técnico' },
       { name: 'IFSP Jundiaí 2027/1', date: '2026-12-13', modality: 'Ensino Médio Técnico' }
@@ -554,6 +629,80 @@ function getSourceInfo(url) {
     return hostname.split('.')[0].charAt(0).toUpperCase() + hostname.split('.')[0].slice(1);
   } catch (e) {
     return 'Web';
+  }
+}
+
+/**
+ * Realiza buscas no Google Search e extrai snippets das páginas encontradas.
+ * Suporta múltiplos seletores de fallback para garantir compatibilidade com diferentes respostas do Google.
+ */
+async function getGoogleSearchSnippets(query) {
+  try {
+    const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    console.log(`🔍 [Google Scraper] Target: ${url}`);
+
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+      }
+    });
+
+    if (!response.ok) {
+      console.error(`❌ [Google Scraper] Google returned status ${response.status}`);
+      return [];
+    }
+
+    const html = await response.text();
+    const results = [];
+
+    // O Google retorna blocos de resultado. No desktop são comumente identificados por divs
+    // como class="g" ou class="MjjYud". No mobile/fallback simples por class="ZIN2cc" ou class="Gx5Zad".
+    const blocks = html.split(/<div[^>]*class="(?:g|MjjYud|ZIN2cc|Gx5Zad)[^"]*"/).slice(1);
+    console.log(`📦 [Google Scraper] Found ${blocks.length} raw blocks`);
+
+    for (const block of blocks) {
+      // Tentar encontrar o link (href)
+      let urlMatch = block.match(/href="([^"]+)"/);
+      if (!urlMatch) continue;
+
+      let url = urlMatch[1];
+      if (url.startsWith('/url?q=')) {
+        url = decodeURIComponent(url.split('/url?q=')[1].split('&')[0]);
+      }
+
+      if (!url.startsWith('http')) continue;
+
+      // Tentar encontrar o título
+      let title = '';
+      let titleMatch = block.match(/<h3[^>]*>([\s\S]*?)<\/h3>/i) || 
+                       block.match(/<div[^>]*class="[^"]*BNeawe vvjw7b[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
+      if (titleMatch) {
+        title = titleMatch[1].replace(/<[^>]*>?/gm, '').trim();
+      }
+
+      // Tentar encontrar o snippet descritivo
+      let snippet = '';
+      let snippetMatch = block.match(/class="[^"]*(?:VwiC3d|s3v9rd|yD58B)[^"]*"[^>]*>([\s\S]*?)(?:<\/div>|<\/span>)/i);
+      if (snippetMatch) {
+        snippet = snippetMatch[1].replace(/<[^>]*>?/gm, '').trim();
+      }
+
+      if (url && (title || snippet)) {
+        const source = getSourceInfo(url);
+        // Desescapar entidades HTML básicas
+        title = title.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+        snippet = snippet.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+
+        results.push({ url, title, snippet, source });
+      }
+    }
+
+    console.log(`✅ [Google Scraper] Processed ${results.length} valid results`);
+    return results.slice(0, 8);
+  } catch (e) {
+    console.error('❌ [Google Scraper] Fatal Error:', e);
+    return [];
   }
 }
 

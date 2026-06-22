@@ -159,13 +159,22 @@ export class DashboardComponent implements OnInit {
     try {
       const data = await this.aiService.getExamCalendar();
       if (data && data.length > 0) {
-        const updatedExams = data.map((exam, index) => ({
-          name: exam.name,
-          date: new Date(exam.date),
-          color: index === 0 ? 'bg-black' : 'bg-slate-700',
-          icon: index === 0 ? 'fa-graduation-cap' : 'fa-university'
-        }));
-        this.exams.set(updatedExams);
+        const updatedExams = data.map((exam, index) => {
+          let parsedDate: Date | string = exam.date;
+          if (exam.date && exam.date !== 'Nada até o momento') {
+            const dateObj = new Date(exam.date);
+            if (!isNaN(dateObj.getTime())) {
+              parsedDate = dateObj;
+            }
+          }
+          return {
+            name: exam.name,
+            date: parsedDate,
+            color: index === 0 ? 'bg-black' : 'bg-slate-700',
+            icon: index === 0 ? 'fa-graduation-cap' : 'fa-university'
+          };
+        });
+        this.exams.set(updatedExams as any);
       }
     } catch (error) {
       console.error('Failed to sync dates via AI');
@@ -173,7 +182,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // --- Exam Dates ---
-  exams = signal([
+  exams = signal<Array<{ name: string; date: Date | string; color: string; icon: string }>>([
     {
       name: 'ETEC 2027/1',
       date: new Date('2026-08-14'),
@@ -188,7 +197,10 @@ export class DashboardComponent implements OnInit {
     }
   ]);
 
-  getDaysRemaining(targetDate: Date): number {
+  getDaysRemaining(targetDate: Date | string): number | string {
+    if (typeof targetDate === 'string' || !(targetDate instanceof Date) || isNaN(targetDate.getTime())) {
+      return '-';
+    }
     const today = new Date();
     const diffTime = targetDate.getTime() - today.getTime();
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));

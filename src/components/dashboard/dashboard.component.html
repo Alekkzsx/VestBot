@@ -106,7 +106,7 @@
           </div>
           <div>
             <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">{{ exam.name }}</p>
-            <p class="text-sm font-bold text-slate-900">{{ exam.date | date:'dd/MM/yyyy' }}</p>
+            <p class="text-sm font-bold text-slate-900">{{ (exam.date | date:'dd/MM/yyyy') || exam.date || 'Nada até o momento' }}</p>
           </div>
         </div>
         <div class="text-right">

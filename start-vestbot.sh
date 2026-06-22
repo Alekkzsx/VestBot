@@ -15,11 +15,10 @@ echo -e "${BLUE}🚀 Iniciando VestBot (Modo Estendido)...${NC}"
 PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$PROJECT_DIR"
 
-# Verifica se node_modules existe
-if [ ! -d "node_modules" ]; then
-    echo -e "${BLUE}📦 Instalando dependências...${NC}"
-    npm install --legacy-peer-deps
-fi
+# Instala/verifica dependências
+echo -e "${BLUE}📦 Verificando e instalando dependências...${NC}"
+npm install --legacy-peer-deps
+
 
 # Limpa processos antigos
 echo -e "${BLUE}🧹 Limpando processos antigos...${NC}"

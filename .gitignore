@@ -1,0 +1,10 @@
+# Dependências e Builds
+node_modules/
+dist/
+.angular/
+
+# Configurações Locais e Chaves
+.env.local
+
+# Dados Dinâmicos do Usuário (Para não sobrepor dados locais de outros estudantes)
+data/
