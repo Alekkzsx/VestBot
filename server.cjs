@@ -26,7 +26,7 @@ const FILES = {
 
 
 app.use(cors());
-app.use(express.json({ limit: '50mb' })); // Increased limit for large history files
+app.use(express.json({ limit: '20mb' })); // Safer limit for payload size
 
 // --- HELPER WRAPPERS ---
 
@@ -156,7 +156,7 @@ app.get('/api/user/davi/full', async (req, res) => {
     // Backward compatibility: migrate sessions from gamification if sessions.json is missing
     let finalSessions = sessions;
     let finalGamification = gamification;
-    
+
     if (finalSessions === null) {
       finalSessions = gamification.completedSessions || [];
       // Optionally clean gamification data
@@ -597,7 +597,7 @@ app.get('/api/ai/exam-calendar', async (req, res) => {
     res.json(calendarData);
   } catch (error) {
     console.error('AI Calendar Error:', error);
-    
+
     // Tentar ler cache mesmo que expirado em caso de erro
     try {
       const cached = await readJson(FILES.CALENDAR_CACHE, null);
@@ -605,7 +605,7 @@ app.get('/api/ai/exam-calendar', async (req, res) => {
         console.log('📅 AI Calendar: Retornando cache expirado devido a falha na pesquisa/IA.');
         return res.json(cached.data);
       }
-    } catch (e) {}
+    } catch (e) { }
 
     // Fallback estático se nada mais funcionar
     console.log('📅 AI Calendar: Usando fallback estático.');
@@ -851,7 +851,7 @@ async function getWebSearchResults(query) {
       if (!linkUrl.startsWith('http')) continue;
 
       const snippetMatch = resultHtml.match(/<a[^>]+class="result__snippet"[^>]*>([\s\S]*?)<\/a>/i) ||
-                           resultHtml.match(/class="result__snippet[^"]*"[^>]*>([\s\S]*?)<\/?(?:a|div)/i);
+        resultHtml.match(/class="result__snippet[^"]*"[^>]*>([\s\S]*?)<\/?(?:a|div)/i);
       const snippet = snippetMatch
         ? snippetMatch[1].replace(/<[^>]*>?/gm, '').trim()
         : '';

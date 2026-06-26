@@ -1,7 +1,7 @@
 import { Injectable, inject, computed, signal } from '@angular/core';
 import { ContentService } from './content.service';
 import { ActivitySessionService } from './activity-session.service';
-import { QuestionHistoryService } from './question-history.service';
+import { QuestionHistoryService, QuestionAttempt } from './question-history.service';
 import { UserDataService } from './user-data.service';
 import { InterpretationService } from './interpretation.service';
 
@@ -91,10 +91,10 @@ export class AnalyticsService {
      * Unifica questionHistory (quiz) e interpretationHistory,
      * filtrando entradas duplicadas e de resolução.
      */
-    private getRealHistory(): any[] {
+    private getRealHistory(): { subject: string, difficulty: string, correct: boolean, timestamp: number }[] {
         const userData = this.userDataService.getUserData();
-        const allHistory = userData?.user.questionHistory || [];
-        const interpretationHistory = userData?.user.interpretationHistory || [];
+        const allHistory = (userData?.user.questionHistory || []) as QuestionAttempt[];
+        const interpretationHistory = (userData?.user.interpretationHistory || []) as QuestionAttempt[];
 
         const allQuestions = this.contentService.getQuestions();
         const interpretationQuestions = this.interpretationService.getGroups().flatMap(g => g.questions);
@@ -103,9 +103,8 @@ export class AnalyticsService {
         // Filtra questionHistory: exclui entries de resolução e interpretação
         // (interpretação agora grava em ambos para repetição espaçada,
         //  mas analytics usa apenas interpretationHistory para essas)
-        const quizHistory = allHistory.filter(h => {
-            const ctx = (h as any).context;
-            return ctx !== 'resolution' && ctx !== 'interpretation';
+        const quizHistory = allHistory.filter((h: QuestionAttempt) => {
+            return h.context !== 'resolution' && h.context !== 'interpretation';
         });
 
         const lookupQuestion = (id: number) => allQuestions.find(q => q.id === id);

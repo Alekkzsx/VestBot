@@ -143,11 +143,11 @@
 
         <!-- Support Text (if exists) -->
         @if (questions()[currentIndex()].supportText) {
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl mb-8">
-          <h4 class="font-bold text-blue-900 mb-3 flex items-center">
+        <div class="bg-slate-50 border-l-4 border-slate-800 p-6 rounded-r-xl mb-8">
+          <h4 class="font-bold text-slate-800 mb-3 flex items-center">
             <i class="fas fa-book-open mr-2"></i> Texto de Referência
           </h4>
-          <p class="text-blue-800 leading-relaxed whitespace-pre-wrap"
+          <p class="text-slate-700 leading-relaxed whitespace-pre-wrap"
             [innerHTML]="questions()[currentIndex()].supportText | latex">
           </p>
         </div>

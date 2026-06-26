@@ -268,13 +268,15 @@ export class LessonsComponent implements OnInit {
       const results = await this.aiService.searchEducationalVideos(query, this.selectedCategory() === 'Todos' ? undefined : this.selectedCategory());
 
       if (results.length === 0) {
-        const fallbackResults = await (this.aiService as any).searchYoutubeDirect(query);
+        console.log('AI Search empty, falling back to direct YT search...');
+        const fallbackResults = await this.aiService.searchYoutubeDirect(query);
         this.processSearchResults(fallbackResults);
       } else {
         this.processSearchResults(results);
       }
     } catch (e) {
-      const fallbackResults = await (this.aiService as any).searchYoutubeDirect(query);
+      console.error('Busca avançada falhou:', e);
+      const fallbackResults = await this.aiService.searchYoutubeDirect(query);
       this.processSearchResults(fallbackResults);
     } finally {
       this.isSearching.set(false);

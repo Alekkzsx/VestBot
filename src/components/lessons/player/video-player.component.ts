@@ -1,6 +1,13 @@
 import { Component, Input, Output, EventEmitter, signal, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
+
 @Component({
     selector: 'app-video-player',
     standalone: true,
@@ -41,22 +48,22 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
     }
 
     private initYoutubePlayer() {
-        if (!(window as any).YT) {
+        if (!window.YT) {
             const tag = document.createElement('script');
             tag.src = 'https://www.youtube.com/iframe_api';
             const firstScriptTag = document.getElementsByTagName('script')[0];
             firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
         }
 
-        (window as any).onYouTubeIframeAPIReady = () => this.createPlayer();
+        window.onYouTubeIframeAPIReady = () => this.createPlayer();
 
-        if ((window as any).YT && (window as any).YT.Player) {
+        if (window.YT && window.YT.Player) {
             this.createPlayer();
         }
     }
 
     private createPlayer() {
-        this.player = new (window as any).YT.Player('yt-player-container', {
+        this.player = new window.YT.Player('yt-player-container', {
             videoId: this.videoId,
             playerVars: {
                 'autoplay': 1,

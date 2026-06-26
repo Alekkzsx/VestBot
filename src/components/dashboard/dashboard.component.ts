@@ -194,7 +194,7 @@ export class DashboardComponent implements OnInit {
             icon: index === 0 ? 'fa-graduation-cap' : 'fa-university'
           };
         });
-        this.exams.set(updatedExams as any);
+        this.exams.set(updatedExams);
       }
     } catch (error) {
       console.error('Failed to sync dates via AI');

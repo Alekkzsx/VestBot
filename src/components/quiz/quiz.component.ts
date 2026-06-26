@@ -6,6 +6,7 @@ import { QuestionHistoryService } from '../../services/question-history.service'
 import { DictionaryService, DictionaryEntry } from '../../services/dictionary.service';
 import { ActivitySessionService } from '../../services/activity-session.service';
 import { ResolutionsService } from '../../services/resolutions.service';
+import { UserDataService } from '../../services/user-data.service';
 import { WordPopupComponent } from '../word-popup/word-popup.component';
 import { CelebrationComponent, CelebrationType } from '../celebration/celebration.component';
 import { LatexPipe } from '../../pipes/latex.pipe';
@@ -23,6 +24,7 @@ export class QuizComponent implements OnDestroy {
   dictionary = inject(DictionaryService);
   activitySession = inject(ActivitySessionService);
   resolutionsService = inject(ResolutionsService);
+  userDataService = inject(UserDataService);
 
   // Configuration State
   availableSubjects = signal<string[]>(this.contentService.getSubjects());
@@ -103,9 +105,9 @@ export class QuizComponent implements OnDestroy {
   ngOnDestroy() {
     this.stopTimer();
     // Force save history when component is destroyed (e.g. sidebar navigation)
-    const userData = (this.questionHistory as any).userDataService.getUserData();
+    const userData = this.userDataService.getUserData();
     if (userData && userData.user.questionHistory) {
-      (this.questionHistory as any).userDataService.forceSaveHistory(userData.user.questionHistory);
+      this.userDataService.forceSaveHistory(userData.user.questionHistory);
     }
   }
 
@@ -381,6 +383,9 @@ export class QuizComponent implements OnDestroy {
       this.isReviewMode.set(false);
       this.quizActive.set(true);
       this.resetQuestionState();
+      
+      // Subir a tela para o topo
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
       // Iniciar cronômetro se configurado
       if (this.config().timerMinutes > 0) {
@@ -519,6 +524,7 @@ export class QuizComponent implements OnDestroy {
     if (this.currentIndex() < this.questions().length - 1) {
       this.currentIndex.update(i => i + 1);
       this.resetQuestionState();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       this.finishQuiz();
     }
@@ -528,6 +534,7 @@ export class QuizComponent implements OnDestroy {
     if (this.currentIndex() > 0) {
       this.currentIndex.update(i => i - 1);
       this.resetQuestionState();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 
@@ -539,6 +546,7 @@ export class QuizComponent implements OnDestroy {
     if (index >= 0 && index < this.questions().length) {
       this.currentIndex.set(index);
       this.resetQuestionState();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 
@@ -567,9 +575,9 @@ export class QuizComponent implements OnDestroy {
     this.stopTimer();
 
     // Force immediate save of history before exiting
-    const userData = (this.questionHistory as any).userDataService.getUserData();
+    const userData = this.userDataService.getUserData();
     if (userData && userData.user.questionHistory) {
-      (this.questionHistory as any).userDataService.forceSaveHistory(userData.user.questionHistory);
+      this.userDataService.forceSaveHistory(userData.user.questionHistory);
     }
 
     // Abandon session (no bonus XP)
@@ -585,6 +593,7 @@ export class QuizComponent implements OnDestroy {
     this.isReviewMode.set(true);
     this.currentIndex.set(0);
     this.resetQuestionState();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   showExplanation() {
