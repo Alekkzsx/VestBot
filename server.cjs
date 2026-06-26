@@ -18,6 +18,8 @@ const FILES = {
   SCHEDULE: path.join(DATA_DIR, 'schedule.json'),
   GAMIFICATION: path.join(DATA_DIR, 'gamification.json'),
   LESSONS: path.join(DATA_DIR, 'lessons-history.json'),
+  SESSIONS: path.join(DATA_DIR, 'sessions.json'),
+  FREQUENCY: path.join(DATA_DIR, 'frequency.json'),
   CALENDAR_CACHE: path.join(DATA_DIR, 'calendar-cache.json'),
   LEGACY: path.join(DATA_DIR, 'data-user.txt')
 };
@@ -139,13 +141,29 @@ app.get('/api/user/davi/full', async (req, res) => {
   try {
     await migrateLegacyData();
 
-    const [profile, history, schedule, gamification, lessons] = await Promise.all([
+    const [profile, history, schedule, gamification, lessons, interpretation, resolutions, sessions, frequency] = await Promise.all([
       readJson(FILES.PROFILE, { stats: { level: 1, xp: 0, questionsAnswered: 0, correctAnswers: 0, currentStreak: 0, essaysWritten: 0 } }),
       readJson(FILES.HISTORY, []),
       readJson(FILES.SCHEDULE, []),
       readJson(FILES.GAMIFICATION, { achievements: [], challenges: [], completedSessions: [], consecutiveCorrect: 0, subjectStats: [] }),
-      readJson(FILES.LESSONS, [])
+      readJson(FILES.LESSONS, []),
+      readJson(FILES.INTERPRETATION, []),
+      readJson(FILES.RESOLUTIONS, []),
+      readJson(FILES.SESSIONS, null),
+      readJson(FILES.FREQUENCY, { studyDays: [] })
     ]);
+
+    // Backward compatibility: migrate sessions from gamification if sessions.json is missing
+    let finalSessions = sessions;
+    let finalGamification = gamification;
+    
+    if (finalSessions === null) {
+      finalSessions = gamification.completedSessions || [];
+      // Optionally clean gamification data
+      finalGamification = { ...gamification, completedSessions: [] };
+      await atomicWrite(FILES.SESSIONS, finalSessions);
+      await atomicWrite(FILES.GAMIFICATION, finalGamification);
+    }
 
     // Reconstruct the "Unified" object for the frontend to consume initially
     const fullData = {
@@ -154,9 +172,13 @@ app.get('/api/user/davi/full', async (req, res) => {
       user: {
         stats: profile.stats,
         questionHistory: history,
+        interpretationHistory: interpretation,
+        resolutionsHistory: resolutions,
         schedule: schedule,
-        gamification: gamification,
-        lessonsHistory: lessons
+        gamification: finalGamification,
+        lessonsHistory: lessons,
+        sessions: finalSessions,
+        frequency: frequency
       }
     };
 
@@ -281,6 +303,35 @@ app.post('/api/user/davi/gamification', async (req, res) => {
   }
 });
 
+/**
+ * POST /api/user/davi/sessions
+ * Updates Recent Sessions
+ */
+app.post('/api/user/davi/sessions', async (req, res) => {
+  try {
+    const data = req.body;
+    if (!Array.isArray(data)) throw new Error('Data must be an array');
+    await atomicWrite(FILES.SESSIONS, data);
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * POST /api/user/davi/frequency
+ * Updates Study Frequency (Streak dates)
+ */
+app.post('/api/user/davi/frequency', async (req, res) => {
+  try {
+    const data = req.body;
+    await atomicWrite(FILES.FREQUENCY, data);
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // --- AI & CALENDAR LOGIC ---
 
 let currentKeyIndex = 0;
@@ -379,8 +430,7 @@ function normalizeLessonVideo(video, fallbackSubject = 'Videoaula YouTube') {
 }
 
 /**
- * Call Gemini API with key/model fallback. Interactions is preferred, with
- * generateContent kept as a compatibility fallback for older accounts/projects.
+ * Call Gemini API with key/model fallback.
  */
 async function callGemini(prompt, options = {}) {
   if (!keys.length) {
@@ -393,67 +443,34 @@ async function callGemini(prompt, options = {}) {
   for (const model of GEMINI_FALLBACK_MODELS) {
     for (let i = 0; i < keys.length; i++) {
       const key = keys[currentKeyIndex];
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
 
       try {
-        const interactionsResponse = await fetch('https://generativelanguage.googleapis.com/v1beta/interactions', {
+        const response = await fetch(url, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-goog-api-key': key
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            model,
-            input: prompt
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: wantsJson ? { response_mime_type: 'application/json' } : undefined
           })
         });
 
-        const interactionsResult = await interactionsResponse.json().catch(() => ({}));
-
-        if (interactionsResponse.ok) {
-          const text = extractGeminiText(interactionsResult);
-          if (text) return text;
-          throw new Error('Gemini Interactions returned an empty response');
-        }
-
-        lastError = new Error(interactionsResult.error?.message || `Gemini Interactions HTTP ${interactionsResponse.status}`);
-        console.warn(`⚠️ Gemini Interactions failed [model=${model}, key=${currentKeyIndex}]: ${lastError.message}`);
-
-        if (interactionsResponse.status === 429 || interactionsResponse.status === 403) {
-          currentKeyIndex = (currentKeyIndex + 1) % keys.length;
-          continue;
-        }
-      } catch (error) {
-        lastError = error;
-        console.warn(`⚠️ Gemini Interactions request error [model=${model}, key=${currentKeyIndex}]: ${error.message}`);
-      }
-
-      const legacyUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
-      try {
-        const response = await fetch(legacyUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: wantsJson ? { response_mime_type: 'application/json' } : undefined
-        })
-      });
-
         const result = await response.json().catch(() => ({}));
 
-      if (response.ok) {
+        if (response.ok) {
           const text = extractGeminiText(result);
           if (text) return text;
           throw new Error('Gemini generateContent returned an empty response');
-      }
+        }
 
         lastError = new Error(result.error?.message || `Gemini generateContent HTTP ${response.status}`);
         console.warn(`⚠️ Gemini generateContent failed [model=${model}, key=${currentKeyIndex}]: ${lastError.message}`);
 
-      if (response.status === 429 || response.status === 403) {
-        currentKeyIndex = (currentKeyIndex + 1) % keys.length;
-        continue;
-      }
-    } catch (error) {
+        if (response.status === 429 || response.status === 403) {
+          currentKeyIndex = (currentKeyIndex + 1) % keys.length;
+          continue;
+        }
+      } catch (error) {
         lastError = error;
         console.warn(`⚠️ Gemini generateContent request error [model=${model}, key=${currentKeyIndex}]: ${error.message}`);
       }
@@ -489,27 +506,42 @@ app.get('/api/ai/exam-calendar', async (req, res) => {
 
     console.log('📅 AI Calendar: Cache expirado ou inexistente. Iniciando busca real no Google...');
 
-    // 2. Realizar as pesquisas no Google com até 3 tentativas
+    // 2. Realizar as pesquisas na web com múltiplas queries de fallback
+    const etecQueries = [
+      'etec vestibulinho data da prova 2026',
+      'vestibulinho etec ensino medio data prova',
+      'etec centro paula souza processo seletivo data',
+    ];
+    const ifspQueries = [
+      'ifsp jundiai processo seletivo tecnico data 2026',
+      'ifsp ensino medio tecnico data prova',
+      'ifsp processo seletivo data prova',
+    ];
+
     let etecSnippets = [];
     let ifspSnippets = [];
 
-    for (let attempt = 1; attempt <= 3; attempt++) {
-      console.log(`🔍 [Google Scraper] ETEC - Tentativa ${attempt}/3...`);
-      etecSnippets = await getGoogleSearchSnippets('etec vestibulinho ensino médio 2027 data da prova');
-      if (etecSnippets && etecSnippets.length > 0) break;
-      if (attempt < 3) await new Promise(r => setTimeout(r, 1000));
+    for (const q of etecQueries) {
+      if (etecSnippets.length > 0) break;
+      for (let attempt = 1; attempt <= 2; attempt++) {
+        etecSnippets = await getWebSearchResults(q);
+        if (etecSnippets.length > 0) break;
+        if (attempt < 2) await new Promise(r => setTimeout(r, 1500));
+      }
     }
 
-    for (let attempt = 1; attempt <= 3; attempt++) {
-      console.log(`🔍 [Google Scraper] IFSP - Tentativa ${attempt}/3...`);
-      ifspSnippets = await getGoogleSearchSnippets('ifsp ensino médio 2027 data da prova');
-      if (ifspSnippets && ifspSnippets.length > 0) break;
-      if (attempt < 3) await new Promise(r => setTimeout(r, 1000));
+    for (const q of ifspQueries) {
+      if (ifspSnippets.length > 0) break;
+      for (let attempt = 1; attempt <= 2; attempt++) {
+        ifspSnippets = await getWebSearchResults(q);
+        if (ifspSnippets.length > 0) break;
+        if (attempt < 2) await new Promise(r => setTimeout(r, 1500));
+      }
     }
 
-    // Se após 3 tentativas ambas as buscas não acharem nada
+    // Se após todas as tentativas não achar nada
     if (etecSnippets.length === 0 && ifspSnippets.length === 0) {
-      console.log('📅 AI Calendar: Nenhuma informação encontrada na web após 3 tentativas de busca.');
+      console.log('📅 AI Calendar: Nenhuma informação encontrada na web.');
       const calendarData = [
         { name: 'ETEC 2027/1', date: 'Nada até o momento', modality: 'Ensino Médio / Técnico' },
         { name: 'IFSP Jundiaí 2027/1', date: 'Nada até o momento', modality: 'Ensino Médio Técnico' }
@@ -748,10 +780,6 @@ app.post('/api/yt/fallback-search', async (req, res) => {
 });
 
 /**
- * Helper: Programmatic Web Search (DuckDuckGo Scraper)
- * Prioritizes educational sources
- */
-/**
  * Helper to identify educational sites and their display names
  */
 function getSourceInfo(url) {
@@ -769,8 +797,12 @@ function getSourceInfo(url) {
   if (domain.includes('manualdomundo')) return 'Manual do Mundo';
   if (domain.includes('wikipedia')) return 'Wikipedia';
   if (domain.includes('guiadoestudante')) return 'Guia do Estudante';
+  if (domain.includes('vestibulinhoetec')) return 'Vestibulinho ETEC';
+  if (domain.includes('etecregistro')) return 'ETEC Registro';
+  if (domain.includes('cps.sp.gov')) return 'Centro Paula Souza';
+  if (domain.includes('ifsp.edu')) return 'IFSP';
+  if (domain.includes('gov.br')) return 'Governo Federal';
 
-  // Generic fallback: extract domain name
   try {
     const hostname = new URL(url).hostname.replace('www.', '');
     return hostname.split('.')[0].charAt(0).toUpperCase() + hostname.split('.')[0].slice(1);
@@ -780,13 +812,13 @@ function getSourceInfo(url) {
 }
 
 /**
- * Realiza buscas no Google Search e extrai snippets das páginas encontradas.
- * Suporta múltiplos seletores de fallback para garantir compatibilidade com diferentes respostas do Google.
+ * Busca no DuckDuckGo Lite (HTML limpo, estrutura estável).
+ * Não requer API key e é mais confiável que scraping do Google.
  */
-async function getGoogleSearchSnippets(query) {
+async function getWebSearchResults(query) {
   try {
-    const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-    console.log(`🔍 [Google Scraper] Target: ${url}`);
+    const url = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`;
+    console.log(`🔍 [DuckDuckGo] Searching: ${query}`);
 
     const response = await fetch(url, {
       headers: {
@@ -796,59 +828,45 @@ async function getGoogleSearchSnippets(query) {
     });
 
     if (!response.ok) {
-      console.error(`❌ [Google Scraper] Google returned status ${response.status}`);
+      console.error(`❌ [DuckDuckGo] HTTP ${response.status}`);
       return [];
     }
 
     const html = await response.text();
     const results = [];
 
-    // O Google retorna blocos de resultado. No desktop são comumente identificados por divs
-    // como class="g" ou class="MjjYud". No mobile/fallback simples por class="ZIN2cc" ou class="Gx5Zad".
-    const blocks = html.split(/<div[^>]*class="(?:g|MjjYud|ZIN2cc|Gx5Zad)[^"]*"/).slice(1);
-    console.log(`📦 [Google Scraper] Found ${blocks.length} raw blocks`);
+    // DuckDuckGo HTML results structure: <div class="result"> blocks
+    const resultBlocks = html.split('<div class="result ').slice(1);
 
-    for (const block of blocks) {
-      // Tentar encontrar o link (href)
-      let urlMatch = block.match(/href="([^"]+)"/);
-      if (!urlMatch) continue;
+    for (const block of resultBlocks) {
+      const endIdx = block.indexOf('</div>');
+      const resultHtml = endIdx !== -1 ? block.slice(0, endIdx) : block;
 
-      let url = urlMatch[1];
-      if (url.startsWith('/url?q=')) {
-        url = decodeURIComponent(url.split('/url?q=')[1].split('&')[0]);
-      }
+      const linkMatch = resultHtml.match(/<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i);
+      if (!linkMatch) continue;
 
-      if (!url.startsWith('http')) continue;
+      let linkUrl = linkMatch[1];
+      const linkTitle = linkMatch[2].replace(/<[^>]*>?/gm, '').trim();
 
-      // Tentar encontrar o título
-      let title = '';
-      let titleMatch = block.match(/<h3[^>]*>([\s\S]*?)<\/h3>/i) || 
-                       block.match(/<div[^>]*class="[^"]*BNeawe vvjw7b[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
-      if (titleMatch) {
-        title = titleMatch[1].replace(/<[^>]*>?/gm, '').trim();
-      }
+      if (!linkUrl.startsWith('http')) continue;
 
-      // Tentar encontrar o snippet descritivo
-      let snippet = '';
-      let snippetMatch = block.match(/class="[^"]*(?:VwiC3d|s3v9rd|yD58B)[^"]*"[^>]*>([\s\S]*?)(?:<\/div>|<\/span>)/i);
-      if (snippetMatch) {
-        snippet = snippetMatch[1].replace(/<[^>]*>?/gm, '').trim();
-      }
+      const snippetMatch = resultHtml.match(/<a[^>]+class="result__snippet"[^>]*>([\s\S]*?)<\/a>/i) ||
+                           resultHtml.match(/class="result__snippet[^"]*"[^>]*>([\s\S]*?)<\/?(?:a|div)/i);
+      const snippet = snippetMatch
+        ? snippetMatch[1].replace(/<[^>]*>?/gm, '').trim()
+        : '';
 
-      if (url && (title || snippet)) {
-        const source = getSourceInfo(url);
-        // Desescapar entidades HTML básicas
-        title = title.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
-        snippet = snippet.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+      const source = getSourceInfo(linkUrl);
+      const title = linkTitle.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+      const cleanSnippet = snippet.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
 
-        results.push({ url, title, snippet, source });
-      }
+      results.push({ url: linkUrl, title, snippet: cleanSnippet, source });
     }
 
-    console.log(`✅ [Google Scraper] Processed ${results.length} valid results`);
+    console.log(`✅ [DuckDuckGo] Found ${results.length} results for "${query}"`);
     return results.slice(0, 8);
   } catch (e) {
-    console.error('❌ [Google Scraper] Fatal Error:', e);
+    console.error('❌ [DuckDuckGo] Error:', e.message);
     return [];
   }
 }

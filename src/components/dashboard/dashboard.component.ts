@@ -9,6 +9,7 @@ import { AchievementsService } from '../../services/achievements.service';
 import type { Achievement } from '../../types/gamification.types';
 import { UserDataService } from '../../services/user-data.service';
 import { ChallengesService } from '../../services/challenges.service';
+import { InterpretationService } from '../../services/interpretation.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
   private achievementsService = inject(AchievementsService);
   private userDataService = inject(UserDataService);
   challengesService = inject(ChallengesService);
+  private interpretationService = inject(InterpretationService);
 
   activeTab = signal<'resumo' | 'desafios'>('resumo');
 
@@ -70,42 +72,45 @@ export class DashboardComponent implements OnInit {
     return "Não desanime! Revise os conteúdos e tente novamente.";
   });
 
-  // --- Real Frequency Data ---
+  // --- Real Frequency Data (quiz + interpretation) ---
   frequencyData = computed(() => {
     const userData = this.userDataService.getUserData();
-    if (!userData || !userData.user.questionHistory) return [];
+    if (!userData) return [];
 
-    const history = userData.user.questionHistory;
+    const quizHistory = userData.user.questionHistory || [];
+    const interpretationHistory = userData.user.interpretationHistory || [];
+    const allHistory = [...quizHistory, ...interpretationHistory];
+
     const days = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
     const result = [];
     const now = new Date();
 
-    // Get last 7 days including today
     for (let i = 6; i >= 0; i--) {
       const date = new Date();
       date.setDate(now.getDate() - i);
       date.setHours(0, 0, 0, 0);
-      
+
       const nextDate = new Date(date);
       nextDate.setDate(date.getDate() + 1);
 
-      const count = history.filter(h => h.timestamp >= date.getTime() && h.timestamp < nextDate.getTime()).length;
-      result.push({ 
-        label: days[date.getDay()], 
+      const count = allHistory.filter(h =>
+        h.timestamp >= date.getTime() && h.timestamp < nextDate.getTime()
+      ).length;
+      result.push({
+        label: days[date.getDay()],
         value: count,
-        percentage: 0 // Will be set below
+        percentage: 0
       });
     }
 
-    // Normalized height (max 100%)
     const max = Math.max(...result.map(d => d.value), 1) || 1;
     return result.map(d => ({ ...d, percentage: (d.value / (max * 1.2)) * 100 }));
   });
 
-  // --- Real Subject Distribution ---
+  // --- Real Subject Distribution (quiz + interpretation) ---
   subjectDistribution = computed(() => {
     const userData = this.userDataService.getUserData();
-    if (!userData || !userData.user.questionHistory || userData.user.questionHistory.length === 0) {
+    if (!userData) {
         return [
             { name: 'Matemática', percentage: 0, color: 'bg-blue-600' },
             { name: 'Português', percentage: 0, color: 'bg-red-500' },
@@ -114,19 +119,34 @@ export class DashboardComponent implements OnInit {
         ];
     }
 
-    const history = userData.user.questionHistory;
+    const quizHistory = userData.user.questionHistory || [];
+    const interpretationHistory = userData.user.interpretationHistory || [];
+    const allHistory = [...quizHistory, ...interpretationHistory];
+
+    if (allHistory.length === 0) {
+        return [
+            { name: 'Matemática', percentage: 0, color: 'bg-blue-600' },
+            { name: 'Português', percentage: 0, color: 'bg-red-500' },
+            { name: 'Ciências', percentage: 0, color: 'bg-green-500' },
+            { name: 'Humanas', percentage: 0, color: 'bg-yellow-500' }
+        ];
+    }
+
     const questions = this.contentService.getQuestions();
+    const interpretationGroups = this.interpretationService.getGroups();
+    const interpretationQuestions = interpretationGroups.flatMap(g => g.questions);
+    const allQuestions = [...questions, ...interpretationQuestions];
+
     const stats: Record<string, number> = {};
     let total = 0;
 
-    history.forEach(h => {
-        const q = questions.find(q => q.id === h.questionId);
+    allHistory.forEach(h => {
+        const q = allQuestions.find(q => q.id === h.questionId);
         if (q) {
             let cat = q.subject;
             if (cat.includes('Ciências')) cat = 'Ciências';
             if (cat === 'História' || cat === 'Geografia') cat = 'Humanas';
             if (cat === 'Língua Portuguesa') cat = 'Português';
-            
             stats[cat] = (stats[cat] || 0) + 1;
             total++;
         }
@@ -181,17 +201,17 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  // --- Exam Dates ---
+  // --- Exam Dates (fallback inicial, sobrescrito pela IA) ---
   exams = signal<Array<{ name: string; date: Date | string; color: string; icon: string }>>([
     {
       name: 'ETEC 2027/1',
-      date: new Date('2026-08-14'),
+      date: new Date('2026-12-06'),
       color: 'bg-black',
       icon: 'fa-graduation-cap'
     },
     {
       name: 'IFSP Jundiaí',
-      date: new Date('2026-08-21'),
+      date: new Date('2026-12-13'),
       color: 'bg-slate-700',
       icon: 'fa-university'
     }

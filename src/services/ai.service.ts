@@ -21,6 +21,7 @@ export class AIService {
 
     private readonly CACHE_KEY = 'vestbot_exam_calendar_cache';
     private readonly CACHE_TTL = 12 * 60 * 60 * 1000; // 12 hours in ms
+    private pendingRequest: Promise<ExamDate[]> | null = null;
 
     private cacheKey(prefix: string, parts: Array<string | undefined | null>): string {
         const raw = parts.filter(Boolean).join('|');
@@ -50,31 +51,33 @@ export class AIService {
             }
         }
 
-        // 2. Fetch from AI if no cache or expired
+        // 2. Deduplicate concurrent requests
+        if (this.pendingRequest) {
+            return this.pendingRequest;
+        }
+
+        // 3. Fetch from AI if no cache or expired
         this.isLoading.set(true);
-        try {
-            const url = forceRefresh
-                ? `${this.apiUrl}/exam-calendar?refresh=1`
-                : `${this.apiUrl}/exam-calendar`;
-
-            const data = await firstValueFrom(
-                this.http.get<ExamDate[]>(url)
-            );
-
+        this.pendingRequest = firstValueFrom(
+            this.http.get<ExamDate[]>(
+                forceRefresh
+                    ? `${this.apiUrl}/exam-calendar?refresh=1`
+                    : `${this.apiUrl}/exam-calendar`
+            )
+        ).then(data => {
             const now = Date.now();
-            localStorage.setItem(this.CACHE_KEY, JSON.stringify({
-                data,
-                timestamp: now
-            }));
-
+            localStorage.setItem(this.CACHE_KEY, JSON.stringify({ data, timestamp: now }));
             this.lastSync.set(now);
             return data;
-        } catch (error) {
+        }).catch(error => {
             console.error('Failed to sync with AI:', error);
             throw error;
-        } finally {
+        }).finally(() => {
             this.isLoading.set(false);
-        }
+            this.pendingRequest = null;
+        });
+
+        return this.pendingRequest;
     }
 
     /**

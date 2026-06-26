@@ -151,8 +151,9 @@ export class TextInterpretationComponent implements OnInit {
     // Record question in session
     this.activitySession.recordQuestion(question.difficulty);
 
-    // Record attempt for interpretation history
+    // Record attempt for interpretation history and spaced repetition
     this.interpretationService.recordInterpretationAttempt(question.id, correct);
+    this.questionHistory.recordAttempt(question.id, correct, 'interpretation');
   }
 
   /**
@@ -189,6 +190,7 @@ export class TextInterpretationComponent implements OnInit {
     const bonusXP = this.activitySession.completeSession();
     if (bonusXP > 0) {
       console.log(`🎊 Interpretação completa! Bônus: +${bonusXP} XP`);
+      this.contentService.addBonusXP(bonusXP);
     }
     this.celebrationXP.set(bonusXP);
     this.viewState.set('result');

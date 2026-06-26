@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import type {
     ActivitySession,
     ActivityType,
@@ -7,10 +7,13 @@ import type {
 } from '../types/gamification.types';
 import { calculateCompletionBonus } from '../types/gamification.types';
 
+import { UserDataService } from './user-data.service';
+
 @Injectable({
     providedIn: 'root',
 })
 export class ActivitySessionService {
+    private userDataService = inject(UserDataService);
     // Sessão ativa atual
     currentSession = signal<ActivitySession | null>(null);
 
@@ -102,7 +105,12 @@ export class ActivitySessionService {
         this.completedSessions.update(sessions => {
             const updated = [completed, ...sessions];
             // Manter apenas últimas 50
-            return updated.slice(0, 50);
+            const recent = updated.slice(0, 50);
+            
+            // Save to backend using UserDataService
+            this.userDataService.saveUserSessions(recent);
+            
+            return recent;
         });
 
         // Limpar sessão atual

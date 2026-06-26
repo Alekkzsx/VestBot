@@ -87,18 +87,32 @@ export class AnalyticsService {
     }
 
     /**
-     * Obter histórico real de questões a partir do UserDataService
+     * Obter histórico real de questões a partir do UserDataService.
+     * Unifica questionHistory (quiz) e interpretationHistory,
+     * filtrando entradas duplicadas e de resolução.
      */
     private getRealHistory(): any[] {
         const userData = this.userDataService.getUserData();
-        const quizHistory = userData?.user.questionHistory || [];
+        const allHistory = userData?.user.questionHistory || [];
         const interpretationHistory = userData?.user.interpretationHistory || [];
 
-        const quizQuestions = this.contentService.getQuestions();
+        const allQuestions = this.contentService.getQuestions();
         const interpretationQuestions = this.interpretationService.getGroups().flatMap(g => g.questions);
+        const allInterpretationQuestions = [...allQuestions, ...interpretationQuestions];
+
+        // Filtra questionHistory: exclui entries de resolução e interpretação
+        // (interpretação agora grava em ambos para repetição espaçada,
+        //  mas analytics usa apenas interpretationHistory para essas)
+        const quizHistory = allHistory.filter(h => {
+            const ctx = (h as any).context;
+            return ctx !== 'resolution' && ctx !== 'interpretation';
+        });
+
+        const lookupQuestion = (id: number) => allQuestions.find(q => q.id === id);
+        const lookupInterpretation = (id: number) => allInterpretationQuestions.find(q => q.id === id);
 
         const mappedQuiz = quizHistory.map(h => {
-            const q = quizQuestions.find(question => question.id === h.questionId);
+            const q = lookupQuestion(h.questionId);
             return {
                 subject: q ? q.subject : 'Geral',
                 difficulty: q ? q.difficulty : 'Médio',
@@ -108,9 +122,9 @@ export class AnalyticsService {
         });
 
         const mappedInterpretation = interpretationHistory.map(h => {
-            const q = interpretationQuestions.find(question => question.id === h.questionId);
+            const q = lookupInterpretation(h.questionId);
             return {
-                subject: q ? q.subject : 'Língua Portuguesa', // Default/fallback for text interpretation is Portuguese
+                subject: q ? q.subject : 'Língua Portuguesa',
                 difficulty: q ? q.difficulty : 'Médio',
                 correct: h.wasCorrect,
                 timestamp: h.timestamp

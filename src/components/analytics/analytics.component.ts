@@ -287,19 +287,10 @@ import { AnalyticsService, AnalyticsData } from '../../services/analytics.servic
     }
   `]
 })
-export class AnalyticsComponent implements OnInit {
+export class AnalyticsComponent {
     private analyticsService = inject(AnalyticsService);
 
-    data = signal<AnalyticsData | null>(null);
-
-    ngOnInit() {
-        this.loadData();
-    }
-
-    loadData() {
-        const analyticsData = this.analyticsService.getAnalyticsData();
-        this.data.set(analyticsData);
-    }
+    data = computed(() => this.analyticsService.getAnalyticsData());
 
     getSubjectIcon(subject: string): string {
         const icons: Record<string, string> = {

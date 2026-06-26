@@ -550,6 +550,7 @@ export class QuizComponent implements OnDestroy {
     const bonusXP = this.activitySession.completeSession();
     if (bonusXP > 0) {
       console.log(`🎊 Simulado completo! Bônus de conclusão: +${bonusXP} XP`);
+      this.contentService.addBonusXP(bonusXP);
     }
 
     // Show completion celebration

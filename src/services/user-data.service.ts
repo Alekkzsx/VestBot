@@ -56,6 +56,10 @@ export interface UserData {
             watchedDuration: number;
             isCompleted: boolean;
         }>;
+        sessions: ActivitySession[];
+        frequency: {
+            studyDays: string[];
+        };
     };
 }
 
@@ -84,6 +88,8 @@ export class UserDataService {
     private scheduleUpdate$ = new Subject<any[]>();
     private gamificationUpdate$ = new Subject<any>();
     private lessonsUpdate$ = new Subject<any[]>();
+    private sessionsUpdate$ = new Subject<ActivitySession[]>();
+    private frequencyUpdate$ = new Subject<any>();
 
     constructor() {
         this.setupDebouncedSaves();
@@ -239,6 +245,48 @@ export class UserDataService {
             this.syncStatus.set('synced');
             this.lastSaved.set(new Date());
         });
+
+        // Debounced Sessions Save
+        this.sessionsUpdate$.pipe(
+            debounceTime(2000),
+            switchMap(sessions => {
+                this.syncStatus.set('saving');
+                return fetch(`${this.API_BASE}/sessions`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(sessions)
+                }).then(res => res.json());
+            }),
+            catchError(err => {
+                console.error('❌ Error saving sessions:', err);
+                this.syncStatus.set('error');
+                return of(null);
+            })
+        ).subscribe(() => {
+            this.syncStatus.set('synced');
+            this.lastSaved.set(new Date());
+        });
+
+        // Debounced Frequency Save
+        this.frequencyUpdate$.pipe(
+            debounceTime(1500),
+            switchMap(frequency => {
+                this.syncStatus.set('saving');
+                return fetch(`${this.API_BASE}/frequency`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(frequency)
+                }).then(res => res.json());
+            }),
+            catchError(err => {
+                console.error('❌ Error saving frequency:', err);
+                this.syncStatus.set('error');
+                return of(null);
+            })
+        ).subscribe(() => {
+            this.syncStatus.set('synced');
+            this.lastSaved.set(new Date());
+        });
     }
 
     /**
@@ -371,6 +419,30 @@ export class UserDataService {
         this.lessonsUpdate$.next(history);
     }
 
+    /**
+     * Save Activity SESSIONS
+     */
+    saveUserSessions(sessions: ActivitySession[]): void {
+        this.userData.update(current => {
+            if (!current) return current;
+            return { ...current, user: { ...current.user, sessions } };
+        });
+
+        this.sessionsUpdate$.next(sessions);
+    }
+
+    /**
+     * Save FREQUENCY (Streak days)
+     */
+    saveUserFrequency(frequency: { studyDays: string[] }): void {
+        this.userData.update(current => {
+            if (!current) return current;
+            return { ...current, user: { ...current.user, frequency } };
+        });
+
+        this.frequencyUpdate$.next(frequency);
+    }
+
     getUserData(): UserData | null {
         return this.userData();
     }
@@ -392,7 +464,9 @@ export class UserDataService {
                     consecutiveCorrect: 0,
                     subjectStats: [],
                 },
-                lessonsHistory: []
+                lessonsHistory: [],
+                sessions: [],
+                frequency: { studyDays: [] }
             }
         };
     }

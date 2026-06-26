@@ -1,8 +1,10 @@
-import { Injectable, signal, inject, effect } from '@angular/core';
+//cuidado com erro de looping e bugas npm run dev
+import { Injectable, signal, inject, effect, untracked } from '@angular/core';
 import { QuestionLoaderService } from './question-loader.service';
 import { UserDataService } from './user-data.service';
 import { AchievementsService } from './achievements.service';
 import { ChallengesService } from './challenges.service';
+import { ActivitySessionService } from './activity-session.service';
 
 export interface Question {
   id: number;
@@ -35,6 +37,7 @@ export class ContentService {
   private userDataService = inject(UserDataService);
   private achievementsService = inject(AchievementsService);
   private challengesService = inject(ChallengesService);
+  private activitySessionService = inject(ActivitySessionService);
 
   // Local questions loaded from files
   private loadedQuestions = signal<Question[]>([]);
@@ -232,6 +235,8 @@ export class ContentService {
 
   schedule = signal<StudySession[]>([]);
 
+  isInitialized = signal(false);
+
   constructor() {
     // Load data from backend on initialization
     this.initializeData();
@@ -242,6 +247,7 @@ export class ContentService {
     // Effect to auto-save stats on change
     effect(() => {
       const stats = this.stats();
+      if (!this.isInitialized()) return;
       if (stats) {
         this.userDataService.saveUserProfile(stats); // Changed from saveStats to saveUserProfile to match existing code
       }
@@ -249,22 +255,25 @@ export class ContentService {
 
     // Effect to auto-save gamification data
     effect(() => {
-      // Watch for changes in achievements or challenges
       const achievements = this.achievementsService.unlockedAchievements();
       const challenges = this.challengesService.userChallenges();
+      const current = untracked(() => this.userDataService.getUserData()?.user.gamification);
 
-      // Save to backend
+      if (!this.isInitialized()) return;
+
+      // Merge with existing data to avoid overwriting stats
       this.userDataService.saveGamificationData({
-        achievements,
-        challenges,
-        completedSessions: [],
-        consecutiveCorrect: 0,
-        subjectStats: []
+        achievements: achievements.length > 0 ? achievements : (current?.achievements || []),
+        challenges: challenges.length > 0 ? challenges : (current?.challenges || []),
+        completedSessions: [], // Moved to sessions.json
+        consecutiveCorrect: current?.consecutiveCorrect || 0,
+        subjectStats: current?.subjectStats || []
       });
     });
 
     effect(() => {
       const currentSchedule = this.schedule();
+      if (!this.isInitialized()) return;
       this.userDataService.saveUserSchedule(currentSchedule);
     });
   }
@@ -283,9 +292,17 @@ export class ContentService {
       // Update schedule (This will trigger the schedule effect)
       this.schedule.set(userData.user.schedule);
 
+      // Populate completed sessions from backend
+      const savedSessions = userData.user.sessions;
+      if (savedSessions && savedSessions.length > 0) {
+        this.activitySessionService.loadCompletedSessions(savedSessions);
+      }
+
       console.log('✅ ContentService initialized with backend data');
+      this.isInitialized.set(true);
     } catch (error) {
       console.error('❌ Error initializing data:', error);
+      this.isInitialized.set(true);
     }
   }
 
@@ -369,6 +386,48 @@ export class ContentService {
   }
 
   updateStats(isCorrect: boolean, difficulty: string = 'Médio', subject?: string) {
+    // 1. Calculate and update Daily Frequency Streak
+    const today = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
+    const userData = this.userDataService.getUserData();
+    let frequency = userData?.user.frequency?.studyDays || [];
+    
+    if (!frequency.includes(today)) {
+        frequency = [...frequency, today];
+        this.userDataService.saveUserFrequency({ studyDays: frequency });
+    }
+
+    // Calculate actual daily streak
+    let calculatedDailyStreak = 0;
+    const sortedDays = [...frequency].sort((a, b) => b.localeCompare(a));
+    const currentDate = new Date();
+    currentDate.setHours(0,0,0,0);
+    
+    // Check if user studied today or yesterday to maintain streak
+    if (sortedDays.length > 0) {
+        const lastStudyDate = new Date(sortedDays[0]);
+        lastStudyDate.setHours(0,0,0,0);
+        
+        const diffTime = Math.abs(currentDate.getTime() - lastStudyDate.getTime());
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        
+        if (diffDays <= 1) {
+            calculatedDailyStreak = 1;
+            // Count backwards
+            for (let i = 0; i < sortedDays.length - 1; i++) {
+                const d1 = new Date(sortedDays[i]);
+                const d2 = new Date(sortedDays[i+1]);
+                d1.setHours(0,0,0,0);
+                d2.setHours(0,0,0,0);
+                const diff = Math.round(Math.abs(d1.getTime() - d2.getTime()) / (1000 * 60 * 60 * 24));
+                if (diff === 1) {
+                    calculatedDailyStreak++;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
     this.stats.update(val => {
       // Cálculo de XP: Máximo 20 XP por acerto, dependendo da dificuldade
       let earnedXp = 0;
@@ -390,10 +449,12 @@ export class ContentService {
       // Level Calculation: 1000 XP per level
       const newLevel = Math.floor(newXp / 1000) + 1;
 
+      // Note: we update currentStreak to be the REAL daily streak now!
       const newStats = {
         ...val,
         questionsAnswered: val.questionsAnswered + 1,
         correctAnswers: isCorrect ? val.correctAnswers + 1 : val.correctAnswers,
+        currentStreak: calculatedDailyStreak,
         xp: newXp,
         level: newLevel
       };
@@ -414,6 +475,18 @@ export class ContentService {
     });
 
     // Auto-save is triggered by effect
+  }
+
+  /**
+   * Adiciona XP extra (bônus de conclusão de sessão) sem incrementar contagem de questões.
+   */
+  addBonusXP(amount: number) {
+    if (amount <= 0) return;
+    this.stats.update(val => {
+      const newXp = val.xp + amount;
+      const newLevel = Math.floor(newXp / 1000) + 1;
+      return { ...val, xp: newXp, level: newLevel };
+    });
   }
 
   incrementEssayCount() {
