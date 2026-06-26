@@ -151,8 +151,8 @@ export class TextInterpretationComponent implements OnInit {
     // Record question in session
     this.activitySession.recordQuestion(question.difficulty);
 
-    // Record attempt for spaced repetition with 'interpretation' context
-    this.questionHistory.recordAttempt(question.id, correct, 'interpretation');
+    // Record attempt for interpretation history
+    this.interpretationService.recordInterpretationAttempt(question.id, correct);
   }
 
   /**

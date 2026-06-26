@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const fs = require('fs').promises;
+const fsSync = require('fs');
+const fs = fsSync.promises;
 const path = require('path');
 const { getGeminiKeys } = require('./secrets.cjs');
 
@@ -283,48 +284,190 @@ app.post('/api/user/davi/gamification', async (req, res) => {
 // --- AI & CALENDAR LOGIC ---
 
 let currentKeyIndex = 0;
-const keys = getGeminiKeys();
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.5-flash';
+const GEMINI_FALLBACK_MODELS = Array.from(new Set([
+  GEMINI_MODEL,
+  'gemini-2.5-flash',
+  'gemini-1.5-flash'
+]));
+
+function readEnvFileKeys() {
+  const envFiles = ['.env.local', '.env'];
+  const keys = [];
+
+  for (const file of envFiles) {
+    const filePath = path.join(__dirname, file);
+    if (!fsSync.existsSync(filePath)) continue;
+
+    const content = fsSync.readFileSync(filePath, 'utf8');
+    for (const line of content.split(/\r?\n/)) {
+      const match = line.match(/^\s*(?:GEMINI_API_KEY|GOOGLE_API_KEY|API_KEY)\s*=\s*(.+?)\s*$/);
+      if (!match) continue;
+
+      const value = match[1].replace(/^['"]|['"]$/g, '').trim();
+      if (value) keys.push(value);
+    }
+  }
+
+  return keys;
+}
+
+function loadGeminiKeys() {
+  return Array.from(new Set([
+    process.env.GEMINI_API_KEY,
+    process.env.GOOGLE_API_KEY,
+    process.env.API_KEY,
+    ...readEnvFileKeys(),
+    ...getGeminiKeys()
+  ].filter(Boolean)));
+}
+
+const keys = loadGeminiKeys();
+
+function extractGeminiText(result) {
+  if (!result) return '';
+  if (typeof result === 'string') return result;
+  if (typeof result.output === 'string') return result.output;
+  if (typeof result.output_text === 'string') return result.output_text;
+  if (typeof result.text === 'string') return result.text;
+
+  if (Array.isArray(result.output)) {
+    return result.output.map(extractGeminiText).filter(Boolean).join('\n');
+  }
+
+  const candidateText = result.candidates?.[0]?.content?.parts
+    ?.map(part => part.text || '')
+    .filter(Boolean)
+    .join('\n');
+
+  return candidateText || '';
+}
+
+function extractJson(text, expected = 'object') {
+  if (!text || typeof text !== 'string') {
+    throw new Error('Empty AI response');
+  }
+
+  const cleaned = text
+    .replace(/```(?:json)?/gi, '')
+    .replace(/```/g, '')
+    .trim();
+
+  try {
+    return JSON.parse(cleaned);
+  } catch { }
+
+  const pattern = expected === 'array' ? /\[[\s\S]*\]/ : /\{[\s\S]*\}/;
+  const match = cleaned.match(pattern);
+  if (!match) {
+    throw new Error(`AI response did not contain a JSON ${expected}`);
+  }
+
+  return JSON.parse(match[0]);
+}
+
+function normalizeLessonVideo(video, fallbackSubject = 'Videoaula YouTube') {
+  if (!video || !video.id) return null;
+  return {
+    id: String(video.id),
+    title: String(video.title || 'Videoaula Recomendada'),
+    duration: String(video.duration || '??:??'),
+    subject: String(video.subject || fallbackSubject),
+    thumbnail: video.thumbnail || `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`,
+    isLocked: false
+  };
+}
 
 /**
- * Call Gemini API with Fallback
+ * Call Gemini API with key/model fallback. Interactions is preferred, with
+ * generateContent kept as a compatibility fallback for older accounts/projects.
  */
-async function callGemini(prompt) {
-  const maxRetries = keys.length;
+async function callGemini(prompt, options = {}) {
+  if (!keys.length) {
+    throw new Error('No Gemini API key configured. Set GEMINI_API_KEY, GOOGLE_API_KEY, API_KEY, or .env.local API_KEY.');
+  }
 
-  for (let i = 0; i < maxRetries; i++) {
-    const key = keys[currentKeyIndex];
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${key}`;
+  const wantsJson = options.json !== false;
+  let lastError;
 
-    try {
-      const response = await fetch(url, {
+  for (const model of GEMINI_FALLBACK_MODELS) {
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[currentKeyIndex];
+
+      try {
+        const interactionsResponse = await fetch('https://generativelanguage.googleapis.com/v1beta/interactions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': key
+          },
+          body: JSON.stringify({
+            model,
+            input: prompt
+          })
+        });
+
+        const interactionsResult = await interactionsResponse.json().catch(() => ({}));
+
+        if (interactionsResponse.ok) {
+          const text = extractGeminiText(interactionsResult);
+          if (text) return text;
+          throw new Error('Gemini Interactions returned an empty response');
+        }
+
+        lastError = new Error(interactionsResult.error?.message || `Gemini Interactions HTTP ${interactionsResponse.status}`);
+        console.warn(`⚠️ Gemini Interactions failed [model=${model}, key=${currentKeyIndex}]: ${lastError.message}`);
+
+        if (interactionsResponse.status === 429 || interactionsResponse.status === 403) {
+          currentKeyIndex = (currentKeyIndex + 1) % keys.length;
+          continue;
+        }
+      } catch (error) {
+        lastError = error;
+        console.warn(`⚠️ Gemini Interactions request error [model=${model}, key=${currentKeyIndex}]: ${error.message}`);
+      }
+
+      const legacyUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+      try {
+        const response = await fetch(legacyUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { response_mime_type: "application/json" }
+          generationConfig: wantsJson ? { response_mime_type: 'application/json' } : undefined
         })
       });
 
-      const result = await response.json();
+        const result = await response.json().catch(() => ({}));
 
       if (response.ok) {
-        return result.candidates[0].content.parts[0].text;
+          const text = extractGeminiText(result);
+          if (text) return text;
+          throw new Error('Gemini generateContent returned an empty response');
       }
 
-      console.warn(`⚠️ Key ${currentKeyIndex} failed: ${result.error?.message || 'Unknown error'}`);
+        lastError = new Error(result.error?.message || `Gemini generateContent HTTP ${response.status}`);
+        console.warn(`⚠️ Gemini generateContent failed [model=${model}, key=${currentKeyIndex}]: ${lastError.message}`);
 
-      // If quota issue (429), move to next key
       if (response.status === 429 || response.status === 403) {
         currentKeyIndex = (currentKeyIndex + 1) % keys.length;
         continue;
       }
-
-      throw new Error(result.error?.message || 'Gemini API Error');
     } catch (error) {
-      if (i === maxRetries - 1) throw error;
+        lastError = error;
+        console.warn(`⚠️ Gemini generateContent request error [model=${model}, key=${currentKeyIndex}]: ${error.message}`);
+      }
+
       currentKeyIndex = (currentKeyIndex + 1) % keys.length;
     }
   }
+
+  throw lastError || new Error('Gemini API Error');
+}
+
+async function callGeminiJson(prompt, expected = 'object') {
+  const text = await callGemini(prompt, { json: true });
+  return extractJson(text, expected);
 }
 
 /**
@@ -335,7 +478,8 @@ app.get('/api/ai/exam-calendar', async (req, res) => {
   try {
     // 1. Verificar se existe cache válido (menor que 24 horas)
     const cached = await readJson(FILES.CALENDAR_CACHE, null);
-    if (cached && cached.lastUpdated && cached.data) {
+    const forceRefresh = req.query.refresh === '1' || req.query.refresh === 'true';
+    if (!forceRefresh && cached && cached.lastUpdated && cached.data) {
       const age = Date.now() - cached.lastUpdated;
       if (age < 24 * 60 * 60 * 1000) {
         console.log('📅 AI Calendar: Servindo do cache local de 24h');
@@ -405,9 +549,10 @@ app.get('/api/ai/exam-calendar', async (req, res) => {
       ]
     `;
 
-    const aiResponse = await callGemini(systemPrompt);
-    const jsonMatch = aiResponse.match(/\[[\s\S]*\]/);
-    const calendarData = JSON.parse(jsonMatch ? jsonMatch[0] : aiResponse);
+    const calendarData = await callGeminiJson(systemPrompt, 'array');
+    if (!Array.isArray(calendarData) || calendarData.length === 0) {
+      throw new Error('AI calendar response must be a non-empty array');
+    }
 
     // 4. Gravar cache localmente
     const cacheToSave = {
@@ -463,11 +608,12 @@ app.get('/api/ai/dictionary', async (req, res) => {
       { "word": "${word}", "definition": "SUA_DEFINICAO_AQUI" }
     `;
 
-    const aiResponse = await callGemini(prompt);
-    const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);
-    const definitionData = JSON.parse(jsonMatch ? jsonMatch[0] : aiResponse);
+    const definitionData = await callGeminiJson(prompt, 'object');
 
-    res.json(definitionData);
+    res.json({
+      word: String(definitionData.word || word),
+      definition: String(definitionData.definition || 'Não foi possível definir esta palavra no momento.').slice(0, 240)
+    });
   } catch (error) {
     console.error('AI Dictionary Error:', error);
     res.json({ word, definition: "Não foi possível definir esta palavra no momento." });
@@ -553,20 +699,20 @@ app.post('/api/ai/search-videos', async (req, res) => {
       ${JSON.stringify(rawVideos.map(v => ({ id: v.id, title: v.title })))}
     `;
 
-    const aiResponse = await callGemini(prompt);
-    const jsonMatch = aiResponse.match(/\[[\s\S]*\]/);
-    const selectedIds = JSON.parse(jsonMatch ? jsonMatch[0] : aiResponse);
+    const selectedIds = await callGeminiJson(prompt, 'array');
 
     const finalVideos = selectedIds
       .map(id => rawVideos.find(v => v.id === id))
       .filter(v => v !== undefined)
+      .map(v => normalizeLessonVideo(v, subject || 'Videoaula YouTube'))
+      .filter(Boolean)
       .slice(0, 3);
 
-    res.json(finalVideos.length > 0 ? finalVideos : rawVideos.slice(0, 3));
+    res.json(finalVideos.length > 0 ? finalVideos : rawVideos.slice(0, 3).map(v => normalizeLessonVideo(v, subject || 'Videoaula YouTube')).filter(Boolean));
   } catch (error) {
     console.error('AI Search Video Error:', error);
     const rawVideos = await getYoutubeFallbackResults(query, 3);
-    res.json(rawVideos);
+    res.json(rawVideos.map(v => normalizeLessonVideo(v, subject || 'Videoaula YouTube')).filter(Boolean));
   }
 });
 

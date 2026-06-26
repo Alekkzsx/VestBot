@@ -3,6 +3,7 @@ import { ContentService } from './content.service';
 import { ActivitySessionService } from './activity-session.service';
 import { QuestionHistoryService } from './question-history.service';
 import { UserDataService } from './user-data.service';
+import { InterpretationService } from './interpretation.service';
 
 export interface SubjectStats {
     subject: string;
@@ -65,6 +66,7 @@ export class AnalyticsService {
     private activitySessionService = inject(ActivitySessionService);
     private questionHistory = inject(QuestionHistoryService);
     private userDataService = inject(UserDataService);
+    private interpretationService = inject(InterpretationService);
 
     /**
      * Calcula dados agregados de analytics
@@ -89,11 +91,14 @@ export class AnalyticsService {
      */
     private getRealHistory(): any[] {
         const userData = this.userDataService.getUserData();
-        const history = userData?.user.questionHistory || [];
-        const questions = this.contentService.getQuestions();
+        const quizHistory = userData?.user.questionHistory || [];
+        const interpretationHistory = userData?.user.interpretationHistory || [];
 
-        return history.map(h => {
-            const q = questions.find(question => question.id === h.questionId);
+        const quizQuestions = this.contentService.getQuestions();
+        const interpretationQuestions = this.interpretationService.getGroups().flatMap(g => g.questions);
+
+        const mappedQuiz = quizHistory.map(h => {
+            const q = quizQuestions.find(question => question.id === h.questionId);
             return {
                 subject: q ? q.subject : 'Geral',
                 difficulty: q ? q.difficulty : 'Médio',
@@ -101,6 +106,18 @@ export class AnalyticsService {
                 timestamp: h.timestamp
             };
         });
+
+        const mappedInterpretation = interpretationHistory.map(h => {
+            const q = interpretationQuestions.find(question => question.id === h.questionId);
+            return {
+                subject: q ? q.subject : 'Língua Portuguesa', // Default/fallback for text interpretation is Portuguese
+                difficulty: q ? q.difficulty : 'Médio',
+                correct: h.wasCorrect,
+                timestamp: h.timestamp
+            };
+        });
+
+        return [...mappedQuiz, ...mappedInterpretation];
     }
 
     private calculateOverview(stats: any, sessions: any[]): AnalyticsData['overview'] {

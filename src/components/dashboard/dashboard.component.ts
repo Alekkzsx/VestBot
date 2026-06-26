@@ -155,9 +155,9 @@ export class DashboardComponent implements OnInit {
     this.syncWithAI();
   }
 
-  async syncWithAI() {
+  async syncWithAI(force: boolean = false) {
     try {
-      const data = await this.aiService.getExamCalendar();
+      const data = await this.aiService.getExamCalendar(force);
       if (data && data.length > 0) {
         const updatedExams = data.map((exam, index) => {
           let parsedDate: Date | string = exam.date;

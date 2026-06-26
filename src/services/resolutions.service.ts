@@ -72,17 +72,24 @@ export class ResolutionsService {
             ? userData.user.questionHistory
             : userData.user.interpretationHistory;
 
+        // Group attempts by questionId to only get the latest attempt of each question (prevents duplicates)
+        const latestHistoryMap = new Map<number, any>();
+        (history || []).forEach(h => {
+            latestHistoryMap.set(h.questionId, h);
+        });
+        const latestHistory = Array.from(latestHistoryMap.values());
+
         switch (filter) {
             case 'wrong':
-                const wrongIds = history.filter(h => !h.wasCorrect).map(h => h.questionId);
+                const wrongIds = latestHistory.filter(h => !h.wasCorrect).map(h => h.questionId);
                 return allQuestions.filter(q => wrongIds.includes(q.id));
 
             case 'correct':
-                const correctIds = history.filter(h => h.wasCorrect).map(h => h.questionId);
+                const correctIds = latestHistory.filter(h => h.wasCorrect).map(h => h.questionId);
                 return allQuestions.filter(q => correctIds.includes(q.id));
 
             case 'new':
-                const seenIds = history.map(h => h.questionId);
+                const seenIds = latestHistory.map(h => h.questionId);
                 return allQuestions.filter(q => !seenIds.includes(q.id));
 
             case 'random':

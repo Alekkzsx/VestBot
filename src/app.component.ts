@@ -1,4 +1,4 @@
-import { Component, signal, inject, computed, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, inject, computed, OnInit, OnDestroy, ChangeDetectionStrategy, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { QuizComponent } from './components/quiz/quiz.component';
@@ -75,6 +75,15 @@ export class AppComponent implements OnInit, OnDestroy {
   targetDate = new Date('2026-12-06T13:30:00');
   timeLeft = signal({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   private intervalId: any;
+
+  constructor() {
+    effect(() => {
+      const lastSync = this.aiService.lastSync();
+      if (lastSync) {
+        this.loadExamCalendar();
+      }
+    });
+  }
 
   ngOnInit() {
     this.updateTimer();

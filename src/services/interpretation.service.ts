@@ -40,6 +40,10 @@ export class InterpretationService {
     private answeredQuestions = signal<Map<number, number>>(new Map());
     private isLoaded = signal(false);
 
+    constructor() {
+        this.loadInterpretations();
+    }
+
     // Computed
     currentGroup = computed(() => this.groups()[this.currentIndex()]);
     totalGroups = computed(() => this.groups().length);
@@ -213,10 +217,10 @@ export class InterpretationService {
             wasCorrect
         };
 
-        const filtered = history.filter(h => h.questionId !== questionId);
-        filtered.push(attempt);
+        // Do NOT filter out old attempts (to ensure consistency with all attempts analytics)
+        history.push(attempt);
 
-        this.userDataService.saveUserInterpretationHistory(filtered);
+        this.userDataService.saveUserInterpretationHistory(history);
     }
 
     /**

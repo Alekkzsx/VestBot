@@ -2,7 +2,6 @@ import { Component, ChangeDetectionStrategy, signal, computed, inject, OnInit } 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AIService } from '../../services/ai.service';
-import { AnalyticsService } from '../../services/analytics.service';
 import { UserDataService } from '../../services/user-data.service';
 import { LessonPlayerComponent } from './lesson-player.component';
 
@@ -50,47 +49,6 @@ interface Lesson {
           </button>
         </div>
       </header>
-
-      <!-- AI Recommendations -->
-      @if (recommendedLessons().length > 0 && !searchQuery()) {
-        <div class="mb-10 animate-fade-in">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="bg-blue-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-tighter shadow-sm flex items-center gap-1.2">
-              <i class="fas fa-sparkles text-[8px]"></i> Sugestão IA
-            </span>
-            <span class="text-xs font-bold text-slate-500">Aulas ideais para reforçar seus pontos fracos</span>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            @for (lesson of recommendedLessons(); track lesson.id) {
-              <div 
-                (click)="selectedLesson.set(lesson)"
-                class="bg-white border border-slate-200 rounded-3xl p-4 flex items-center gap-4 hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/5 cursor-pointer transition-all group overflow-hidden relative">
-                
-                <div class="w-24 aspect-video bg-slate-900 rounded-xl flex items-center justify-center text-white text-xs overflow-hidden relative shrink-0 shadow-sm">
-                   @if (lesson.thumbnail) {
-                       <img [src]="lesson.thumbnail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                   } @else {
-                       <i class="fas fa-play text-slate-500"></i>
-                   }
-                   <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
-                   <div [style.width.%]="getLessonProgress(lesson.id)" class="absolute bottom-0 left-0 h-1 bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
-                </div>
-                
-                <div class="flex-1 min-w-0">
-                  <span class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-1 block">{{ lesson.subject }}</span>
-                  <h4 class="font-bold text-sm text-slate-900 leading-tight group-hover:text-blue-600 transition-colors truncate">{{ lesson.title }}</h4>
-                  <p class="text-[10px] text-slate-400 mt-1 font-medium">{{ lesson.duration }} • Assistir agora</p>
-                </div>
-                
-                <div class="p-2 mr-1 rounded-full bg-slate-50 text-slate-300 group-hover:bg-blue-50 group-hover:text-blue-500 transition-all flex items-center justify-center">
-                  <i class="fas fa-chevron-right text-[10px]"></i>
-                </div>
-              </div>
-            }
-          </div>
-        </div>
-      }
 
       <!-- My Discoveries (Saved Searches) -->
       @if (discoveredLessons().length > 0 && !searchQuery()) {
@@ -249,14 +207,12 @@ interface Lesson {
 })
 export class LessonsComponent implements OnInit {
   private aiService = inject(AIService);
-  private analyticsService = inject(AnalyticsService);
   private userDataService = inject(UserDataService);
 
   categories = signal(['Todos', 'Matemática', 'Português', 'Humanas', 'Ciências']);
   selectedCategory = signal('Todos');
   searchQuery = signal('');
   isSearching = signal(false);
-  recommendedLessonIds = signal<string[]>([]);
   searchResults = signal<Lesson[]>([]);
   discoveredLessons = signal<Lesson[]>([]);
   selectedLesson = signal<Lesson | null>(null);
@@ -292,41 +248,11 @@ export class LessonsComponent implements OnInit {
     });
   });
 
-  recommendedLessons = computed(() => {
-    const ids = this.recommendedLessonIds();
-    const all = [...this.lessons(), ...this.searchResults(), ...this.discoveredLessons()];
-    const unique = Array.from(new Map(all.map(item => [item['id'], item])).values());
-    return unique.filter(l => ids.includes(l.id));
-  });
-
   async ngOnInit() {
     // Carregar aulas descobertas salvas
     const saved = localStorage.getItem(this.DISCOVERED_KEY);
     if (saved) {
       this.discoveredLessons.set(JSON.parse(saved));
-    }
-
-    const analytics = this.analyticsService.getAnalyticsData();
-    const weakSubjects = analytics.bySubject
-      .filter(s => s.accuracy < 65)
-      .map(s => s.subject);
-
-    if (weakSubjects.length > 0) {
-      const stats = {
-        accuracy: analytics.overview.accuracy,
-        correctAnswers: analytics.overview.correctAnswers,
-        weakSubjects
-      };
-
-      const recs = await this.aiService.getRecommendedLessons(stats, this.lessons());
-      this.recommendedLessonIds.set(recs);
-
-      // Otimização: Busca os metadados reais para os IDs recomendados
-      const missingIds = recs.filter(id => !this.lessons().some(l => l.id === id) && !this.discoveredLessons().some(l => l.id === id));
-      if (missingIds.length > 0) {
-        const meta = await this.aiService.getVideosInfo(missingIds);
-        this.searchResults.update(current => [...current, ...meta]);
-      }
     }
   }
 

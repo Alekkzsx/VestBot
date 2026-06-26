@@ -458,15 +458,9 @@ export class QuizComponent implements OnDestroy {
   }
 
   selectOption(index: number) {
-    if (this.isReviewMode()) return; // Impedir alteração em modo de revisão
+    if (this.isReviewMode() || this.isAnswered()) return; // Impedir alteração se já respondeu ou em modo de revisão
 
-    // Permite trocar a opção mesmo se já respondeu (UX melhorada)
     this.selectedOptionIndex.set(index);
-    
-    // Se já estava respondida, atualizar na hora pro usuário ver o feedback visual
-    if (this.isAnswered()) {
-        this.submitAnswer();
-    }
   }
 
   submitAnswer() {

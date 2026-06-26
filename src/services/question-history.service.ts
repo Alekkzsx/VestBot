@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { UserDataService } from './user-data.service';
+import { ContentService } from './content.service';
 
 /**
  * Context where the question was attempted
@@ -29,6 +30,7 @@ export interface QuestionAttempt {
 })
 export class QuestionHistoryService {
     private userDataService = inject(UserDataService);
+    private contentService = inject(ContentService);
 
     // Time intervals in milliseconds
     private readonly QUIZ_CORRECT_BLOCK_TIME = 20 * 60 * 1000;  // 20 minutes
@@ -37,7 +39,7 @@ export class QuestionHistoryService {
     private readonly RESOLUTION_INCORRECT_REDUCTION = 1 * 60 * 1000; // 10 minutes (reduced from 30min)
 
     constructor() {
-        this.cleanupOldEntries();
+        // Disabled cleanup to preserve full history for analytics/performance metrics.
     }
 
     /**
@@ -50,8 +52,8 @@ export class QuestionHistoryService {
     recordAttempt(questionId: number, wasCorrect: boolean, context: QuestionContext = 'quiz'): void {
         const history = this.getHistory();
 
-        // Check if there's a previous attempt for this question
-        const previousAttempt = history.find(h => h.questionId === questionId);
+        // Check if there's a previous attempt for this question (finding the latest one)
+        const previousAttempt = [...history].reverse().find(h => h.questionId === questionId);
 
         const attempt: QuestionAttempt = {
             questionId,
@@ -68,14 +70,11 @@ export class QuestionHistoryService {
             console.log(`🔄 Resolution viewed for question ${questionId} (was ${previousAttempt.wasCorrect ? 'correct' : 'incorrect'}). Reducing block time.`);
         }
 
-        // Remove previous attempts for this question
-        const filtered = history.filter(h => h.questionId !== questionId);
-
-        // Add new attempt
-        filtered.push(attempt);
+        // Add new attempt without filtering older attempts to maintain correct and consistent analytics logs
+        history.push(attempt);
 
         // Save via UserDataService
-        this.saveHistory(filtered);
+        this.saveHistory(history);
 
         const contextLabel = context === 'quiz' ? 'quiz' : context === 'interpretation' ? 'interpretation' : 'resolution';
         console.log(`📝 Recorded ${wasCorrect ? 'correct' : 'incorrect'} attempt for question ${questionId} [${contextLabel}]`);
@@ -86,7 +85,7 @@ export class QuestionHistoryService {
      */
     canShowQuestion(questionId: number): boolean {
         const history = this.getHistory();
-        const lastAttempt = history.find(h => h.questionId === questionId);
+        const lastAttempt = [...history].reverse().find(h => h.questionId === questionId);
 
         // If never attempted, always show
         if (!lastAttempt) {
@@ -121,7 +120,7 @@ export class QuestionHistoryService {
      */
     getBlockedTimeRemaining(questionId: number): number | null {
         const history = this.getHistory();
-        const lastAttempt = history.find(h => h.questionId === questionId);
+        const lastAttempt = [...history].reverse().find(h => h.questionId === questionId);
 
         if (!lastAttempt) {
             return null;
@@ -153,7 +152,7 @@ export class QuestionHistoryService {
      */
     getQuestionHistory(questionId: number): QuestionAttempt | undefined {
         const history = this.getHistory();
-        return history.find(h => h.questionId === questionId);
+        return [...history].reverse().find(h => h.questionId === questionId);
     }
 
     /**
@@ -177,6 +176,10 @@ export class QuestionHistoryService {
      */
     clearHistory(): void {
         this.saveHistory([]);
+        // Also clear interpretation history
+        this.userDataService.saveUserInterpretationHistory([]);
+        // Also reset profile stats
+        this.contentService.resetStats();
         console.log('🗑️ Question history cleared');
     }
 

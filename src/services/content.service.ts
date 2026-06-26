@@ -235,6 +235,8 @@ export class ContentService {
   constructor() {
     // Load data from backend on initialization
     this.initializeData();
+    // Load questions on startup
+    this.loadQuestionsFromFiles();
 
     // Granular Auto-saves
     // Effect to auto-save stats on change
@@ -430,6 +432,15 @@ export class ContentService {
     });
 
     // Auto-save is triggered by effect
+  }
+
+  resetStats() {
+    this.stats.update(val => ({
+      ...val,
+      questionsAnswered: 0,
+      correctAnswers: 0,
+      currentStreak: 0
+    }));
   }
 
   addScheduleItem(item: Omit<StudySession, 'id'>) {

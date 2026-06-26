@@ -1,12 +1,11 @@
 import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VideoPlayerComponent } from './player/video-player.component';
-import { WebResearchComponent } from './player/web-research.component';
 
 @Component({
   selector: 'app-lesson-player',
   standalone: true,
-  imports: [CommonModule, VideoPlayerComponent, WebResearchComponent],
+  imports: [CommonModule, VideoPlayerComponent],
   templateUrl: './lesson-player.component.html',
   styleUrl: './lesson-player.component.css'
 })
@@ -15,7 +14,6 @@ export class LessonPlayerComponent {
   @Output() close = new EventEmitter<void>();
   @Output() completed = new EventEmitter<string>();
 
-  isLoadingSummary = signal(false);
   canComplete = signal(false);
 
 
@@ -30,4 +28,3 @@ export class LessonPlayerComponent {
     this.close.emit();
   }
 }
-
