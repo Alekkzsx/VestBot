@@ -11,6 +11,7 @@ import { AIDictionaryComponent } from './components/ai-dictionary/ai-dictionary.
 import { ContentService } from './services/content.service';
 import { ActivitySessionService } from './services/activity-session.service';
 import { AIService } from './services/ai.service';
+import { AnalyticsService } from './services/analytics.service';
 
 
 type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule' | 'resolutions' | 'analytics' | 'lessons';
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
   contentService = inject(ContentService);
   activitySession = inject(ActivitySessionService);
   private aiService = inject(AIService);
+  analyticsService = inject(AnalyticsService);
 
   currentView = signal<View>('dashboard');
   sidebarOpen = signal(false); // Mobile drawer
@@ -55,6 +57,19 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Gamification State
   stats = this.contentService.stats;
+
+  totalAvailableQuestions = computed(() => this.contentService.getQuestions().length);
+  questionsIncorrect = computed(() => {
+    const val = this.stats();
+    return Math.max(0, val.questionsAnswered - val.correctAnswers);
+  });
+  accuracyRate = computed(() => {
+    const val = this.stats();
+    return val.questionsAnswered > 0 ? Math.round((val.correctAnswers / val.questionsAnswered) * 100) : 0;
+  });
+  bySubjectStats = computed(() => this.analyticsService.getAnalyticsData().bySubject);
+  insights = computed(() => this.analyticsService.getAnalyticsData().insights);
+  recentSessions = computed(() => this.analyticsService.getAnalyticsData().recentSessions);
 
   // Global Timer State (Default fallback: Dec 6, 2026)
   targetDate = new Date('2026-12-06T13:30:00');

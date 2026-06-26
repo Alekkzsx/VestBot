@@ -147,55 +147,108 @@
       <div class="animate-fade-in font-sans">
         <header class="mb-8">
           <h2 class="text-3xl font-bold text-slate-900 mb-1">Desempenho</h2>
-          <p class="text-slate-500 text-sm">Métricas detalhadas do seu progresso.</p>
+          <p class="text-slate-500 text-sm">Métricas reais do seu progresso no VestBot.</p>
         </header>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <!-- Mock Stat Card 1 -->
-          <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-            <h3 class="font-bold text-slate-900 mb-6">Precisão por Matéria</h3>
-            <div class="space-y-6">
-              <div>
-                <div class="flex justify-between text-sm font-medium mb-2">
-                  <span>Português</span>
-                  <span class="font-bold text-black">85%</span>
-                </div>
-                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                  <div class="h-full bg-black w-[85%] rounded-full"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between text-sm font-medium mb-2">
-                  <span>Matemática</span>
-                  <span class="font-bold text-black">62%</span>
-                </div>
-                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                  <div class="h-full bg-slate-400 w-[62%] rounded-full"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between text-sm font-medium mb-2">
-                  <span>Ciências</span>
-                  <span class="font-bold text-black">78%</span>
-                </div>
-                <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                  <div class="h-full bg-slate-600 w-[78%] rounded-full"></div>
-                </div>
-              </div>
+        <!-- Metrics Overview Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+          <!-- Card 1: Total Available -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Disponíveis (Total)</span>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="text-3xl font-black text-black">{{ totalAvailableQuestions() }}</span>
+              <span class="text-slate-400 text-xs font-semibold">questões</span>
             </div>
           </div>
-
-          <!-- Mock Stat Card 2 -->
-          <div
-            class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-center items-center text-center">
-            <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4 text-slate-300">
-              <i class="fas fa-lock text-xl"></i>
+          <!-- Card 2: Attempted -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Feitas</span>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="text-3xl font-black text-blue-600">{{ stats().questionsAnswered }}</span>
+              <span class="text-slate-400 text-xs font-semibold">respondidas</span>
             </div>
-            <h3 class="font-bold text-slate-900 mb-2">Análise Avançada</h3>
-            <p class="text-slate-500 text-sm max-w-xs mb-6">Continue estudando para desbloquear gráficos de evolução
-              histórica e previsão de nota.</p>
-            <button
-              class="bg-slate-100 text-slate-400 font-bold px-6 py-2 rounded-lg text-sm cursor-not-allowed">Bloqueado</button>
+          </div>
+          <!-- Card 3: Correct -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Acertos</span>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="text-3xl font-black text-emerald-600">{{ stats().correctAnswers }}</span>
+              <span class="text-slate-400 text-xs font-semibold">corretas</span>
+            </div>
+          </div>
+          <!-- Card 4: Incorrect (Errors) -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Erros</span>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="text-3xl font-black text-rose-600">{{ questionsIncorrect() }}</span>
+              <span class="text-slate-400 text-xs font-semibold">incorretas</span>
+            </div>
+          </div>
+          <!-- Card 5: Accuracy -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between col-span-2 md:col-span-1">
+            <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Acurácia Geral</span>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="text-3xl font-black text-amber-500">{{ accuracyRate() }}%</span>
+              <span class="text-slate-400 text-xs font-semibold">de acertos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Subject Performance -->
+          <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <i class="fas fa-book text-slate-400"></i> Desempenho por Matéria
+            </h3>
+            
+            @if (bySubjectStats().length === 0) {
+              <div class="flex flex-col items-center justify-center py-12 text-slate-400 text-center">
+                <i class="fas fa-chart-line text-3xl mb-3 opacity-40"></i>
+                <p class="text-sm font-semibold">Nenhuma questão respondida ainda.</p>
+                <p class="text-xs text-slate-400 mt-1">Inicie um simulado para registrar seu progresso por matéria.</p>
+              </div>
+            } @else {
+              <div class="space-y-6">
+                @for (sub of bySubjectStats(); track sub.subject) {
+                  <div>
+                    <div class="flex justify-between text-sm font-semibold mb-2">
+                      <span class="text-slate-700">{{ sub.subject }} <span class="text-slate-400 text-xs font-normal">({{ sub.correctAnswers }}/{{ sub.totalQuestions }} acertadas)</span></span>
+                      <span class="font-bold text-black">{{ sub.accuracy }}%</span>
+                    </div>
+                    <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                      <div class="h-full bg-black rounded-full" [style.width.%]="sub.accuracy"></div>
+                    </div>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Performance Insights -->
+          <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <i class="fas fa-lightbulb text-amber-500"></i> Insights & Sugestões
+            </h3>
+
+            @if (insights().length === 0) {
+              <div class="flex flex-col items-center justify-center py-12 text-slate-400 text-center">
+                <i class="fas fa-brain text-3xl mb-3 opacity-40"></i>
+                <p class="text-sm font-semibold">Análise em andamento...</p>
+                <p class="text-xs text-slate-400 mt-1">Continue estudando e respondendo simulados para desbloquear novos insights de estudo.</p>
+              </div>
+            } @else {
+              <div class="space-y-4">
+                @for (insight of insights(); track insight.title) {
+                  <div class="flex items-start gap-4 p-4 rounded-xl border border-slate-100 bg-slate-50">
+                    <span class="text-2xl mt-0.5">{{ insight.icon }}</span>
+                    <div>
+                      <h4 class="font-bold text-sm text-slate-900">{{ insight.title }}</h4>
+                      <p class="text-xs text-slate-500 mt-1 leading-relaxed">{{ insight.description }}</p>
+                    </div>
+                  </div>
+                }
+              </div>
+            }
           </div>
         </div>
       </div>

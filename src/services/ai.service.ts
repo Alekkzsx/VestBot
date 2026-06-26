@@ -84,39 +84,10 @@ export class AIService {
     }
 
     /**
-     * Gets AI recommended lessons based on performance stats (with permanent cache)
+     * Gets AI recommended lessons based on performance stats (deactivated)
      */
     async getRecommendedLessons(stats: any, lessons: any[]): Promise<string[]> {
-        const CACHE_KEY = 'vestbot_ai_recommendations';
-        const cached = localStorage.getItem(CACHE_KEY);
-
-        const statsHash = btoa(JSON.stringify({ accuracy: stats.accuracy, correctAnswers: stats.correctAnswers }));
-        if (cached) {
-            const { hash, recommendations } = JSON.parse(cached);
-            if (hash === statsHash) {
-                console.log('🤖 AI Lessons: Using cached recommendations');
-                return recommendations;
-            }
-        }
-
-        try {
-            const prompt = `
-        Com base nestas estatísticas do aluno (Acurácia: ${stats.accuracy}%, Matérias com erro: ${JSON.stringify(stats.weakSubjects)}), 
-        recomende até 2 IDs das seguintes aulas que ele DEVE assistir primeiro:
-        ${JSON.stringify(lessons.map(l => ({ id: l.id, title: l.title, subject: l.subject })))}
-        
-        Retorne APENAS um JSON array com os IDs: ["id1", "id2"]
-      `;
-
-            const aiResponse = await this.callGeminiRaw(prompt);
-            const jsonMatch = aiResponse.match(/\[[\s\S]*\]/);
-            const recommendations = JSON.parse(jsonMatch ? jsonMatch[0] : aiResponse);
-
-            localStorage.setItem(CACHE_KEY, JSON.stringify({ hash: statsHash, recommendations }));
-            return recommendations;
-        } catch (e) {
-            return [];
-        }
+        return [];
     }
 
     /**
@@ -148,81 +119,24 @@ export class AIService {
     }
 
     /**
-     * Generates a web-based summary or fetches search results (Persistent Cache)
+     * Generates a web-based summary or fetches search results (Deactivated)
      */
     async getWebSummary(query: string, subject?: string, lessonId?: string): Promise<any> {
-        // We use lessonId if available for more specific caching
-        const cacheKey = lessonId ? `vestbot_summary_v2_${lessonId}` : `vestbot_summary_v2_${query}`;
-        const cached = localStorage.getItem(cacheKey);
-
-        if (cached) {
-            console.log('🤖 AI Summary: Using persistent cache for', lessonId || query);
-            return JSON.parse(cached);
-        }
-
-        try {
-            const response = await firstValueFrom(
-                this.http.post<any>(`${this.apiUrl}/search-web-summary`, { query, subject })
-            );
-
-            localStorage.setItem(cacheKey, JSON.stringify(response));
-            return response;
-        } catch (error) {
-            console.error('Failed to get web summary:', error);
-            return { type: 'error', result: 'Não foi possível buscar resultados web.' };
-        }
+        return { type: 'error', result: 'Função desativada.' };
     }
 
     /**
-     * Generates a full structured lesson summary using web scraping + Gemini synthesis
+     * Generates a full structured lesson summary using web scraping + Gemini synthesis (Deactivated)
      */
     async getLessonSummary(lessonTitle: string, subject?: string, lessonId?: string): Promise<any> {
-        const cacheKey = lessonId
-            ? `vestbot_lesson_summary_v1_${lessonId}`
-            : `vestbot_lesson_summary_v1_${btoa(lessonTitle)}`;
-
-        const cached = localStorage.getItem(cacheKey);
-        if (cached) {
-            console.log('📚 Lesson Summary: Using cached summary for', lessonTitle);
-            return JSON.parse(cached);
-        }
-
-        try {
-            const response = await firstValueFrom(
-                this.http.post<any>(`${this.apiUrl}/lesson-summary`, { lessonTitle, subject })
-            );
-
-            if (response?.type === 'lesson_summary') {
-                localStorage.setItem(cacheKey, JSON.stringify(response));
-            }
-
-            return response;
-        } catch (error) {
-            console.error('Failed to get lesson summary:', error);
-            return { type: 'error', message: 'Não foi possível gerar o resumo.' };
-        }
+        return { type: 'error', message: 'Resumos automáticos via IA desativados neste modo.' };
     }
 
     /**
-     * Scrapes educational exercises from the web
+     * Scrapes educational exercises from the web (Deactivated)
      */
     async getWebExercises(query: string): Promise<any> {
-        const cacheKey = `vestbot_exercises_v1_${query}`;
-        const cached = localStorage.getItem(cacheKey);
-
-        if (cached) return JSON.parse(cached);
-
-        try {
-            const response = await firstValueFrom(
-                this.http.post<any>(`${this.apiUrl}/scrape-exercises`, { query })
-            );
-
-            localStorage.setItem(cacheKey, JSON.stringify(response));
-            return response;
-        } catch (error) {
-            console.error('Failed to get exercises:', error);
-            return { type: 'error', result: 'Não foi possível buscar exercícios.' };
-        }
+        return { type: 'error', result: 'Exercícios via IA desativados.' };
     }
 
     /**
@@ -254,13 +168,5 @@ export class AIService {
             console.error('Direct YT search failed:', error);
             return [];
         }
-    }
-
-    private async callGeminiRaw(prompt: string): Promise<string> {
-        const url = `${this.apiUrl}/generic-call`;
-        const response = await firstValueFrom(
-            this.http.post<{ result: string }>(url, { prompt })
-        );
-        return response.result;
     }
 }

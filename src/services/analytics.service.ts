@@ -2,6 +2,7 @@ import { Injectable, inject, computed, signal } from '@angular/core';
 import { ContentService } from './content.service';
 import { ActivitySessionService } from './activity-session.service';
 import { QuestionHistoryService } from './question-history.service';
+import { UserDataService } from './user-data.service';
 
 export interface SubjectStats {
     subject: string;
@@ -63,6 +64,7 @@ export class AnalyticsService {
     private contentService = inject(ContentService);
     private activitySessionService = inject(ActivitySessionService);
     private questionHistory = inject(QuestionHistoryService);
+    private userDataService = inject(UserDataService);
 
     /**
      * Calcula dados agregados de analytics
@@ -70,8 +72,7 @@ export class AnalyticsService {
     getAnalyticsData(): AnalyticsData {
         const stats = this.contentService.stats();
         const sessions = this.activitySessionService.completedSessions();
-        // QuestionHistory não tem getAllAttempts, vamos usar dados do stats para estimar
-        const history = this.buildHistoryFromStats(stats);
+        const history = this.getRealHistory();
 
         return {
             overview: this.calculateOverview(stats, sessions),
@@ -84,30 +85,22 @@ export class AnalyticsService {
     }
 
     /**
-     * Construir histórico estimado baseado em stats
-     * (Método temporário até ter histórico real)
+     * Obter histórico real de questões a partir do UserDataService
      */
-    private buildHistoryFromStats(stats: any): any[] {
-        // Retorna array vazio se não tiver dados
-        if (stats.questionsAnswered === 0) return [];
+    private getRealHistory(): any[] {
+        const userData = this.userDataService.getUserData();
+        const history = userData?.user.questionHistory || [];
+        const questions = this.contentService.getQuestions();
 
-        // Mock data baseado nas estatísticas gerais
-        const history: any[] = [];
-        const subjects = ['Matemática', 'Português', 'Ciências', 'História', 'Geografia'];
-        const difficulties = ['Fácil', 'Médio', 'Difícil'];
-
-        // Distribuir as questões entre matérias
-        for (let i = 0; i < stats.questionsAnswered; i++) {
-            const isCorrect = i < stats.correctAnswers;
-            history.push({
-                subject: subjects[i % subjects.length],
-                difficulty: difficulties[Math.floor(Math.random() * difficulties.length)],
-                correct: isCorrect,
-                timestamp: Date.now() - (stats.questionsAnswered - i) * 60000 // 1min between each
-            });
-        }
-
-        return history;
+        return history.map(h => {
+            const q = questions.find(question => question.id === h.questionId);
+            return {
+                subject: q ? q.subject : 'Geral',
+                difficulty: q ? q.difficulty : 'Médio',
+                correct: h.wasCorrect,
+                timestamp: h.timestamp
+            };
+        });
     }
 
     private calculateOverview(stats: any, sessions: any[]): AnalyticsData['overview'] {
