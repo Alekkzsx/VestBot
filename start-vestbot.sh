@@ -47,8 +47,20 @@ MAX_ATTEMPTS=60
 ATTEMPT=0
 
 while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
-    if curl -s http://localhost:3000 > /dev/null 2>&1; then
-        echo -e "${GREEN}✅ Sistema pronto!${NC}"
+    if command -v curl > /dev/null; then
+        if curl -s http://localhost:3000 > /dev/null 2>&1; then
+            echo -e "${GREEN}✅ Sistema pronto!${NC}"
+            break
+        fi
+    elif command -v wget > /dev/null; then
+        if wget -q --spider http://localhost:3000 > /dev/null 2>&1; then
+            echo -e "${GREEN}✅ Sistema pronto!${NC}"
+            break
+        fi
+    else
+        # Fallback se não tiver curl nem wget
+        echo -e "${YELLOW}ℹ️  Aguardando 15s para compilação (sem curl/wget)...${NC}"
+        sleep 15
         break
     fi
     ATTEMPT=$((ATTEMPT + 1))
