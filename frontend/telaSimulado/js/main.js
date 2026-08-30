@@ -1,106 +1,140 @@
 document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
-  // BANCO DE QUESTÕES MODELO VESTIBULINHO ETEC
+  // BANCO DE QUESTÕES (7 DISCIPLINAS ETEC)
   // ==========================================
   const mockQuestionsPool = [
     {
-      id: 'ETEC-2023-Q01',
+      id: 'ETEC-PORT-01',
       disciplina: 'Português',
-      assunto: 'Interpretação Textual',
-      enunciado: 'O avanço das tecnologias digitais na educação pública paulista permitiu a personalização do aprendizado, mas escancarou desafios de conectividade. Segundo o texto, a principal contradição observada reside:',
+      assunto: 'Interpretação & Figuras',
+      enunciado: 'No trecho: "O silêncio da noite gritava nos ouvidos do estudante cansado", o recurso estilístico empregado para conferir expressividade ao texto é classificado como:',
       alternativas: [
-        { letra: 'A', texto: 'Na substituição total do corpo docente por softwares inteligentes.' },
-        { letra: 'B', texto: 'No aumento do interesse dos alunos concomitante à queda das matrículas.' },
-        { letra: 'C', texto: 'Na oferta de recursos pedagógicos modernos diante de desigualdades no acesso à internet.' },
-        { letra: 'D', texto: 'No desinteresse dos estudantes pelas carreiras na área de tecnologia.' },
-        { letra: 'E', texto: 'Na falta de livros didáticos nas escolas técnicas estaduais.' }
+        { letra: 'A', texto: 'Eufemismo' },
+        { letra: 'B', texto: 'Paradoxo / Oxímoro' },
+        { letra: 'C', texto: 'Pleonasmo' },
+        { letra: 'D', texto: 'Catacrese' },
+        { letra: 'E', texto: 'Metonímia' }
+      ],
+      correta: 'B'
+    },
+    {
+      id: 'ETEC-MAT-01',
+      disciplina: 'Matemática',
+      assunto: 'Áreas & Geometria Plana',
+      enunciado: 'Um laboratório de informática de uma ETEC tem piso retangular medindo 8 metros de comprimento por 6 metros de largura. Para cobrir todo o piso com placas quadradas de 0,5 m de lado, a quantidade de placas necessárias será de:',
+      alternativas: [
+        { letra: 'A', texto: '96 placas' },
+        { letra: 'B', texto: '144 placas' },
+        { letra: 'C', texto: '192 placas' },
+        { letra: 'D', texto: '240 placas' },
+        { letra: 'E', texto: '320 placas' }
       ],
       correta: 'C'
     },
     {
-      id: 'ETEC-2023-Q02',
-      disciplina: 'Matemática',
-      assunto: 'Regra de Três Simples',
-      enunciado: 'Para pintar um muro de 120 metros quadrados, um pintor utiliza 8 litros de tinta acrílica. Se a área a ser pintada for ampliada para 300 metros quadrados mantendo o mesmo rendimento, a quantidade necessária de tinta será de:',
+      id: 'ETEC-BIO-01',
+      disciplina: 'Biologia',
+      assunto: 'Ecologia & Cadeia Trófica',
+      enunciado: 'Em um ecossistema aquático, a proliferação excessiva de algas devido ao despejo de esgoto orgânico provoca a queda do oxigênio dissolvido na água e a mortandade de peixes. Esse fenômeno ambiental é denominado:',
       alternativas: [
-        { letra: 'A', texto: '15 litros' },
-        { letra: 'B', texto: '18 litros' },
-        { letra: 'C', texto: '20 litros' },
-        { letra: 'D', texto: '24 litros' },
-        { letra: 'E', texto: '25 litros' }
+        { letra: 'A', texto: 'Bioacumulação' },
+        { letra: 'B', texto: 'Eutrofização' },
+        { letra: 'C', texto: 'Magnificação trófica' },
+        { letra: 'D', texto: 'Inversão térmica' },
+        { letra: 'E', texto: 'Acidificação oceânica' }
+      ],
+      correta: 'B'
+    },
+    {
+      id: 'ETEC-FIS-01',
+      disciplina: 'Física',
+      assunto: 'Cinemática & Velocidade Média',
+      enunciado: 'Um trem da CPTM parte de Jundiaí com destino à estação Barra Funda, percorrendo uma distância de 60 km em exatamente 45 minutos. A velocidade escalar média desse trem durante o trajeto foi de:',
+      alternativas: [
+        { letra: 'A', texto: '60 km/h' },
+        { letra: 'B', texto: '75 km/h' },
+        { letra: 'C', texto: '80 km/h' },
+        { letra: 'D', texto: '90 km/h' },
+        { letra: 'E', texto: '100 km/h' }
       ],
       correta: 'C'
     },
     {
-      id: 'ETEC-2023-Q03',
-      disciplina: 'Ciências',
-      assunto: 'Ecologia & Cadeias',
-      enunciado: 'Em um ecossistema aquático, o fitoplâncton absorve energia solar e produz matéria orgânica que alimenta o zooplâncton, que por sua vez serve de alimento para pequenos peixes. Nesse contexto, o fitoplâncton atua como:',
+      id: 'ETEC-QUI-01',
+      disciplina: 'Química',
+      assunto: 'Transformações Químicas & Físicas',
+      enunciado: 'Dentre as transformações cotidianas a seguir, assinale a única que representa exclusivamente um FENÔMENO QUÍMICO:',
       alternativas: [
-        { letra: 'A', texto: 'Consumidor Primário' },
-        { letra: 'B', texto: 'Produtor Autótrofo' },
-        { letra: 'C', texto: 'Decompositor' },
-        { letra: 'D', texto: 'Consumidor Secundário' },
-        { letra: 'E', texto: 'Parasita Aquático' }
+        { letra: 'A', texto: 'Evaporação da água de uma piscina.' },
+        { letra: 'B', texto: 'Dissolução de açúcar no café quente.' },
+        { letra: 'C', texto: 'Queima da lenha em uma lareira.' },
+        { letra: 'D', texto: 'Fusão de uma barra de chocolate ao sol.' },
+        { letra: 'E', texto: 'Trituração de grãos de milho para farinha.' }
       ],
-      correta: 'B'
+      correta: 'C'
     },
     {
-      id: 'ETEC-2023-Q04',
-      disciplina: 'Humanas',
-      assunto: 'Revolução Industrial',
-      enunciado: 'A máquina a vapor aperfeiçoada por James Watt no século XVIII revolucionou o sistema fabril britânico principalmente porque:',
+      id: 'ETEC-HIST-01',
+      disciplina: 'História',
+      assunto: 'Era Vargas & Industrialização',
+      enunciado: 'Durante o primeiro governo de Getúlio Vargas (1930-1945), o Brasil passou por uma intensa reestruturação econômica e trabalhista, destacando-se:',
       alternativas: [
-        { letra: 'A', texto: 'Eliminou a necessidade de extração de carvão mineral.' },
-        { letra: 'B', texto: 'Permitiu que as fábricas se instalassem longe das margens dos rios, ampliando a escala de produção.' },
-        { letra: 'C', texto: 'Extinguiu imediatamente o trabalho infantil na Europa.' },
-        { letra: 'D', texto: 'Substituiu a navegação marítima por trens intercontinentais.' },
-        { letra: 'E', texto: 'Provocou a volta maciça da população para o meio rural.' }
+        { letra: 'A', texto: 'A criação da CLT e a implantação da indústria de base nacional (CSN e Vale).' },
+        { letra: 'B', texto: 'A privatização imediata de todas as ferrovias estaduais.' },
+        { letra: 'C', texto: 'A proibição do voto feminino em todo o território nacional.' },
+        { letra: 'D', texto: 'O alinhamento irrestrito com as potências do Eixo na Segunda Guerra.' },
+        { letra: 'E', texto: 'A extinção do Ministério do Trabalho.' }
       ],
-      correta: 'B'
+      correta: 'A'
     },
     {
-      id: 'ETEC-2023-Q05',
-      disciplina: 'Matemática',
-      assunto: 'Geometria Plana',
-      enunciado: 'Um piso retangular de uma sala de aula de uma ETEC tem 6 metros de largura por 8 metros de comprimento. Deseja-se calcular o comprimento da diagonal dessa sala para a instalação de um cabo de fibra ótica. Essa medida vale:',
+      id: 'ETEC-GEO-01',
+      disciplina: 'Geografia',
+      assunto: 'Domínios Morfoclimáticos & Biomas',
+      enunciado: 'O domínio morfoclimático brasileiro caracterizado por clima semiárido, rios intermitentes e vegetação adaptada à escassez hídrica com plantas xerófitas é a:',
       alternativas: [
-        { letra: 'A', texto: '9 metros' },
-        { letra: 'B', texto: '10 metros' },
-        { letra: 'C', texto: '12 metros' },
-        { letra: 'D', texto: '14 metros' },
-        { letra: 'E', texto: '16 metros' }
+        { letra: 'A', texto: 'Mata das Araucárias' },
+        { letra: 'B', texto: 'Mares de Morros' },
+        { letra: 'C', texto: 'Caatinga' },
+        { letra: 'D', texto: 'Cerrado' },
+        { letra: 'E', texto: 'Pradaria' }
       ],
-      correta: 'B'
+      correta: 'C'
     }
   ];
 
-  // Gera 50 questões dinâmicas baseadas nos padrões da ETEC
-  function generateExamQuestions(total = 50) {
-    const subjects = ['Português', 'Matemática', 'Ciências', 'Humanas'];
+  // Gera questões dinâmicas com suporte às 7 matérias
+  function generateExamQuestions(total = 50, selectedSubjects = ['Português', 'Matemática', 'Biologia', 'Física', 'Química', 'História', 'Geografia'], difficulty = 'all') {
+    const subjects = selectedSubjects.length > 0 ? selectedSubjects : ['Português', 'Matemática', 'Biologia', 'Física', 'Química', 'História', 'Geografia'];
     const topics = {
       'Português': ['Figuras de Linguagem', 'Concordância Verbal', 'Interpretação', 'Funções Sintáticas'],
       'Matemática': ['Equação de 2º Grau', 'Pitágoras', 'Porcentagem', 'Áreas e Volumes'],
-      'Ciências': ['Genética Básica', 'Ondulatória', 'Tabela Periódica', 'Cinemática'],
-      'Humanas': ['Era Vargas', 'Revolução Industrial', 'Geopolítica Moderna', 'Climatologia']
+      'Biologia': ['Ecologia', 'Genética', 'Citologia', 'Fisiologia'],
+      'Física': ['Cinemática', 'Ondas & Som', 'Óptica', 'Termologia'],
+      'Química': ['Fenômenos Químicos', 'Tabela Periódica', 'Ligações', 'Separação de Misturas'],
+      'História': ['Era Vargas', 'Revolução Industrial', 'Brasil Colônia', 'Guerra Fria'],
+      'Geografia': ['Climatologia', 'Urbanização', 'Geopolítica', 'Biomas Brasileiros']
     };
 
+    const totalToGenerate = Math.min(50, Math.max(1, total)); // Limita a no máximo 50
     const examQuestions = [];
-    for (let i = 1; i <= total; i++) {
-      const baseIdx = (i - 1) % mockQuestionsPool.length;
-      const base = mockQuestionsPool[baseIdx];
+
+    for (let i = 1; i <= totalToGenerate; i++) {
       const subject = subjects[(i - 1) % subjects.length];
-      const topicList = topics[subject];
+      const matchPool = mockQuestionsPool.find(q => q.disciplina === subject) || mockQuestionsPool[0];
+      const topicList = topics[subject] || ['Geral'];
       const topic = topicList[(i - 1) % topicList.length];
+      const diffLabel = difficulty === 'all' ? (i % 3 === 0 ? 'Difícil' : (i % 2 === 0 ? 'Fácil' : 'Médio')) : difficulty;
 
       examQuestions.push({
         id: `ETEC-SIM-Q${String(i).padStart(2, '0')}`,
         index: i,
         disciplina: subject,
         assunto: topic,
-        enunciado: `(${subject} - ${topic}) ${base.enunciado}`,
-        alternativas: base.alternativas,
-        correta: base.correta
+        dificuldade: diffLabel,
+        enunciado: `(${subject} • ${topic} • Nível ${diffLabel}) ${matchPool.enunciado}`,
+        alternativas: matchPool.alternativas,
+        correta: matchPool.correta
       });
     }
     return examQuestions;
@@ -111,20 +145,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   let currentQuestions = [];
   let currentQuestionIndex = 0;
-  let userAnswers = {}; // { 1: 'B', 2: 'C' }
-  let userFlags = {}; // { 1: true }
+  let userAnswers = {}; // { 0: 'B', 1: 'C' }
+  let userFlags = {}; // { 0: true }
   let timerInterval = null;
   let secondsRemaining = 4 * 60 * 60; // 4 horas
   let startTime = null;
 
   // Elementos do DOM
   const hubView = document.getElementById('simulado-hub-view');
+  const customView = document.getElementById('simulado-custom-view');
   const playerView = document.getElementById('simulado-player-view');
   const resultView = document.getElementById('simulado-result-view');
 
   const btnStartOficial = document.getElementById('btn-start-oficial');
   const btnStartRapido = document.getElementById('btn-start-rapido');
-  const btnStartDisciplina = document.getElementById('btn-start-disciplina');
+  const btnGoToCustom = document.getElementById('btn-go-to-custom-screen');
+  const btnCustomBack = document.getElementById('btn-custom-back-to-hub');
+  const formCustomScreen = document.getElementById('form-custom-simulado-screen');
+
   const btnSubmitExam = document.getElementById('btn-submit-exam');
   const btnBackToHub = document.getElementById('btn-back-to-hub');
 
@@ -145,60 +183,107 @@ document.addEventListener('DOMContentLoaded', () => {
   const qStatusIndicator = document.getElementById('q-status-indicator');
 
   // ==========================================
-  // NAVEGAÇÃO ENTRE TELAS
+  // NAVEGAÇÃO ENTRE AS 4 TELAS (Hub -> Custom -> Player -> Result)
   // ==========================================
   function showView(viewName) {
     if (hubView) hubView.classList.add('hidden');
+    if (customView) customView.classList.add('hidden');
     if (playerView) playerView.classList.add('hidden');
     if (resultView) resultView.classList.add('hidden');
 
     if (viewName === 'hub' && hubView) hubView.classList.remove('hidden');
+    if (viewName === 'custom' && customView) customView.classList.remove('hidden');
     if (viewName === 'player' && playerView) playerView.classList.remove('hidden');
     if (viewName === 'result' && resultView) resultView.classList.remove('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // Navegar para a tela cheia de Customização
+  if (btnGoToCustom) {
+    btnGoToCustom.addEventListener('click', () => {
+      showView('custom');
+    });
+  }
+
+  // Voltar da tela de Customização para o Hub
+  if (btnCustomBack) {
+    btnCustomBack.addEventListener('click', () => {
+      showView('hub');
+    });
+  }
+
   // ==========================================
   // INICIAR SIMULADO
   // ==========================================
-  function startExam(totalQuestions = 50, durationSeconds = 14400, title = 'Simulado Oficial ETEC') {
-    currentQuestions = generateExamQuestions(totalQuestions);
+  function startExam(totalQuestions = 50, durationSeconds = 14400, title = 'Simulado Oficial ETEC', selectedSubjects = ['Português', 'Matemática', 'Biologia', 'Física', 'Química', 'História', 'Geografia'], difficulty = 'all') {
+    const safeTotal = Math.min(50, Math.max(1, totalQuestions)); // Máximo 50 questões
+    const safeSeconds = Math.min(14400, durationSeconds > 0 ? durationSeconds : 86400); // Máximo 4 horas
+
+    currentQuestions = generateExamQuestions(safeTotal, selectedSubjects, difficulty);
     currentQuestionIndex = 0;
     userAnswers = {};
     userFlags = {};
-    secondsRemaining = durationSeconds;
+    secondsRemaining = safeSeconds;
     startTime = Date.now();
 
     if (playerExamTitleBadge) playerExamTitleBadge.textContent = title;
 
     buildAnswerSheetGrid();
     renderCurrentQuestion();
-    startTimer();
+    startTimer(durationSeconds === 0);
     showView('player');
   }
 
   if (btnStartOficial) {
-    btnStartOficial.addEventListener('click', () => startExam(50, 4 * 60 * 60, 'Simulado Oficial ETEC (50Q)'));
+    btnStartOficial.addEventListener('click', () => startExam(50, 4 * 60 * 60, 'Simulado Oficial ETEC (50Q • 4h)'));
   }
   if (btnStartRapido) {
-    btnStartRapido.addEventListener('click', () => startExam(10, 30 * 60, 'Simulado Rápido de Treino (10Q)'));
+    btnStartRapido.addEventListener('click', () => startExam(10, 30 * 60, 'Simulado Rápido (10Q • 30min)'));
   }
-  if (btnStartDisciplina) {
-    btnStartDisciplina.addEventListener('click', () => startExam(15, 45 * 60, 'Treino Especializado (15Q)'));
+
+  // Submissão da Tela de Personalização
+  if (formCustomScreen) {
+    formCustomScreen.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const checkedBoxes = Array.from(document.querySelectorAll('input[name="custom-screen-subject"]:checked'));
+      if (checkedBoxes.length === 0) {
+        alert('⚠️ Selecione ao menos uma matéria para o simulado.');
+        return;
+      }
+
+      const selectedSubjects = checkedBoxes.map(cb => cb.value);
+      const difficulty = document.querySelector('input[name="custom-screen-diff"]:checked')?.value || 'all';
+      const qtySlider = document.getElementById('custom-qty-slider');
+      const qty = parseInt(qtySlider?.value || '20');
+      const timeSelect = document.getElementById('custom-screen-time-select');
+      const timeSecs = parseInt(timeSelect?.value || '3600');
+
+      let timeLabel = `${Math.floor(timeSecs / 60)}min`;
+      if (timeSecs === 0) timeLabel = 'Livre';
+      else if (timeSecs >= 3600) timeLabel = `${Math.floor(timeSecs / 3600)}h`;
+
+      const title = `Simulado Sob Medida (${selectedSubjects.length} matérias) • ${qty}Q • ${timeLabel}`;
+      startExam(qty, timeSecs, title, selectedSubjects, difficulty);
+    });
   }
 
   // ==========================================
   // CRONÔMETRO
   // ==========================================
-  function startTimer() {
+  function startTimer(isFreeMode = false) {
     clearInterval(timerInterval);
-    updateTimerDisplay();
+    updateTimerDisplay(isFreeMode);
 
     timerInterval = setInterval(() => {
-      secondsRemaining--;
-      updateTimerDisplay();
+      if (isFreeMode) {
+        secondsRemaining++;
+      } else {
+        secondsRemaining--;
+      }
+      updateTimerDisplay(isFreeMode);
 
-      if (secondsRemaining <= 0) {
+      if (!isFreeMode && secondsRemaining <= 0) {
         clearInterval(timerInterval);
         alert('⏰ Tempo esgotado! Seu simulado será finalizado automaticamente.');
         finishExam();
@@ -206,22 +291,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   }
 
-  function updateTimerDisplay() {
+  function updateTimerDisplay(isFreeMode = false) {
     if (!timerDisplay) return;
-    const hours = Math.floor(secondsRemaining / 3600);
-    const mins = Math.floor((secondsRemaining % 3600) / 60);
-    const secs = secondsRemaining % 60;
+    const totalSecs = isFreeMode ? (Math.floor((Date.now() - startTime) / 1000)) : secondsRemaining;
+    const hours = Math.floor(totalSecs / 3600);
+    const mins = Math.floor((totalSecs % 3600) / 60);
+    const secs = totalSecs % 60;
 
     const formatted = `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     timerDisplay.textContent = formatted;
 
-    if (secondsRemaining <= 600) {
+    if (!isFreeMode && secondsRemaining <= 600) {
       timerDisplay.className = 'text-rose-600 font-bold animate-pulse';
+    } else {
+      timerDisplay.className = 'text-slate-800 font-mono font-black text-lg';
     }
   }
 
   // ==========================================
-  // CARTÃO-RESPOSTA (GRADE LATERAL)
+  // CARTÃO-RESPOSTA (GRADE LATERAL ATÉ 50Q)
   // ==========================================
   function buildAnswerSheetGrid() {
     if (!gridAnswerSheet) return;
@@ -231,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = document.createElement('button');
       btn.id = `sheet-btn-${idx}`;
       btn.textContent = String(q.index).padStart(2, '0');
-      btn.className = 'w-full py-2.5 rounded-lg text-xs font-bold transition-all border border-slate-200 text-slate-500 bg-slate-50 hover:bg-slate-100 flex items-center justify-center relative';
+      btn.className = 'w-full h-10 rounded-xl text-xs font-bold transition-all border border-slate-200 text-slate-500 bg-slate-50 hover:bg-slate-100 flex items-center justify-center relative select-none';
 
       btn.addEventListener('click', () => {
         currentQuestionIndex = idx;
@@ -263,23 +351,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const isFlagged = userFlags[idx] === true;
       const isCurrent = idx === currentQuestionIndex;
 
-      // Reseta classes
-      btn.className = 'w-full py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center relative ';
-
-      if (isCurrent) {
-        btn.className += 'ring-2 ring-blue-600 font-black ';
-      }
+      let baseClasses = 'w-full h-10 rounded-xl text-xs font-bold transition-all flex items-center justify-center relative select-none ';
 
       if (isAnswered) {
-        btn.className += 'bg-black text-white border-black ';
+        baseClasses += 'bg-slate-900 text-white border border-slate-900 shadow-sm ';
       } else if (isFlagged) {
-        btn.className += 'bg-amber-100 text-amber-900 border-amber-300 ';
+        baseClasses += 'bg-amber-50 text-amber-900 border-2 border-amber-400 ';
       } else {
-        btn.className += 'bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100 ';
+        baseClasses += 'bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100 ';
       }
 
+      if (isCurrent) {
+        baseClasses += 'ring-2 ring-blue-600 ring-inset font-black shadow-sm ';
+        if (!isAnswered && !isFlagged) {
+          baseClasses += 'bg-blue-50/70 text-blue-900 border-blue-400 ';
+        }
+      }
+
+      btn.className = baseClasses;
+
       if (isFlagged) {
-        btn.innerHTML = `${String(idx + 1).padStart(2, '0')}<span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-500 rounded-full border border-white"></span>`;
+        btn.innerHTML = `${String(idx + 1).padStart(2, '0')}<span class="absolute top-1 right-1 w-2 h-2 bg-amber-500 rounded-full border border-white"></span>`;
       } else {
         btn.textContent = String(idx + 1).padStart(2, '0');
       }
@@ -293,7 +385,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const q = currentQuestions[currentQuestionIndex];
     if (!q) return;
 
-    if (qSubjectBadge) qSubjectBadge.textContent = q.disciplina;
+    if (qSubjectBadge) {
+      const colors = {
+        'Português': 'bg-rose-50 text-rose-700 border-rose-200',
+        'Matemática': 'bg-blue-50 text-blue-700 border-blue-200',
+        'Biologia': 'bg-emerald-50 text-emerald-700 border-emerald-200',
+        'Física': 'bg-cyan-50 text-cyan-700 border-cyan-200',
+        'Química': 'bg-teal-50 text-teal-700 border-teal-200',
+        'História': 'bg-amber-50 text-amber-700 border-amber-200',
+        'Geografia': 'bg-orange-50 text-orange-700 border-orange-200'
+      };
+      qSubjectBadge.className = `text-xs font-bold px-2.5 py-1 rounded-lg border ${colors[q.disciplina] || 'bg-slate-100 text-slate-700'}`;
+      qSubjectBadge.textContent = q.disciplina;
+    }
+
     if (qTopicBadge) qTopicBadge.textContent = q.assunto;
     if (qNumberTitle) qNumberTitle.textContent = `Questão ${String(q.index).padStart(2, '0')} de ${currentQuestions.length}`;
     if (qStatementText) qStatementText.textContent = q.enunciado;
@@ -457,15 +562,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (resHeadline) {
       if (accuracy >= 70) {
-        resHeadline.textContent = `🏆 Excelente! Sua nota está confortavelmente acima da média de aprovação.`;
+        resHeadline.textContent = `🏆 Excelente! Sua nota (${accuracy}%) está confortavelmente acima da média.`;
         resHeadline.className = 'text-emerald-600 font-bold text-base md:text-lg mb-8';
       } else {
-        resHeadline.textContent = `Atenção: Aproveite o gabarito comentado para revisar os tópicos críticos.`;
+        resHeadline.textContent = `Atenção: Revise o gabarito comentado para corrigir os erros cometidos.`;
         resHeadline.className = 'text-amber-600 font-bold text-base md:text-lg mb-8';
       }
     }
 
-    // Renderiza barras de matérias
+    // Renderiza barras com as matérias que caíram na prova
     const subjectsContainer = document.getElementById('result-subjects-bars');
     if (subjectsContainer) {
       subjectsContainer.innerHTML = '';

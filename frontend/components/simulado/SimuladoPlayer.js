@@ -103,7 +103,7 @@ class SimuladoPlayer extends HTMLElement {
               </div>
 
               <!-- Grade de 50 Questões -->
-              <div id="grid-answer-sheet" class="grid grid-cols-5 gap-2 max-h-[380px] overflow-y-auto pr-1 custom-scrollbar">
+              <div id="grid-answer-sheet" class="grid grid-cols-5 gap-2 max-h-[380px] overflow-y-auto p-1.5 custom-scrollbar">
                 <!-- 50 botões gerados via JS -->
               </div>
             </div>

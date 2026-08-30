@@ -24,11 +24,11 @@ class SimuladoHub extends HTMLElement {
                   <i class="fas fa-crown text-amber-400"></i>
                 </div>
                 <span class="bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                  Recomendado
+                  Oficial
                 </span>
               </div>
               <h3 class="font-bold text-2xl text-white mb-2">Simulado Oficial ETEC</h3>
-              <p class="text-slate-300 text-xs leading-relaxed mb-6">50 questões multidisciplinares com tempo cronometrado oficial de 4 horas. A experiência real do dia da prova.</p>
+              <p class="text-slate-300 text-xs leading-relaxed mb-6">50 questões multidisciplinares com tempo cronometrado de 4 horas. A experiência real do dia da prova.</p>
               <div class="space-y-2 mb-8 text-xs text-slate-400 border-t border-slate-800 pt-4">
                 <div class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> 50 Questões Padrão ETEC</div>
                 <div class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> Cronômetro de 4 Horas</div>
@@ -60,23 +60,23 @@ class SimuladoHub extends HTMLElement {
             </button>
           </div>
 
-          <!-- Modo 3: Simulado por Disciplina -->
+          <!-- Modo 3: Simulado Personalizado (Tela Dedicada de Configuração) -->
           <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between relative overflow-hidden">
             <div class="absolute -right-10 -top-10 w-32 h-32 bg-purple-50 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
             <div class="relative z-10">
               <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-xl mb-6 shadow-inner border border-purple-100">
-                <i class="fas fa-filter"></i>
+                <i class="fas fa-sliders"></i>
               </div>
-              <h3 class="font-bold text-2xl text-slate-900 mb-2">Treino por Disciplina</h3>
-              <p class="text-slate-500 text-xs leading-relaxed mb-6">Selecione uma matéria específica para isolar seu estudo (ex: 15 questões de Matemática).</p>
+              <h3 class="font-bold text-2xl text-slate-900 mb-2">Simulado Sob Medida</h3>
+              <p class="text-slate-500 text-xs leading-relaxed mb-6">Monte sua prova escolhendo matérias isoladas (Física, Química, História...), nível de dificuldade, questões (até 50) e tempo (até 4h).</p>
               <div class="space-y-2 mb-8 text-xs text-slate-500 border-t border-slate-100 pt-4">
-                <div class="flex items-center gap-2"><i class="fas fa-check text-purple-600"></i> Foco em Exatas ou Humanas</div>
-                <div class="flex items-center gap-2"><i class="fas fa-check text-purple-600"></i> Ritmo sem Pressão</div>
-                <div class="flex items-center gap-2"><i class="fas fa-check text-purple-600"></i> Explicações Detalhadas</div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-purple-600"></i> 7 Disciplinas Desmembradas</div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-purple-600"></i> Dificuldade & Qtd (até 50Q)</div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-purple-600"></i> Tempo Personalizado (até 4h)</div>
               </div>
             </div>
-            <button id="btn-start-disciplina" class="w-full bg-slate-100 text-slate-800 hover:bg-slate-200 py-4 rounded-xl font-bold transition-colors relative z-10 flex items-center justify-center gap-2 text-sm">
-              Selecionar Matéria <i class="fas fa-arrow-right"></i>
+            <button id="btn-go-to-custom-screen" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-xl font-bold transition-colors relative z-10 flex items-center justify-center gap-2 text-sm shadow-md">
+              <i class="fas fa-sliders mr-1"></i> Personalizar Simulado <i class="fas fa-arrow-right"></i>
             </button>
           </div>
 

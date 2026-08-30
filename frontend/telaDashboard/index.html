@@ -179,14 +179,7 @@
           </div>
 
           <div id="view-desafios" class="hidden animate-fade-in">
-            <div class="mt-8 bg-black p-10 rounded-3xl text-white relative overflow-hidden group">
-              <div class="absolute -right-20 -top-20 w-80 h-80 bg-slate-800 rounded-full blur-3xl opacity-50"></div>
-              <div class="relative z-10 max-w-2xl">
-                <span class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4 block">Sistema de Metas</span>
-                <h3 class="text-4xl font-black mb-6 tracking-tight">Desafios que impulsionam sua nota</h3>
-                <p class="text-slate-300 mb-8 leading-relaxed">Nossos desafios são gerados algoritmicamente.</p>
-              </div>
-            </div>
+            <dashboard-challenges></dashboard-challenges>
           </div>
 
         </div>
@@ -197,6 +190,7 @@
   <!-- Web Components -->
   <script src="../components/Sidebar.js"></script>
   <script src="../components/Topbar.js"></script>
+  <script src="../components/dashboard/DashboardChallenges.js"></script>
   <!-- Page Logic -->
   <script src="js/main.js"></script>
 </body>
