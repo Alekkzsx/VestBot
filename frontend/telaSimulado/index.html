@@ -3,64 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ETECPRO - Simulado</title>
+  <title>ETECPRO - Simulados ETEC</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
   <style>
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
-    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
   </style>
 </head>
 <body>
   <div class="min-h-screen flex flex-col md:flex-row font-sans text-slate-800 bg-slate-50">
+    
+    <!-- Sidebar Component -->
     <app-sidebar active-item="quiz"></app-sidebar>
-    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
-      <app-topbar></app-topbar>
-      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
-        <div class="animate-fade-in font-sans text-slate-900 max-w-4xl mx-auto">
-          <div class="text-center mb-12 mt-8">
-            <h2 class="text-4xl font-black text-slate-900 mb-4 tracking-tight">Pronto para testar seus conhecimentos?</h2>
-            <p class="text-slate-500 text-lg max-w-2xl mx-auto">Escolha o formato do seu simulado. Nossas questões são calibradas com o mesmo nível de dificuldade da ETEC.</p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Simulado Rápido -->
-            <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all group cursor-pointer relative overflow-hidden">
-              <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-50 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
-              <div class="relative z-10">
-                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner"><i class="fas fa-bolt"></i></div>
-                <h3 class="font-bold text-2xl text-slate-900 mb-2">Simulado Rápido</h3>
-                <p class="text-slate-500 mb-6">10 questões sorteadas focadas nas suas maiores fraquezas. Ideal para revisões diárias.</p>
-                <div class="flex items-center text-sm font-bold text-blue-600 group-hover:translate-x-2 transition-transform">
-                  Começar agora <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-              </div>
-            </div>
 
-            <!-- Simulado Completo -->
-            <div class="bg-black text-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all group cursor-pointer relative overflow-hidden">
-              <div class="absolute -right-10 -top-10 w-40 h-40 bg-slate-800 rounded-full opacity-50 blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
-              <div class="relative z-10">
-                <div class="w-16 h-16 bg-slate-800 text-white rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner border border-slate-700"><i class="fas fa-star"></i></div>
-                <h3 class="font-bold text-2xl text-white mb-2">Simulado Oficial ETEC</h3>
-                <p class="text-slate-300 mb-6">50 questões padrão ETEC com tempo cronometrado de 4 horas. A experiência real da prova.</p>
-                <div class="flex items-center text-sm font-bold text-white group-hover:translate-x-2 transition-transform">
-                  Iniciar Prova <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-              </div>
-            </div>
-          </div>
+    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
+      <!-- Topbar Component -->
+      <app-topbar></app-topbar>
+
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
+        <div class="animate-fade-in font-sans pb-10">
+          
+          <!-- Componente 1: Hub de Seleção e Histórico de Simulados -->
+          <simulado-hub></simulado-hub>
+
+          <!-- Componente 2: Engine do Player da Prova Oficial (4h, 50Q, Cartão-Resposta) -->
+          <simulado-player></simulado-player>
+
+          <!-- Componente 3: Relatório e Diagnóstico Pós-Entrega -->
+          <simulado-result></simulado-result>
+
         </div>
       </div>
     </main>
   </div>
+
+  <!-- Web Components -->
   <script src="../components/Sidebar.js"></script>
   <script src="../components/Topbar.js"></script>
+  <script src="../components/simulado/SimuladoHub.js"></script>
+  <script src="../components/simulado/SimuladoPlayer.js"></script>
+  <script src="../components/simulado/SimuladoResult.js"></script>
+  <!-- Offline-First Sync & Exam Engine -->
+  <script src="../js/syncManager.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
