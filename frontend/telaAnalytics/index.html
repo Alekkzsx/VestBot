@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETECPRO - Analytics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex flex-col md:flex-row font-sans text-slate-800 bg-slate-50">
+    <app-sidebar active-item="analytics"></app-sidebar>
+    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
+      <app-topbar></app-topbar>
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
+        <div class="animate-fade-in font-sans text-slate-900 max-w-6xl mx-auto">
+          <header class="mb-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-1">Analytics Avançado</h2>
+            <p class="text-slate-500 text-sm">Visualize sua probabilidade de aprovação com base no histórico de notas de corte.</p>
+          </header>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Prediction Card -->
+            <div class="lg:col-span-2 bg-white rounded-3xl border border-slate-200 shadow-sm p-8 flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-slate-900 mb-2 flex items-center"><i class="fas fa-robot text-blue-500 mr-2"></i> Predição da IA</h3>
+                <p class="text-sm text-slate-500 mb-8">Com base na nota de corte média do curso de <strong>Desenvolvimento de Sistemas</strong> (35 pontos).</p>
+                
+                <div class="relative h-8 bg-slate-100 rounded-full overflow-hidden mb-4 border border-slate-200">
+                  <div class="absolute top-0 left-0 h-full bg-gradient-to-r from-green-400 to-green-600 transition-all duration-1000" style="width: 85%;"></div>
+                  <div class="absolute top-0 bottom-0 border-l-2 border-black border-dashed" style="left: 70%;" title="Nota de Corte"></div>
+                </div>
+                
+                <div class="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  <span>Sua Média: 42.5 pt</span>
+                  <span class="text-black">Corte: 35 pt</span>
+                </div>
+              </div>
+              
+              <div class="mt-8 p-6 bg-green-50 border border-green-100 rounded-2xl">
+                <p class="text-green-800 font-bold text-lg mb-1">Você está no caminho certo!</p>
+                <p class="text-green-600 text-sm">Se a prova fosse hoje, você teria <strong>92% de chance de aprovação</strong> no curso selecionado.</p>
+              </div>
+            </div>
+
+            <!-- Stats Column -->
+            <div class="space-y-6">
+              <div class="bg-black text-white rounded-3xl p-6 shadow-xl relative overflow-hidden group">
+                <div class="absolute -right-8 -top-8 w-32 h-32 bg-slate-800 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
+                <div class="relative z-10">
+                  <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Tempo de Prova</p>
+                  <h4 class="text-4xl font-black mb-2">2m 15s</h4>
+                  <p class="text-slate-300 text-sm">Tempo médio gasto por questão. O ideal para a ETEC é de 3m 30s.</p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">Evolução Mensal</p>
+                <div class="h-32 flex items-end gap-2">
+                  <!-- Bar chart mockup -->
+                  <div class="flex-1 bg-slate-100 hover:bg-slate-200 rounded-t-lg relative group transition-colors" style="height: 40%">
+                    <div class="absolute bottom-full mb-2 bg-black text-white text-[10px] px-2 py-1 rounded font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap left-1/2 -translate-x-1/2">Mai: 40%</div>
+                  </div>
+                  <div class="flex-1 bg-slate-100 hover:bg-slate-200 rounded-t-lg relative group transition-colors" style="height: 55%">
+                    <div class="absolute bottom-full mb-2 bg-black text-white text-[10px] px-2 py-1 rounded font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap left-1/2 -translate-x-1/2">Jun: 55%</div>
+                  </div>
+                  <div class="flex-1 bg-slate-100 hover:bg-slate-200 rounded-t-lg relative group transition-colors" style="height: 70%">
+                    <div class="absolute bottom-full mb-2 bg-black text-white text-[10px] px-2 py-1 rounded font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap left-1/2 -translate-x-1/2">Jul: 70%</div>
+                  </div>
+                  <div class="flex-1 bg-slate-900 rounded-t-lg relative group transition-colors shadow-lg" style="height: 85%">
+                    <div class="absolute bottom-full mb-2 bg-black text-white text-[10px] px-2 py-1 rounded font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap left-1/2 -translate-x-1/2">Ago: 85%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../components/Sidebar.js"></script>
+  <script src="../components/Topbar.js"></script>
+</body>
+</html>

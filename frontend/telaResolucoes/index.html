@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETECPRO - Resoluções</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex flex-col md:flex-row font-sans text-slate-800 bg-slate-50">
+    <app-sidebar active-item="resolutions"></app-sidebar>
+    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
+      <app-topbar></app-topbar>
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
+        <div class="animate-fade-in font-sans text-slate-900 max-w-6xl mx-auto">
+          <header class="mb-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-1">Resoluções Passo a Passo</h2>
+            <p class="text-slate-500 text-sm">Entenda onde você errou com explicações detalhadas por professores.</p>
+          </header>
+          
+          <div class="space-y-6">
+            <!-- Resolution Card -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold text-red-500 uppercase tracking-widest bg-red-50 px-2 py-1 rounded">Você errou</span>
+                <span class="text-xs text-slate-400 font-bold">Vestibulinho 2023 - Questão 12</span>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 mb-4">(Matemática) Calcule a área do triângulo retângulo cujos catetos medem 3cm e 4cm.</h3>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-slate-100">
+                <div>
+                  <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Sua Resposta (Incorreta)</h4>
+                  <div class="p-4 bg-red-50 border border-red-100 rounded-xl text-red-700 font-medium line-through">
+                    12 cm²
+                  </div>
+                  <p class="text-xs text-slate-500 mt-2">Você multiplicou os catetos, mas esqueceu de dividir por 2.</p>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Resposta Correta</h4>
+                  <div class="p-4 bg-green-50 border border-green-100 rounded-xl text-green-700 font-bold">
+                    6 cm²
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 bg-slate-900 text-slate-300 p-6 rounded-xl">
+                <h4 class="text-white font-bold mb-2 flex items-center"><i class="fas fa-chalkboard-teacher mr-2 text-blue-400"></i> Explicação do Professor</h4>
+                <p class="text-sm leading-relaxed">
+                  A área de um triângulo retângulo é dada pela fórmula: <strong>A = (base × altura) / 2</strong>.<br><br>
+                  Neste caso, os catetos atuam como base e altura. Então:<br>
+                  A = (3 × 4) / 2<br>
+                  A = 12 / 2<br>
+                  A = 6 cm²
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../components/Sidebar.js"></script>
+  <script src="../components/Topbar.js"></script>
+</body>
+</html>

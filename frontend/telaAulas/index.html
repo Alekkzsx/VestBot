@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETECPRO - Aulas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex flex-col md:flex-row font-sans text-slate-800 bg-slate-50">
+    <app-sidebar active-item="lessons"></app-sidebar>
+    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
+      <app-topbar></app-topbar>
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
+        <div class="animate-fade-in font-sans text-slate-900 max-w-6xl mx-auto">
+          <header class="mb-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-1">Aulas em Vídeo</h2>
+            <p class="text-slate-500 text-sm">Aprenda com nossos melhores instrutores.</p>
+          </header>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Video Card 1 -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden group cursor-pointer hover:shadow-md transition-shadow">
+              <div class="h-48 bg-slate-200 relative">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black shadow-lg transform group-hover:scale-110 transition-transform">
+                    <i class="fas fa-play ml-1"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-2 block">Matemática</span>
+                <h3 class="font-bold text-slate-900 mb-2">Equação do 2º Grau Descomplicada</h3>
+                <p class="text-sm text-slate-500 line-clamp-2">Aprenda a fórmula de Bhaskara de um jeito que você nunca mais vai esquecer.</p>
+              </div>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden group cursor-pointer hover:shadow-md transition-shadow">
+              <div class="h-48 bg-slate-200 relative">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black shadow-lg transform group-hover:scale-110 transition-transform">
+                    <i class="fas fa-play ml-1"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-red-600 mb-2 block">Português</span>
+                <h3 class="font-bold text-slate-900 mb-2">Figuras de Linguagem</h3>
+                <p class="text-sm text-slate-500 line-clamp-2">Metáfora, metonímia, paradoxo e muito mais. Entenda as principais figuras que caem na ETEC.</p>
+              </div>
+            </div>
+            
+            <!-- Video Card 3 -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden group cursor-pointer hover:shadow-md transition-shadow">
+              <div class="h-48 bg-slate-200 relative">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black shadow-lg transform group-hover:scale-110 transition-transform">
+                    <i class="fas fa-play ml-1"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-green-600 mb-2 block">Ciências</span>
+                <h3 class="font-bold text-slate-900 mb-2">Genética Básica</h3>
+                <p class="text-sm text-slate-500 line-clamp-2">Leis de Mendel aplicadas em exercícios de vestibulinho de forma prática.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../components/Sidebar.js"></script>
+  <script src="../components/Topbar.js"></script>
+</body>
+</html>

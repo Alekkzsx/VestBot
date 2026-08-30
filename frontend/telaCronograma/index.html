@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETECPRO - Cronograma</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex flex-col md:flex-row font-sans text-slate-800 bg-slate-50">
+    <app-sidebar active-item="schedule"></app-sidebar>
+    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
+      <app-topbar></app-topbar>
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
+        <div class="animate-fade-in font-sans text-slate-900 max-w-6xl mx-auto">
+          <header class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h2 class="text-3xl font-bold text-slate-900 mb-1">Cronograma de Estudos</h2>
+              <p class="text-slate-500 text-sm">Organize sua semana adicionando atividades manualmente.</p>
+            </div>
+          </header>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-1">
+              <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm sticky top-6">
+                <h3 class="font-bold text-slate-900 mb-6 flex items-center"><i class="fas fa-plus-circle mr-2"></i> Adicionar Atividade</h3>
+                <div class="space-y-4">
+                  <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Dia</label>
+                    <select class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
+                      <option>Segunda-feira</option><option>Terça-feira</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Matéria</label>
+                    <select class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
+                      <option>Matemática</option><option>Português</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Tópico / Assunto</label>
+                    <input type="text" placeholder="Ex: Equação de 2º Grau" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Duração</label>
+                    <input type="text" placeholder="Ex: 1h 30min" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
+                  </div>
+                  <button class="w-full bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-700 transition-colors mt-2">Adicionar</button>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-2 space-y-6">
+              <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="bg-slate-50 px-6 py-3 border-b border-slate-100 flex justify-between items-center">
+                  <h4 class="font-bold text-slate-900">Segunda-feira</h4>
+                  <span class="text-xs font-bold text-slate-400 uppercase">2 atividades</span>
+                </div>
+                <div class="divide-y divide-slate-50">
+                  <div class="p-4 hover:bg-slate-50 transition-colors flex items-center group">
+                    <div class="w-1 h-12 rounded-full mr-4 bg-blue-500"></div>
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold uppercase tracking-wide text-slate-400 border border-slate-200 px-1.5 py-0.5 rounded">Matemática</span>
+                        <span class="text-[10px] font-bold text-slate-400 flex items-center"><i class="far fa-clock mr-1"></i> 1h 30min</span>
+                      </div>
+                      <p class="font-semibold text-slate-800">Equação de 2º Grau</p>
+                    </div>
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-slate-300 hover:text-red-500 hover:bg-red-50 transition-all opacity-0 group-hover:opacity-100"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../components/Sidebar.js"></script>
+  <script src="../components/Topbar.js"></script>
+</body>
+</html>
