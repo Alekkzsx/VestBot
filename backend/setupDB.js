@@ -312,16 +312,24 @@ async function setupDatabase() {
       console.log(`   ℹ️ Usuário "Davi" já existe (ID ${userId})`);
     }
 
-    // Inserir data da prova ETEC (se não existir)
-    const [existingProvas] = await connection.query(`SELECT id FROM datas_oficiais_provas WHERE instituicao = 'ETEC' LIMIT 1;`);
-    if (existingProvas.length === 0) {
+    // Inserir datas oficiais das provas (ETEC + IFSP) se não existirem
+    const [existingProvas] = await connection.query(`SELECT instituicao FROM datas_oficiais_provas;`);
+    const instituicoesExistentes = existingProvas.map(p => p.instituicao);
+
+    if (!instituicoesExistentes.includes('ETEC')) {
       await connection.query(`
         INSERT INTO datas_oficiais_provas (instituicao, descricao, curso_alvo, data_prova, nota_corte_media)
         VALUES ('ETEC', 'Vestibulinho ETEC 2026.2', 'Desenvolvimento de Sistemas', '2026-12-06 13:30:00', 35);
       `);
       console.log('   ✅ Prova ETEC 06/12/2026 cadastrada (Corte: 35 pts)');
-    } else {
-      console.log('   ℹ️ Prova ETEC já cadastrada');
+    }
+
+    if (!instituicoesExistentes.includes('IFSP')) {
+      await connection.query(`
+        INSERT INTO datas_oficiais_provas (instituicao, descricao, curso_alvo, data_prova, nota_corte_media)
+        VALUES ('IFSP', 'Processo Seletivo IFSP Jundiaí 2026.2', 'Técnico em Informática', '2026-11-29 13:30:00', 38);
+      `);
+      console.log('   ✅ Prova IFSP Jundiaí 29/11/2026 cadastrada (Corte: 38 pts)');
     }
 
     // ============================

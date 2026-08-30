@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ETECPRO - Resoluções</title>
+  <title>ETECPRO - Resoluções Comentadas</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,65 +12,175 @@
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
-    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
   </style>
 </head>
 <body>
   <div class="min-h-screen flex flex-col md:flex-row font-sans text-slate-800 bg-slate-50">
+    
+    <!-- Sidebar Component -->
     <app-sidebar active-item="resolutions"></app-sidebar>
-    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
-      <app-topbar></app-topbar>
-      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
-        <div class="animate-fade-in font-sans text-slate-900 max-w-6xl mx-auto">
-          <header class="mb-8">
-            <h2 class="text-3xl font-bold text-slate-900 mb-1">Resoluções Passo a Passo</h2>
-            <p class="text-slate-500 text-sm">Entenda onde você errou com explicações detalhadas por professores.</p>
-          </header>
-          
-          <div class="space-y-6">
-            <!-- Resolution Card -->
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-bold text-red-500 uppercase tracking-widest bg-red-50 px-2 py-1 rounded">Você errou</span>
-                <span class="text-xs text-slate-400 font-bold">Vestibulinho 2023 - Questão 12</span>
-              </div>
-              <h3 class="font-bold text-lg text-slate-900 mb-4">(Matemática) Calcule a área do triângulo retângulo cujos catetos medem 3cm e 4cm.</h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-slate-100">
-                <div>
-                  <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Sua Resposta (Incorreta)</h4>
-                  <div class="p-4 bg-red-50 border border-red-100 rounded-xl text-red-700 font-medium line-through">
-                    12 cm²
-                  </div>
-                  <p class="text-xs text-slate-500 mt-2">Você multiplicou os catetos, mas esqueceu de dividir por 2.</p>
-                </div>
-                <div>
-                  <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Resposta Correta</h4>
-                  <div class="p-4 bg-green-50 border border-green-100 rounded-xl text-green-700 font-bold">
-                    6 cm²
-                  </div>
-                </div>
-              </div>
 
-              <div class="mt-6 bg-slate-900 text-slate-300 p-6 rounded-xl">
-                <h4 class="text-white font-bold mb-2 flex items-center"><i class="fas fa-chalkboard-teacher mr-2 text-blue-400"></i> Explicação do Professor</h4>
-                <p class="text-sm leading-relaxed">
-                  A área de um triângulo retângulo é dada pela fórmula: <strong>A = (base × altura) / 2</strong>.<br><br>
-                  Neste caso, os catetos atuam como base e altura. Então:<br>
-                  A = (3 × 4) / 2<br>
-                  A = 12 / 2<br>
-                  A = 6 cm²
-                </p>
-              </div>
+    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
+      <!-- Topbar Component -->
+      <app-topbar></app-topbar>
+
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
+        <div class="animate-fade-in font-sans pb-10">
+          
+          <!-- Header -->
+          <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+            <div>
+              <h2 class="text-3xl font-bold text-slate-900 mb-1">Caderno de Resoluções</h2>
+              <p class="text-slate-500 text-sm">Gabaritos comentados passo a passo, análise de pegadinhas e caderno de erros.</p>
             </div>
+            <div id="resolutions-visible-count" class="text-xs font-bold text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm">
+              Carregando resoluções...
+            </div>
+          </header>
+
+          <!-- Componente: Estatísticas e Diagnóstico do Topo -->
+          <resolution-stats></resolution-stats>
+
+          <!-- Componente: Filtros e Busca Inteligente -->
+          <resolution-filters></resolution-filters>
+
+          <!-- Lista de Resoluções (Cards Modulares) -->
+          <div id="resolutions-container" class="space-y-6">
+
+            <!-- Card 1: Matemática (Geometria - Erro) -->
+            <resolution-card
+              data-id="ETEC-2023-Q12"
+              data-disciplina="Matemática"
+              data-assunto="Geometria Plana"
+              data-dificuldade="Média"
+              data-origem="ETEC"
+              data-prova="Vestibulinho ETEC 2023"
+              data-numero="Questão 12"
+              data-acertou="false"
+              data-marcou="B"
+              data-gabarito="C"
+              data-tempo="1m 15s"
+              data-pace="3m 00s"
+              data-enunciado="Um terreno possui formato de triângulo retângulo com catetos medindo 6 metros e 8 metros. Para cercar toda a área com grama sintética, qual é a área total que deverá ser coberta?"
+              data-conceito="A área de qualquer triângulo retângulo é calculada multiplicando a base pela altura (os dois catetos) e dividindo o resultado por 2: A = (base × altura) / 2."
+              data-desenvolvimento="Identificando os catetos como base e altura:<br>Base (b) = 8m<br>Altura (h) = 6m<br><br>A = (8 × 6) / 2<br>A = 48 / 2<br>A = <strong>24 m²</strong>."
+              data-pegadinha="A alternativa B (48 m²) foi marcada por 42% dos candidatos que multiplicaram os catetos mas esqueceram de dividir por 2. Atenção à fórmula básica!"
+              data-alternativas='[
+                {"letra":"A", "texto":"14 m²", "percentual":"6%"},
+                {"letra":"B", "texto":"48 m²", "percentual":"42%"},
+                {"letra":"C", "texto":"24 m²", "percentual":"45%"},
+                {"letra":"D", "texto":"10 m²", "percentual":"5%"},
+                {"letra":"E", "texto":"12 m²", "percentual":"2%"}
+              ]'
+            ></resolution-card>
+
+            <!-- Card 2: Português (Figuras de Linguagem - Acerto) -->
+            <resolution-card
+              data-id="IFSP-2024-Q08"
+              data-disciplina="Português"
+              data-assunto="Figuras de Linguagem"
+              data-dificuldade="Fácil"
+              data-origem="IFSP"
+              data-prova="Processo Seletivo IFSP 2024"
+              data-numero="Questão 08"
+              data-acertou="true"
+              data-marcou="D"
+              data-gabarito="D"
+              data-tempo="45s"
+              data-pace="2m 30s"
+              data-enunciado="No trecho: &quot;O vento sussurrava segredos pelas frestas da janela antiga&quot;, a figura de linguagem presente que atribui características humanas a seres inanimados é classificada como:"
+              data-conceito="Personificação (ou Prosopopeia) é a figura de pensamento que consiste em atribuir sentimentos, falas ou ações humanas a objetos inanimados ou seres irracionais."
+              data-desenvolvimento="Analisando o verbo: 'Sussurrar segredos' é uma ação exclusivamente humana.<br>Como o agente é o 'vento' (elemento da natureza), temos uma atribuição de traço humano a um ser inanimado.<br>Portanto: <strong>Personificação / Prosopopeia</strong>."
+              data-pegadinha="Muitos candidatos confundem com 'Metáfora'. Lembre-se: quando há ação humana em objeto inanimado, a classificação precisa é Prosopopeia."
+              data-alternativas='[
+                {"letra":"A", "texto":"Hipérbole (Exagero expressivo)", "percentual":"5%"},
+                {"letra":"B", "texto":"Metonímia (Troca da parte pelo todo)", "percentual":"8%"},
+                {"letra":"C", "texto":"Antítese (Aproximação de termos opostos)", "percentual":"4%"},
+                {"letra":"D", "texto":"Personificação ou Prosopopeia", "percentual":"80%"},
+                {"letra":"E", "texto":"Eufemismo (Suavização de ideia)", "percentual":"3%"}
+              ]'
+            ></resolution-card>
+
+            <!-- Card 3: Ciências (Física / Ondulatória - Erro) -->
+            <resolution-card
+              data-id="ETEC-2023-Q22"
+              data-disciplina="Ciências"
+              data-assunto="Ondulatória e Som"
+              data-dificuldade="Difícil"
+              data-origem="ETEC"
+              data-prova="Vestibulinho ETEC 2023"
+              data-numero="Questão 22"
+              data-acertou="false"
+              data-marcou="A"
+              data-gabarito="E"
+              data-tempo="2m 40s"
+              data-pace="3m 15s"
+              data-enunciado="Uma onda sonora se propaga no ar com velocidade de 340 m/s. Se essa onda possui uma frequência constante de 170 Hz, qual é o seu comprimento de onda (λ)?"
+              data-conceito="A Equação Fundamental da Ondulatória relaciona velocidade (v), comprimento de onda (λ) e frequência (f): v = λ × f."
+              data-desenvolvimento="Dados:<br>v = 340 m/s<br>f = 170 Hz<br><br>Aplicando a fórmula:<br>v = λ × f<br>340 = λ × 170<br>λ = 340 / 170<br>λ = <strong>2 metros</strong>."
+              data-pegadinha="A alternativa A (57.800 m) foi marcada por alunos que multiplicaram 340 × 170 em vez de isolar o lambda (λ = v / f). Atenção à álgebra isolando variáveis!"
+              data-alternativas='[
+                {"letra":"A", "texto":"57.800 m", "percentual":"35%"},
+                {"letra":"B", "texto":"0,5 m", "percentual":"15%"},
+                {"letra":"C", "texto":"170 m", "percentual":"6%"},
+                {"letra":"D", "texto":"1,5 m", "percentual":"4%"},
+                {"letra":"E", "texto":"2,0 m", "percentual":"40%"}
+              ]'
+            ></resolution-card>
+
+            <!-- Card 4: Humanas (História / Revolução Industrial - Acerto) -->
+            <resolution-card
+              data-id="ETEC-2024-Q35"
+              data-disciplina="Humanas"
+              data-assunto="Revolução Industrial"
+              data-dificuldade="Média"
+              data-origem="ETEC"
+              data-prova="Vestibulinho ETEC 2024"
+              data-numero="Questão 35"
+              data-acertou="true"
+              data-marcou="C"
+              data-gabarito="C"
+              data-tempo="1m 05s"
+              data-pace="2m 45s"
+              data-enunciado="O pioneirismo inglês na Primeira Revolução Industrial (século XVIII) foi impulsionado por diversos fatores socioeconômicos e geográficos. Dentre eles, destaca-se:"
+              data-conceito="Fatores do pioneirismo inglês: acúmulo de capital pelo comércio marítimo, abundância de jazidas de carvão mineral e ferro, mão de obra disponível (cercamento dos campos) e estabilidade política após a Revolução Gloriosa."
+              data-desenvolvimento="A Inglaterra reunia a tríade indispensável da 1ª Revolução Industrial:<br>1. Jazidas abundantes de carvão e ferro;<br>2. Capital acumulado para investir em maquinário a vapor;<br>3. Mão de obra urbana barata.<br>Portanto: <strong>Abundância de carvão mineral e ferro</strong>."
+              data-pegadinha="A alternativa B cita 'petróleo e eletricidade', que são combustíveis típicos da SEGUNDA Revolução Industrial (século XIX/XX), e não da Primeira."
+              data-alternativas='[
+                {"letra":"A", "texto":"A utilização pioneira da energia nuclear nas tecelagens", "percentual":"2%"},
+                {"letra":"B", "texto":"O uso intensivo do petróleo e dos motores a combustão", "percentual":"20%"},
+                {"letra":"C", "texto":"A abundância de reservas de carvão mineral e minério de ferro", "percentual":"72%"},
+                {"letra":"D", "texto":"A total ausência de tributos sobre o comércio de algodão", "percentual":"4%"},
+                {"letra":"E", "texto":"O apoio irrestrito da Igreja Católica às inovações científicas", "percentual":"2%"}
+              ]'
+            ></resolution-card>
+
           </div>
+
+          <!-- Empty State (Caso nenhum filtro coincida) -->
+          <div id="resolutions-empty-state" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 shadow-sm mt-6">
+            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+              <i class="fas fa-filter-circle-xmark"></i>
+            </div>
+            <h3 class="font-bold text-lg text-slate-900 mb-1">Nenhuma resolução encontrada</h3>
+            <p class="text-xs text-slate-500 max-w-sm mx-auto">Tente ajustar seus termos de busca ou limpar os filtros de disciplina e status.</p>
+          </div>
+
         </div>
       </div>
     </main>
   </div>
+
+  <!-- Web Components -->
   <script src="../components/Sidebar.js"></script>
   <script src="../components/Topbar.js"></script>
+  <script src="../components/resolutions/ResolutionStats.js"></script>
+  <script src="../components/resolutions/ResolutionFilters.js"></script>
+  <script src="../components/resolutions/ResolutionCard.js"></script>
+  <!-- Page Interactive Logic -->
+  <script src="js/main.js"></script>
 </body>
 </html>

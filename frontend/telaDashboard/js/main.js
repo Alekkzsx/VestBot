@@ -1,20 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const targetDate = new Date('2026-12-06T13:30:00');
-  const timerEl = document.getElementById('timer-countdown');
+  const etecDate = new Date('2026-12-06T13:30:00');
+  const ifspDate = new Date('2026-11-29T13:30:00');
+  
+  const timerEtecEl = document.getElementById('timer-countdown-etec') || document.getElementById('timer-countdown');
+  const timerIfspEl = document.getElementById('timer-countdown-ifsp');
 
-  function updateTimer() {
-    if (!timerEl) return;
+  function calculateDays(targetDate) {
     const now = new Date().getTime();
     const distance = targetDate.getTime() - now;
-    if (distance < 0) {
-      timerEl.textContent = '0';
-      return;
-    }
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    timerEl.textContent = days;
+    if (distance < 0) return 0;
+    return Math.floor(distance / (1000 * 60 * 60 * 24));
   }
-  setInterval(updateTimer, 1000);
-  updateTimer();
+
+  function updateTimers() {
+    if (timerEtecEl) timerEtecEl.textContent = calculateDays(etecDate);
+    if (timerIfspEl) timerIfspEl.textContent = calculateDays(ifspDate);
+  }
+
+  setInterval(updateTimers, 1000);
+  updateTimers();
 
   const tabResumo = document.getElementById('btn-tab-resumo');
   const tabDesafios = document.getElementById('btn-tab-desafios');
