@@ -1,9 +1,14 @@
+const path = require('path');
+// Carrega .env da raiz do projeto ou da pasta backend
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middlewares
 app.use(cors());
@@ -13,10 +18,11 @@ app.use(express.json({ limit: '10mb' })); // Permitir payloads grandes (sincroni
 // Database Configuration
 // ==========================================
 const dbConfig = {
-  host: '127.0.0.1',
-  user: 'Davi-01',
-  password: '495321',
-  database: 'vestbot_db'
+  host: process.env.DB_HOST || '127.0.0.1',
+  port: parseInt(process.env.DB_PORT, 10) || 3306,
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_NAME || 'vestbot_db'
 };
 
 // Pool de conexões (mais eficiente que conexão única)

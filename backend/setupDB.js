@@ -1,23 +1,31 @@
+const path = require('path');
+// Carrega .env da raiz do projeto ou da pasta backend
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+
 const mysql = require('mysql2/promise');
 
 const connectionConfig = {
-  host: '127.0.0.1',
-  user: 'Davi-01',
-  password: '495321',
+  host: process.env.DB_HOST || '127.0.0.1',
+  port: parseInt(process.env.DB_PORT, 10) || 3306,
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
 };
+
+const dbName = process.env.DB_NAME || 'vestbot_db';
 
 async function setupDatabase() {
   let connection;
   try {
-    console.log('🔌 Conectando ao MySQL (Davi-01)...');
+    console.log(`🔌 Conectando ao MySQL (${connectionConfig.user}@${connectionConfig.host}:${connectionConfig.port})...`);
     connection = await mysql.createConnection(connectionConfig);
 
     // ============================
     // CRIAÇÃO DO BANCO DE DADOS
     // ============================
-    console.log('📦 Criando banco de dados vestbot_db...');
-    await connection.query(`CREATE DATABASE IF NOT EXISTS vestbot_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
-    await connection.query(`USE vestbot_db;`);
+    console.log(`📦 Criando banco de dados ${dbName}...`);
+    await connection.query(`CREATE DATABASE IF NOT EXISTS \`${dbName}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
+    await connection.query(`USE \`${dbName}\`;`);
 
     // ============================
     // 1. DOMÍNIO: USUÁRIO & ENGAJAMENTO
@@ -338,7 +346,7 @@ async function setupDatabase() {
     console.log('\n========================================');
     console.log('✅ BANCO DE DADOS VESTBOT CRIADO COM SUCESSO!');
     console.log('========================================');
-    console.log('📦 Database: vestbot_db');
+    console.log(`📦 Database: ${dbName}`);
     console.log('📊 Tabelas criadas: 15');
     console.log('🔍 Índices criados: 7');
     console.log('👤 Usuário seed: Davi (ID ' + userId + ')');
@@ -351,10 +359,10 @@ async function setupDatabase() {
     console.error('\n❌ ERRO AO CONFIGURAR BANCO DE DADOS:');
     console.error(error.message);
     if (error.code === 'ER_ACCESS_DENIED_ERROR') {
-      console.error('💡 Verifique se o usuário "Davi-01" existe no MySQL e a senha "495321" está correta.');
+      console.error(`💡 Acesso negado para o usuário "${connectionConfig.user}". Verifique as credenciais no arquivo .env.`);
     }
     if (error.code === 'ECONNREFUSED') {
-      console.error('💡 O MySQL não está rodando. Abra o MySQL Workbench primeiro.');
+      console.error(`💡 Não foi possível conectar ao MySQL em ${connectionConfig.host}:${connectionConfig.port}. Verifique se o serviço do MySQL está rodando.`);
     }
     if (connection) await connection.end();
     process.exit(1);
