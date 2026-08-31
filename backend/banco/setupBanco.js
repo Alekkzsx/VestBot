@@ -1,38 +1,38 @@
 const path = require('path');
-// Carrega .env da raiz do projeto ou da pasta backend
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
-require('dotenv').config({ path: path.resolve(__dirname, '.env') });
-
 const mysql = require('mysql2/promise');
 
-const connectionConfig = {
+// Carrega .env da raiz do projeto ou da subpasta backend
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+
+const configConexao = {
   host: process.env.DB_HOST || '127.0.0.1',
   port: parseInt(process.env.DB_PORT, 10) || 3306,
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
 };
 
-const dbName = process.env.DB_NAME || 'vestbot_db';
+const nomeBanco = process.env.DB_NAME || 'vestbot_db';
 
-async function setupDatabase() {
-  let connection;
+async function inicializarBanco() {
+  let conexao;
   try {
-    console.log(`🔌 Conectando ao MySQL (${connectionConfig.user}@${connectionConfig.host}:${connectionConfig.port})...`);
-    connection = await mysql.createConnection(connectionConfig);
+    console.log(`🔌 Conectando ao MySQL (${configConexao.user}@${configConexao.host}:${configConexao.port})...`);
+    conexao = await mysql.createConnection(configConexao);
 
     // ============================
     // CRIAÇÃO DO BANCO DE DADOS
     // ============================
-    console.log(`📦 Criando banco de dados ${dbName}...`);
-    await connection.query(`CREATE DATABASE IF NOT EXISTS \`${dbName}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
-    await connection.query(`USE \`${dbName}\`;`);
+    console.log(`📦 Criando banco de dados ${nomeBanco}...`);
+    await conexao.query(`CREATE DATABASE IF NOT EXISTS \`${nomeBanco}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
+    await conexao.query(`USE \`${nomeBanco}\`;`);
 
     // ============================
     // 1. DOMÍNIO: USUÁRIO & ENGAJAMENTO
     // ============================
 
     console.log('👤 Criando tabela USUARIOS...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS usuarios (
         id INT AUTO_INCREMENT PRIMARY KEY,
         nome VARCHAR(100) NOT NULL,
@@ -41,7 +41,7 @@ async function setupDatabase() {
     `);
 
     console.log('🎮 Criando tabela GAMIFICACAO...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS gamificacao (
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT NOT NULL UNIQUE,
@@ -54,7 +54,7 @@ async function setupDatabase() {
     `);
 
     console.log('⏱️ Criando tabela SESSOES_ESTUDO...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS sessoes_estudo (
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT NOT NULL,
@@ -66,7 +66,7 @@ async function setupDatabase() {
     `);
 
     console.log('🏆 Criando tabela DESAFIOS...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS desafios (
         id INT AUTO_INCREMENT PRIMARY KEY,
         titulo VARCHAR(200) NOT NULL,
@@ -79,7 +79,7 @@ async function setupDatabase() {
     `);
 
     console.log('🏆 Criando tabela DESAFIOS_USUARIO...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS desafios_usuario (
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT NOT NULL,
@@ -93,7 +93,7 @@ async function setupDatabase() {
     `);
 
     console.log('🔔 Criando tabela NOTIFICACOES...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS notificacoes (
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT NOT NULL,
@@ -110,7 +110,7 @@ async function setupDatabase() {
     // ============================
 
     console.log('🎬 Criando tabela VIDEOS_AULAS...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS videos_aulas (
         id INT AUTO_INCREMENT PRIMARY KEY,
         disciplina VARCHAR(100) NOT NULL,
@@ -122,7 +122,7 @@ async function setupDatabase() {
     `);
 
     console.log('📄 Criando tabela CONTEUDOS_TEXTUAIS...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS conteudos_textuais (
         id INT AUTO_INCREMENT PRIMARY KEY,
         disciplina VARCHAR(100) NOT NULL,
@@ -134,7 +134,7 @@ async function setupDatabase() {
     `);
 
     console.log('📊 Criando tabela CONSUMO_ENSINO...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS consumo_ensino (
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT NOT NULL,
@@ -150,7 +150,7 @@ async function setupDatabase() {
     `);
 
     console.log('🔁 Criando tabela REVISOES_AGENDADAS...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS revisoes_agendadas (
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT NOT NULL,
@@ -171,7 +171,7 @@ async function setupDatabase() {
     // ============================
 
     console.log('📝 Criando tabela TEXTOS_BASE...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS textos_base (
         id INT AUTO_INCREMENT PRIMARY KEY,
         titulo VARCHAR(255),
@@ -181,7 +181,7 @@ async function setupDatabase() {
     `);
 
     console.log('❓ Criando tabela QUESTOES...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS questoes (
         id VARCHAR(50) PRIMARY KEY,
         texto_base_id INT DEFAULT NULL,
@@ -203,7 +203,7 @@ async function setupDatabase() {
     `);
 
     console.log('📋 Criando tabela SIMULADOS_REALIZADOS...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS simulados_realizados (
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT NOT NULL,
@@ -218,7 +218,7 @@ async function setupDatabase() {
     `);
 
     console.log('📈 Criando tabela DESEMPENHO_QUESTOES...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS desempenho_questoes (
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT NOT NULL,
@@ -231,13 +231,12 @@ async function setupDatabase() {
         data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
         sync_hash VARCHAR(100) UNIQUE,
         FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
-        FOREIGN KEY (questao_id) REFERENCES questoes(id) ON DELETE CASCADE,
         FOREIGN KEY (simulado_id) REFERENCES simulados_realizados(id) ON DELETE SET NULL
       ) ENGINE=InnoDB;
     `);
 
     console.log('⚡ Criando tabela PACE_ANALITICO_USUARIO...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS pace_analitico_usuario (
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT NOT NULL,
@@ -254,7 +253,7 @@ async function setupDatabase() {
     // ============================
 
     console.log('📅 Criando tabela CRONOGRAMA_PESSOAL...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS cronograma_pessoal (
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT NOT NULL,
@@ -268,7 +267,7 @@ async function setupDatabase() {
     `);
 
     console.log('🎯 Criando tabela DATAS_OFICIAIS_PROVAS...');
-    await connection.query(`
+    await conexao.query(`
       CREATE TABLE IF NOT EXISTS datas_oficiais_provas (
         id INT AUTO_INCREMENT PRIMARY KEY,
         instituicao VARCHAR(100) NOT NULL,
@@ -283,90 +282,72 @@ async function setupDatabase() {
     // ÍNDICES DE PERFORMANCE
     // ============================
     console.log('🔍 Criando índices de performance...');
-
-    // Índices para QUESTOES (milhares de questões)
-    await connection.query(`CREATE INDEX IF NOT EXISTS idx_questoes_disciplina_assunto ON questoes (disciplina, assunto);`).catch(() => {});
-    await connection.query(`CREATE INDEX IF NOT EXISTS idx_questoes_dificuldade ON questoes (dificuldade);`).catch(() => {});
-    await connection.query(`CREATE INDEX IF NOT EXISTS idx_questoes_fonte_ano ON questoes (fonte_prova, ano_prova);`).catch(() => {});
-
-    // Índices para DESEMPENHO_QUESTOES (tabela mais pesada)
-    await connection.query(`CREATE INDEX IF NOT EXISTS idx_desemp_usuario_data ON desempenho_questoes (usuario_id, data_hora);`).catch(() => {});
-    await connection.query(`CREATE INDEX IF NOT EXISTS idx_desemp_simulado ON desempenho_questoes (simulado_id);`).catch(() => {});
-
-    // Índices para CONSUMO_ENSINO
-    await connection.query(`CREATE INDEX IF NOT EXISTS idx_consumo_usuario_video ON consumo_ensino (usuario_id, video_id);`).catch(() => {});
-
-    // Índices para REVISOES_AGENDADAS
-    await connection.query(`CREATE INDEX IF NOT EXISTS idx_revisoes_pendentes ON revisoes_agendadas (usuario_id, status_concluida);`).catch(() => {});
+    await conexao.query(`CREATE INDEX IF NOT EXISTS idx_questoes_disciplina_assunto ON questoes (disciplina, assunto);`).catch(() => {});
+    await conexao.query(`CREATE INDEX IF NOT EXISTS idx_questoes_dificuldade ON questoes (dificuldade);`).catch(() => {});
+    await conexao.query(`CREATE INDEX IF NOT EXISTS idx_questoes_fonte_ano ON questoes (fonte_prova, ano_prova);`).catch(() => {});
+    await conexao.query(`CREATE INDEX IF NOT EXISTS idx_desemp_usuario_data ON desempenho_questoes (usuario_id, data_hora);`).catch(() => {});
+    await conexao.query(`CREATE INDEX IF NOT EXISTS idx_desemp_simulado ON desempenho_questoes (simulado_id);`).catch(() => {});
+    await conexao.query(`CREATE INDEX IF NOT EXISTS idx_consumo_usuario_video ON consumo_ensino (usuario_id, video_id);`).catch(() => {});
+    await conexao.query(`CREATE INDEX IF NOT EXISTS idx_revisoes_pendentes ON revisoes_agendadas (usuario_id, status_concluida);`).catch(() => {});
 
     // ============================
-    // SEED: USUÁRIO DAVI + PROVA ETEC
+    // SEED: USUÁRIO DAVI + PROVAS ETEC / IFSP
     // ============================
-    console.log('🌱 Inserindo dados iniciais (Davi + Prova ETEC)...');
-
-    // Inserir usuário Davi (se não existir)
-    const [existingUsers] = await connection.query(`SELECT id FROM usuarios WHERE nome = 'Davi' LIMIT 1;`);
+    console.log('🌱 Inserindo dados iniciais...');
+    const [existingUsers] = await conexao.query(`SELECT id FROM usuarios WHERE nome = 'Davi' LIMIT 1;`);
     let userId;
     if (existingUsers.length === 0) {
-      const [result] = await connection.query(`INSERT INTO usuarios (nome) VALUES ('Davi');`);
+      const [result] = await conexao.query(`INSERT INTO usuarios (nome) VALUES ('Davi');`);
       userId = result.insertId;
       console.log(`   ✅ Usuário "Davi" criado com ID ${userId}`);
 
-      // Criar gamificação inicial para Davi
-      await connection.query(`INSERT INTO gamificacao (usuario_id, nivel_atual, xp_total, ofensiva_dias) VALUES (${userId}, 1, 0, 0);`);
-      console.log('   ✅ Gamificação inicial criada (Nível 1, 0 XP)');
+      await conexao.query(`INSERT INTO gamificacao (usuario_id, nivel_atual, xp_total, ofensiva_dias) VALUES (${userId}, 1, 0, 0);`);
+      console.log('   ✅ Gamificação inicial criada');
     } else {
       userId = existingUsers[0].id;
-      console.log(`   ℹ️ Usuário "Davi" já existe (ID ${userId})`);
     }
 
-    // Inserir datas oficiais das provas (ETEC + IFSP) se não existirem
-    const [existingProvas] = await connection.query(`SELECT instituicao FROM datas_oficiais_provas;`);
+    const [existingProvas] = await conexao.query(`SELECT instituicao FROM datas_oficiais_provas;`);
     const instituicoesExistentes = existingProvas.map(p => p.instituicao);
 
     if (!instituicoesExistentes.includes('ETEC')) {
-      await connection.query(`
+      await conexao.query(`
         INSERT INTO datas_oficiais_provas (instituicao, descricao, curso_alvo, data_prova, nota_corte_media)
         VALUES ('ETEC', 'Vestibulinho ETEC 2026.2', 'Desenvolvimento de Sistemas', '2026-12-06 13:30:00', 35);
       `);
-      console.log('   ✅ Prova ETEC 06/12/2026 cadastrada (Corte: 35 pts)');
+      console.log('   ✅ Prova ETEC cadastrada (06/12/2026)');
     }
 
     if (!instituicoesExistentes.includes('IFSP')) {
-      await connection.query(`
+      await conexao.query(`
         INSERT INTO datas_oficiais_provas (instituicao, descricao, curso_alvo, data_prova, nota_corte_media)
         VALUES ('IFSP', 'Processo Seletivo IFSP Jundiaí 2026.2', 'Técnico em Informática', '2026-11-29 13:30:00', 38);
       `);
-      console.log('   ✅ Prova IFSP Jundiaí 29/11/2026 cadastrada (Corte: 38 pts)');
+      console.log('   ✅ Prova IFSP cadastrada (29/11/2026)');
     }
 
-    // ============================
-    // RESULTADO FINAL
-    // ============================
     console.log('\n========================================');
-    console.log('✅ BANCO DE DADOS VESTBOT CRIADO COM SUCESSO!');
+    console.log('✅ BANCO DE DADOS VESTBOT INICIALIZADO!');
     console.log('========================================');
-    console.log(`📦 Database: ${dbName}`);
+    console.log(`📦 Database: ${nomeBanco}`);
     console.log('📊 Tabelas criadas: 15');
     console.log('🔍 Índices criados: 7');
-    console.log('👤 Usuário seed: Davi (ID ' + userId + ')');
-    console.log('🎯 Prova seed: ETEC 06/12/2026');
     console.log('========================================\n');
 
-    await connection.end();
+    await conexao.end();
 
   } catch (error) {
     console.error('\n❌ ERRO AO CONFIGURAR BANCO DE DADOS:');
     console.error(error.message);
     if (error.code === 'ER_ACCESS_DENIED_ERROR') {
-      console.error(`💡 Acesso negado para o usuário "${connectionConfig.user}". Verifique as credenciais no arquivo .env.`);
+      console.error(`💡 Acesso negado para o usuário "${configConexao.user}". Verifique as credenciais no arquivo .env.`);
     }
     if (error.code === 'ECONNREFUSED') {
-      console.error(`💡 Não foi possível conectar ao MySQL em ${connectionConfig.host}:${connectionConfig.port}. Verifique se o serviço do MySQL está rodando.`);
+      console.error(`💡 Não foi possível conectar ao MySQL em ${configConexao.host}:${configConexao.port}. Verifique se o serviço está rodando.`);
     }
-    if (connection) await connection.end();
+    if (conexao) await conexao.end();
     process.exit(1);
   }
 }
 
-setupDatabase();
+inicializarBanco();
