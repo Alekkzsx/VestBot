@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETECPRO - Análise Preditiva & Inteligência</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Chart.js para projeção e radar -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+    .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+  <div class="min-h-screen flex flex-col md:flex-row">
+    
+    <!-- Barra Lateral Componentizada -->
+    <barra-lateral item-ativo="analitica"></barra-lateral>
+
+    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
+      <!-- Barra Superior Componentizada -->
+      <barra-superior></barra-superior>
+
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
+        <div class="animate-fade-in pb-10">
+          
+          <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="bg-purple-100 text-purple-800 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                  Módulo de Inteligência
+                </span>
+                <span class="text-xs text-slate-400 font-medium">• Algoritmo Preditivo 2026</span>
+              </div>
+              <h2 class="text-3xl font-black text-slate-900 tracking-tight">Análise Preditiva & Corte</h2>
+              <p class="text-slate-500 text-sm">Simulação da sua probabilidade de aprovação considerando o peso dos cursos e o sistema oficial de bônus.</p>
+            </div>
+          </header>
+
+          <!-- Componentes Preditivos em Português -->
+          <predicao-analitica></predicao-analitica>
+          <prioridade-analitica></prioridade-analitica>
+          <projecao-analitica></projecao-analitica>
+
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Componentes Web em Português -->
+  <script src="../componentes/BarraLateral.js"></script>
+  <script src="../componentes/BarraSuperior.js"></script>
+  <script src="../componentes/analise/PredicaoAnalitica.js"></script>
+  <script src="../componentes/analise/PrioridadeAnalitica.js"></script>
+  <script src="../componentes/analise/ProjecaoAnalitica.js"></script>
+  <!-- Sincronização & Offline Engine -->
+  <script src="../js/gerenciadorSincronizacao.js"></script>
+  <!-- Lógica da Página -->
+  <script src="js/principal.js"></script>
+</body>
+</html>

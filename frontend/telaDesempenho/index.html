@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETECPRO - Diagnóstico de Desempenho</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Chart.js para renderização de gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+  <div class="min-h-screen flex flex-col md:flex-row">
+    
+    <!-- Barra Lateral Componentizada -->
+    <barra-lateral item-ativo="desempenho"></barra-lateral>
+
+    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
+      <!-- Barra Superior Componentizada -->
+      <barra-superior></barra-superior>
+
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
+        <div class="animate-fade-in pb-10">
+          
+          <header class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <h2 class="text-3xl font-black text-slate-900 tracking-tight mb-1">Diagnóstico de Desempenho</h2>
+              <p class="text-slate-500 text-sm">Raio-X detalhado da sua retenção de conteúdo, padrões de erro e fadiga.</p>
+            </div>
+          </header>
+
+          <!-- Seletor de Abas -->
+          <div class="flex gap-1.5 bg-white p-1 rounded-2xl border border-slate-200 shadow-sm mb-8 w-fit overflow-x-auto">
+            <button id="btn-tab-overview" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-black text-white shadow-sm flex items-center gap-2">
+              <i class="fas fa-chart-pie"></i> Visão Geral & Métricas
+            </button>
+            <button id="btn-tab-behavior" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all text-slate-500 hover:text-slate-900 flex items-center gap-2">
+              <i class="fas fa-brain"></i> Comportamento & Fadiga
+            </button>
+            <button id="btn-tab-question" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all text-slate-500 hover:text-slate-900 flex items-center gap-2">
+              <i class="fas fa-microscope"></i> Raio-X por Questão
+            </button>
+          </div>
+
+          <!-- Componentes das Abas -->
+          <aba-visao-geral></aba-visao-geral>
+          <aba-comportamento></aba-comportamento>
+          <aba-raiox-questao></aba-raiox-questao>
+
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Componentes Web em Português -->
+  <script src="../componentes/BarraLateral.js"></script>
+  <script src="../componentes/BarraSuperior.js"></script>
+  <script src="../componentes/desempenho/AbaVisaoGeral.js"></script>
+  <script src="../componentes/desempenho/AbaComportamento.js"></script>
+  <script src="../componentes/desempenho/AbaRaioXQuestao.js"></script>
+  <!-- Sincronização & Offline Engine -->
+  <script src="../js/gerenciadorSincronizacao.js"></script>
+  <!-- Lógica da Página -->
+  <script src="js/principal.js"></script>
+</body>
+</html>

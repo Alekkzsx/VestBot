@@ -21,42 +21,42 @@
 <body>
   <div class="min-h-screen flex flex-col md:flex-row font-sans text-slate-800 bg-slate-50">
     
-    <!-- Sidebar Component -->
-    <app-sidebar active-item="quiz"></app-sidebar>
+    <!-- Barra Lateral Componentizada -->
+    <barra-lateral item-ativo="simulado"></barra-lateral>
 
     <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
-      <!-- Topbar Component -->
-      <app-topbar></app-topbar>
+      <!-- Barra Superior Componentizada -->
+      <barra-superior></barra-superior>
 
       <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
         <div class="animate-fade-in font-sans pb-10">
           
           <!-- Componente 1: Hub de Seleção e Histórico de Simulados -->
-          <simulado-hub></simulado-hub>
+          <central-simulado></central-simulado>
 
           <!-- Componente 2: Tela Completa de Personalização de Simulado -->
-          <simulado-custom></simulado-custom>
+          <simulado-personalizado></simulado-personalizado>
 
           <!-- Componente 3: Engine do Player da Prova Oficial (4h, 50Q, Cartão-Resposta) -->
-          <simulado-player></simulado-player>
+          <executor-simulado></executor-simulado>
 
           <!-- Componente 4: Relatório e Diagnóstico Pós-Entrega -->
-          <simulado-result></simulado-result>
+          <simulado-resultado></simulado-resultado>
 
         </div>
       </div>
     </main>
   </div>
 
-  <!-- Web Components -->
-  <script src="../components/Sidebar.js"></script>
-  <script src="../components/Topbar.js"></script>
-  <script src="../components/simulado/SimuladoHub.js"></script>
-  <script src="../components/simulado/SimuladoCustom.js"></script>
-  <script src="../components/simulado/SimuladoPlayer.js"></script>
-  <script src="../components/simulado/SimuladoResult.js"></script>
-  <!-- Offline-First Sync & Exam Engine -->
-  <script src="../js/syncManager.js"></script>
+  <!-- Componentes Web em Português -->
+  <script src="../componentes/BarraLateral.js"></script>
+  <script src="../componentes/BarraSuperior.js"></script>
+  <script src="../componentes/simulado/CentralSimulado.js"></script>
+  <script src="../componentes/simulado/SimuladoPersonalizado.js"></script>
+  <script src="../componentes/simulado/ExecutorSimulado.js"></script>
+  <script src="../componentes/simulado/SimuladoResultado.js"></script>
+  <!-- Sincronização & Engine de Prova Offline-First -->
+  <script src="../js/gerenciadorSincronizacao.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

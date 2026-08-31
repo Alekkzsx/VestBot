@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETECPRO - Painel Geral</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Dexie para suporte Offline-First -->
+  <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+  <div class="min-h-screen flex flex-col md:flex-row">
+    
+    <!-- Barra Lateral Componentizada -->
+    <barra-lateral item-ativo="painel"></barra-lateral>
+
+    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
+      <!-- Barra Superior Componentizada -->
+      <barra-superior></barra-superior>
+
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
+        <div class="animate-fade-in pb-10">
+          
+          <!-- Header do Painel & Filtros -->
+          <header class="mb-6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h2 class="text-3xl font-black text-slate-900 tracking-tight">Painel de Aprendizado</h2>
+                <span id="dashboard-source-status" class="text-[10px] bg-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <i class="fas fa-circle-notch fa-spin"></i> Conectando...
+                </span>
+              </div>
+              <p class="text-slate-500 text-sm">Visão consolidada do seu desempenho, missões e prontidão para a prova.</p>
+            </div>
+
+            <!-- Toolbar de Filtros do Painel -->
+            <div class="flex flex-wrap items-center gap-2 w-full lg:w-auto">
+              <!-- Filtro de Período -->
+              <div class="flex items-center bg-white p-1 rounded-xl border border-slate-200 shadow-sm text-xs font-bold">
+                <button class="filter-period-btn px-3 py-1.5 rounded-lg transition-all text-slate-500 hover:text-black" data-period="hoje">Hoje</button>
+                <button class="filter-period-btn px-3 py-1.5 rounded-lg transition-all bg-black text-white shadow-sm" data-period="7d">7 Dias</button>
+                <button class="filter-period-btn px-3 py-1.5 rounded-lg transition-all text-slate-500 hover:text-black" data-period="30d">30 Dias</button>
+                <button class="filter-period-btn px-3 py-1.5 rounded-lg transition-all text-slate-500 hover:text-black" data-period="all">Tudo</button>
+              </div>
+
+              <!-- Filtro de Disciplina -->
+              <select id="filter-discipline-select" class="bg-white border border-slate-200 text-slate-800 text-xs font-bold rounded-xl p-2.5 outline-none focus:border-black transition-colors shadow-sm">
+                <option value="all">Todas as Matérias</option>
+                <option value="Português">Português</option>
+                <option value="Matemática">Matemática</option>
+                <option value="Biologia">Biologia</option>
+                <option value="Física">Física</option>
+                <option value="Química">Química</option>
+                <option value="História">História</option>
+                <option value="Geografia">Geografia</option>
+              </select>
+
+              <!-- Botão Recarregar -->
+              <button id="btn-refresh-dashboard" title="Atualizar Métricas" class="w-9 h-9 bg-white border border-slate-200 text-slate-600 hover:text-black hover:border-black rounded-xl flex items-center justify-center transition-all shadow-sm">
+                <i class="fas fa-rotate-right text-xs"></i>
+              </button>
+            </div>
+          </header>
+
+          <!-- Abas de Navegação do Painel (Resumo vs Desafios) -->
+          <div class="flex gap-1 bg-white p-1 rounded-xl border border-slate-200 mb-8 w-fit shadow-sm">
+            <button id="btn-tab-resumo" class="px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 bg-black text-white">
+              <i class="fas fa-chart-pie"></i> Resumo de Performance
+            </button>
+            <button id="btn-tab-desafios" class="px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 relative text-slate-500 hover:bg-slate-50">
+              <i class="fas fa-bullseye"></i> Missões & Conquistas
+              <span id="badge-desafios-alert" class="w-2 h-2 bg-purple-500 rounded-full animate-pulse ml-1"></span>
+            </button>
+          </div>
+
+          <!-- CONTEÚDO 1: RESUMO DE PERFORMANCE -->
+          <div id="view-resumo" class="space-y-8 animate-fade-in">
+            
+            <!-- Cards de Métricas Rápidas (4 KPIs) -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <!-- KPI 1: Sequência / Ofensiva -->
+              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center transition-transform hover:-translate-y-1">
+                <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center text-xl mr-4 shrink-0">
+                  <i class="fas fa-fire"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Sequência</p>
+                  <p id="dash-streak" class="text-2xl font-black text-slate-900">0 dias</p>
+                </div>
+              </div>
+
+              <!-- KPI 2: Experiência XP -->
+              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center transition-transform hover:-translate-y-1">
+                <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl mr-4 shrink-0">
+                  <i class="fas fa-bolt"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Experiência Total</p>
+                  <p id="dash-xp" class="text-2xl font-black text-slate-900">0 XP</p>
+                </div>
+              </div>
+
+              <!-- KPI 3: Acurácia Geral -->
+              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center transition-transform hover:-translate-y-1">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mr-4 shrink-0">
+                  <i class="fas fa-bullseye"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Acurácia no Período</p>
+                  <p id="dash-accuracy" class="text-2xl font-black text-emerald-600">0%</p>
+                </div>
+              </div>
+
+              <!-- KPI 4: Total de Questões -->
+              <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center transition-transform hover:-translate-y-1">
+                <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mr-4 shrink-0">
+                  <i class="fas fa-list-check"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Questões Feitas</p>
+                  <p id="dash-total-answered" class="text-2xl font-black text-slate-900">0</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Agenda de Provas Oficiais (Contadores Regressivos) -->
+            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 shadow-xl relative overflow-hidden">
+              <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-emerald-600 rounded-full blur-3xl opacity-20"></div>
+              
+              <div class="flex justify-between items-center mb-6 relative z-10">
+                <div class="flex items-center gap-2">
+                  <h3 class="font-bold text-lg text-white">Agenda Oficial dos Vestibulinhos 2026</h3>
+                  <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">
+                    <i class="fas fa-calendar-check mr-1"></i> Confirmado
+                  </span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
+                <!-- ETEC Card -->
+                <div class="bg-slate-800/90 border border-slate-700/80 p-5 rounded-2xl flex items-center justify-between backdrop-blur-sm">
+                  <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white mr-4 bg-slate-700 shadow-inner">
+                      <i class="fas fa-graduation-cap text-lg"></i>
+                    </div>
+                    <div>
+                      <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Vestibulinho ETEC</p>
+                      <p class="text-sm font-bold text-white">06 de Dezembro de 2026</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <p id="timer-countdown-etec" class="text-3xl font-black text-emerald-400 tracking-tight">...</p>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase">Dias Restantes</p>
+                  </div>
+                </div>
+
+                <!-- IFSP Jundiaí Card -->
+                <div class="bg-slate-800/90 border border-slate-700/80 p-5 rounded-2xl flex items-center justify-between backdrop-blur-sm">
+                  <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white mr-4 bg-emerald-900/60 shadow-inner">
+                      <i class="fas fa-university text-lg text-emerald-400"></i>
+                    </div>
+                    <div>
+                      <div class="flex items-center gap-1.5">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Processo Seletivo IFSP</p>
+                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-1.5 py-0.2 rounded">Jundiaí</span>
+                      </div>
+                      <p class="text-sm font-bold text-white">29 de Novembro de 2026</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <p id="timer-countdown-ifsp" class="text-3xl font-black text-teal-400 tracking-tight">...</p>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase">Dias Restantes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grade Principal: Nível, Recomendação IA e Atividades Recentes -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              
+              <!-- Card 1: Nível e Progresso de XP -->
+              <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between h-80">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h3 id="dash-level-title" class="font-bold text-xl text-slate-900">Nível 1</h3>
+                    <p id="dash-level-rank" class="text-slate-500 text-xs">Iniciante</p>
+                  </div>
+                  <div id="dash-level-meta" class="bg-black text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">
+                    META: NÍVEL 2
+                  </div>
+                </div>
+
+                <div class="flex-1 flex items-center justify-center my-2">
+                  <div class="relative w-36 h-36">
+                    <div id="dash-level-conic" class="w-full h-full rounded-full transition-all duration-700" style="background: conic-gradient(#0f172a 0% 0%, #f1f5f9 0% 100%)"></div>
+                    <div class="absolute inset-2.5 bg-white rounded-full flex items-center justify-center flex-col shadow-inner">
+                      <span id="dash-level-percent" class="text-2xl font-black text-black tracking-tight">0%</span>
+                      <span class="text-[9px] text-slate-400 uppercase font-bold tracking-wider mt-0.5">Progresso</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p id="dash-level-caption" class="text-center text-slate-500 text-xs">
+                  Resolva questões para subir de nível!
+                </p>
+              </div>
+
+              <!-- Card 2: Recomendado pela IA (Ponto Fraco) -->
+              <div class="bg-black text-white p-8 rounded-3xl shadow-xl flex flex-col justify-between h-80 relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-slate-800 rounded-full opacity-60 blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
+                <div class="relative z-10">
+                  <span class="text-emerald-400 font-bold mb-1 block text-[10px] uppercase tracking-widest flex items-center gap-1.5">
+                    <i class="fas fa-wand-magic-sparkles"></i> Recomendado pela IA
+                  </span>
+                  <h3 id="rec-subject-title" class="text-2xl font-black text-white leading-tight mb-2">
+                    Diagnóstico Inicial
+                  </h3>
+                  <p id="rec-subject-reason" class="text-slate-300 text-xs leading-relaxed mb-4">
+                    Inicie seu primeiro treino para mapearmos suas maiores oportunidades de ganho de nota.
+                  </p>
+                </div>
+                <a id="rec-action-btn" href="../telaSimulado/index.html" class="bg-white text-black px-6 py-3.5 rounded-xl font-bold hover:bg-slate-100 transition-colors w-fit relative z-10 flex items-center text-xs shadow-md">
+                  Iniciar Treino <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+
+              <!-- Card 3: Registro de Atividades Recentes -->
+              <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm h-80 flex flex-col justify-between">
+                <div class="flex justify-between items-center mb-3">
+                  <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                    <i class="fas fa-clock-rotate-left text-slate-400"></i> Atividades Recentes
+                  </h3>
+                  <span id="dash-activities-count-badge" class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                    0 resoluções
+                  </span>
+                </div>
+
+                <div id="dash-activities-list" class="flex-1 overflow-y-auto pr-1 custom-scrollbar space-y-2.5">
+                  <div class="text-center py-10 text-slate-400 text-xs font-medium">
+                    Nenhuma atividade registrada no período.
+                  </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span class="text-slate-400 font-medium">Acurácia Recente:</span>
+                  <span id="dash-recent-accuracy" class="font-bold text-slate-900">0%</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Grade Inferior: Frequência Semanal, Foco por Matéria e Ações Rápidas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              
+              <!-- Gráfico de Frequência dos Últimos 7 Dias -->
+              <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm h-72 flex flex-col justify-between">
+                <div class="flex justify-between items-center mb-4">
+                  <div>
+                    <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                      <i class="fas fa-chart-column text-blue-500"></i> Frequência Semanal
+                    </h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Questões resolvidas nos últimos 7 dias.</p>
+                  </div>
+                </div>
+
+                <!-- Barras Dinâmicas de Frequência -->
+                <div id="dash-frequency-bars" class="flex-1 flex items-end justify-between gap-2 px-2 pb-2">
+                  <!-- Gerado via JS -->
+                </div>
+              </div>
+
+              <!-- Foco de Estudo por Disciplina -->
+              <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm h-72 flex flex-col justify-between">
+                <div class="flex justify-between items-center mb-3">
+                  <div>
+                    <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                      <i class="fas fa-chart-pie text-purple-500"></i> Foco por Disciplina
+                    </h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Distribuição do seu tempo de estudo.</p>
+                  </div>
+                </div>
+
+                <div id="dash-focus-list" class="space-y-3 flex-1 overflow-y-auto pr-2 custom-scrollbar">
+                  <!-- Gerado via JS -->
+                </div>
+              </div>
+
+              <!-- Atalhos Rápidos & Módulos -->
+              <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm h-72 flex flex-col justify-between">
+                <div>
+                  <h3 class="font-bold text-base text-slate-900 mb-1">Acesso Rápido</h3>
+                  <p class="text-[11px] text-slate-400 mb-4">Módulos mais acessados para treino.</p>
+                  
+                  <div class="space-y-2.5">
+                    <a href="../telaSimulado/index.html" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl text-left text-xs font-bold text-slate-800 hover:border-black hover:bg-white transition-all flex justify-between items-center group">
+                      <span class="flex items-center gap-2"><i class="fas fa-bolt text-amber-500"></i> Simulado Rápido (10Q)</span>
+                      <i class="fas fa-arrow-right text-slate-400 group-hover:text-black transition-colors text-[10px]"></i>
+                    </a>
+
+                    <a href="../telaResolucoes/index.html" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl text-left text-xs font-bold text-slate-800 hover:border-black hover:bg-white transition-all flex justify-between items-center group">
+                      <span class="flex items-center gap-2"><i class="fas fa-heart-crack text-rose-500"></i> Caderno de Erros</span>
+                      <i class="fas fa-arrow-right text-slate-400 group-hover:text-black transition-colors text-[10px]"></i>
+                    </a>
+
+                    <a href="../telaAnalitica/index.html" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl text-left text-xs font-bold text-slate-800 hover:border-black hover:bg-white transition-all flex justify-between items-center group">
+                      <span class="flex items-center gap-2"><i class="fas fa-brain text-blue-500"></i> Predição de Corte</span>
+                      <i class="fas fa-arrow-right text-slate-400 group-hover:text-black transition-colors text-[10px]"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- CONTEÚDO 2: MISSÕES & DESAFIOS -->
+          <div id="view-desafios" class="hidden animate-fade-in">
+            <desafios-painel></desafios-painel>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Componentes Web em Português -->
+  <script src="../componentes/BarraLateral.js"></script>
+  <script src="../componentes/BarraSuperior.js"></script>
+  <script src="../componentes/painel/DesafiosPainel.js"></script>
+  <!-- Sincronização & Offline Engine -->
+  <script src="../js/gerenciadorSincronizacao.js"></script>
+  <!-- Lógica da Página -->
+  <script src="js/principal.js"></script>
+</body>
+</html>
