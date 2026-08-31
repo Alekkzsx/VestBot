@@ -25,27 +25,37 @@ class FiltrosResolucao extends HTMLElement {
         </div>
 
         <!-- Linha 2: Filtros por Disciplina e Origem da Prova -->
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-4 border-t border-slate-100">
-          <!-- Pílulas de Disciplina -->
+        <div class="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4 pt-4 border-t border-slate-100">
+          <!-- Pílulas de Disciplina das 7 Matérias Oficiais da ETEC -->
           <div class="flex items-center gap-2 flex-wrap">
             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mr-1">Matéria:</span>
             <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-900 text-white" data-subject="all">Todas</button>
-            <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400" data-subject="Matemática">
-              <i class="fas fa-calculator text-blue-500 mr-1"></i> Matemática
-            </button>
+            
             <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400" data-subject="Português">
               <i class="fas fa-book text-rose-500 mr-1"></i> Português
             </button>
-            <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400" data-subject="Ciências">
-              <i class="fas fa-flask text-emerald-500 mr-1"></i> Ciências
+            <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400" data-subject="Matemática">
+              <i class="fas fa-calculator text-blue-500 mr-1"></i> Matemática
             </button>
-            <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400" data-subject="Humanas">
-              <i class="fas fa-landmark text-amber-500 mr-1"></i> Humanas
+            <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400" data-subject="Biologia">
+              <i class="fas fa-leaf text-emerald-500 mr-1"></i> Biologia
+            </button>
+            <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400" data-subject="Física">
+              <i class="fas fa-atom text-cyan-500 mr-1"></i> Física
+            </button>
+            <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400" data-subject="Química">
+              <i class="fas fa-flask text-teal-500 mr-1"></i> Química
+            </button>
+            <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400" data-subject="História">
+              <i class="fas fa-landmark text-amber-500 mr-1"></i> História
+            </button>
+            <button class="filter-subject-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-50 text-slate-600 border border-slate-200 hover:border-slate-400" data-subject="Geografia">
+              <i class="fas fa-earth-americas text-orange-500 mr-1"></i> Geografia
             </button>
           </div>
 
           <!-- Select de Origem / Prova -->
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 shrink-0">
             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Origem:</span>
             <select id="select-origin-filter" class="p-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-slate-700 outline-none focus:border-black">
               <option value="all">Todas as Provas</option>

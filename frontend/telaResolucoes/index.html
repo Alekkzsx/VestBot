@@ -47,7 +47,7 @@
           <!-- Componente: Filtros e Busca Inteligente -->
           <resolution-filters></resolution-filters>
 
-          <!-- Lista de Resoluções (Cards Modulares) -->
+          <!-- Lista de Resoluções (Cards Modulares com as 7 Matérias Oficiais) -->
           <div id="resolutions-container" class="space-y-6">
 
             <!-- Card 1: Matemática (Geometria - Erro) -->
@@ -104,11 +104,38 @@
               ]'
             ></resolution-card>
 
-            <!-- Card 3: Ciências (Física / Ondulatória - Erro) -->
+            <!-- Card 3: Biologia (Ecologia - Acerto) -->
+            <resolution-card
+              data-id="ETEC-2023-Q18"
+              data-disciplina="Biologia"
+              data-assunto="Ecologia e Teias Alimentares"
+              data-dificuldade="Média"
+              data-origem="ETEC"
+              data-prova="Vestibulinho ETEC 2023"
+              data-numero="Questão 18"
+              data-acertou="true"
+              data-marcou="B"
+              data-gabarito="B"
+              data-tempo="1m 20s"
+              data-pace="2m 50s"
+              data-enunciado="Em um ecossistema aquático, o fitoplâncton serve de alimento para o zooplâncton, que por sua vez é consumido por pequenos peixes. Nesse fluxo, o papel do fitoplâncton e o comportamento da energia ao longo dos níveis tróficos são, respectivamente:"
+              data-conceito="O fitoplâncton é fotossintetizante (produtor). O fluxo de energia nos ecossistemas é unidirecional e decrescente a cada nível trófico devido à perda de calor metabólico."
+              data-desenvolvimento="1. O fitoplâncton produz matéria orgânica via fotossíntese (Produtor autotrófico).<br>2. A energia disponível diminui conforme sobe na cadeia trófica.<br>Portanto: <strong>Produtor e fluxo decrescente de energia</strong>."
+              data-pegadinha="Candidatos frequentemente confundem fluxo de energia (que é decrescente e unidirecional) com ciclo da matéria (que é cíclico e reutilizável)."
+              data-alternativas='[
+                {"letra":"A", "texto":"Consumidor primário e fluxo cíclico de energia", "percentual":"12%"},
+                {"letra":"B", "texto":"Produtor autotrófico e fluxo unidirecional decrescente", "percentual":"76%"},
+                {"letra":"C", "texto":"Decompositor e acúmulo crescente de calorias", "percentual":"6%"},
+                {"letra":"D", "texto":"Consumidor secundário e energia constante", "percentual":"4%"},
+                {"letra":"E", "texto":"Parasita aquático e fluxo bidirecional", "percentual":"2%"}
+              ]'
+            ></resolution-card>
+
+            <!-- Card 4: Física (Ondulatória - Erro) -->
             <resolution-card
               data-id="ETEC-2023-Q22"
-              data-disciplina="Ciências"
-              data-assunto="Ondulatória e Som"
+              data-disciplina="Física"
+              data-assunto="Ondulatória e Velocidade do Som"
               data-dificuldade="Difícil"
               data-origem="ETEC"
               data-prova="Vestibulinho ETEC 2023"
@@ -131,10 +158,37 @@
               ]'
             ></resolution-card>
 
-            <!-- Card 4: Humanas (História / Revolução Industrial - Acerto) -->
+            <!-- Card 5: Química (Separação de Misturas - Erro) -->
+            <resolution-card
+              data-id="ETEC-2024-Q29"
+              data-disciplina="Química"
+              data-assunto="Separação de Misturas Homogêneas"
+              data-dificuldade="Média"
+              data-origem="ETEC"
+              data-prova="Vestibulinho ETEC 2024"
+              data-numero="Questão 29"
+              data-acertou="false"
+              data-marcou="D"
+              data-gabarito="A"
+              data-tempo="1m 50s"
+              data-pace="2m 45s"
+              data-enunciado="Em uma aula prática de laboratório, um estudante precisa separar completamente a água e o sal de cozinha presentes em uma solução límpida e homogênea (soro fisiológico), recuperando tanto a água pura quanto o sal sólido. O método físico mais adequado é a:"
+              data-conceito="Para separar misturas homogêneas de sólido-líquido recuperando AMBOS os componentes, utiliza-se a destilação simples, que aproveita a diferença nos pontos de ebulição."
+              data-desenvolvimento="1. A mistura é homogênea (sal totalmente dissolvido).<br>2. A evaporação simples perderia a água para o ambiente.<br>3. A destilação simples condensa o vapor de água no condensador e mantém o sal no balão.<br>Portanto: <strong>Destilação simples</strong>."
+              data-pegadinha="A alternativa D (Filtração) só funciona para misturas HETEROGÊNEAS (ex: areia e água). O sal dissolvido passa integralmente pelos poros do filtro!"
+              data-alternativas='[
+                {"letra":"A", "texto":"Destilação simples", "percentual":"48%"},
+                {"letra":"B", "texto":"Decantação gravitacional", "percentual":"10%"},
+                {"letra":"C", "texto":"Centrifugação fracionada", "percentual":"8%"},
+                {"letra":"D", "texto":"Filtração com papel de filtro", "percentual":"30%"},
+                {"letra":"E", "texto":"Levigação por corrente de água", "percentual":"4%"}
+              ]'
+            ></resolution-card>
+
+            <!-- Card 6: História (Revolução Industrial - Acerto) -->
             <resolution-card
               data-id="ETEC-2024-Q35"
-              data-disciplina="Humanas"
+              data-disciplina="História"
               data-assunto="Revolução Industrial"
               data-dificuldade="Média"
               data-origem="ETEC"
@@ -155,6 +209,33 @@
                 {"letra":"C", "texto":"A abundância de reservas de carvão mineral e minério de ferro", "percentual":"72%"},
                 {"letra":"D", "texto":"A total ausência de tributos sobre o comércio de algodão", "percentual":"4%"},
                 {"letra":"E", "texto":"O apoio irrestrito da Igreja Católica às inovações científicas", "percentual":"2%"}
+              ]'
+            ></resolution-card>
+
+            <!-- Card 7: Geografia (Biomas Brasileiros - Acerto) -->
+            <resolution-card
+              data-id="IFSP-2024-Q42"
+              data-disciplina="Geografia"
+              data-assunto="Biomas e Domínios Morfoclimáticos"
+              data-dificuldade="Fácil"
+              data-origem="IFSP"
+              data-prova="Processo Seletivo IFSP 2024"
+              data-numero="Questão 42"
+              data-acertou="true"
+              data-marcou="A"
+              data-gabarito="A"
+              data-tempo="50s"
+              data-pace="2m 30s"
+              data-enunciado="O domínio morfoclimático brasileiro exclusivamente nacional, caracterizado pelo clima semiárido, solos rasos e pedregosos, e vegetação com plantas caducifólias e xerófitas adaptadas à escassez hídrica é a:"
+              data-conceito="A Caatinga é o único bioma 100% brasileiro, localizado predominantemente no sertão nordestino e marcado por plantas xerófitas (como cactos e arbustos espinhosos) adaptadas ao clima semiárido."
+              data-desenvolvimento="1. 'Exclusivamente nacional' elimina Amazônia, Cerrado e Mata Atlântica.<br>2. 'Clima semiárido e xerófitas' caracterizam a Caatinga.<br>Portanto: <strong>Caatinga</strong>."
+              data-pegadinha="Muitos confundem com o 'Cerrado', que possui clima tropical típico com duas estações bem definidas (seca e chuvosa) e árvores de troncos tortuosos, mas não semiárido extremo."
+              data-alternativas='[
+                {"letra":"A", "texto":"Caatinga", "percentual":"82%"},
+                {"letra":"B", "texto":"Cerrado", "percentual":"11%"},
+                {"letra":"C", "texto":"Pampa", "percentual":"3%"},
+                {"letra":"D", "texto":"Pantanal", "percentual":"2%"},
+                {"letra":"E", "texto":"Mata das Araucárias", "percentual":"2%"}
               ]'
             ></resolution-card>
 
@@ -183,6 +264,6 @@
   <!-- Sincronização & Offline Engine -->
   <script src="../js/gerenciadorSincronizacao.js"></script>
   <!-- Lógica da Página -->
-  <script src="js/main.js"></script>
+  <script src="js/principal.js"></script>
 </body>
 </html>

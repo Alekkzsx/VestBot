@@ -6,8 +6,10 @@
 const db = new Dexie("VestBotDatabase");
 
 // Schema do cofre local no navegador
-db.version(2).stores({
-  logs_questoes: '++id, questao_id, alternativa_marcada, acertou, tempo_gasto, data_resolucao, sync_status, sync_hash, simulado_id, ordem_resolucao'
+db.version(4).stores({
+  logs_questoes: '++id, questao_id, alternativa_marcada, acertou, tempo_gasto, data_resolucao, sync_status, sync_hash, simulado_id, ordem_resolucao',
+  cronograma: '++id, dia_semana, materia, topico, duracao, concluido, tipo, data_geracao',
+  chamados: '++id, tipo, assunto, descricao, fonte_revisao, status, data_criacao'
 });
 
 const URL_BACKEND = 'http://localhost:3000';

@@ -13,15 +13,6 @@ class BarraSuperior extends HTMLElement {
           Prova ETEC em: <span id="timer-days" class="text-black font-bold ml-1">... dias</span>
         </div>
 
-        <!-- Sino de Notificações -->
-        <button class="w-10 h-10 bg-white rounded-full shadow-sm border border-slate-200 flex items-center justify-center text-slate-500 hover:text-black hover:scale-105 transition-all relative group">
-          <i class="far fa-bell text-lg"></i>
-          <span class="absolute top-2.5 right-3 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-          <div class="absolute top-full right-0 mt-2 w-56 bg-white border border-slate-100 shadow-xl rounded-xl p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-left">
-            <p class="text-xs font-bold text-slate-900 mb-1">Notificações</p>
-            <p class="text-[10px] text-slate-500">Alertas sobre inscrições, simulados recomendados e dicas diárias aqui.</p>
-          </div>
-        </button>
       </div>
     `;
 

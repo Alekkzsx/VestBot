@@ -7,10 +7,6 @@ class BarraLateral extends HTMLElement {
       <div class="md:hidden bg-white p-4 border-b border-slate-200 flex justify-between items-center z-20 sticky top-0 w-full">
         <div class="font-bold text-xl text-black tracking-tight">ETECPRO</div>
         <div class="flex items-center gap-4">
-          <button class="relative text-slate-600 hover:text-black transition-colors group">
-            <i class="far fa-bell text-xl"></i>
-            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-          </button>
           <button id="btn-toggle-sidebar" class="text-slate-600 hover:text-black focus:outline-none">
             <i class="fas fa-bars text-xl"></i>
           </button>
@@ -65,7 +61,13 @@ class BarraLateral extends HTMLElement {
 
           <a href="../telaAnalitica/index.html" class="nav-item w-full text-left px-4 py-3.5 rounded-xl transition-all font-medium flex items-center text-sm group relative ${['analitica', 'analytics'].includes(itemAtivo) ? 'bg-slate-100 text-black font-semibold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}">
             <i class="fas fa-chart-bar w-5 text-center text-lg transition-colors mr-3 ${['analitica', 'analytics'].includes(itemAtivo) ? 'text-black' : 'text-slate-400'}"></i>
-            <span class="sidebar-expanded-only">Analytics</span>
+            <span class="sidebar-expanded-only">Analítica</span>
+            <span class="sidebar-expanded-only ml-auto bg-black text-white text-[9px] font-bold px-2 py-0.5 rounded-full">NOVO</span>
+          </a>
+
+          <a href="../telaEntendendo/index.html" class="nav-item w-full text-left px-4 py-3.5 rounded-xl transition-all font-medium flex items-center text-sm group relative ${['entendendo'].includes(itemAtivo) ? 'bg-slate-100 text-black font-semibold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}">
+            <i class="fas fa-lightbulb w-5 text-center text-lg transition-colors mr-3 ${['entendendo'].includes(itemAtivo) ? 'text-black' : 'text-slate-400'}"></i>
+            <span class="sidebar-expanded-only">Entendendo</span>
             <span class="sidebar-expanded-only ml-auto bg-black text-white text-[9px] font-bold px-2 py-0.5 rounded-full">NOVO</span>
           </a>
 

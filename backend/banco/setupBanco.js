@@ -92,19 +92,6 @@ async function inicializarBanco() {
       ) ENGINE=InnoDB;
     `);
 
-    console.log('🔔 Criando tabela NOTIFICACOES...');
-    await conexao.query(`
-      CREATE TABLE IF NOT EXISTS notificacoes (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        usuario_id INT NOT NULL,
-        tipo VARCHAR(50) NOT NULL DEFAULT 'ALERTA',
-        mensagem TEXT NOT NULL,
-        lida BOOLEAN DEFAULT FALSE,
-        data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
-      ) ENGINE=InnoDB;
-    `);
-
     // ============================
     // 2. DOMÍNIO: ENSINO & REVISÃO
     // ============================
@@ -259,7 +246,11 @@ async function inicializarBanco() {
         usuario_id INT NOT NULL,
         titulo_evento VARCHAR(255) NOT NULL,
         materia VARCHAR(100) DEFAULT NULL,
-        data_marcada DATETIME NOT NULL,
+        dia_semana VARCHAR(20) DEFAULT NULL,
+        topico VARCHAR(200) DEFAULT NULL,
+        tipo VARCHAR(20) DEFAULT 'estudo',
+        data_marcada DATETIME DEFAULT CURRENT_TIMESTAMP,
+        data_geracao DATETIME DEFAULT CURRENT_TIMESTAMP,
         duracao_estimada VARCHAR(50) DEFAULT NULL,
         concluido BOOLEAN DEFAULT FALSE,
         FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
@@ -279,6 +270,26 @@ async function inicializarBanco() {
     `);
 
     // ============================
+    // 5. DOMÍNIO: CENTRAL DE PEDIDOS (ENTENDENDO)
+    // ============================
+
+    console.log('🎫 Criando tabela CHAMADOS...');
+    await conexao.query(`
+      CREATE TABLE IF NOT EXISTS chamados (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        usuario_id INT NOT NULL,
+        tipo ENUM('explicacao', 'revisao') NOT NULL,
+        assunto VARCHAR(200) NOT NULL,
+        descricao TEXT,
+        fonte_revisao VARCHAR(50) DEFAULT NULL,
+        quantidade_questoes INT DEFAULT 10,
+        status ENUM('pendente', 'em_andamento', 'concluido') DEFAULT 'pendente',
+        data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+      ) ENGINE=InnoDB;
+    `);
+
+    // ============================
     // ÍNDICES DE PERFORMANCE
     // ============================
     console.log('🔍 Criando índices de performance...');
@@ -289,6 +300,8 @@ async function inicializarBanco() {
     await conexao.query(`CREATE INDEX IF NOT EXISTS idx_desemp_simulado ON desempenho_questoes (simulado_id);`).catch(() => {});
     await conexao.query(`CREATE INDEX IF NOT EXISTS idx_consumo_usuario_video ON consumo_ensino (usuario_id, video_id);`).catch(() => {});
     await conexao.query(`CREATE INDEX IF NOT EXISTS idx_revisoes_pendentes ON revisoes_agendadas (usuario_id, status_concluida);`).catch(() => {});
+    await conexao.query(`CREATE INDEX IF NOT EXISTS idx_chamados_usuario ON chamados (usuario_id, status);`).catch(() => {});
+    await conexao.query(`CREATE INDEX IF NOT EXISTS idx_cronograma_dia ON cronograma_pessoal (usuario_id, dia_semana);`).catch(() => {});
 
     // ============================
     // SEED: USUÁRIO DAVI + PROVAS ETEC / IFSP
@@ -331,7 +344,7 @@ async function inicializarBanco() {
     console.log('========================================');
     console.log(`📦 Database: ${nomeBanco}`);
     console.log('📊 Tabelas criadas: 15');
-    console.log('🔍 Índices criados: 7');
+    console.log('🔍 Índices criados: 9');
     console.log('========================================\n');
 
     await conexao.end();

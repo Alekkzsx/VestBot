@@ -33,10 +33,13 @@ class CartaoResolucao extends HTMLElement {
       : `<span class="bg-rose-50 text-rose-700 border border-rose-200 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5"><i class="fas fa-times-circle"></i> Você errou (Marcou ${data.marcou})</span>`;
 
     const subjectColors = {
-      'Matemática': 'bg-blue-50 text-blue-700 border-blue-200',
       'Português': 'bg-rose-50 text-rose-700 border-rose-200',
-      'Ciências': 'bg-emerald-50 text-emerald-700 border-emerald-200',
-      'Humanas': 'bg-amber-50 text-amber-700 border-amber-200'
+      'Matemática': 'bg-blue-50 text-blue-700 border-blue-200',
+      'Biologia': 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      'Física': 'bg-cyan-50 text-cyan-700 border-cyan-200',
+      'Química': 'bg-teal-50 text-teal-700 border-teal-200',
+      'História': 'bg-amber-50 text-amber-700 border-amber-200',
+      'Geografia': 'bg-orange-50 text-orange-700 border-orange-200'
     };
     const badgeColor = subjectColors[data.disciplina] || 'bg-slate-100 text-slate-700 border-slate-200';
 

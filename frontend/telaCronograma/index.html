@@ -22,65 +22,78 @@
     <barra-lateral item-ativo="cronograma"></barra-lateral>
     <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
       <barra-superior></barra-superior>
-      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1">
-        <div class="animate-fade-in font-sans text-slate-900 max-w-6xl mx-auto">
-          <header class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1 flex flex-col">
+        <div class="animate-fade-in font-sans text-slate-900 w-full mx-auto flex-1 flex flex-col">
+          <header class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4 mt-8">
             <div>
-              <h2 class="text-3xl font-bold text-slate-900 mb-1">Cronograma de Estudos</h2>
-              <p class="text-slate-500 text-sm">Organize sua semana adicionando atividades manualmente.</p>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 bg-black text-white rounded-xl flex items-center justify-center text-lg shadow-md">
+                  <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h2 class="text-3xl font-black text-slate-900 tracking-tight">Cronograma de Estudos</h2>
+              </div>
+              <p class="text-slate-500 text-sm">Trilha semanal inteligente focada nos assuntos mais cobrados da ETEC.</p>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <div class="hidden md:flex flex-col items-end mr-4">
+                <span id="progresso-semanal-texto" class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">0% Concluído</span>
+                <div class="w-32 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                  <div id="progresso-semanal-barra" class="h-full bg-black w-0 transition-all duration-500"></div>
+                </div>
+              </div>
+              <button id="btn-abrir-modal" class="bg-white text-slate-700 border border-slate-200 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-slate-50 transition-colors shadow-sm flex items-center mr-2">
+                <i class="fas fa-plus mr-2 text-slate-400"></i> Adicionar
+              </button>
+              <button id="btn-gerar-ia" class="bg-black text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-slate-800 transition-colors shadow-md flex items-center">
+                <i class="fas fa-bolt text-yellow-400 mr-2"></i> Gerar Novo
+              </button>
             </div>
           </header>
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="lg:col-span-1">
-              <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm sticky top-6">
-                <h3 class="font-bold text-slate-900 mb-6 flex items-center"><i class="fas fa-plus-circle mr-2"></i> Adicionar Atividade</h3>
-                <div class="space-y-4">
-                  <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Dia</label>
-                    <select class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
-                      <option>Segunda-feira</option><option>Terça-feira</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Matéria</label>
-                    <select class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
-                      <option>Matemática</option><option>Português</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Tópico / Assunto</label>
-                    <input type="text" placeholder="Ex: Equação de 2º Grau" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Duração</label>
-                    <input type="text" placeholder="Ex: 1h 30min" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm font-medium focus:border-black focus:ring-0 outline-none">
-                  </div>
-                  <button class="w-full bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-700 transition-colors mt-2">Adicionar</button>
-                </div>
-              </div>
-            </div>
-            <div class="lg:col-span-2 space-y-6">
-              <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="bg-slate-50 px-6 py-3 border-b border-slate-100 flex justify-between items-center">
-                  <h4 class="font-bold text-slate-900">Segunda-feira</h4>
-                  <span class="text-xs font-bold text-slate-400 uppercase">2 atividades</span>
-                </div>
-                <div class="divide-y divide-slate-50">
-                  <div class="p-4 hover:bg-slate-50 transition-colors flex items-center group">
-                    <div class="w-1 h-12 rounded-full mr-4 bg-blue-500"></div>
-                    <div class="flex-1">
-                      <div class="flex items-center gap-2 mb-1">
-                        <span class="text-[10px] font-bold uppercase tracking-wide text-slate-400 border border-slate-200 px-1.5 py-0.5 rounded">Matemática</span>
-                        <span class="text-[10px] font-bold text-slate-400 flex items-center"><i class="far fa-clock mr-1"></i> 1h 30min</span>
-                      </div>
-                      <p class="font-semibold text-slate-800">Equação de 2º Grau</p>
-                    </div>
-                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-slate-300 hover:text-red-500 hover:bg-red-50 transition-all opacity-0 group-hover:opacity-100"><i class="fas fa-trash-alt"></i></button>
-                  </div>
-                </div>
-              </div>
+          
+          <!-- Container Semanal Kanban -->
+          <div class="flex-1 overflow-x-auto pb-6 custom-scrollbar">
+            <div id="container-semanas" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 min-w-[1200px] h-full">
+              <!-- Os dias serão injetados via JS -->
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Modal Adicionar Atividade -->
+      <div id="modal-atividade" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center opacity-0 transition-opacity">
+        <div class="bg-white rounded-3xl shadow-xl w-full max-w-md p-6 transform scale-95 transition-transform duration-300">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-black text-slate-900">Nova Atividade</h3>
+            <button id="btn-fechar-modal" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition-colors"><i class="fas fa-times"></i></button>
+          </div>
+          <form id="form-atividade" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Dia da Semana</label>
+              <select id="input-dia" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:border-black focus:ring-0 outline-none" required>
+                <option value="Segunda-feira">Segunda-feira</option>
+                <option value="Terça-feira">Terça-feira</option>
+                <option value="Quarta-feira">Quarta-feira</option>
+                <option value="Quinta-feira">Quinta-feira</option>
+                <option value="Sexta-feira">Sexta-feira</option>
+                <option value="Sábado">Sábado</option>
+                <option value="Domingo">Domingo</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Matéria / Categoria</label>
+              <input type="text" id="input-materia" placeholder="Ex: Matemática, Revisão..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:border-black focus:ring-0 outline-none" required>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Tópico</label>
+              <input type="text" id="input-topico" placeholder="Ex: Regra de Três" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:border-black focus:ring-0 outline-none" required>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Duração Estimada</label>
+              <input type="text" id="input-duracao" placeholder="Ex: 1h, 45min" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:border-black focus:ring-0 outline-none" required>
+            </div>
+            <button type="submit" class="w-full bg-black text-white font-bold py-3.5 rounded-xl hover:bg-slate-800 transition-colors mt-4">Salvar Atividade</button>
+          </form>
         </div>
       </div>
     </main>
@@ -88,5 +101,12 @@
   <!-- Componentes Web em Português -->
   <script src="../componentes/BarraLateral.js"></script>
   <script src="../componentes/BarraSuperior.js"></script>
+  
+  <!-- Dexie para banco de dados local -->
+  <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+  <!-- Lógica de Sincronização Local (Necessário para carregar o banco) -->
+  <script src="../js/gerenciadorSincronizacao.js"></script>
+  <!-- Lógica da Tela -->
+  <script src="js/cronograma.js"></script>
 </body>
 </html>

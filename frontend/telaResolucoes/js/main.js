@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentOrigin = 'all';
   let currentSearch = '';
 
-  const cards = document.querySelectorAll('resolution-card');
+  const cards = document.querySelectorAll('cartao-resolucao, resolution-card');
   const emptyState = document.getElementById('resolutions-empty-state');
   const cardsCountDisplay = document.getElementById('resolutions-visible-count');
 
@@ -18,14 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const enunciado = (card.getAttribute('data-enunciado') || '').toLowerCase();
       const assunto = (card.getAttribute('data-assunto') || '').toLowerCase();
 
-      // Check status
+      // Verifica status
       const matchStatus = currentStatus === 'all' || status === currentStatus;
-      // Check subject
-      const matchSubject = currentSubject === 'all' || subject === currentSubject;
-      // Check origin
+      // Verifica matéria (7 matérias oficiais da ETEC)
+      const matchSubject = currentSubject === 'all' || subject.toLowerCase() === currentSubject.toLowerCase();
+      // Verifica origem / prova
       const matchOrigin = currentOrigin === 'all' || origin === currentOrigin;
-      // Check search
-      const matchSearch = currentSearch === '' || enunciado.includes(currentSearch) || assunto.includes(currentSearch);
+      // Verifica busca por texto
+      const matchSearch = currentSearch === '' || enunciado.includes(currentSearch) || assunto.includes(currentSearch) || subject.toLowerCase().includes(currentSearch);
 
       if (matchStatus && matchSubject && matchOrigin && matchSearch) {
         card.style.display = 'block';
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Event Listeners: Status Tabs
+  // Ouvintes de Eventos: Abas de Status
   const statusButtons = document.querySelectorAll('.filter-status-btn');
   statusButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Event Listeners: Subject Buttons
+  // Ouvintes de Eventos: Pílulas das 7 Matérias
   const subjectButtons = document.querySelectorAll('.filter-subject-btn');
   subjectButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Event Listener: Origin Select
+  // Ouvinte de Evento: Select de Origem
   const originSelect = document.getElementById('select-origin-filter');
   if (originSelect) {
     originSelect.addEventListener('change', (e) => {
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Event Listener: Search input
+  // Ouvinte de Evento: Campo de Busca
   const searchInput = document.getElementById('input-search-resolutions');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -98,6 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Initial calculation
+  // Cálculo e filtro inicial
   filterCards();
 });

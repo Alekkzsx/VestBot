@@ -171,23 +171,29 @@ class SimuladoPersonalizado extends HTMLElement {
               </h3>
               <p class="text-xs text-slate-500 mb-6">Filtre a régua de corte das questões.</p>
 
-              <div class="grid grid-cols-3 gap-2">
-                <label class="flex flex-col items-center justify-center p-3 rounded-2xl border border-slate-200 cursor-pointer hover:border-slate-400 transition-all text-center has-[:checked]:border-black has-[:checked]:bg-slate-900 has-[:checked]:text-white">
-                  <input type="radio" name="custom-screen-difficulty" value="all" class="sr-only" checked>
-                  <i class="fas fa-layer-group text-sm mb-1"></i>
-                  <span class="text-xs font-bold">Mista</span>
-                </label>
-
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 <label class="flex flex-col items-center justify-center p-3 rounded-2xl border border-slate-200 cursor-pointer hover:border-slate-400 transition-all text-center has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-600 has-[:checked]:text-white">
                   <input type="radio" name="custom-screen-difficulty" value="Fácil" class="sr-only">
                   <i class="fas fa-smile text-sm mb-1"></i>
                   <span class="text-xs font-bold">Fácil</span>
                 </label>
 
+                <label class="flex flex-col items-center justify-center p-3 rounded-2xl border border-slate-200 cursor-pointer hover:border-slate-400 transition-all text-center has-[:checked]:border-amber-500 has-[:checked]:bg-amber-500 has-[:checked]:text-white">
+                  <input type="radio" name="custom-screen-difficulty" value="Média" class="sr-only">
+                  <i class="fas fa-meh text-sm mb-1"></i>
+                  <span class="text-xs font-bold">Média</span>
+                </label>
+
                 <label class="flex flex-col items-center justify-center p-3 rounded-2xl border border-slate-200 cursor-pointer hover:border-slate-400 transition-all text-center has-[:checked]:border-rose-600 has-[:checked]:bg-rose-600 has-[:checked]:text-white">
                   <input type="radio" name="custom-screen-difficulty" value="Difícil" class="sr-only">
                   <i class="fas fa-fire text-sm mb-1"></i>
-                  <span class="text-xs font-bold">Desafio</span>
+                  <span class="text-xs font-bold">Difícil</span>
+                </label>
+
+                <label class="flex flex-col items-center justify-center p-3 rounded-2xl border border-slate-200 cursor-pointer hover:border-slate-400 transition-all text-center has-[:checked]:border-black has-[:checked]:bg-slate-900 has-[:checked]:text-white">
+                  <input type="radio" name="custom-screen-difficulty" value="all" class="sr-only" checked>
+                  <i class="fas fa-layer-group text-sm mb-1"></i>
+                  <span class="text-xs font-bold">Mista</span>
                 </label>
               </div>
             </div>

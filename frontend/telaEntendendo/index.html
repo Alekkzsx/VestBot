@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETECPRO - Entendendo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex flex-col md:flex-row font-sans text-slate-800 bg-slate-50">
+    <barra-lateral item-ativo="entendendo"></barra-lateral>
+    
+    <main class="flex-1 h-[calc(100vh)] overflow-y-auto bg-[#f8fafc] relative flex flex-col">
+      <barra-superior></barra-superior>
+      
+      <div class="max-w-[1600px] mx-auto px-6 md:px-12 md:pb-12 w-full flex-1 pt-8">
+        <div class="animate-fade-in font-sans text-slate-900 max-w-6xl mx-auto">
+          
+          <header class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h2 class="text-3xl font-black text-slate-900 mb-2 flex items-center gap-3">
+                <i class="fas fa-headset text-indigo-500"></i> Central de Pedidos
+              </h2>
+              <p class="text-slate-500 text-sm">Peça explicações teóricas ou revisões focadas. Seus chamados ficam registrados aqui.</p>
+            </div>
+            <button id="btn-abrir-chamado" class="bg-black text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-slate-800 transition-colors shadow-md flex items-center gap-2">
+              <i class="fas fa-plus"></i> Novo Chamado
+            </button>
+          </header>
+
+          <!-- Board de Chamados -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+            
+            <!-- Coluna Pendentes -->
+            <div class="bg-slate-100 rounded-3xl p-5 min-h-[500px] flex flex-col">
+              <div class="flex items-center justify-between mb-4 px-2">
+                <h3 class="font-bold text-slate-700 flex items-center gap-2"><i class="fas fa-clock text-amber-500"></i> Pendentes</h3>
+                <span id="badge-pendentes" class="bg-slate-200 text-slate-600 text-xs font-bold px-2.5 py-1 rounded-full">0</span>
+              </div>
+              <div id="lista-pendentes" class="flex-1 space-y-3">
+                <!-- Cards renderizados via JS -->
+              </div>
+            </div>
+
+            <!-- Coluna Em Andamento (Placeholder visual) -->
+            <div class="bg-slate-100 rounded-3xl p-5 min-h-[500px] flex flex-col opacity-60">
+              <div class="flex items-center justify-between mb-4 px-2">
+                <h3 class="font-bold text-slate-700 flex items-center gap-2"><i class="fas fa-spinner fa-spin text-blue-500"></i> Em Andamento</h3>
+              </div>
+              <div class="flex-1 flex items-center justify-center border-2 border-dashed border-slate-300 rounded-2xl">
+                <p class="text-slate-400 text-sm font-medium text-center px-4">Chamados aguardando IA ou Professor.</p>
+              </div>
+            </div>
+
+            <!-- Coluna Concluídos (Placeholder visual) -->
+            <div class="bg-slate-100 rounded-3xl p-5 min-h-[500px] flex flex-col opacity-60">
+              <div class="flex items-center justify-between mb-4 px-2">
+                <h3 class="font-bold text-slate-700 flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> Concluídos</h3>
+              </div>
+              <div class="flex-1 flex items-center justify-center border-2 border-dashed border-slate-300 rounded-2xl">
+                <p class="text-slate-400 text-sm font-medium text-center px-4">Histórico de respostas ficará aqui.</p>
+              </div>
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Novo Chamado -->
+      <div id="modal-chamado" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center opacity-0 transition-opacity">
+        <div class="bg-white rounded-3xl shadow-xl w-full max-w-lg p-8 transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-black text-slate-900">Abrir Chamado</h3>
+            <button id="btn-fechar-chamado" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition-colors"><i class="fas fa-times"></i></button>
+          </div>
+          
+          <form id="form-chamado" class="space-y-5">
+            <!-- Tipo de Pedido -->
+            <div>
+              <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">Qual é o seu pedido?</label>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="cursor-pointer">
+                  <input type="radio" name="tipoChamado" value="explicacao" class="peer hidden" checked>
+                  <div class="p-4 border-2 border-slate-200 rounded-2xl peer-checked:border-indigo-500 peer-checked:bg-indigo-50 transition-all text-center">
+                    <i class="fas fa-comment-dots text-2xl text-slate-400 peer-checked:text-indigo-500 mb-2 block"></i>
+                    <span class="font-bold text-slate-700 peer-checked:text-indigo-700 text-sm">Explicação</span>
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="tipoChamado" value="revisao" class="peer hidden">
+                  <div class="p-4 border-2 border-slate-200 rounded-2xl peer-checked:border-emerald-500 peer-checked:bg-emerald-50 transition-all text-center">
+                    <i class="fas fa-tasks text-2xl text-slate-400 peer-checked:text-emerald-500 mb-2 block"></i>
+                    <span class="font-bold text-slate-700 peer-checked:text-emerald-700 text-sm">Revisão</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Assunto -->
+            <div>
+              <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Matéria ou Assunto</label>
+              <input type="text" id="input-assunto-chamado" placeholder="Ex: Fotossíntese, Revolução Russa..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:border-black focus:ring-0 outline-none" required>
+            </div>
+
+            <!-- Campos Dinâmicos (Explicação) -->
+            <div id="bloco-explicacao">
+              <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">O que você não entendeu?</label>
+              <textarea id="input-duvida" rows="4" placeholder="Descreva sua dúvida com detalhes..." class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:border-black focus:ring-0 outline-none resize-none"></textarea>
+            </div>
+
+            <!-- Campos Dinâmicos (Revisão) -->
+            <!-- Campos Dinâmicos (Revisão) -->
+            <div id="bloco-revisao" class="hidden space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Qual tipo de revisão você quer fazer?</label>
+                <select id="input-fonte-revisao" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:border-black focus:ring-0 outline-none">
+                  <option value="simulado">Revisão por questões de simulado</option>
+                  <option value="interpretacao">Revisão por questões de interpretação</option>
+                  <option value="ambos">Misto (Ambos)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Quantidade de questões</label>
+                <input type="number" id="input-qtd-revisao" min="1" max="50" value="10" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:border-black focus:ring-0 outline-none" required>
+              </div>
+              <p class="text-xs text-slate-400 mt-2"><i class="fas fa-info-circle"></i> O sistema irá gerar um bloco de questões baseado no tipo selecionado e no assunto acima.</p>
+            </div>
+
+            <button type="submit" class="w-full bg-black text-white font-bold py-3.5 rounded-xl hover:bg-slate-800 transition-colors mt-6 shadow-md flex items-center justify-center gap-2">
+              <i class="fas fa-paper-plane"></i> Enviar Pedido
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Componentes Web em Português -->
+  <script src="../componentes/BarraLateral.js"></script>
+  <script src="../componentes/BarraSuperior.js"></script>
+  
+  <!-- Banco Local -->
+  <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+  <script src="../js/gerenciadorSincronizacao.js"></script>
+  
+  <!-- Lógica da Central de Pedidos -->
+  <script src="js/entendendo.js"></script>
+</body>
+</html>

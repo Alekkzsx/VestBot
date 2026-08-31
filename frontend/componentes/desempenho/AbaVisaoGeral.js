@@ -31,6 +31,36 @@ class AbaVisaoGeral extends HTMLElement {
           </div>
         </div>
 
+        <!-- Status do Banco de Questões -->
+        <div class="bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm mb-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="relative z-10 w-full md:w-1/3">
+            <h3 class="font-black text-xl mb-1 flex items-center gap-2 text-slate-900"><i class="fas fa-database text-black"></i> Banco de Questões</h3>
+            <p class="text-slate-500 text-xs">Explore todo o conteúdo disponível no sistema.</p>
+          </div>
+          
+          <div class="relative z-10 flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 flex flex-col items-center justify-center text-center shadow-sm">
+              <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Simulados</span>
+              <span class="text-3xl font-black text-black">2.540</span>
+              <span class="text-slate-500 text-[10px]">questões totais</span>
+            </div>
+            
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 flex flex-col items-center justify-center text-center shadow-sm">
+              <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Interpretação</span>
+              <span class="text-3xl font-black text-black">850</span>
+              <span class="text-slate-500 text-[10px]">questões totais</span>
+            </div>
+            
+            <div class="bg-black p-4 rounded-2xl flex flex-col items-center justify-center text-center shadow-md">
+              <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Respondidas</span>
+              <span class="text-3xl font-black text-white">10%</span>
+              <span class="text-slate-300 text-[10px] mt-1 pt-1 w-full text-center">
+                Feitas: <b class="text-white">254</b> Simulados • <b class="text-white">85</b> Interp.
+              </span>
+            </div>
+          </div>
+        </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           <!-- Gráfico de Evolução -->
           <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
