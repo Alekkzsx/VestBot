@@ -45,10 +45,34 @@ class ExecutorSimulado extends HTMLElement {
                   <span id="q-topic-badge" class="text-xs font-bold text-slate-500">
                     Geometria Plana
                   </span>
+                  <span id="q-ref-indicator-badge" class="hidden text-xs font-bold px-2.5 py-1 rounded-lg bg-amber-100 text-amber-900 border border-amber-200 items-center gap-1">
+                    <i class="fas fa-file-lines text-amber-700"></i> Texto de Referência
+                  </span>
                 </div>
                 <button id="btn-flag-review" class="text-xs font-bold text-slate-400 hover:text-amber-500 flex items-center gap-1.5 transition-colors">
                   <i class="far fa-flag"></i> <span>Marcar para Revisar</span>
                 </button>
+              </div>
+
+              <!-- Texto de Referência (Exibido quando a questão possui texto-base) -->
+              <div id="q-reference-container" class="hidden mb-6 bg-amber-50/60 border border-amber-200/90 rounded-2xl p-5 md:p-6 transition-all">
+                <div class="flex items-center justify-between gap-3 mb-3 pb-2 border-b border-amber-200/70">
+                  <div class="flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center text-xs">
+                      <i class="fas fa-book-open"></i>
+                    </span>
+                    <span id="q-ref-badge" class="text-xs font-black text-amber-900 uppercase tracking-wider">
+                      Texto de Referência
+                    </span>
+                  </div>
+                  <span id="q-ref-source" class="text-[11px] font-medium text-amber-800/80 italic"></span>
+                </div>
+                <h4 id="q-ref-title" class="font-bold text-slate-900 text-sm md:text-base mb-2 font-serif"></h4>
+                <div id="q-ref-content" class="text-xs md:text-sm text-slate-800 leading-relaxed font-serif prose prose-slate max-w-none space-y-2"></div>
+                <div id="q-ref-image-container" class="hidden mt-4 pt-3 border-t border-amber-200/50 text-center">
+                  <img id="q-ref-image" src="" alt="Figura de referência" class="max-h-64 mx-auto rounded-xl shadow-sm border border-amber-200">
+                  <p id="q-ref-image-caption" class="text-[11px] text-slate-500 mt-1 italic"></p>
+                </div>
               </div>
 
               <!-- Número e Enunciado -->
