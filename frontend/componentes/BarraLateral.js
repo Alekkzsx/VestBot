@@ -75,11 +75,6 @@ class BarraLateral extends HTMLElement {
             <i class="fas fa-chart-line w-5 text-center text-lg transition-colors mr-3 ${['desempenho', 'performance'].includes(itemAtivo) ? 'text-black' : 'text-slate-400'}"></i>
             <span class="sidebar-expanded-only">Desempenho</span>
           </a>
-          <a href="../telaEngenharia/index.html" class="nav-item w-full text-left px-4 py-3.5 rounded-xl transition-all font-medium flex items-center text-sm group relative ${['engenharia', 'engineering'].includes(itemAtivo) ? 'bg-slate-100 text-black font-semibold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}">
-            <i class="fas fa-database w-5 text-center text-lg transition-colors mr-3 ${['engenharia', 'engineering'].includes(itemAtivo) ? 'text-black' : 'text-slate-400'}"></i>
-            <span class="sidebar-expanded-only">Engenharia</span>
-            <span class="sidebar-expanded-only ml-auto bg-red-100 text-red-700 text-[9px] font-bold px-2 py-0.5 rounded-full"><i class="fas fa-lock"></i> ADMIN</span>
-          </a>
         </nav>
 
         <div class="p-6 border-t border-slate-100">
