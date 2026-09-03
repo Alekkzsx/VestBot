@@ -527,55 +527,12 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
 
-          <!-- PASSO 2: ESCOLHA DO TEXTÃO -->
-          <div class="border-t border-slate-100 pt-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-sm font-black text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                <span class="w-6 h-6 rounded-lg bg-black text-white text-xs flex items-center justify-center font-bold">2</span>
-                Selecione o Textão Âncora:
-              </h3>
-              <span class="text-xs text-slate-400 font-medium">${textosFiltrados.length} disponível(is) neste eixo</span>
-            </div>
-
-            <div class="space-y-3" id="container-textos">
-              ${textosFiltrados.map(t => {
-                const isSelected = textaoSelecionadoId === t.id;
-                return `
-                  <div data-textoid="${t.id}" class="card-select-texto p-4 md:p-5 rounded-2xl border-2 transition-all cursor-pointer flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3
-                    ${isSelected ? 'border-blue-600 bg-blue-50/40 ring-2 ring-blue-600/20 shadow-sm' : 'border-slate-200 bg-white hover:border-slate-300'}">
-                    <div class="flex-1">
-                      <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-                        <span class="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">
-                          ${t.tema}
-                        </span>
-                        <span class="text-[11px] text-slate-400 font-medium italic">
-                          Fonte: ${t.fonte}
-                        </span>
-                      </div>
-                      <h4 class="font-bold text-base text-slate-900 mb-1">${t.titulo}</h4>
-                      <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">
-                        ${t.texto.replace(/<[^>]*>?/gm, ' ').substring(0, 150)}...
-                      </p>
-                    </div>
-
-                    <div class="shrink-0 flex items-center gap-2">
-                      <span class="text-xs font-bold ${isSelected ? 'text-blue-700 bg-blue-100' : 'text-slate-500 bg-slate-100'} px-3 py-1.5 rounded-xl flex items-center gap-1.5">
-                        <i class="fas ${isSelected ? 'fa-check-circle' : 'fa-circle'} text-[10px]"></i>
-                        ${isSelected ? 'Selecionado' : 'Escolher'}
-                      </span>
-                    </div>
-                  </div>
-                `;
-              }).join('')}
-            </div>
-          </div>
-
-          <!-- PASSO 3: QUANTIDADE DE QUESTÕES DO TEXTÃO (1 A 4 QUESTÕES) -->
+          <!-- PASSO 2: QUANTIDADE DE QUESTÕES DO TEXTÃO (1 A 4 QUESTÕES) -->
           <div class="border-t border-slate-100 pt-6">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
               <h3 class="text-sm font-black text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                <span class="w-6 h-6 rounded-lg bg-black text-white text-xs flex items-center justify-center font-bold">3</span>
-                Quantas Questões deseja responder deste Textão?
+                <span class="w-6 h-6 rounded-lg bg-black text-white text-xs flex items-center justify-center font-bold">2</span>
+                Quantas Questões deseja responder do Textão sorteado?
               </h3>
               <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
                 Disponíveis: até 4 questões
@@ -644,13 +601,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Eventos de seleção do textão
-    document.querySelectorAll('.card-select-texto').forEach(card => {
-      card.addEventListener('click', () => {
-        textaoSelecionadoId = card.getAttribute('data-textoid');
-        renderLobby();
-      });
-    });
+    // (A seleção do textão agora é aleatória, no momento de iniciar)
 
     // Eventos de quantidade de questões (1 a 4)
     document.querySelectorAll('.btn-select-qtd').forEach(btn => {
@@ -673,7 +624,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // INICIAR SESSÃO DE INTERPRETAÇÃO
   // ==========================================
   function iniciarSessaoInterpretação() {
-    textaoAtivo = bancoTextos.find(t => t.id === textaoSelecionadoId) || bancoTextos[0];
+    const textosFiltrados = bancoTextos.filter(t => t.materia === materiaSelecionada);
+    // Seleciona um textão aleatório dentre os disponíveis para a matéria
+    const textoSorteado = textosFiltrados[Math.floor(Math.random() * textosFiltrados.length)] || bancoTextos[0];
+    
+    textaoAtivo = textoSorteado;
     
     // Pega exatamente a quantidade de questões escolhida pelo usuário (1 a 4)
     questoesDaSessao = textaoAtivo.questoes.slice(0, qtdQuestoesSelecionada);
