@@ -7,7 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'ETEC-PORT-01',
       disciplina: 'Português',
       assunto: 'Interpretação & Figuras',
-      enunciado: 'No trecho: "O silêncio da noite gritava nos ouvidos do estudante cansado", o recurso estilístico empregado para conferir expressividade ao texto é classificado como:',
+      enunciado: 'No trecho citado no Texto I ("O silêncio da noite gritava nos ouvidos do estudante cansado"), o recurso estilístico empregado para conferir expressividade ao texto é classificado como:',
+      textoReferencia: {
+        titulo: 'Texto I: A Vigília dos Vestibulandos',
+        fonte: 'Antologia de Contos Contemporâneos / Vestibulinho ETEC',
+        conteudo: '<p class="italic">"A lâmpada da escrivaninha lançava uma sombra trêmula sobre as páginas abertas de matemática. O relógio da parede marcava duas da madrugada. Lá fora, a cidade dormia um sono profundo, mas dentro do quarto o silêncio da noite gritava nos ouvidos do estudante cansado, lembrando-o da aproximação do exame seletivo."</p>',
+        instrucao: 'Leia o texto de referência para responder à questão.'
+      },
       alternativas: [
         { letra: 'A', texto: 'Eufemismo' },
         { letra: 'B', texto: 'Paradoxo / Oxímoro' },
@@ -21,7 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'ETEC-MAT-01',
       disciplina: 'Matemática',
       assunto: 'Áreas & Geometria Plana',
-      enunciado: 'Um laboratório de informática de uma ETEC tem piso retangular medindo 8 metros de comprimento por 6 metros de largura. Para cobrir todo o piso com placas quadradas de 0,5 m de lado, a quantidade de placas necessárias será de:',
+      enunciado: 'Considere o memorial descritivo do laboratório no texto de referência. Para cobrir todo o piso de 8 metros de comprimento por 6 metros de largura com placas quadradas de 0,5 m de lado, a quantidade de placas necessárias será de:',
+      textoReferencia: {
+        titulo: 'Memorial Descritivo: Instalação do Laboratório Maker',
+        fonte: 'Boletim de Obras Escolares / CPS',
+        conteudo: '<p class="italic">"O projeto de modernização prevê a instalação de piso vinílico de alta resistência no novo laboratório de informática. A sala possui formato perfeitamente retangular medindo 8 metros de comprimento por 6 metros de largura. O piso será revestido com placas quadradas idênticas de 0,5 m de lado sem perdas no assentamento."</p>',
+        instrucao: 'Considere as dimensões citadas no texto para os cálculos.'
+      },
       alternativas: [
         { letra: 'A', texto: '96 placas' },
         { letra: 'B', texto: '144 placas' },
@@ -35,7 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'ETEC-BIO-01',
       disciplina: 'Biologia',
       assunto: 'Ecologia & Cadeia Trófica',
-      enunciado: 'Em um ecossistema aquático, a proliferação excessiva de algas devido ao despejo de esgoto orgânico provoca a queda do oxigênio dissolvido na água e a mortandade de peixes. Esse fenômeno ambiental é denominado:',
+      enunciado: 'O processo de colapso ambiental nos reservatórios urbanos detalhado no texto de referência é cientificamente denominado:',
+      textoReferencia: {
+        titulo: 'Texto II: Efluentes Domésticos e a Asfixia dos Mananciais',
+        fonte: 'Relatório de Qualidade das Águas / CETESB',
+        conteudo: '<p class="italic">"Em ecossistemas aquáticos urbanos, a descarga contínua de esgotos sem tratamento injeta toneladas de fosfatos e nitratos na água. O excesso desses compostos provoca o florescimento exponencial de algas na superfície, formando uma manta verde que bloqueia a luz solar. A consequente decomposição aeróbica esgota o oxigênio dissolvido, levando peixes à asfixia."</p>',
+        imagemUrl: '../images/amazonia-densidade.png',
+        legendaImagem: 'Monitoramento da qualidade e impacto em corpos d\'água metropolitanos.'
+      },
       alternativas: [
         { letra: 'A', texto: 'Bioacumulação' },
         { letra: 'B', texto: 'Eutrofização' },
@@ -49,7 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'ETEC-FIS-01',
       disciplina: 'Física',
       assunto: 'Cinemática & Velocidade Média',
-      enunciado: 'Um trem da CPTM parte de Jundiaí com destino à estação Barra Funda, percorrendo uma distância de 60 km em exatamente 45 minutos. A velocidade escalar média desse trem durante o trajeto foi de:',
+      enunciado: 'Com base nas informações do relatório operacional da CPTM, a velocidade escalar média do trem durante o trajeto entre Jundiaí e Barra Funda foi de:',
+      textoReferencia: {
+        titulo: 'Painel Informativo: Expresso Ferroviário Interurbano',
+        fonte: 'Companhia Paulista de Trens Metropolitanos (CPTM)',
+        conteudo: '<p class="italic">"Um trem de passageiros parte pontualmente da estação Jundiaí com destino à estação Barra Funda na capital. O percurso total de 60 quilômetros foi completado pelos trilhos em exatamente 45 minutos (três quartos de hora), mantendo movimento uniforme e sem paradas de emergência."</p>',
+        imagemUrl: '../images/trilhos.png',
+        legendaImagem: 'Malha ferroviária do transporte intermunicipal paulista.'
+      },
       alternativas: [
         { letra: 'A', texto: '60 km/h' },
         { letra: 'B', texto: '75 km/h' },
@@ -77,9 +103,14 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'ETEC-HIST-01',
       disciplina: 'História',
       assunto: 'Era Vargas & Industrialização',
-      enunciado: 'Durante o primeiro governo de Getúlio Vargas (1930-1945), o Brasil passou por uma intensa reestruturação econômica e trabalhista, destacando-se:',
+      enunciado: 'O fragmento do documento histórico no texto de referência expressa qual projeto político-econômico do governo Getúlio Vargas?',
+      textoReferencia: {
+        titulo: 'Texto III: Trecho da Carta-Testamento de Getúlio Vargas (1954)',
+        fonte: 'Centro de Pesquisa e Documentação de História Contemporânea do Brasil (CPDOC/FGV)',
+        conteudo: '<p class="italic">"A campanha subterrânea dos grupos internacionais aliou-se à dos grupos nacionais revoltados contra o regime de garantia do trabalho. Quis criar a liberdade nacional na potencialização das nossas riquezas através da Petrobras e, mal começa esta a funcionar, a onda de agitação se avoluma. Lutei contra a espoliação do Brasil."</p>'
+      },
       alternativas: [
-        { letra: 'A', texto: 'A criação da CLT e a implantação da indústria de base nacional (CSN e Vale).' },
+        { letra: 'A', texto: 'A criação da CLT e a implantação da indústria de base nacional (CSN e Petrobras).' },
         { letra: 'B', texto: 'A privatização imediata de todas as ferrovias estaduais.' },
         { letra: 'C', texto: 'A proibição do voto feminino em todo o território nacional.' },
         { letra: 'D', texto: 'O alinhamento irrestrito com as potências do Eixo na Segunda Guerra.' },
@@ -91,7 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'ETEC-GEO-01',
       disciplina: 'Geografia',
       assunto: 'Domínios Morfoclimáticos & Biomas',
-      enunciado: 'O domínio morfoclimático brasileiro caracterizado por clima semiárido, rios intermitentes e vegetação adaptada à escassez hídrica com plantas xerófitas é a:',
+      enunciado: 'O domínio morfoclimático brasileiro descrito no texto de apoio, caracterizado por clima semiárido, rios intermitentes e vegetação xerófita adaptada à escassez hídrica, é a:',
+      textoReferencia: {
+        titulo: 'Texto IV: O Domínio das Caatingas Sertanejas',
+        fonte: 'Atlas Geográfico Escolar / IBGE & Prova ETEC',
+        conteudo: '<p class="italic">"Trata-se de uma paisagem de aproximadamente 850 mil km² no interior brasileiro, caracterizada por solos rasos, rios temporários e espécies vegetais adaptadas à baixa pluviosidade. Para resistir à seca, muitas árvores e arbustos perdem as folhas e apresentam caules suculentos e espinhos."</p>',
+        imagemUrl: '../images/mapa_norte.png',
+        legendaImagem: 'Distribuição espacial das áreas de semiárido no Brasil.'
+      },
       alternativas: [
         { letra: 'A', texto: 'Mata das Araucárias' },
         { letra: 'B', texto: 'Mares de Morros' },
@@ -103,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  // Gera questões dinâmicas com suporte às 7 matérias
+  // Gera questões dinâmicas com suporte às 7 matérias e preservação do Texto de Referência
   function generateExamQuestions(total = 50, selectedSubjects = ['Português', 'Matemática', 'Biologia', 'Física', 'Química', 'História', 'Geografia'], difficulty = 'all') {
     const subjects = selectedSubjects.length > 0 ? selectedSubjects : ['Português', 'Matemática', 'Biologia', 'Física', 'Química', 'História', 'Geografia'];
     const topics = {
@@ -134,11 +172,13 @@ document.addEventListener('DOMContentLoaded', () => {
         dificuldade: diffLabel,
         enunciado: `(${subject} • ${topic} • Nível ${diffLabel}) ${matchPool.enunciado}`,
         alternativas: matchPool.alternativas,
-        correta: matchPool.correta
+        correta: matchPool.correta,
+        textoReferencia: matchPool.textoReferencia || null
       });
     }
     return examQuestions;
   }
+
 
   // ==========================================
   // ESTADO DA APLICAÇÃO
@@ -181,6 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnNext = document.getElementById('btn-next-question');
   const btnFlagReview = document.getElementById('btn-flag-review');
   const qStatusIndicator = document.getElementById('q-status-indicator');
+
+  // Elementos do Texto de Referência
+  const qReferenceContainer = document.getElementById('q-reference-container');
+  const qRefTitle = document.getElementById('q-ref-title');
+  const qRefContent = document.getElementById('q-ref-content');
+  const qRefSource = document.getElementById('q-ref-source');
+  const qRefImageContainer = document.getElementById('q-ref-image-container');
+  const qRefImage = document.getElementById('q-ref-image');
+  const qRefImageCaption = document.getElementById('q-ref-image-caption');
+  const qRefIndicatorBadge = document.getElementById('q-ref-indicator-badge');
 
   // ==========================================
   // NAVEGAÇÃO ENTRE AS 4 TELAS (Hub -> Custom -> Player -> Result)
@@ -402,6 +452,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (qTopicBadge) qTopicBadge.textContent = q.assunto;
     if (qNumberTitle) qNumberTitle.textContent = `Questão ${String(q.index).padStart(2, '0')} de ${currentQuestions.length}`;
     if (qStatementText) qStatementText.textContent = q.enunciado;
+
+    // Renderiza Texto de Referência (se a questão possuir o atributo textoReferencia)
+    if (qReferenceContainer) {
+      if (q.textoReferencia) {
+        qReferenceContainer.classList.remove('hidden');
+        if (qRefIndicatorBadge) qRefIndicatorBadge.classList.remove('hidden');
+
+        if (qRefTitle) qRefTitle.textContent = q.textoReferencia.titulo || 'Texto de Referência';
+        if (qRefSource) qRefSource.textContent = q.textoReferencia.fonte ? `Fonte: ${q.textoReferencia.fonte}` : '';
+        if (qRefContent) {
+          qRefContent.innerHTML = q.textoReferencia.conteudo || '';
+        }
+
+        if (qRefImageContainer && qRefImage) {
+          if (q.textoReferencia.imagemUrl) {
+            qRefImage.src = q.textoReferencia.imagemUrl;
+            if (qRefImageCaption) qRefImageCaption.textContent = q.textoReferencia.legendaImagem || 'Figura associada ao texto de referência.';
+            qRefImageContainer.classList.remove('hidden');
+          } else {
+            qRefImageContainer.classList.add('hidden');
+          }
+        }
+      } else {
+        qReferenceContainer.classList.add('hidden');
+        if (qRefIndicatorBadge) qRefIndicatorBadge.classList.add('hidden');
+      }
+    }
 
     // Atualiza botão de dúvida
     if (btnFlagReview) {
