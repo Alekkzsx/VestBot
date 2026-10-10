@@ -12,6 +12,7 @@ import { ContentService } from './services/content.service';
 import { ActivitySessionService } from './services/activity-session.service';
 import { AIService } from './services/ai.service';
 import { AnalyticsService } from './services/analytics.service';
+import { UserDataService } from './services/user-data.service';
 
 
 type View = 'dashboard' | 'quiz' | 'interpretation' | 'performance' | 'schedule' | 'resolutions' | 'analytics' | 'lessons';
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
   activitySession = inject(ActivitySessionService);
   private aiService = inject(AIService);
   analyticsService = inject(AnalyticsService);
+  userDataService = inject(UserDataService);
 
   currentView = signal<View>('dashboard');
   sidebarOpen = signal(false); // Mobile drawer

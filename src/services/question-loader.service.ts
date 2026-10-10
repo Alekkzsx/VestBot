@@ -62,11 +62,16 @@ export class QuestionLoaderService {
                 throw new Error(`File ${filename} not found`);
             }
 
-            console.log(`Loading questions from ${file.path}...`);
-
-            // Use HttpClient to fetch the file
-            const text = await firstValueFrom(this.http.get(file.path, { responseType: 'text' }));
-            const rawQuestions: QuestionFileFormat[] = JSON.parse(text);
+            let rawQuestions: QuestionFileFormat[] = [];
+            try {
+                // Tentar carregar da API conectada ao banco MySQL
+                rawQuestions = await firstValueFrom(this.http.get<QuestionFileFormat[]>('/api/questions/simulado'));
+                console.log(`✓ Carregadas ${rawQuestions.length} questões via API/MySQL`);
+            } catch (apiErr) {
+                console.warn('⚠️ Falha ao buscar questões via API, usando fallback do arquivo local:', apiErr);
+                const text = await firstValueFrom(this.http.get(file.path, { responseType: 'text' }));
+                rawQuestions = JSON.parse(text);
+            }
 
             // Convert to Question format
             const questions = rawQuestions.map(q => this.convertQuestion(q));
@@ -78,7 +83,7 @@ export class QuestionLoaderService {
             // Cache the questions
             this.questionCache.set(filename, questions);
 
-            console.log(`✓ Loaded ${questions.length} questions from ${filename}`);
+            console.log(`✓ Loaded ${questions.length} questions for ${filename}`);
 
             return questions;
         } catch (error) {

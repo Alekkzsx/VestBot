@@ -79,17 +79,17 @@
       @if (!isCollapsed()) {
       <div class="flex items-center">
         <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold">
-          <i class="fas fa-user"></i>
+          <i class="fas fa-user-graduate"></i>
         </div>
         <div class="ml-3">
-          <p class="text-sm font-bold text-black">Estudante</p>
+          <p class="text-sm font-bold text-black">Davi</p>
           <p class="text-xs text-slate-500">Nível {{ stats().level }}</p>
         </div>
       </div>
       } @else {
       <div class="flex justify-center">
         <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs">
-          <i class="fas fa-user"></i>
+          <i class="fas fa-user-graduate"></i>
         </div>
       </div>
       }
@@ -111,6 +111,29 @@
 
     <!-- Top Bar (Desktop) -->
     <div class="hidden md:flex justify-end items-center px-12 py-8 gap-4 shrink-0">
+      <!-- MySQL / Offline Status Badge -->
+      <div class="flex items-center gap-2">
+        @if (userDataService.syncStatus() === 'synced') {
+          <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse"></span>
+            <span>MySQL Conectado</span>
+          </div>
+        } @else if (userDataService.syncStatus() === 'saving') {
+          <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center shadow-sm">
+            <i class="fas fa-circle-notch fa-spin mr-2"></i>
+            <span>Sincronizando com o PC...</span>
+          </div>
+        } @else {
+          <button (click)="userDataService.triggerAutoSync()" 
+            title="Clique para tentar sincronizar agora"
+            class="bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center shadow-sm transition-colors cursor-pointer">
+            <span class="w-2 h-2 rounded-full bg-amber-500 mr-2"></span>
+            <span>Modo Offline (Salvo no Navegador)</span>
+            <i class="fas fa-sync-alt ml-2 text-xs opacity-70"></i>
+          </button>
+        }
+      </div>
+
       <!-- Global Timer -->
       <div
         class="bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm text-sm font-medium text-slate-600 flex items-center">

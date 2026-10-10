@@ -60,12 +60,18 @@ export class InterpretationService {
         try {
             console.log('🔄 Loading interpretation questions...');
 
-            // Carregar arquivo JSON
-            const response = await firstValueFrom(
-                this.http.get<any[]>('/questions/Questões-Interpretação.json')
-            );
-
-            console.log(`✓ Loaded ${response.length} interpretation questions`);
+            let response: any[] = [];
+            try {
+                response = await firstValueFrom(
+                    this.http.get<any[]>('/api/questions/interpretacao')
+                );
+                console.log(`✓ Loaded ${response.length} interpretation questions via API/MySQL`);
+            } catch (apiErr) {
+                console.warn('⚠️ Fallback para arquivo local de interpretação:', apiErr);
+                response = await firstValueFrom(
+                    this.http.get<any[]>('/questions/Questões-Interpretação.json')
+                );
+            }
 
             // Agrupar questões por grupo_id
             const grouped = this.groupQuestions(response);

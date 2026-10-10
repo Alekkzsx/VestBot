@@ -1,40 +1,49 @@
-# VestBot - Sistema de Simulados ETEC (Modo Offline)
+# VestBot - Plataforma de Estudos ETEC & IFSP (MySQL + Offline-First)
 
 ## 📋 Visão Geral
 
-O VestBot agora funciona **completamente offline**, carregando questões dos arquivos JSON locais na pasta `questions/`. Não é mais necessário ter uma chave da API Gemini para usar os simulados.
+O **VestBot** foi atualizado para uma arquitetura moderna cliente-servidor com **Banco de Dados MySQL** e **Sincronização Offline-First** para o usuário **Davi**:
+- **Esta Máquina (Servidor Principal)**: Hospeda o banco de dados MySQL (`vestbot_db`) na porta `3306`, gerenciável visualmente via **MySQL Workbench**.
+- **Computador do Davi (Cliente)**: O Davi pode estudar, responder simulados e evoluir mesmo quando o computador do servidor estiver desligado! Todas as respostas e XP são salvos localmente no navegador e sincronizados automaticamente com o MySQL assim que o servidor for ligado na rede.
 
-## ✨ Funcionalidades Offline
+---
 
-### ✅ Funcionam Offline
-- **Simulados completos** com questões dos arquivos locais
-- **Filtros por matéria** e dificuldade
-- **Cronômetro** e estatísticas
-- **Explicações** das questões (quando disponíveis nos arquivos)
-- **Sistema de gamificação** (XP, níveis, streak)
+## 🐬 Como Configurar o Banco MySQL e MySQL Workbench
 
-### ⚠️ Requerem Internet
-- Geração de questões via IA (desabilitado - usa apenas questões locais)
-- Chat com tutor IA
-- Correção de redações
-- Geração de atividades de interpretação
+### 1. Iniciar o Banco e Importar Dados
+Basta executar o script automático na raiz do projeto:
+```bash
+./iniciar-mysql-e-banco.sh
+```
+Este script:
+1. Inicia o serviço do MySQL/MariaDB.
+2. Cria o banco `vestbot_db` e o usuário `vestbot`.
+3. Importa automaticamente todas as **2.005 questões**, alternativas, **2.005 resoluções passo a passo** e histórico do Davi para o MySQL!
 
-## 📁 Arquivos de Questões
+### 2. Conectar no MySQL Workbench
+Abra o **MySQL Workbench** instalado na máquina e crie uma nova conexão:
+- **Connection Name**: `VestBot Local`
+- **Hostname**: `127.0.0.1` (ou `localhost`)
+- **Port**: `3306`
+- **Username**: `vestbot`
+- **Password**: `vestbot123`
+- **Default Schema**: `vestbot_db`
 
-O sistema carrega automaticamente as questões dos seguintes arquivos:
+Clique em **Test Connection** e depois conecte! Você poderá rodar queries como:
+```sql
+-- Ver progresso geral do Davi
+SELECT * FROM user_profiles WHERE user_id = 1;
 
-| Arquivo | Descrição | Questões |
-|---------|-----------|----------|
-| `ciencias-quest.txt` | Questões de Ciências (Biologia, Física, Química) | ~150 |
-| `matematica-quest.txt` | Questões de Matemática | ~60 |
-| `historia-quest.txt` | Questões de História | ~80 |
-| `grande-quest.txt` | Questões Gerais | ~70 |
-| `variadas-quest.txt` | Questões Variadas 1 | ~85 |
-| `variadas-quest-2.txt` | Questões Variadas 2 | ~150 |
+-- Ver histórico recente de respostas
+SELECT h.timestamp, q.materia, q.dificuldade, LEFT(q.enunciado, 50) AS questao, h.was_correct
+FROM user_question_history h
+JOIN questions q ON h.question_id = q.id
+ORDER BY h.timestamp DESC LIMIT 10;
+```
 
-**Total: ~600+ questões disponíveis offline!**
+---
 
-## 🚀 Como Usar
+## 🚀 Como Executar o VestBot
 
 ### 1. Instalação
 

@@ -39,10 +39,21 @@ export class ResolutionsService {
         if (this.isLoaded()) return;
 
         try {
-            // In a real scenario, these files would exist. 
-            // We'll try to load them, or use empty arrays if they don't exist yet.
-            const quizRes = await firstValueFrom(this.http.get<QuestionResolution[]>('/questions/Resolução-Simulados.json')).catch(() => []);
-            const intRes = await firstValueFrom(this.http.get<QuestionResolution[]>('/questions/Resolução-Interpretação.json')).catch(() => []);
+            // Tentar carregar da API conectada ao MySQL
+            let quizRes: QuestionResolution[] = [];
+            let intRes: QuestionResolution[] = [];
+
+            try {
+                quizRes = await firstValueFrom(this.http.get<QuestionResolution[]>('/api/resolutions/quiz'));
+            } catch {
+                quizRes = await firstValueFrom(this.http.get<QuestionResolution[]>('/questions/Resolução-Simulados.json')).catch(() => []);
+            }
+
+            try {
+                intRes = await firstValueFrom(this.http.get<QuestionResolution[]>('/api/resolutions/interpretation'));
+            } catch {
+                intRes = await firstValueFrom(this.http.get<QuestionResolution[]>('/questions/Resolução-Interpretação.json')).catch(() => []);
+            }
 
             this.quizResolutions.set(quizRes);
             this.interpretationResolutions.set(intRes);

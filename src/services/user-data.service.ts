@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Subject, debounceTime, switchMap, catchError, of, firstValueFrom } from 'rxjs';
+import { Subject, debounceTime, switchMap, catchError, of } from 'rxjs';
 import type { UserAchievement, UserChallenge, ActivitySession } from '../types/gamification.types';
 
 /**
@@ -43,7 +43,7 @@ export interface UserData {
             achievements: UserAchievement[];
             challenges: UserChallenge[];
             completedSessions: ActivitySession[];
-            consecutiveCorrect: number; // Para conquistas de streak perfeito
+            consecutiveCorrect: number;
             subjectStats: Array<{
                 subject: string;
                 answered: number;
@@ -63,8 +63,11 @@ export interface UserData {
     };
 }
 
+const LOCAL_STORAGE_KEY = 'vestbot_davi_offline_state';
+const PENDING_SYNC_KEY = 'vestbot_davi_pending_sync';
+
 /**
- * Service to manage user data persistence with backend API
+ * Service to manage user data persistence with Offline-First support and MySQL Auto-Sync
  */
 @Injectable({
     providedIn: 'root'
@@ -74,7 +77,9 @@ export class UserDataService {
 
     // Status Signals
     isLoading = signal(false);
-    syncStatus = signal<'synced' | 'saving' | 'error'>('synced');
+    syncStatus = signal<'synced' | 'saving' | 'offline' | 'error'>('synced');
+    isServerOnline = signal(false);
+    hasPendingSync = signal(false);
     lastSaved = signal<Date | null>(null);
 
     // User data cache (Frontend "View" of the DB)
@@ -91,209 +96,183 @@ export class UserDataService {
     private sessionsUpdate$ = new Subject<ActivitySession[]>();
     private frequencyUpdate$ = new Subject<any>();
 
+    private connectivityTimer: any = null;
+
     constructor() {
+        this.restoreFromLocalStorage();
         this.setupDebouncedSaves();
+        this.startConnectivityMonitor();
+    }
+
+    /**
+     * Restaura os dados salvos localmente no navegador do Davi
+     */
+    private restoreFromLocalStorage(): void {
+        try {
+            const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+            if (saved) {
+                const parsed: UserData = JSON.parse(saved);
+                this.userData.set(parsed);
+            }
+            const pending = localStorage.getItem(PENDING_SYNC_KEY);
+            if (pending === 'true') {
+                this.hasPendingSync.set(true);
+            }
+        } catch (e) {
+            console.warn('Erro ao ler do localStorage:', e);
+        }
+    }
+
+    /**
+     * Salva o estado atual no localStorage com segurança
+     */
+    private persistToLocalStorage(data: UserData, markPending = true): void {
+        try {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+            if (markPending) {
+                this.hasPendingSync.set(true);
+                localStorage.setItem(PENDING_SYNC_KEY, 'true');
+            }
+        } catch (e) {
+            console.warn('Erro ao salvar no localStorage:', e);
+        }
+    }
+
+    /**
+     * Inicia o monitor de conectividade para detectar quando o computador do servidor for ligado
+     */
+    private startConnectivityMonitor(): void {
+        this.checkServerAndSync();
+        // Polling a cada 12 segundos
+        this.connectivityTimer = setInterval(() => {
+            this.checkServerAndSync();
+        }, 12000);
+    }
+
+    /**
+     * Testa se o servidor está online e dispara a sincronização se houver pendências
+     */
+    async checkServerAndSync(): Promise<boolean> {
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 4000);
+            const res = await fetch('/api/health', { signal: controller.signal });
+            clearTimeout(timeoutId);
+
+            if (res.ok) {
+                const wasOffline = !this.isServerOnline();
+                this.isServerOnline.set(true);
+
+                // Se o servidor acabou de ligar ou há alterações locais pendentes, dispara a sincronização!
+                if (wasOffline || this.hasPendingSync()) {
+                    await this.triggerAutoSync();
+                } else if (this.syncStatus() === 'offline') {
+                    this.syncStatus.set('synced');
+                }
+                return true;
+            } else {
+                this.isServerOnline.set(false);
+                this.syncStatus.set('offline');
+                return false;
+            }
+        } catch {
+            this.isServerOnline.set(false);
+            this.syncStatus.set('offline');
+            return false;
+        }
+    }
+
+    /**
+     * Sincronização em Massa (Bundle):
+     * Envia todo o progresso acumulado no navegador do Davi para o MySQL neste computador.
+     */
+    async triggerAutoSync(): Promise<void> {
+        const currentData = this.userData();
+        if (!currentData) return;
+
+        this.syncStatus.set('saving');
+        console.log('🔄 [Auto-Sync] Enviando progresso do Davi para o servidor MySQL...');
+
+        try {
+            const bundlePayload = {
+                stats: currentData.user.stats,
+                questionHistory: currentData.user.questionHistory,
+                interpretationHistory: currentData.user.interpretationHistory,
+                resolutionsHistory: currentData.user.resolutionsHistory,
+                schedule: currentData.user.schedule,
+                gamification: currentData.user.gamification,
+                lessonsHistory: currentData.user.lessonsHistory,
+                sessions: currentData.user.sessions,
+                frequency: currentData.user.frequency
+            };
+
+            const response = await fetch(`${this.API_BASE}/sync-bundle`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(bundlePayload)
+            });
+
+            if (response.ok) {
+                this.hasPendingSync.set(false);
+                localStorage.removeItem(PENDING_SYNC_KEY);
+                this.syncStatus.set('synced');
+                this.lastSaved.set(new Date());
+                console.log('✅ [Auto-Sync] Progresso do Davi gravado com sucesso no MySQL!');
+            } else {
+                throw new Error('Falha na resposta do servidor');
+            }
+        } catch (err) {
+            console.warn('⚠️ [Auto-Sync] Servidor offline ou ocupado. Dados mantidos em segurança no navegador.');
+            this.syncStatus.set('offline');
+        }
     }
 
     /**
      * Set up debounced auto-saves using RxJS
      */
     private setupDebouncedSaves() {
-        // Debounced Profile Save
-        this.profileUpdate$.pipe(
-            debounceTime(1000),
-            switchMap(stats => {
-                this.syncStatus.set('saving');
-                return fetch(`${this.API_BASE}/profile`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ stats })
-                }).then(res => res.json());
-            }),
-            catchError(err => {
-                console.error('❌ Error saving profile:', err);
-                this.syncStatus.set('error');
-                return of(null);
-            })
-        ).subscribe(() => {
-            this.syncStatus.set('synced');
-            this.lastSaved.set(new Date());
-        });
+        const createSaver = (stream: Subject<any>, endpoint: string, bodyTransform: (d: any) => any) => {
+            stream.pipe(
+                debounceTime(1500),
+                switchMap(data => {
+                    this.syncStatus.set('saving');
+                    return fetch(`${this.API_BASE}/${endpoint}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(bodyTransform(data))
+                    }).then(res => {
+                        if (!res.ok) throw new Error('Network error');
+                        return res.json();
+                    });
+                }),
+                catchError(() => {
+                    this.syncStatus.set('offline');
+                    return of(null);
+                })
+            ).subscribe(res => {
+                if (res) {
+                    this.syncStatus.set('synced');
+                    this.lastSaved.set(new Date());
+                }
+            });
+        };
 
-        // Debounced History Save
-        this.historyUpdate$.pipe(
-            debounceTime(1500),
-            switchMap(history => {
-                this.syncStatus.set('saving');
-                return fetch(`${this.API_BASE}/history`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(history)
-                }).then(res => res.json());
-            }),
-            catchError(err => {
-                console.error('❌ Error saving history:', err);
-                this.syncStatus.set('error');
-                return of(null);
-            })
-        ).subscribe(() => {
-            this.syncStatus.set('synced');
-            this.lastSaved.set(new Date());
-        });
-
-        // Debounced Interpretation Save
-        this.interpretationUpdate$.pipe(
-            debounceTime(1500),
-            switchMap(history => {
-                this.syncStatus.set('saving');
-                return fetch(`${this.API_BASE}/interpretation`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(history)
-                }).then(res => res.json());
-            }),
-            catchError(err => {
-                console.error('❌ Error saving interpretation history:', err);
-                this.syncStatus.set('error');
-                return of(null);
-            })
-        ).subscribe(() => {
-            this.syncStatus.set('synced');
-            this.lastSaved.set(new Date());
-        });
-
-        // Debounced Resolutions Save
-        this.resolutionsUpdate$.pipe(
-            debounceTime(1500),
-            switchMap(history => {
-                this.syncStatus.set('saving');
-                return fetch(`${this.API_BASE}/resolutions`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(history)
-                }).then(res => res.json());
-            }),
-            catchError(err => {
-                console.error('❌ Error saving resolutions history:', err);
-                this.syncStatus.set('error');
-                return of(null);
-            })
-        ).subscribe(() => {
-            this.syncStatus.set('synced');
-            this.lastSaved.set(new Date());
-        });
-
-        // Debounced Schedule Save
-        this.scheduleUpdate$.pipe(
-            debounceTime(1000),
-            switchMap(schedule => {
-                this.syncStatus.set('saving');
-                return fetch(`${this.API_BASE}/schedule`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(schedule)
-                }).then(res => res.json());
-            }),
-            catchError(err => {
-                console.error('❌ Error saving schedule:', err);
-                this.syncStatus.set('error');
-                return of(null);
-            })
-        ).subscribe(() => {
-            this.syncStatus.set('synced');
-            this.lastSaved.set(new Date());
-        });
-
-        // Debounced Gamification Save
-        this.gamificationUpdate$.pipe(
-            debounceTime(2000),
-            switchMap(gamification => {
-                this.syncStatus.set('saving');
-                return fetch(`${this.API_BASE}/gamification`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(gamification)
-                }).then(res => res.json());
-            }),
-            catchError(err => {
-                console.error('❌ Error saving gamification:', err);
-                this.syncStatus.set('error');
-                return of(null);
-            })
-        ).subscribe(() => {
-            this.syncStatus.set('synced');
-            this.lastSaved.set(new Date());
-        });
-
-        // Debounced Lessons Save
-        this.lessonsUpdate$.pipe(
-            debounceTime(2000),
-            switchMap(history => {
-                this.syncStatus.set('saving');
-                return fetch(`${this.API_BASE}/lessons`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(history)
-                }).then(res => res.json());
-            }),
-            catchError(err => {
-                console.error('❌ Error saving lessons history:', err);
-                this.syncStatus.set('error');
-                return of(null);
-            })
-        ).subscribe(() => {
-            this.syncStatus.set('synced');
-            this.lastSaved.set(new Date());
-        });
-
-        // Debounced Sessions Save
-        this.sessionsUpdate$.pipe(
-            debounceTime(2000),
-            switchMap(sessions => {
-                this.syncStatus.set('saving');
-                return fetch(`${this.API_BASE}/sessions`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(sessions)
-                }).then(res => res.json());
-            }),
-            catchError(err => {
-                console.error('❌ Error saving sessions:', err);
-                this.syncStatus.set('error');
-                return of(null);
-            })
-        ).subscribe(() => {
-            this.syncStatus.set('synced');
-            this.lastSaved.set(new Date());
-        });
-
-        // Debounced Frequency Save
-        this.frequencyUpdate$.pipe(
-            debounceTime(1500),
-            switchMap(frequency => {
-                this.syncStatus.set('saving');
-                return fetch(`${this.API_BASE}/frequency`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(frequency)
-                }).then(res => res.json());
-            }),
-            catchError(err => {
-                console.error('❌ Error saving frequency:', err);
-                this.syncStatus.set('error');
-                return of(null);
-            })
-        ).subscribe(() => {
-            this.syncStatus.set('synced');
-            this.lastSaved.set(new Date());
-        });
+        createSaver(this.profileUpdate$, 'profile', stats => ({ stats }));
+        createSaver(this.historyUpdate$, 'history', h => h);
+        createSaver(this.interpretationUpdate$, 'interpretation', h => h);
+        createSaver(this.resolutionsUpdate$, 'resolutions', h => h);
+        createSaver(this.scheduleUpdate$, 'schedule', s => s);
+        createSaver(this.gamificationUpdate$, 'gamification', g => g);
+        createSaver(this.lessonsUpdate$, 'lessons', l => l);
+        createSaver(this.sessionsUpdate$, 'sessions', s => s);
+        createSaver(this.frequencyUpdate$, 'frequency', f => f);
     }
 
     /**
      * Force immediate save of history, bypassing debounce
      */
     async forceSaveHistory(history: any[]): Promise<void> {
-        this.syncStatus.set('saving');
+        this.saveUserHistory(history);
         try {
             await fetch(`${this.API_BASE}/history`, {
                 method: 'POST',
@@ -302,14 +281,13 @@ export class UserDataService {
             });
             this.syncStatus.set('synced');
             this.lastSaved.set(new Date());
-        } catch (err) {
-            console.error('❌ Error force saving history:', err);
-            this.syncStatus.set('error');
+        } catch {
+            this.syncStatus.set('offline');
         }
     }
 
     /**
-     * Load full user data from the File Database (V4)
+     * Load full user data (MySQL first, fallback to LocalStorage/Defaults)
      */
     async loadUserData(): Promise<UserData> {
         this.isLoading.set(true);
@@ -318,15 +296,34 @@ export class UserDataService {
             const response = await fetch(`${this.API_BASE}/full`);
             if (!response.ok) throw new Error('Server unreachable');
 
-            const data = await response.json();
-            this.userData.set(data);
-            console.log('✅ User data loaded from User DB');
-            return data;
+            const serverData: UserData = await response.json();
+            this.isServerOnline.set(true);
+
+            // Se o navegador tinha pendências offline locais que o servidor não tem, sincronizar!
+            if (this.hasPendingSync()) {
+                console.log('🔄 Sincronizando dados pendentes salvos no navegador com o servidor...');
+                await this.triggerAutoSync();
+            } else {
+                this.userData.set(serverData);
+                this.persistToLocalStorage(serverData, false);
+                this.syncStatus.set('synced');
+            }
+
+            console.log('✅ Dados do usuário Davi carregados do Servidor MySQL');
+            return this.userData() || serverData;
         } catch (error) {
-            console.error('❌ Error loading data:', error);
+            console.log('ℹ️ Servidor offline ou computador desligado. Usando modo Offline do navegador do Davi.');
+            this.isServerOnline.set(false);
+            this.syncStatus.set('offline');
+
+            const current = this.userData();
+            if (current) {
+                return current;
+            }
+
             const empty = this.createDefaultData();
             this.userData.set(empty);
-            this.syncStatus.set('error');
+            this.persistToLocalStorage(empty, false);
             return empty;
         } finally {
             this.isLoading.set(false);
@@ -337,13 +334,13 @@ export class UserDataService {
      * Save PROFILE (Stats/XP/Level)
      */
     saveUserProfile(stats: any): void {
-        // Update local cache
         this.userData.update(current => {
-            if (!current) return current;
-            return { ...current, user: { ...current.user, stats: stats } };
+            const updated = current
+                ? { ...current, user: { ...current.user, stats: stats.stats || stats } }
+                : this.createDefaultData();
+            this.persistToLocalStorage(updated, true);
+            return updated;
         });
-
-        // Push to debounce stream
         this.profileUpdate$.next(stats);
     }
 
@@ -352,10 +349,12 @@ export class UserDataService {
      */
     saveUserHistory(history: any[]): void {
         this.userData.update(current => {
-            if (!current) return current;
-            return { ...current, user: { ...current.user, questionHistory: history } };
+            const updated = current
+                ? { ...current, user: { ...current.user, questionHistory: history } }
+                : this.createDefaultData();
+            this.persistToLocalStorage(updated, true);
+            return updated;
         });
-
         this.historyUpdate$.next(history);
     }
 
@@ -364,10 +363,12 @@ export class UserDataService {
      */
     saveUserSchedule(schedule: any[]): void {
         this.userData.update(current => {
-            if (!current) return current;
-            return { ...current, user: { ...current.user, schedule: schedule } };
+            const updated = current
+                ? { ...current, user: { ...current.user, schedule: schedule } }
+                : this.createDefaultData();
+            this.persistToLocalStorage(updated, true);
+            return updated;
         });
-
         this.scheduleUpdate$.next(schedule);
     }
 
@@ -376,10 +377,12 @@ export class UserDataService {
      */
     saveUserInterpretationHistory(history: any[]): void {
         this.userData.update(current => {
-            if (!current) return current;
-            return { ...current, user: { ...current.user, interpretationHistory: history } };
+            const updated = current
+                ? { ...current, user: { ...current.user, interpretationHistory: history } }
+                : this.createDefaultData();
+            this.persistToLocalStorage(updated, true);
+            return updated;
         });
-
         this.interpretationUpdate$.next(history);
     }
 
@@ -388,22 +391,26 @@ export class UserDataService {
      */
     saveUserResolutionsHistory(history: any[]): void {
         this.userData.update(current => {
-            if (!current) return current;
-            return { ...current, user: { ...current.user, resolutionsHistory: history } };
+            const updated = current
+                ? { ...current, user: { ...current.user, resolutionsHistory: history } }
+                : this.createDefaultData();
+            this.persistToLocalStorage(updated, true);
+            return updated;
         });
-
         this.resolutionsUpdate$.next(history);
     }
 
     /**
-     * Save GAMIFICATION data (achievements, challenges, etc.)
+     * Save GAMIFICATION data
      */
     saveGamificationData(gamification: any): void {
         this.userData.update(current => {
-            if (!current) return current;
-            return { ...current, user: { ...current.user, gamification } };
+            const updated = current
+                ? { ...current, user: { ...current.user, gamification } }
+                : this.createDefaultData();
+            this.persistToLocalStorage(updated, true);
+            return updated;
         });
-
         this.gamificationUpdate$.next(gamification);
     }
 
@@ -412,10 +419,12 @@ export class UserDataService {
      */
     saveUserLessonsHistory(history: any[]): void {
         this.userData.update(current => {
-            if (!current) return current;
-            return { ...current, user: { ...current.user, lessonsHistory: history } };
+            const updated = current
+                ? { ...current, user: { ...current.user, lessonsHistory: history } }
+                : this.createDefaultData();
+            this.persistToLocalStorage(updated, true);
+            return updated;
         });
-
         this.lessonsUpdate$.next(history);
     }
 
@@ -424,10 +433,12 @@ export class UserDataService {
      */
     saveUserSessions(sessions: ActivitySession[]): void {
         this.userData.update(current => {
-            if (!current) return current;
-            return { ...current, user: { ...current.user, sessions } };
+            const updated = current
+                ? { ...current, user: { ...current.user, sessions } }
+                : this.createDefaultData();
+            this.persistToLocalStorage(updated, true);
+            return updated;
         });
-
         this.sessionsUpdate$.next(sessions);
     }
 
@@ -436,10 +447,12 @@ export class UserDataService {
      */
     saveUserFrequency(frequency: { studyDays: string[] }): void {
         this.userData.update(current => {
-            if (!current) return current;
-            return { ...current, user: { ...current.user, frequency } };
+            const updated = current
+                ? { ...current, user: { ...current.user, frequency } }
+                : this.createDefaultData();
+            this.persistToLocalStorage(updated, true);
+            return updated;
         });
-
         this.frequencyUpdate$.next(frequency);
     }
 
