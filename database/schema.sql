@@ -43,9 +43,9 @@ CREATE TABLE IF NOT EXISTS user_profiles (
 -- ---------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS questions (
     id INT PRIMARY KEY,
-    type ENUM('simulado', 'interpretacao') NOT NULL DEFAULT 'simulado',
+    type VARCHAR(50) NOT NULL DEFAULT 'simulado',
     subject VARCHAR(100) NOT NULL,
-    difficulty ENUM('Fácil', 'Médio', 'Difícil') NOT NULL DEFAULT 'Médio',
+    difficulty VARCHAR(50) NOT NULL DEFAULT 'Médio',
     statement TEXT NOT NULL,
     correct_answer TEXT NOT NULL,
     correct_index TINYINT NOT NULL DEFAULT 0,
@@ -75,12 +75,41 @@ CREATE TABLE IF NOT EXISTS question_options (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------
+-- 4.1 QUESTÕES DE INTERPRETAÇÃO DE TEXTO
+-- ---------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS interpretation_questions (
+    id INT PRIMARY KEY,
+    group_id INT NOT NULL,
+    theme VARCHAR(150) NULL,
+    subject VARCHAR(100) NOT NULL,
+    difficulty VARCHAR(50) NOT NULL DEFAULT 'Médio',
+    statement TEXT NOT NULL,
+    correct_answer TEXT NOT NULL,
+    correct_index TINYINT NOT NULL DEFAULT 0,
+    base_explanation TEXT NULL,
+    image_url VARCHAR(255) NULL,
+    support_text TEXT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_inter_group (group_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS interpretation_question_options (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_id INT NOT NULL,
+    option_index TINYINT NOT NULL,
+    option_text TEXT NOT NULL,
+    is_correct BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (question_id) REFERENCES interpretation_questions(id) ON DELETE CASCADE,
+    INDEX idx_inter_opt (question_id, option_index)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ---------------------------------------------------------------------
 -- 5. RESOLUÇÕES DETALHADAS DAS QUESTÕES
 -- ---------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS question_resolutions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     question_id INT NOT NULL,
-    mode ENUM('quiz', 'interpretation') NOT NULL DEFAULT 'quiz',
+    mode VARCHAR(50) NOT NULL DEFAULT 'quiz',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE KEY uk_resolution_question (question_id, mode),
     FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE

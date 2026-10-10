@@ -33,33 +33,22 @@ export class ResolutionsService {
     private isLoaded = signal(false);
 
     /**
-     * Load resolution data files
+     * Load resolution data files directly from MySQL database
      */
     async loadResolutions(): Promise<void> {
         if (this.isLoaded()) return;
 
         try {
-            // Tentar carregar da API conectada ao MySQL
-            let quizRes: QuestionResolution[] = [];
-            let intRes: QuestionResolution[] = [];
+            const [quizRes, intRes] = await Promise.all([
+                firstValueFrom(this.http.get<QuestionResolution[]>('/api/resolutions/quiz')).catch(() => []),
+                firstValueFrom(this.http.get<QuestionResolution[]>('/api/resolutions/interpretation')).catch(() => [])
+            ]);
 
-            try {
-                quizRes = await firstValueFrom(this.http.get<QuestionResolution[]>('/api/resolutions/quiz'));
-            } catch {
-                quizRes = await firstValueFrom(this.http.get<QuestionResolution[]>('/questions/Resolução-Simulados.json')).catch(() => []);
-            }
-
-            try {
-                intRes = await firstValueFrom(this.http.get<QuestionResolution[]>('/api/resolutions/interpretation'));
-            } catch {
-                intRes = await firstValueFrom(this.http.get<QuestionResolution[]>('/questions/Resolução-Interpretação.json')).catch(() => []);
-            }
-
-            this.quizResolutions.set(quizRes);
-            this.interpretationResolutions.set(intRes);
+            this.quizResolutions.set(quizRes || []);
+            this.interpretationResolutions.set(intRes || []);
             this.isLoaded.set(true);
         } catch (error) {
-            console.error('Error loading Resolutions:', error);
+            console.error('Error loading Resolutions from MySQL:', error);
         }
     }
 

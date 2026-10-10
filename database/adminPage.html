@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VestBot - Visualizador do Banco MySQL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    pre { white-space: pre-wrap; word-break: break-word; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between shadow-md shrink-0">
+    <div class="flex items-center space-x-3">
+      <div class="bg-blue-600 text-white p-2 rounded-lg text-lg">
+        <i class="fas fa-database"></i>
+      </div>
+      <div>
+        <h1 class="text-xl font-bold tracking-tight">VestBot — Painel do Banco de Dados</h1>
+        <p class="text-xs text-slate-400">MySQL / MariaDB local (vestbot_db na porta 3306)</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-4 text-sm">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+        MySQL Online
+      </span>
+      <a href="http://localhost:3000" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors border border-slate-700 flex items-center">
+        <i class="fas fa-external-link-alt mr-1.5"></i> Abrir VestBot
+      </a>
+    </div>
+  </header>
+
+  <!-- Layout Principal -->
+  <div class="flex-1 flex overflow-hidden">
+    
+    <!-- Sidebar com Tabelas -->
+    <aside class="w-72 bg-white border-r border-slate-200 flex flex-col shrink-0">
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Tabelas do Banco</span>
+        <button onclick="loadTables()" title="Atualizar lista" class="text-slate-400 hover:text-slate-700 text-sm">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+      </div>
+      <div id="tablesList" class="flex-1 overflow-y-auto p-3 space-y-1">
+        <div class="p-3 text-sm text-slate-400 flex items-center">
+          <i class="fas fa-circle-notch fa-spin mr-2"></i> Carregando tabelas...
+        </div>
+      </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 flex flex-col bg-slate-50 overflow-y-auto">
+      
+      <!-- Barra de Abas -->
+      <div class="bg-white border-b border-slate-200 px-6 py-2.5 flex items-center space-x-6 text-sm font-medium">
+        <button onclick="switchTab('table')" id="tabBtnTable" class="text-blue-600 border-b-2 border-blue-600 pb-2 -mb-2.5 font-semibold flex items-center">
+          <i class="fas fa-table mr-2"></i> Dados da Tabela
+        </button>
+        <button onclick="switchTab('sql')" id="tabBtnSql" class="text-slate-500 hover:text-slate-800 pb-2 -mb-2.5 flex items-center">
+          <i class="fas fa-terminal mr-2"></i> Console SQL
+        </button>
+        <button onclick="switchTab('davi')" id="tabBtnDavi" class="text-slate-500 hover:text-slate-800 pb-2 -mb-2.5 flex items-center">
+          <i class="fas fa-user-graduate mr-2"></i> Resumo do Davi
+        </button>
+      </div>
+
+      <!-- VIEW: Dados da Tabela -->
+      <section id="viewTable" class="p-6 flex-1 flex flex-col">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-4 flex items-center justify-between">
+          <div>
+            <h2 id="currentTableName" class="text-lg font-bold text-slate-900 flex items-center">
+              <i class="fas fa-table text-blue-500 mr-2"></i> questions
+            </h2>
+            <p id="tableStatsInfo" class="text-xs text-slate-500 mt-0.5">Carregando registros...</p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button onclick="refreshCurrentTable()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center transition-colors">
+              <i class="fas fa-sync-alt mr-1.5"></i> Recarregar
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm flex-1 flex flex-col overflow-hidden">
+          <div class="overflow-x-auto flex-1">
+            <table class="w-full text-left text-xs border-collapse" id="dataTable">
+              <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold sticky top-0" id="dataThead">
+                <!-- Cabeçalhos das colunas -->
+              </thead>
+              <tbody class="divide-y divide-slate-100 font-mono text-slate-700" id="dataTbody">
+                <!-- Linhas dos registros -->
+              </tbody>
+            </table>
+          </div>
+          <div class="bg-slate-50 border-t border-slate-200 px-4 py-3 flex items-center justify-between text-xs text-slate-500">
+            <span id="paginationInfo">Mostrando 1 a 50</span>
+            <div class="flex space-x-2">
+              <button onclick="changePage(-1)" id="prevBtn" class="px-3 py-1 bg-white border border-slate-300 rounded hover:bg-slate-100 disabled:opacity-40">Anterior</button>
+              <button onclick="changePage(1)" id="nextBtn" class="px-3 py-1 bg-white border border-slate-300 rounded hover:bg-slate-100 disabled:opacity-40">Próximo</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: Console SQL -->
+      <section id="viewSql" class="p-6 flex-1 flex flex-col hidden">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-4">
+          <div class="flex items-center justify-between mb-2">
+            <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Escreva sua consulta SQL:</label>
+            <div class="space-x-2">
+              <button onclick="setQuery('SELECT id, materia, dificuldade, LEFT(enunciado, 60) AS questao FROM questions LIMIT 10;')" class="text-xs text-blue-600 hover:underline">Ver 10 questões</button>
+              <button onclick="setQuery('SELECT * FROM user_profiles;')" class="text-xs text-blue-600 hover:underline">Ver perfil Davi</button>
+              <button onclick="setQuery('SELECT q.materia, count(*) FROM questions q GROUP BY q.materia;')" class="text-xs text-blue-600 hover:underline">Contar por matéria</button>
+            </div>
+          </div>
+          <textarea id="sqlInput" rows="4" class="w-full p-3 font-mono text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800" placeholder="SELECT * FROM questions LIMIT 20;"></textarea>
+          <div class="mt-3 flex justify-between items-center">
+            <span class="text-xs text-slate-400">Dica: Use ponto e vírgula no final da instrução.</span>
+            <button onclick="runQuery()" class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold flex items-center shadow transition-colors">
+              <i class="fas fa-play mr-2 text-xs"></i> Executar Consulta
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm flex-1 flex flex-col overflow-hidden">
+          <div class="p-3 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+            <span class="text-xs font-bold text-slate-600" id="sqlResultsTitle">Resultado da Consulta</span>
+            <span class="text-xs text-slate-400" id="sqlExecutionTime"></span>
+          </div>
+          <div class="overflow-x-auto flex-1">
+            <table class="w-full text-left text-xs border-collapse" id="sqlResultTable">
+              <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold sticky top-0" id="sqlThead"></thead>
+              <tbody class="divide-y divide-slate-100 font-mono text-slate-700" id="sqlTbody">
+                <tr><td class="p-6 text-center text-slate-400 font-sans">Execute uma query acima para visualizar os dados.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: Resumo do Davi -->
+      <section id="viewDavi" class="p-6 flex-1 flex flex-col hidden space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="daviMetrics">
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs font-bold text-slate-400 uppercase">Usuário</span>
+            <p class="text-2xl font-bold text-slate-900 mt-2">Davi</p>
+            <span class="text-xs text-emerald-600 font-semibold">Conta ativa</span>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs font-bold text-slate-400 uppercase">Nível / XP</span>
+            <p class="text-2xl font-bold text-blue-600 mt-2" id="daviLevelXp">-</p>
+            <span class="text-xs text-slate-500">Evolução de estudos</span>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs font-bold text-slate-400 uppercase">Questões Respondidas</span>
+            <p class="text-2xl font-bold text-slate-900 mt-2" id="daviQuestionsCount">-</p>
+            <span class="text-xs text-slate-500" id="daviAccuracy">-</span>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs font-bold text-slate-400 uppercase">Streak de Frequência</span>
+            <p class="text-2xl font-bold text-amber-500 mt-2" id="daviStreak">-</p>
+            <span class="text-xs text-slate-500">Dias consecutivos</span>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex-1">
+          <h3 class="text-sm font-bold text-slate-800 mb-3 flex items-center">
+            <i class="fas fa-history text-blue-500 mr-2"></i> Últimas Questões Respondidas pelo Davi
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold">
+                <tr>
+                  <th class="p-3">Data/Hora</th>
+                  <th class="p-3">Questão ID</th>
+                  <th class="p-3">Matéria</th>
+                  <th class="p-3">Enunciado</th>
+                  <th class="p-3">Resultado</th>
+                </tr>
+              </thead>
+              <tbody id="daviHistoryTbody" class="divide-y divide-slate-100">
+                <tr><td colspan="5" class="p-4 text-center text-slate-400">Carregando histórico...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    let currentTable = 'questions';
+    let currentPage = 0;
+    const pageSize = 50;
+    let tablesData = [];
+
+    async function loadTables() {
+      try {
+        const res = await fetch('/api/admin/tables');
+        tablesData = await res.json();
+        const container = document.getElementById('tablesList');
+        container.innerHTML = '';
+
+        tablesData.forEach(t => {
+          const btn = document.createElement('button');
+          btn.className = `w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium flex items-center justify-between transition-colors ${t.name === currentTable ? 'bg-blue-50 text-blue-700 font-bold' : 'text-slate-600 hover:bg-slate-50'}`;
+          btn.onclick = () => selectTable(t.name);
+          btn.innerHTML = `
+            <span class="truncate"><i class="fas fa-table mr-2 text-slate-400"></i>${t.name}</span>
+            <span class="bg-slate-100 px-2 py-0.5 rounded text-[10px] text-slate-600 ml-2 font-mono">${t.count.toLocaleString()}</span>
+          `;
+          container.appendChild(btn);
+        });
+
+        loadTableData(currentTable, 0);
+      } catch (err) {
+        console.error('Erro ao carregar tabelas:', err);
+      }
+    }
+
+    function selectTable(tableName) {
+      currentTable = tableName;
+      currentPage = 0;
+      loadTables();
+      switchTab('table');
+    }
+
+    async function loadTableData(tableName, page = 0) {
+      document.getElementById('currentTableName').innerHTML = `<i class="fas fa-table text-blue-500 mr-2"></i> ${tableName}`;
+      document.getElementById('tableStatsInfo').innerText = 'Carregando registros do MySQL...';
+      
+      try {
+        const offset = page * pageSize;
+        const res = await fetch(`/api/admin/table/${tableName}?limit=${pageSize}&offset=${offset}`);
+        const data = await res.json();
+
+        document.getElementById('tableStatsInfo').innerText = `Total aproximado: ${data.total} linhas | Exibindo página ${page + 1}`;
+        document.getElementById('paginationInfo').innerText = `Registros ${offset + 1} a ${offset + data.rows.length} de ${data.total}`;
+        document.getElementById('prevBtn').disabled = (page === 0);
+        document.getElementById('nextBtn').disabled = (offset + data.rows.length >= data.total);
+
+        // Montar Thead
+        const thead = document.getElementById('dataThead');
+        thead.innerHTML = '<tr>' + (data.columns || []).map(col => `<th class="p-3 border-b border-slate-200 whitespace-nowrap">${col}</th>`).join('') + '</tr>';
+
+        // Montar Tbody
+        const tbody = document.getElementById('dataTbody');
+        if (!data.rows || data.rows.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="${(data.columns || []).length}" class="p-6 text-center text-slate-400">Nenhum registro nesta tabela.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = data.rows.map(row => {
+          return '<tr class="hover:bg-blue-50/40">' + data.columns.map(col => {
+            let val = row[col];
+            if (val === null || val === undefined) val = '<span class="text-slate-300 italic">NULL</span>';
+            else if (typeof val === 'object') val = JSON.stringify(val);
+            else val = String(val).replace(/</g, '&lt;');
+            return `<td class="p-3 max-w-xs truncate" title="${String(row[col] || '')}">${val}</td>`;
+          }).join('') + '</tr>';
+        }).join('');
+
+      } catch (err) {
+        document.getElementById('tableStatsInfo').innerText = 'Erro ao carregar dados do MySQL.';
+      }
+    }
+
+    function changePage(delta) {
+      currentPage = Math.max(0, currentPage + delta);
+      loadTableData(currentTable, currentPage);
+    }
+
+    function refreshCurrentTable() {
+      loadTableData(currentTable, currentPage);
+    }
+
+    function switchTab(tab) {
+      document.getElementById('viewTable').classList.add('hidden');
+      document.getElementById('viewSql').classList.add('hidden');
+      document.getElementById('viewDavi').classList.add('hidden');
+
+      document.getElementById('tabBtnTable').className = 'text-slate-500 hover:text-slate-800 pb-2 -mb-2.5 flex items-center';
+      document.getElementById('tabBtnSql').className = 'text-slate-500 hover:text-slate-800 pb-2 -mb-2.5 flex items-center';
+      document.getElementById('tabBtnDavi').className = 'text-slate-500 hover:text-slate-800 pb-2 -mb-2.5 flex items-center';
+
+      if (tab === 'table') {
+        document.getElementById('viewTable').classList.remove('hidden');
+        document.getElementById('tabBtnTable').className = 'text-blue-600 border-b-2 border-blue-600 pb-2 -mb-2.5 font-semibold flex items-center';
+      } else if (tab === 'sql') {
+        document.getElementById('viewSql').classList.remove('hidden');
+        document.getElementById('tabBtnSql').className = 'text-blue-600 border-b-2 border-blue-600 pb-2 -mb-2.5 font-semibold flex items-center';
+      } else if (tab === 'davi') {
+        document.getElementById('viewDavi').classList.remove('hidden');
+        document.getElementById('tabBtnDavi').className = 'text-blue-600 border-b-2 border-blue-600 pb-2 -mb-2.5 font-semibold flex items-center';
+        loadDaviData();
+      }
+    }
+
+    function setQuery(sql) {
+      document.getElementById('sqlInput').value = sql;
+      runQuery();
+    }
+
+    async function runQuery() {
+      const sql = document.getElementById('sqlInput').value.trim();
+      if (!sql) return;
+
+      const t0 = performance.now();
+      try {
+        const res = await fetch('/api/admin/query', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: sql })
+        });
+        const data = await res.json();
+        const t1 = performance.now();
+        document.getElementById('sqlExecutionTime').innerText = `Tempo: ${(t1 - t0).toFixed(1)}ms | ${Array.isArray(data.rows) ? data.rows.length + ' linhas' : 'Executado'}`;
+
+        if (data.error) {
+          alert('Erro no SQL: ' + data.error);
+          return;
+        }
+
+        const thead = document.getElementById('sqlThead');
+        const tbody = document.getElementById('sqlTbody');
+
+        if (!data.rows || !data.rows.length) {
+          thead.innerHTML = '';
+          tbody.innerHTML = '<tr><td class="p-6 text-center text-slate-400">Nenhum resultado retornado.</td></tr>';
+          return;
+        }
+
+        const columns = Object.keys(data.rows[0]);
+        thead.innerHTML = '<tr>' + columns.map(c => `<th class="p-3 border-b border-slate-200 whitespace-nowrap">${c}</th>`).join('') + '</tr>';
+
+        tbody.innerHTML = data.rows.map(row => {
+          return '<tr class="hover:bg-blue-50/40">' + columns.map(c => {
+            let val = row[c];
+            if (val === null || val === undefined) val = '<span class="text-slate-300 italic">NULL</span>';
+            else if (typeof val === 'object') val = JSON.stringify(val);
+            else val = String(val).replace(/</g, '&lt;');
+            return `<td class="p-3 max-w-sm truncate" title="${String(row[c] || '')}">${val}</td>`;
+          }).join('') + '</tr>';
+        }).join('');
+
+      } catch (err) {
+        alert('Erro ao executar query: ' + err.message);
+      }
+    }
+
+    async function loadDaviData() {
+      try {
+        const res = await fetch('/api/user/davi/full');
+        const full = await res.json();
+        const st = full.user.stats || {};
+
+        document.getElementById('daviLevelXp').innerText = `Nível ${st.level || 1} • ${st.xp || 0} XP`;
+        document.getElementById('daviQuestionsCount').innerText = `${st.questionsAnswered || 0} questões`;
+        const pct = st.questionsAnswered > 0 ? Math.round((st.correctAnswers / st.questionsAnswered) * 100) : 0;
+        document.getElementById('daviAccuracy').innerText = `${st.correctAnswers || 0} acertos (${pct}%)`;
+        document.getElementById('daviStreak').innerText = `${st.currentStreak || 0} dias`;
+
+        // Histórico
+        const histRes = await fetch('/api/admin/query', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            query: `
+              SELECT h.timestamp, h.question_id, q.materia, LEFT(q.enunciado, 70) AS enunciado, h.was_correct
+              FROM user_question_history h
+              LEFT JOIN questions q ON h.question_id = q.id
+              ORDER BY h.timestamp DESC LIMIT 20;
+            `
+          })
+        });
+        const histData = await histRes.json();
+        const tbody = document.getElementById('daviHistoryTbody');
+
+        if (!histData.rows || !histData.rows.length) {
+          tbody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-slate-400">Nenhuma questão respondida ainda.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = histData.rows.map(r => `
+          <tr class="hover:bg-slate-50">
+            <td class="p-3 text-slate-500 whitespace-nowrap">${new Date(r.timestamp).toLocaleString('pt-BR')}</td>
+            <td class="p-3 font-mono font-bold text-slate-700">#${r.question_id}</td>
+            <td class="p-3 whitespace-nowrap"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px] font-semibold">${r.materia || 'Geral'}</span></td>
+            <td class="p-3 text-slate-600 truncate max-w-md">${r.enunciado || '-'}</td>
+            <td class="p-3 whitespace-nowrap">
+              ${r.was_correct ? '<span class="text-emerald-600 font-bold flex items-center"><i class="fas fa-check-circle mr-1"></i> Acertou</span>' : '<span class="text-rose-600 font-bold flex items-center"><i class="fas fa-times-circle mr-1"></i> Errou</span>'}
+            </td>
+          </tr>
+        `).join('');
+
+      } catch (e) {
+        console.error('Erro ao carregar dados do Davi:', e);
+      }
+    }
+
+    // Inicialização
+    loadTables();
+  </script>
+</body>
+</html>
+

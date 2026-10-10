@@ -196,6 +196,10 @@ async function saveQuestionHistory(historyList, username = 'davi') {
   await db.transaction(async (conn) => {
     for (const h of historyList) {
       if (!h.questionId) continue;
+      // Validação defensiva de chave estrangeira
+      const [qExists] = await conn.query('SELECT id FROM questions WHERE id = ?', [h.questionId]);
+      if (!qExists.length) continue;
+
       // Verificar se já existe para evitar duplicata exata no mesmo timestamp
       const [exists] = await conn.query(
         'SELECT id FROM user_question_history WHERE user_id = ? AND question_id = ? AND timestamp = ?',
@@ -225,6 +229,10 @@ async function saveInterpretationHistory(historyList, username = 'davi') {
   await db.transaction(async (conn) => {
     for (const h of historyList) {
       if (!h.questionId) continue;
+      // Validação defensiva de chave estrangeira
+      const [qExists] = await conn.query('SELECT id FROM questions WHERE id = ?', [h.questionId]);
+      if (!qExists.length) continue;
+
       const [exists] = await conn.query(
         'SELECT id FROM user_interpretation_history WHERE user_id = ? AND question_id = ? AND timestamp = ?',
         [userId, h.questionId, h.timestamp]
@@ -318,6 +326,9 @@ async function syncBundle(bundle, username = 'davi') {
     if (Array.isArray(bundle.questionHistory)) {
       for (const h of bundle.questionHistory) {
         if (!h.questionId) continue;
+        const [qExists] = await conn.query('SELECT id FROM questions WHERE id = ?', [h.questionId]);
+        if (!qExists.length) continue;
+
         const [exists] = await conn.query(
           'SELECT id FROM user_question_history WHERE user_id = ? AND question_id = ? AND timestamp = ?',
           [userId, h.questionId, h.timestamp]
@@ -335,6 +346,9 @@ async function syncBundle(bundle, username = 'davi') {
     if (Array.isArray(bundle.interpretationHistory)) {
       for (const h of bundle.interpretationHistory) {
         if (!h.questionId) continue;
+        const [qExists] = await conn.query('SELECT id FROM questions WHERE id = ?', [h.questionId]);
+        if (!qExists.length) continue;
+
         const [exists] = await conn.query(
           'SELECT id FROM user_interpretation_history WHERE user_id = ? AND question_id = ? AND timestamp = ?',
           [userId, h.questionId, h.timestamp]
@@ -395,7 +409,66 @@ async function syncBundle(bundle, username = 'davi') {
       }
     }
 
-    // 6. Salvar Dias de Frequência (Study Days)
+    // 6. Mesclar Histórico de Resoluções
+    if (Array.isArray(bundle.resolutionsHistory)) {
+      for (const r of bundle.resolutionsHistory) {
+        if (!r.questionId) continue;
+        const [exists] = await conn.query(
+          'SELECT id FROM user_resolutions_history WHERE user_id = ? AND question_id = ? AND timestamp = ?',
+          [userId, r.questionId, r.timestamp]
+        );
+        if (!exists.length) {
+          await conn.query(
+            'INSERT INTO user_resolutions_history (user_id, question_id, timestamp, viewed_at) VALUES (?, ?, ?, ?)',
+            [userId, r.questionId, r.timestamp || Date.now(), r.viewedAt || Date.now()]
+          );
+        }
+      }
+    }
+
+    // 7. Salvar Cronograma (Schedule)
+    if (Array.isArray(bundle.schedule) && bundle.schedule.length > 0) {
+      await conn.query('DELETE FROM user_schedule WHERE user_id = ?', [userId]);
+      for (const item of bundle.schedule) {
+        const schedId = item.id ? String(item.id) : `sch_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+        await conn.query(`
+          INSERT INTO user_schedule (id, user_id, day_of_week, subject, topic, duration)
+          VALUES (?, ?, ?, ?, ?, ?)
+        `, [
+          schedId,
+          userId,
+          item.day || item.day_of_week || 'Segunda',
+          item.subject || '',
+          item.topic || '',
+          String(item.duration || '60')
+        ]);
+      }
+    }
+
+    // 8. Salvar Histórico de Videoaulas (Lessons)
+    if (Array.isArray(bundle.lessonsHistory)) {
+      for (const l of bundle.lessonsHistory) {
+        if (!l.lessonId) continue;
+        const [exists] = await conn.query(
+          'SELECT id FROM user_lessons_history WHERE user_id = ? AND lesson_id = ?',
+          [userId, String(l.lessonId)]
+        );
+        if (!exists.length) {
+          await conn.query(`
+            INSERT INTO user_lessons_history (user_id, lesson_id, is_completed, watched_duration, completed_at)
+            VALUES (?, ?, ?, ?, ?)
+          `, [
+            userId,
+            String(l.lessonId),
+            l.isCompleted !== false,
+            l.watchedDuration || 0,
+            l.completedAt || Date.now()
+          ]);
+        }
+      }
+    }
+
+    // 9. Salvar Dias de Frequência (Study Days)
     if (bundle.frequency?.studyDays && Array.isArray(bundle.frequency.studyDays)) {
       for (const d of bundle.frequency.studyDays) {
         await conn.query(`
@@ -410,12 +483,173 @@ async function syncBundle(bundle, username = 'davi') {
   return { success: true, syncedAt: Date.now(), user: username };
 }
 
+/**
+ * Salva histórico de resoluções visualizadas
+ */
+async function saveResolutionsHistory(resolutionsList, username = 'davi') {
+  const [user] = await db.query('SELECT id FROM users WHERE username = ?', [username]);
+  const userId = user ? user.id : 1;
+
+  if (!Array.isArray(resolutionsList) || resolutionsList.length === 0) return { success: true };
+
+  await db.transaction(async (conn) => {
+    for (const r of resolutionsList) {
+      if (!r.questionId) continue;
+      const [exists] = await conn.query(
+        'SELECT id FROM user_resolutions_history WHERE user_id = ? AND question_id = ? AND timestamp = ?',
+        [userId, r.questionId, r.timestamp]
+      );
+      if (!exists.length) {
+        await conn.query(
+          'INSERT INTO user_resolutions_history (user_id, question_id, timestamp, viewed_at) VALUES (?, ?, ?, ?)',
+          [userId, r.questionId, r.timestamp || Date.now(), r.viewedAt || Date.now()]
+        );
+      }
+    }
+  });
+
+  return { success: true };
+}
+
+/**
+ * Salva cronograma de estudos (Schedule)
+ */
+async function saveUserSchedule(scheduleList, username = 'davi') {
+  const [user] = await db.query('SELECT id FROM users WHERE username = ?', [username]);
+  const userId = user ? user.id : 1;
+
+  if (!Array.isArray(scheduleList)) return { success: true };
+
+  await db.transaction(async (conn) => {
+    await conn.query('DELETE FROM user_schedule WHERE user_id = ?', [userId]);
+    for (const item of scheduleList) {
+      const schedId = item.id ? String(item.id) : `sch_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+      await conn.query(`
+        INSERT INTO user_schedule (id, user_id, day_of_week, subject, topic, duration)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `, [
+        schedId,
+        userId,
+        item.day || item.day_of_week || 'Segunda',
+        item.subject || '',
+        item.topic || '',
+        String(item.duration || '60')
+      ]);
+    }
+  });
+
+  return { success: true };
+}
+
+/**
+ * Salva progresso de gamificação
+ */
+async function saveGamification(gamification, username = 'davi') {
+  const [user] = await db.query('SELECT id FROM users WHERE username = ?', [username]);
+  const userId = user ? user.id : 1;
+
+  if (!gamification) return { success: true };
+
+  await db.query(`
+    INSERT INTO user_gamification (user_id, consecutive_correct, achievements_json, challenges_json, subject_stats_json)
+    VALUES (?, ?, ?, ?, ?)
+    ON DUPLICATE KEY UPDATE
+      consecutive_correct = VALUES(consecutive_correct),
+      achievements_json = VALUES(achievements_json),
+      challenges_json = VALUES(challenges_json),
+      subject_stats_json = VALUES(subject_stats_json);
+  `, [
+    userId,
+    gamification.consecutiveCorrect || 0,
+    JSON.stringify(gamification.achievements || []),
+    JSON.stringify(gamification.challenges || []),
+    JSON.stringify(gamification.subjectStats || [])
+  ]);
+
+  return { success: true };
+}
+
+/**
+ * Salva histórico de videoaulas assistidas
+ */
+async function saveLessonsHistory(lessonsList, username = 'davi') {
+  const [user] = await db.query('SELECT id FROM users WHERE username = ?', [username]);
+  const userId = user ? user.id : 1;
+
+  if (!Array.isArray(lessonsList) || lessonsList.length === 0) return { success: true };
+
+  await db.transaction(async (conn) => {
+    for (const l of lessonsList) {
+      if (!l.lessonId) continue;
+      const [exists] = await conn.query(
+        'SELECT id FROM user_lessons_history WHERE user_id = ? AND lesson_id = ?',
+        [userId, String(l.lessonId)]
+      );
+      if (!exists.length) {
+        await conn.query(`
+          INSERT INTO user_lessons_history (user_id, lesson_id, is_completed, watched_duration, completed_at)
+          VALUES (?, ?, ?, ?, ?)
+        `, [
+          userId,
+          String(l.lessonId),
+          l.isCompleted !== false,
+          l.watchedDuration || 0,
+          l.completedAt || Date.now()
+        ]);
+      } else {
+        await conn.query(`
+          UPDATE user_lessons_history
+          SET is_completed = ?, watched_duration = ?, completed_at = ?
+          WHERE id = ?
+        `, [
+          l.isCompleted !== false,
+          l.watchedDuration || 0,
+          l.completedAt || Date.now(),
+          exists[0].id
+        ]);
+      }
+    }
+  });
+
+  return { success: true };
+}
+
+/**
+ * Salva frequência de estudos (dias de estudo)
+ */
+async function saveFrequency(frequencyData, username = 'davi') {
+  const [user] = await db.query('SELECT id FROM users WHERE username = ?', [username]);
+  const userId = user ? user.id : 1;
+
+  const days = frequencyData?.studyDays || (Array.isArray(frequencyData) ? frequencyData : []);
+  if (!Array.isArray(days) || days.length === 0) return { success: true };
+
+  await db.transaction(async (conn) => {
+    for (const d of days) {
+      if (!d) continue;
+      await conn.query(`
+        INSERT INTO user_study_days (user_id, study_date)
+        VALUES (?, ?)
+        ON DUPLICATE KEY UPDATE study_date = VALUES(study_date);
+      `, [userId, d]);
+    }
+  });
+
+  return { success: true };
+}
+
 module.exports = {
   getFullUserData,
   updateUserProfile,
   saveQuestionHistory,
   saveInterpretationHistory,
+  saveResolutionsHistory,
+  saveUserSchedule,
+  saveGamification,
+  saveLessonsHistory,
   saveUserSessions,
+  saveFrequency,
   syncBundle
 };
+
 

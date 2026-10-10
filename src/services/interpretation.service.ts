@@ -58,30 +58,22 @@ export class InterpretationService {
         }
 
         try {
-            console.log('🔄 Loading interpretation questions...');
+            console.log('🔄 Loading interpretation questions from MySQL...');
 
-            let response: any[] = [];
-            try {
-                response = await firstValueFrom(
-                    this.http.get<any[]>('/api/questions/interpretacao')
-                );
-                console.log(`✓ Loaded ${response.length} interpretation questions via API/MySQL`);
-            } catch (apiErr) {
-                console.warn('⚠️ Fallback para arquivo local de interpretação:', apiErr);
-                response = await firstValueFrom(
-                    this.http.get<any[]>('/questions/Questões-Interpretação.json')
-                );
-            }
+            const response = await firstValueFrom(
+                this.http.get<any[]>('/api/questions/interpretacao')
+            );
+            console.log(`✓ Loaded ${response.length} interpretation questions via MySQL`);
 
             // Agrupar questões por grupo_id
-            const grouped = this.groupQuestions(response);
+            const grouped = this.groupQuestions(response || []);
 
             console.log(`✓ Created ${grouped.length} interpretation groups`);
 
             this.groups.set(grouped);
             this.isLoaded.set(true);
         } catch (error) {
-            console.error('✗ Error loading interpretation questions:', error);
+            console.error('✗ Error loading interpretation questions from MySQL:', error);
             throw error;
         }
     }

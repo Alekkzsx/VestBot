@@ -20,10 +20,9 @@ export interface QuestionAttempt {
 /**
  * Service to manage question history and spaced repetition logic
  * 
- * Rules:
- * - Quiz/Interpretation CORRECT: blocked for 3 hours
- * - Quiz/Interpretation INCORRECT: blocked for 30 minutes
- * - Resolution (viewed): REDUCES block time to 30min (if was correct) or 10min (if was incorrect)
+ * Regras:
+ * - Se ACERTOU: a questão só volta para o jogo no dia seguinte.
+ * - Se ERROU: a questão só volta após 30 minutos.
  */
 @Injectable({
     providedIn: 'root'
@@ -32,14 +31,34 @@ export class QuestionHistoryService {
     private userDataService = inject(UserDataService);
     private contentService = inject(ContentService);
 
-    // Time intervals in milliseconds
-    private readonly QUIZ_CORRECT_BLOCK_TIME = 20 * 60 * 1000;  // 20 minutes
-    private readonly QUIZ_INCORRECT_BLOCK_TIME = 10 * 60 * 1000;    // 2 minutes
-    private readonly RESOLUTION_CORRECT_REDUCTION = 1 * 60 * 1000;  // 30 minutes (reduced from 3h)
-    private readonly RESOLUTION_INCORRECT_REDUCTION = 1 * 60 * 1000; // 10 minutes (reduced from 30min)
+    // Tempo de bloqueio em caso de erro: exatamente 30 minutos
+    private readonly INCORRECT_BLOCK_TIME = 30 * 60 * 1000; // 30 minutos
 
     constructor() {
-        // Disabled cleanup to preserve full history for analytics/performance metrics.
+        // Preserva o histórico completo para métricas de desempenho e persistência no MySQL.
+    }
+
+    /**
+     * Verifica se o momento atual já é o dia seguinte (ou posterior) em relação à data da tentativa
+     */
+    private isNextDayOrLater(attemptTimestamp: number): boolean {
+        const attemptDate = new Date(attemptTimestamp);
+        const now = new Date();
+
+        const attemptDayStart = new Date(
+            attemptDate.getFullYear(),
+            attemptDate.getMonth(),
+            attemptDate.getDate()
+        ).getTime();
+
+        const todayStart = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate()
+        ).getTime();
+
+        // Se hoje é estritamente posterior ao dia da tentativa, já é o dia seguinte!
+        return todayStart > attemptDayStart;
     }
 
     /**
@@ -52,9 +71,6 @@ export class QuestionHistoryService {
     recordAttempt(questionId: number, wasCorrect: boolean, context: QuestionContext = 'quiz'): void {
         const history = this.getHistory();
 
-        // Check if there's a previous attempt for this question (finding the latest one)
-        const previousAttempt = [...history].reverse().find(h => h.questionId === questionId);
-
         const attempt: QuestionAttempt = {
             questionId,
             timestamp: Date.now(),
@@ -62,18 +78,10 @@ export class QuestionHistoryService {
             context
         };
 
-        // Special logic for 'resolution' context: it reduces block time
-        if (context === 'resolution' && previousAttempt) {
-            // Resolution inherits the previous correctness status
-            // but updates timestamp to "reset" with reduced time
-            attempt.wasCorrect = previousAttempt.wasCorrect;
-            console.log(`🔄 Resolution viewed for question ${questionId} (was ${previousAttempt.wasCorrect ? 'correct' : 'incorrect'}). Reducing block time.`);
-        }
-
-        // Add new attempt without filtering older attempts to maintain correct and consistent analytics logs
+        // Add new attempt maintaining complete history for analytics and sync
         history.push(attempt);
 
-        // Save via UserDataService
+        // Save via UserDataService (saves to localStorage and syncs with MySQL)
         this.saveHistory(history);
 
         const contextLabel = context === 'quiz' ? 'quiz' : context === 'interpretation' ? 'interpretation' : 'resolution';
@@ -81,42 +89,31 @@ export class QuestionHistoryService {
     }
 
     /**
-     * Check if a question can be shown to the user
+     * Check if a question can be shown to the user:
+     * - ACERTOU: só volta no dia seguinte!
+     * - ERROU: volta após 30 minutos!
      */
     canShowQuestion(questionId: number): boolean {
         const history = this.getHistory();
         const lastAttempt = [...history].reverse().find(h => h.questionId === questionId);
 
-        // If never attempted, always show
+        // Se nunca foi respondida, pode mostrar
         if (!lastAttempt) {
             return true;
         }
 
-        const now = Date.now();
-        const timeSinceAttempt = now - lastAttempt.timestamp;
-
-        // Determine block time based on context and correctness
-        let blockTime: number;
-        const context = lastAttempt.context || 'quiz'; // Default to 'quiz' for backwards compatibility
-
-        if (context === 'resolution') {
-            // Resolution context uses reduced times
-            blockTime = lastAttempt.wasCorrect
-                ? this.RESOLUTION_CORRECT_REDUCTION
-                : this.RESOLUTION_INCORRECT_REDUCTION;
-        } else {
-            // Quiz/Interpretation context uses normal times
-            blockTime = lastAttempt.wasCorrect
-                ? this.QUIZ_CORRECT_BLOCK_TIME
-                : this.QUIZ_INCORRECT_BLOCK_TIME;
+        // Se ACERTOU: só no dia seguinte aquela questão volta para o jogo!
+        if (lastAttempt.wasCorrect) {
+            return this.isNextDayOrLater(lastAttempt.timestamp);
         }
 
-        return timeSinceAttempt >= blockTime;
+        // Se ERROU: só depois de 30 minutos ela volta!
+        const timeSinceAttempt = Date.now() - lastAttempt.timestamp;
+        return timeSinceAttempt >= this.INCORRECT_BLOCK_TIME;
     }
 
     /**
-     * Get the block status for a question
-     * Returns null if question is available, or remaining time in ms if blocked
+     * Retorna o tempo restante de bloqueio em milissegundos
      */
     getBlockedTimeRemaining(questionId: number): number | null {
         const history = this.getHistory();
@@ -127,24 +124,29 @@ export class QuestionHistoryService {
         }
 
         const now = Date.now();
-        const timeSinceAttempt = now - lastAttempt.timestamp;
 
-        // Determine block time based on context and correctness
-        const context = lastAttempt.context || 'quiz'; // Default to 'quiz' for backwards compatibility
+        if (lastAttempt.wasCorrect) {
+            // Se já é o dia seguinte, não está bloqueada
+            if (this.isNextDayOrLater(lastAttempt.timestamp)) {
+                return null;
+            }
 
-        let blockTime: number;
-        if (context === 'resolution') {
-            blockTime = lastAttempt.wasCorrect
-                ? this.RESOLUTION_CORRECT_REDUCTION
-                : this.RESOLUTION_INCORRECT_REDUCTION;
+            // Tempo restante até a meia-noite do dia seguinte
+            const attemptDate = new Date(lastAttempt.timestamp);
+            const nextDayMidnight = new Date(
+                attemptDate.getFullYear(),
+                attemptDate.getMonth(),
+                attemptDate.getDate() + 1,
+                0, 0, 0, 0
+            ).getTime();
+
+            const remaining = nextDayMidnight - now;
+            return remaining > 0 ? remaining : null;
         } else {
-            blockTime = lastAttempt.wasCorrect
-                ? this.QUIZ_CORRECT_BLOCK_TIME
-                : this.QUIZ_INCORRECT_BLOCK_TIME;
+            // Se errou: 30 minutos a partir da tentativa
+            const remaining = this.INCORRECT_BLOCK_TIME - (now - lastAttempt.timestamp);
+            return remaining > 0 ? remaining : null;
         }
-
-        const remaining = blockTime - timeSinceAttempt;
-        return remaining > 0 ? remaining : null;
     }
 
     /**
@@ -200,43 +202,6 @@ export class QuestionHistoryService {
     private saveHistory(history: QuestionAttempt[]): void {
         // Update via the dedicated history endpoint for granular saving
         this.userDataService.saveUserHistory(history);
-    }
-
-    /**
-     * Clean up old entries that are past the block time
-     */
-    private cleanupOldEntries(): void {
-        // Run cleanup only if data is loaded
-        const userData = this.userDataService.getUserData();
-        if (!userData) return;
-
-        const history = this.getHistory();
-        const now = Date.now();
-
-        // Keep only entries that are still within block time
-        const filtered = history.filter(h => {
-            const age = now - h.timestamp;
-            const context = h.context || 'quiz';
-
-            // Determine block time based on context
-            let blockTime: number;
-            if (context === 'resolution') {
-                blockTime = h.wasCorrect
-                    ? this.RESOLUTION_CORRECT_REDUCTION
-                    : this.RESOLUTION_INCORRECT_REDUCTION;
-            } else {
-                blockTime = h.wasCorrect
-                    ? this.QUIZ_CORRECT_BLOCK_TIME
-                    : this.QUIZ_INCORRECT_BLOCK_TIME;
-            }
-
-            return age < blockTime * 2; // Keep for 2x block time for historical data
-        });
-
-        if (filtered.length < history.length) {
-            this.saveHistory(filtered);
-            console.log(`🧹 Cleaned up ${history.length - filtered.length} old history entries`);
-        }
     }
 
     /**

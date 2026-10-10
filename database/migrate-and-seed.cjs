@@ -14,6 +14,14 @@ const QUESTIONS_DIR = path.join(ROOT_DIR, 'questions');
 const DATA_DIR = path.join(ROOT_DIR, 'data');
 const SCHEMA_FILE = path.join(__dirname, 'schema.sql');
 
+function normalizeDifficulty(d) {
+  if (!d) return 'Médio';
+  const lower = String(d).toLowerCase().trim();
+  if (lower.startsWith('f')) return 'Fácil';
+  if (lower.startsWith('d')) return 'Difícil';
+  return 'Médio';
+}
+
 async function readJsonSafe(filePath, defaultValue = []) {
   try {
     if (!fs.existsSync(filePath)) return defaultValue;
@@ -83,6 +91,14 @@ async function runMigration() {
     console.log('📄 Executando schema.sql para criar tabelas e relacionamentos...');
     const schemaSql = fs.readFileSync(SCHEMA_FILE, 'utf8');
     await conn.query(schemaSql);
+
+    // Garantir que colunas estejam como VARCHAR(50) caso tenham sido criadas anteriormente como ENUM
+    try {
+      await conn.query("ALTER TABLE questions MODIFY COLUMN difficulty VARCHAR(50) NOT NULL DEFAULT 'Médio';");
+      await conn.query("ALTER TABLE questions MODIFY COLUMN type VARCHAR(50) NOT NULL DEFAULT 'simulado';");
+      await conn.query("ALTER TABLE question_resolutions MODIFY COLUMN mode VARCHAR(50) NOT NULL DEFAULT 'quiz';");
+    } catch (_) {}
+
     console.log('✅ Tabelas criadas com sucesso!');
 
     // 3. Importar Questões de Simulado
@@ -106,6 +122,8 @@ async function runMigration() {
           imageUrl = q.image_id.includes('.') ? `/images/${q.image_id}` : `/images/${q.image_id}.png`;
         }
 
+        const difficulty = normalizeDifficulty(q.dificuldade);
+
         await conn.query(`
           INSERT INTO questions (
             id, type, subject, difficulty, statement, correct_answer, 
@@ -125,7 +143,7 @@ async function runMigration() {
         `, [
           qId,
           q.materia || 'Geral',
-          q.dificuldade || 'Médio',
+          difficulty,
           q.enunciado || '',
           q.correta || '',
           correctIndex >= 0 ? correctIndex : 0,
@@ -185,7 +203,7 @@ async function runMigration() {
       `, [
         qId,
         q.materia || 'Língua Portuguesa',
-        q.dificuldade || 'Média',
+        normalizeDifficulty(q.dificuldade),
         q.enunciado || '',
         q.correta || '',
         correctIndex >= 0 ? correctIndex : 0,

@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const fsSync = require('fs');
-const fs = fsSync.promises;
 const path = require('path');
 const { getGeminiKeys } = require('./secrets.cjs');
 const db = require('./database/db.cjs');
@@ -10,231 +9,74 @@ const questionService = require('./database/questionService.cjs');
 
 const app = express();
 const PORT = 3001;
-const DATA_DIR = path.join(__dirname, 'data');
-
-// File Paths - V4 Shared (Directly in data/)
-const FILES = {
-  PROFILE: path.join(DATA_DIR, 'profile.json'),
-  HISTORY: path.join(DATA_DIR, 'history.json'),
-  INTERPRETATION: path.join(DATA_DIR, 'interpretation-history.json'),
-  RESOLUTIONS: path.join(DATA_DIR, 'resolutions-history.json'),
-  SCHEDULE: path.join(DATA_DIR, 'schedule.json'),
-  GAMIFICATION: path.join(DATA_DIR, 'gamification.json'),
-  LESSONS: path.join(DATA_DIR, 'lessons-history.json'),
-  SESSIONS: path.join(DATA_DIR, 'sessions.json'),
-  FREQUENCY: path.join(DATA_DIR, 'frequency.json'),
-  CALENDAR_CACHE: path.join(DATA_DIR, 'calendar-cache.json'),
-  LEGACY: path.join(DATA_DIR, 'data-user.txt')
-};
-
 
 app.use(cors());
 app.use(express.json({ limit: '20mb' })); // Safer limit for payload size
 
-// --- HELPER WRAPPERS ---
+// --- DB EXAM CALENDAR CACHE HELPERS ---
 
-/**
- * Ensures a directory exists
- */
-async function ensureDir(dirPath) {
+async function getExamCalendarFromDb() {
   try {
-    await fs.access(dirPath);
-  } catch {
-    await fs.mkdir(dirPath, { recursive: true });
-  }
-}
-
-/**
- * Atomic Write: Writes to temp file then renames to target
- * This prevents file corruption on power loss.
- */
-async function atomicWrite(filePath, data) {
-  const tempPath = `${filePath}.tmp`;
-  try {
-    await ensureDir(path.dirname(filePath));
-    await fs.writeFile(tempPath, JSON.stringify(data, null, 2));
-    await fs.rename(tempPath, filePath); // Atomic operation
-    console.log(`💾 Saved: ${path.basename(filePath)}`);
-  } catch (error) {
-    console.error(`❌ Error saving ${path.basename(filePath)}:`, error);
-    try { await fs.unlink(tempPath); } catch { } // Cleanup temp
-    throw error;
-  }
-}
-
-/**
- * Reads a JSON file or returns default if missing
- */
-async function readJson(filePath, defaultValue) {
-  try {
-    const data = await fs.readFile(filePath, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    return defaultValue;
-  }
-}
-
-// --- MIGRATION LOGIC ---
-
-async function migrateLegacyData() {
-  try {
-    // Check if new structure already exists
-    try {
-      await fs.access(FILES.PROFILE);
-      return; // Already migrated
-    } catch { }
-
-    console.log('📦 Checking for legacy data to migrate...');
-
-    // Check if legacy file exists
-    try {
-      await fs.access(FILES.LEGACY);
-    } catch {
-      console.log('ℹ️ No legacy data found. Starting fresh.');
-      return;
+    const rows = await db.query('SELECT raw_data, last_updated FROM exam_calendar_cache ORDER BY id DESC LIMIT 1');
+    if (rows.length > 0) {
+      const row = rows[0];
+      const parsed = typeof row.raw_data === 'string' ? JSON.parse(row.raw_data) : row.raw_data;
+      return { lastUpdated: row.last_updated, data: parsed };
     }
+  } catch (e) {
+    console.warn('DB exam calendar query warning:', e.message);
+  }
+  return null;
+}
 
-    // Read Legacy
-    const oldData = await readJson(FILES.LEGACY, null);
-    if (!oldData || !oldData.user) return;
-
-    console.log('🔄 Migrating legacy data to new structure...');
-
-    // Split Data
-    const profile = {
-      version: '4.0.0',
-      lastUpdated: new Date().toISOString(),
-      stats: oldData.user.stats || {
-        questionsAnswered: 0,
-        correctAnswers: 0,
-        currentStreak: 0,
-        xp: 0,
-        level: 1,
-        essaysWritten: 0
-      }
-    };
-
-    const history = oldData.user.questionHistory || [];
-    const schedule = oldData.user.schedule || [];
-
-    // Write New Files
-    await ensureDir(DATA_DIR);
-    await atomicWrite(FILES.PROFILE, profile);
-    await atomicWrite(FILES.HISTORY, history);
-    await atomicWrite(FILES.SCHEDULE, schedule);
-
-    // Archive Legacy
-    const archivePath = path.join(DATA_DIR, `data-user-migrated-${Date.now()}.txt`);
-    await fs.rename(FILES.LEGACY, archivePath);
-
-    console.log('✅ Migration Complete! User "Davi" is ready.');
-
-  } catch (error) {
-    console.error('❌ Migration Failed:', error);
+async function saveExamCalendarToDb(calendarData) {
+  try {
+    const now = Date.now();
+    await db.query('DELETE FROM exam_calendar_cache');
+    for (const item of calendarData) {
+      await db.query(
+        'INSERT INTO exam_calendar_cache (institution, exam_date, modality, raw_data, last_updated) VALUES (?, ?, ?, ?, ?)',
+        [item.name || 'ETEC', item.date || '', item.modality || '', JSON.stringify(calendarData), now]
+      );
+    }
+  } catch (e) {
+    console.warn('DB save exam calendar warning:', e.message);
   }
 }
 
-// --- ENDPOINTS ---
+// --- USER ENDPOINTS (PERSISTÊNCIA EXCLUSIVA NO BANCO MYSQL) ---
 
 /**
  * GET /api/user/davi/full
- * Loads all data components from MySQL (with fallback to JSON if MySQL is offline)
+ * Carrega todos os componentes de dados do Davi exclusivamente do MySQL
  */
 app.get('/api/user/davi/full', async (req, res) => {
   try {
-    // 1. Tentar carregar do MySQL
-    try {
-      const mysqlData = await userService.getFullUserData('davi');
-      return res.json(mysqlData);
-    } catch (dbErr) {
-      console.warn('⚠️ [MySQL Offline/Indisponível] Servindo dados de fallback dos arquivos JSON:', dbErr.message);
-    }
-
-    // 2. Fallback para arquivos JSON
-    await migrateLegacyData();
-    const [profile, history, schedule, gamification, lessons, interpretation, resolutions, sessions, frequency] = await Promise.all([
-      readJson(FILES.PROFILE, { stats: { level: 1, xp: 0, questionsAnswered: 0, correctAnswers: 0, currentStreak: 0, essaysWritten: 0 } }),
-      readJson(FILES.HISTORY, []),
-      readJson(FILES.SCHEDULE, []),
-      readJson(FILES.GAMIFICATION, { achievements: [], challenges: [], completedSessions: [], consecutiveCorrect: 0, subjectStats: [] }),
-      readJson(FILES.LESSONS, []),
-      readJson(FILES.INTERPRETATION, []),
-      readJson(FILES.RESOLUTIONS, []),
-      readJson(FILES.SESSIONS, null),
-      readJson(FILES.FREQUENCY, { studyDays: [] })
-    ]);
-
-    let finalSessions = sessions;
-    let finalGamification = gamification;
-    if (finalSessions === null) {
-      finalSessions = gamification.completedSessions || [];
-      finalGamification = { ...gamification, completedSessions: [] };
-      await atomicWrite(FILES.SESSIONS, finalSessions);
-      await atomicWrite(FILES.GAMIFICATION, finalGamification);
-    }
-
-    const fullData = {
-      version: profile.version || '4.0.0',
-      lastUpdated: profile.lastUpdated || new Date().toISOString(),
-      user: {
-        stats: profile.stats,
-        questionHistory: history,
-        interpretationHistory: interpretation,
-        resolutionsHistory: resolutions,
-        schedule: schedule,
-        gamification: finalGamification,
-        lessonsHistory: lessons,
-        sessions: finalSessions,
-        frequency: frequency
-      }
-    };
-    res.json(fullData);
+    const mysqlData = await userService.getFullUserData('davi');
+    return res.json(mysqlData);
   } catch (error) {
-    console.error('Error loading full data:', error);
-    res.status(500).json({ error: 'Failed to load data' });
+    console.error('❌ Erro ao carregar dados do usuário do MySQL:', error);
+    res.status(500).json({ error: 'Falha ao carregar dados do banco de dados MySQL: ' + error.message });
   }
 });
 
 /**
  * POST /api/user/davi/sync-bundle
- * SINCRONIZAÇÃO EM MASSA: Recebe todo o progresso feito offline no computador do Davi
- * e consolida no MySQL em uma transação atômica.
+ * SINCRONIZAÇÃO EM MASSA: Recebe todo o progresso do navegador do Davi e consolida no MySQL em transação atômica.
  */
 app.post('/api/user/davi/sync-bundle', async (req, res) => {
   try {
     const bundle = req.body;
-    let mysqlSynced = false;
-
-    // 1. Persistir no MySQL
-    try {
-      await userService.syncBundle(bundle, 'davi');
-      mysqlSynced = true;
-      console.log('🔄 [Auto-Sync] Progresso do Davi sincronizado com sucesso no MySQL!');
-    } catch (dbErr) {
-      console.warn('⚠️ [Auto-Sync] Erro ao gravar no MySQL (salvando em arquivo backup):', dbErr.message);
-    }
-
-    // 2. Backup de segurança atômico em JSON
-    try {
-      if (bundle.stats) await atomicWrite(FILES.PROFILE, { version: '4.0.0', lastUpdated: new Date().toISOString(), stats: bundle.stats.stats || bundle.stats });
-      if (bundle.questionHistory) await atomicWrite(FILES.HISTORY, bundle.questionHistory);
-      if (bundle.interpretationHistory) await atomicWrite(FILES.INTERPRETATION, bundle.interpretationHistory);
-      if (bundle.schedule) await atomicWrite(FILES.SCHEDULE, bundle.schedule);
-      if (bundle.gamification) await atomicWrite(FILES.GAMIFICATION, bundle.gamification);
-      if (bundle.sessions) await atomicWrite(FILES.SESSIONS, bundle.sessions);
-      if (bundle.frequency) await atomicWrite(FILES.FREQUENCY, bundle.frequency);
-    } catch (fileErr) {
-      console.error('Erro ao escrever backup local:', fileErr);
-    }
-
+    await userService.syncBundle(bundle, 'davi');
+    console.log('🔄 [Auto-Sync] Progresso do Davi sincronizado com sucesso no MySQL!');
     res.json({
       success: true,
       syncedAt: Date.now(),
-      database: mysqlSynced ? 'connected' : 'saved_locally',
+      database: 'connected',
       user: 'davi'
     });
   } catch (error) {
-    console.error('Sync Bundle Error:', error);
+    console.error('❌ Erro no Sync Bundle MySQL:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -245,20 +87,10 @@ app.post('/api/user/davi/sync-bundle', async (req, res) => {
 app.post('/api/user/davi/profile', async (req, res) => {
   try {
     const newStats = req.body;
-    try {
-      await userService.updateUserProfile(newStats, 'davi');
-    } catch (e) {
-      console.warn('MySQL save profile warning:', e.message);
-    }
-
-    const dataToSave = {
-      version: '4.0.0',
-      lastUpdated: new Date().toISOString(),
-      stats: newStats.stats || newStats
-    };
-    await atomicWrite(FILES.PROFILE, dataToSave);
-    res.json({ success: true, lastUpdated: dataToSave.lastUpdated });
+    await userService.updateUserProfile(newStats, 'davi');
+    res.json({ success: true, lastUpdated: new Date().toISOString() });
   } catch (error) {
+    console.error('❌ Erro ao salvar perfil no MySQL:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -270,14 +102,10 @@ app.post('/api/user/davi/history', async (req, res) => {
   try {
     const newHistory = req.body;
     if (!Array.isArray(newHistory)) throw new Error('History must be an array');
-    try {
-      await userService.saveQuestionHistory(newHistory, 'davi');
-    } catch (e) {
-      console.warn('MySQL save history warning:', e.message);
-    }
-    await atomicWrite(FILES.HISTORY, newHistory);
+    await userService.saveQuestionHistory(newHistory, 'davi');
     res.json({ success: true });
   } catch (error) {
+    console.error('❌ Erro ao salvar histórico no MySQL:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -289,9 +117,10 @@ app.post('/api/user/davi/schedule', async (req, res) => {
   try {
     const newSchedule = req.body;
     if (!Array.isArray(newSchedule)) throw new Error('Schedule must be an array');
-    await atomicWrite(FILES.SCHEDULE, newSchedule);
+    await userService.saveUserSchedule(newSchedule, 'davi');
     res.json({ success: true });
   } catch (error) {
+    console.error('❌ Erro ao salvar cronograma no MySQL:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -303,14 +132,10 @@ app.post('/api/user/davi/interpretation', async (req, res) => {
   try {
     const newHistory = req.body;
     if (!Array.isArray(newHistory)) throw new Error('Data must be an array');
-    try {
-      await userService.saveInterpretationHistory(newHistory, 'davi');
-    } catch (e) {
-      console.warn('MySQL save interpretation warning:', e.message);
-    }
-    await atomicWrite(FILES.INTERPRETATION, newHistory);
+    await userService.saveInterpretationHistory(newHistory, 'davi');
     res.json({ success: true });
   } catch (error) {
+    console.error('❌ Erro ao salvar interpretação no MySQL:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -322,9 +147,10 @@ app.post('/api/user/davi/resolutions', async (req, res) => {
   try {
     const data = req.body;
     if (!Array.isArray(data)) throw new Error('Data must be an array');
-    await atomicWrite(FILES.RESOLUTIONS, data);
+    await userService.saveResolutionsHistory(data, 'davi');
     res.json({ success: true });
   } catch (error) {
+    console.error('❌ Erro ao salvar resoluções no MySQL:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -336,9 +162,10 @@ app.post('/api/user/davi/lessons', async (req, res) => {
   try {
     const data = req.body;
     if (!Array.isArray(data)) throw new Error('Data must be an array');
-    await atomicWrite(FILES.LESSONS, data);
+    await userService.saveLessonsHistory(data, 'davi');
     res.json({ success: true });
   } catch (error) {
+    console.error('❌ Erro ao salvar videoaulas no MySQL:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -349,9 +176,10 @@ app.post('/api/user/davi/lessons', async (req, res) => {
 app.post('/api/user/davi/gamification', async (req, res) => {
   try {
     const data = req.body;
-    await atomicWrite(FILES.GAMIFICATION, data);
+    await userService.saveGamification(data, 'davi');
     res.json({ success: true });
   } catch (error) {
+    console.error('❌ Erro ao salvar gamificação no MySQL:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -363,14 +191,10 @@ app.post('/api/user/davi/sessions', async (req, res) => {
   try {
     const data = req.body;
     if (!Array.isArray(data)) throw new Error('Data must be an array');
-    try {
-      await userService.saveUserSessions(data, 'davi');
-    } catch (e) {
-      console.warn('MySQL save sessions warning:', e.message);
-    }
-    await atomicWrite(FILES.SESSIONS, data);
+    await userService.saveUserSessions(data, 'davi');
     res.json({ success: true });
   } catch (error) {
+    console.error('❌ Erro ao salvar sessões no MySQL:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -381,67 +205,107 @@ app.post('/api/user/davi/sessions', async (req, res) => {
 app.post('/api/user/davi/frequency', async (req, res) => {
   try {
     const data = req.body;
-    await atomicWrite(FILES.FREQUENCY, data);
+    await userService.saveFrequency(data, 'davi');
     res.json({ success: true });
   } catch (error) {
+    console.error('❌ Erro ao salvar frequência no MySQL:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// --- ROTAS DE QUESTÕES E RESOLUÇÕES DO BANCO DE DADOS ---
+// --- ROTAS DE QUESTÕES E RESOLUÇÕES DO BANCO DE DADOS MYSQL ---
 
 /**
  * GET /api/questions/simulado
- * Serve as questões de simulado do MySQL (ou fallback JSON)
+ * Serve as questões de simulado diretamente do MySQL
  */
 app.get('/api/questions/simulado', async (req, res) => {
   try {
     const questions = await questionService.getSimuladoQuestions();
-    if (questions && questions.length > 0) {
-      return res.json(questions);
-    }
-    throw new Error('Banco vazio ou sem questões de simulado');
+    res.json(questions);
   } catch (err) {
-    console.warn('⚠️ [MySQL questions/simulado] Fallback para arquivo JSON:', err.message);
-    const fallback = await readJson(path.join(__dirname, 'questions', 'Questões-Simulado.json'), []);
-    res.json(fallback);
+    console.error('❌ Erro ao buscar questões de simulado do MySQL:', err);
+    res.status(500).json({ error: 'Erro ao carregar questões do banco de dados MySQL: ' + err.message });
   }
 });
 
 /**
  * GET /api/questions/interpretacao
- * Serve as questões de interpretação do MySQL (ou fallback JSON)
+ * Serve as questões de interpretação diretamente do MySQL
  */
 app.get('/api/questions/interpretacao', async (req, res) => {
   try {
     const questions = await questionService.getInterpretationQuestions();
-    if (questions && questions.length > 0) {
-      return res.json(questions);
-    }
-    throw new Error('Banco vazio ou sem questões de interpretação');
+    res.json(questions);
   } catch (err) {
-    console.warn('⚠️ [MySQL questions/interpretacao] Fallback para arquivo JSON:', err.message);
-    const fallback = await readJson(path.join(__dirname, 'questions', 'Questões-Interpretação.json'), []);
-    res.json(fallback);
+    console.error('❌ Erro ao buscar questões de interpretação do MySQL:', err);
+    res.status(500).json({ error: 'Erro ao carregar questões do banco de dados MySQL: ' + err.message });
   }
 });
 
 /**
  * GET /api/resolutions/:mode
- * Serve as resoluções do MySQL (quiz | interpretation)
+ * Serve as resoluções passo a passo diretamente do MySQL (quiz | interpretation)
  */
 app.get('/api/resolutions/:mode', async (req, res) => {
   const mode = req.params.mode === 'interpretation' ? 'interpretation' : 'quiz';
   try {
     const resolutions = await questionService.getResolutions(mode);
-    if (resolutions && resolutions.length > 0) {
-      return res.json(resolutions);
-    }
-    throw new Error('Banco vazio ou sem resoluções');
+    res.json(resolutions);
   } catch (err) {
-    const filename = mode === 'interpretation' ? 'Resolução-Interpretação.json' : 'Resolução-Simulados.json';
-    const fallback = await readJson(path.join(__dirname, 'questions', filename), []);
-    res.json(fallback);
+    console.error('❌ Erro ao buscar resoluções do MySQL:', err);
+    res.status(500).json({ error: 'Erro ao carregar resoluções do banco de dados MySQL: ' + err.message });
+  }
+});
+
+// --- VISUALIZADOR DO BANCO DE DADOS NO NAVEGADOR (/admin) ---
+
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'database', 'adminPage.html'));
+});
+
+app.get('/api/admin/tables', async (req, res) => {
+  try {
+    const tables = await db.query('SHOW TABLES;');
+    const list = [];
+    for (const row of tables) {
+      const name = Object.values(row)[0];
+      const countRes = await db.query(`SELECT COUNT(*) AS total FROM \`${name}\`;`);
+      list.push({ name, count: countRes[0].total });
+    }
+    res.json(list);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/admin/table/:tableName', async (req, res) => {
+  const { tableName } = req.params;
+  const limit = Math.min(100, Math.max(1, parseInt(req.query.limit || '50', 10)));
+  const offset = Math.max(0, parseInt(req.query.offset || '0', 10));
+  try {
+    const tables = await db.query('SHOW TABLES;');
+    const validTables = tables.map(t => Object.values(t)[0]);
+    if (!validTables.includes(tableName)) {
+      return res.status(400).json({ error: 'Tabela não encontrada' });
+    }
+    const countRes = await db.query(`SELECT COUNT(*) AS total FROM \`${tableName}\`;`);
+    const rows = await db.query(`SELECT * FROM \`${tableName}\` LIMIT ? OFFSET ?;`, [limit, offset]);
+    const columns = rows.length > 0 ? Object.keys(rows[0]) : [];
+    res.json({ total: countRes[0].total, columns, rows });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/admin/query', async (req, res) => {
+  const { query: sql } = req.body;
+  if (!sql || typeof sql !== 'string') return res.status(400).json({ error: 'Query necessária' });
+  try {
+    const rows = await db.query(sql);
+    res.json({ rows });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
   }
 });
 
@@ -606,13 +470,13 @@ async function callGeminiJson(prompt, expected = 'object') {
  */
 app.get('/api/ai/exam-calendar', async (req, res) => {
   try {
-    // 1. Verificar se existe cache válido (menor que 24 horas)
-    const cached = await readJson(FILES.CALENDAR_CACHE, null);
+    // 1. Verificar se existe cache válido no banco MySQL (menor que 24 horas)
+    const cached = await getExamCalendarFromDb();
     const forceRefresh = req.query.refresh === '1' || req.query.refresh === 'true';
     if (!forceRefresh && cached && cached.lastUpdated && cached.data) {
       const age = Date.now() - cached.lastUpdated;
       if (age < 24 * 60 * 60 * 1000) {
-        console.log('📅 AI Calendar: Servindo do cache local de 24h');
+        console.log('📅 AI Calendar: Servindo do cache local MySQL de 24h');
         return res.json(cached.data);
       }
     }
@@ -660,11 +524,7 @@ app.get('/api/ai/exam-calendar', async (req, res) => {
         { name: 'IFSP Jundiaí 2027/1', date: 'Nada até o momento', modality: 'Ensino Médio Técnico' }
       ];
 
-      const cacheToSave = {
-        lastUpdated: Date.now(),
-        data: calendarData
-      };
-      await atomicWrite(FILES.CALENDAR_CACHE, cacheToSave);
+      await saveExamCalendarToDb(calendarData);
       return res.json(calendarData);
     }
 
@@ -699,21 +559,17 @@ app.get('/api/ai/exam-calendar', async (req, res) => {
       throw new Error('AI calendar response must be a non-empty array');
     }
 
-    // 4. Gravar cache localmente
-    const cacheToSave = {
-      lastUpdated: Date.now(),
-      data: calendarData
-    };
-    await atomicWrite(FILES.CALENDAR_CACHE, cacheToSave);
+    // 4. Gravar cache no MySQL
+    await saveExamCalendarToDb(calendarData);
 
-    console.log('📅 AI Calendar: Busca concluída e salva no cache.');
+    console.log('📅 AI Calendar: Busca concluída e salva no cache MySQL.');
     res.json(calendarData);
   } catch (error) {
     console.error('AI Calendar Error:', error);
 
     // Tentar ler cache mesmo que expirado em caso de erro
     try {
-      const cached = await readJson(FILES.CALENDAR_CACHE, null);
+      const cached = await getExamCalendarFromDb();
       if (cached && cached.data) {
         console.log('📅 AI Calendar: Retornando cache expirado devido a falha na pesquisa/IA.');
         return res.json(cached.data);
@@ -1001,6 +857,8 @@ app.get('/api/health', async (req, res) => {
 // --- SERVER START ---
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 VestBot Server (MySQL-First V5) running on http://0.0.0.0:${PORT}`);
-  console.log(`📂 Data Directory: ${DATA_DIR}`);
+  console.log(`🚀 VestBot Server (MySQL Dedicated V5) running on http://0.0.0.0:${PORT}`);
+  console.log(`🐬 Banco de Dados: vestbot_db (MySQL / MariaDB)`);
+  console.log(`👤 Usuário Ativo: Davi`);
+  console.log(`🔍 Painel do Banco: http://localhost:${PORT}/admin`);
 });

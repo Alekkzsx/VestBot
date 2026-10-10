@@ -67,8 +67,7 @@ async function getInterpretationQuestions() {
       q.base_explanation AS explicacao_base,
       q.image_url AS imagem,
       q.support_text AS texto_referencia
-    FROM questions q
-    WHERE q.type = 'interpretacao'
+    FROM interpretation_questions q
     ORDER BY q.group_id ASC, q.id ASC
   `);
 
@@ -76,9 +75,7 @@ async function getInterpretationQuestions() {
 
   const options = await db.query(`
     SELECT o.question_id, o.option_index, o.option_text
-    FROM question_options o
-    JOIN questions q ON o.question_id = q.id
-    WHERE q.type = 'interpretacao'
+    FROM interpretation_question_options o
     ORDER BY o.question_id ASC, o.option_index ASC
   `);
 

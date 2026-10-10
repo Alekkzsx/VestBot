@@ -62,19 +62,12 @@ export class QuestionLoaderService {
                 throw new Error(`File ${filename} not found`);
             }
 
-            let rawQuestions: QuestionFileFormat[] = [];
-            try {
-                // Tentar carregar da API conectada ao banco MySQL
-                rawQuestions = await firstValueFrom(this.http.get<QuestionFileFormat[]>('/api/questions/simulado'));
-                console.log(`✓ Carregadas ${rawQuestions.length} questões via API/MySQL`);
-            } catch (apiErr) {
-                console.warn('⚠️ Falha ao buscar questões via API, usando fallback do arquivo local:', apiErr);
-                const text = await firstValueFrom(this.http.get(file.path, { responseType: 'text' }));
-                rawQuestions = JSON.parse(text);
-            }
+            // Carregar diretamente do banco de dados MySQL via API
+            const rawQuestions = await firstValueFrom(this.http.get<QuestionFileFormat[]>('/api/questions/simulado'));
+            console.log(`✓ Carregadas ${rawQuestions.length} questões via MySQL`);
 
             // Convert to Question format
-            const questions = rawQuestions.map(q => this.convertQuestion(q));
+            const questions = (rawQuestions || []).map(q => this.convertQuestion(q));
 
             // Update file info
             file.loaded = true;
