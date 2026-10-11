@@ -172,7 +172,7 @@ async function runMigration() {
     }
     console.log(`\n✅ ${simuladoCount} questões de simulado importadas!`);
 
-    // 4. Importar Questões de Interpretação
+    // 4. Importar Questões de Interpretação (exclusivamente em interpretation_questions)
     const interFile = path.join(QUESTIONS_DIR, 'Questões-Interpretação.json');
     const interQuestions = await readJsonSafe(interFile, []);
     console.log(`\n📖 Importando ${interQuestions.length} questões de interpretação...`);
@@ -185,11 +185,13 @@ async function runMigration() {
         : 0;
 
       await conn.query(`
-        INSERT INTO questions (
-          id, type, subject, difficulty, statement, correct_answer, 
-          correct_index, base_explanation, image_url, support_text, group_id, theme
-        ) VALUES (?, 'interpretacao', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO interpretation_questions (
+          id, group_id, theme, subject, difficulty, statement, correct_answer, 
+          correct_index, base_explanation, image_url, support_text
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON DUPLICATE KEY UPDATE
+          group_id = VALUES(group_id),
+          theme = VALUES(theme),
           subject = VALUES(subject),
           difficulty = VALUES(difficulty),
           statement = VALUES(statement),
@@ -197,11 +199,11 @@ async function runMigration() {
           correct_index = VALUES(correct_index),
           base_explanation = VALUES(base_explanation),
           image_url = VALUES(image_url),
-          support_text = VALUES(support_text),
-          group_id = VALUES(group_id),
-          theme = VALUES(theme);
+          support_text = VALUES(support_text);
       `, [
         qId,
+        q.grupo_id || 1,
+        q.tema || null,
         q.materia || 'Língua Portuguesa',
         normalizeDifficulty(q.dificuldade),
         q.enunciado || '',
@@ -209,18 +211,16 @@ async function runMigration() {
         correctIndex >= 0 ? correctIndex : 0,
         q.explicacao_base || null,
         q.imagem || null,
-        q.texto_referencia || null,
-        q.grupo_id || null,
-        q.tema || null
+        q.texto_referencia || null
       ]);
 
       if (Array.isArray(q.alternativas)) {
-        await conn.query('DELETE FROM question_options WHERE question_id = ?', [qId]);
+        await conn.query('DELETE FROM interpretation_question_options WHERE question_id = ?', [qId]);
         for (let optIdx = 0; optIdx < q.alternativas.length; optIdx++) {
           const optText = q.alternativas[optIdx];
           const isCorrect = (optIdx === correctIndex);
           await conn.query(`
-            INSERT INTO question_options (question_id, option_index, option_text, is_correct)
+            INSERT INTO interpretation_question_options (question_id, option_index, option_text, is_correct)
             VALUES (?, ?, ?, ?)
           `, [qId, optIdx, optText, isCorrect]);
         }
@@ -307,41 +307,43 @@ async function runMigration() {
     const sessionsData = await readJsonSafe(path.join(DATA_DIR, 'sessions.json'), []);
     const frequencyData = await readJsonSafe(path.join(DATA_DIR, 'frequency.json'), { studyDays: [] });
 
-    // Salvar Perfil
-    const stats = profileData?.stats || {
-      level: 1,
-      xp: 0,
-      currentStreak: 0,
-      questionsAnswered: 0,
-      correctAnswers: 0,
-      essaysWritten: 0
-    };
-
-    await conn.query(`
-      INSERT INTO user_profiles (
-        user_id, level, xp, current_streak, questions_answered, correct_answers, essays_written, version
-      ) VALUES (1, ?, ?, ?, ?, ?, ?, '4.0.0')
-      ON DUPLICATE KEY UPDATE
-        level = VALUES(level),
-        xp = VALUES(xp),
-        current_streak = VALUES(current_streak),
-        questions_answered = VALUES(questions_answered),
-        correct_answers = VALUES(correct_answers),
-        essays_written = VALUES(essays_written);
-    `, [
-      stats.level || 1,
-      stats.xp || 0,
-      stats.currentStreak || 0,
-      stats.questionsAnswered || 0,
-      stats.correctAnswers || 0,
-      stats.essaysWritten || 0
-    ]);
+    // Salvar Perfil (Apenas se profileData existir no disco; caso contrário, não sobrescreve os dados reais do Davi)
+    if (profileData && profileData.stats) {
+      const stats = profileData.stats;
+      await conn.query(`
+        INSERT INTO user_profiles (
+          user_id, level, xp, current_streak, questions_answered, correct_answers, essays_written, version
+        ) VALUES (1, ?, ?, ?, ?, ?, ?, '4.0.0')
+        ON DUPLICATE KEY UPDATE
+          level = VALUES(level),
+          xp = VALUES(xp),
+          current_streak = VALUES(current_streak),
+          questions_answered = VALUES(questions_answered),
+          correct_answers = VALUES(correct_answers),
+          essays_written = VALUES(essays_written);
+      `, [
+        stats.level || 1,
+        stats.xp || 0,
+        stats.currentStreak || 0,
+        stats.questionsAnswered || 0,
+        stats.correctAnswers || 0,
+        stats.essaysWritten || 0
+      ]);
+    } else {
+      await conn.query(`
+        INSERT INTO user_profiles (
+          user_id, level, xp, current_streak, questions_answered, correct_answers, essays_written, version
+        ) VALUES (1, 11, 10686, 4, 232, 197, 0, '4.0.0')
+        ON DUPLICATE KEY UPDATE version = VALUES(version);
+      `);
+    }
 
     // Salvar Histórico de Questões
     if (Array.isArray(historyData) && historyData.length > 0) {
       console.log(`  Migrando ${historyData.length} registros de histórico de questões...`);
       for (const h of historyData) {
         if (!h.questionId) continue;
+        if (h.context === 'interpretation') continue;
         await conn.query(`
           INSERT INTO user_question_history (user_id, question_id, was_correct, timestamp)
           VALUES (1, ?, ?, ?)
@@ -358,6 +360,13 @@ async function runMigration() {
           VALUES (1, ?, ?, ?)
         `, [h.questionId, !!h.wasCorrect, h.timestamp || Date.now()]);
       }
+      // Limpar qualquer duplicata de interpretação que tenha sido inserida em user_question_history
+      await conn.query(`
+        DELETE qh FROM user_question_history qh
+        JOIN user_interpretation_history ih 
+          ON qh.question_id = ih.question_id 
+          AND ABS(CAST(qh.timestamp AS SIGNED) - CAST(ih.timestamp AS SIGNED)) < 500
+      `);
     }
 
     // Salvar Schedule

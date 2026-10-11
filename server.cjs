@@ -260,7 +260,7 @@ app.get('/api/resolutions/:mode', async (req, res) => {
 
 // --- VISUALIZADOR DO BANCO DE DADOS NO NAVEGADOR (/admin) ---
 
-app.get('/admin', (req, res) => {
+app.get(['/admin', '/admin/', '/adminPage.html'], (req, res) => {
   res.sendFile(path.join(__dirname, 'database', 'adminPage.html'));
 });
 
@@ -853,6 +853,16 @@ app.get('/api/health', async (req, res) => {
     dbError: dbStatus.ok ? null : dbStatus.error
   });
 });
+
+// --- SERVE BUILD STATIC (FALLBACK SE ACESSAR DIRETO NA PORTA 3001) ---
+const distPath = path.join(__dirname, 'dist');
+if (fsSync.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/admin')) return next();
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+}
 
 // --- SERVER START ---
 

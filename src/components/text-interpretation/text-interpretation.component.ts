@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InterpretationService } from '../../services/interpretation.service';
 import { ContentService, Question } from '../../services/content.service';
-import { QuestionHistoryService } from '../../services/question-history.service';
 import { ActivitySessionService } from '../../services/activity-session.service';
 import { CelebrationComponent, CelebrationType } from '../celebration/celebration.component';
 import { LatexPipe } from '../../pipes/latex.pipe';
@@ -21,7 +20,6 @@ type ViewState = 'config' | 'activity' | 'loading' | 'error' | 'result';
 export class TextInterpretationComponent implements OnInit {
   private interpretationService = inject(InterpretationService);
   private contentService = inject(ContentService);
-  private questionHistory = inject(QuestionHistoryService);
   private activitySession = inject(ActivitySessionService);
 
   constructor() {
@@ -153,7 +151,6 @@ export class TextInterpretationComponent implements OnInit {
 
     // Record attempt for interpretation history and spaced repetition
     this.interpretationService.recordInterpretationAttempt(question.id, correct);
-    this.questionHistory.recordAttempt(question.id, correct, 'interpretation');
   }
 
   /**

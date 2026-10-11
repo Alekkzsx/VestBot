@@ -92,7 +92,12 @@ fi
 
 echo -e ""
 echo -e "${GREEN}✨ VestBot está rodando em MODO CONTÍNUO!${NC}"
-echo -e "${BLUE}   URL: http://localhost:3000${NC}"
+LOCAL_IP=$(hostname -I 2>/dev/null | awk '{print $1}')
+echo -e "${BLUE}   Acesso Local:       http://localhost:3000${NC}"
+if [ -n "$LOCAL_IP" ]; then
+    echo -e "${GREEN}   Acesso Davi (Rede): http://${LOCAL_IP}:3000${NC}"
+    echo -e "${YELLOW}   Painel Admin MySQL: http://${LOCAL_IP}:3000/admin (ou :3001/admin)${NC}"
+fi
 echo -e "${BLUE}Pressione Ctrl+C para encerrar os servidores${NC}"
 echo -e ""
 

@@ -29,7 +29,7 @@
         <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
         MySQL Online
       </span>
-      <a href="http://localhost:3000" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors border border-slate-700 flex items-center">
+      <a href="/" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors border border-slate-700 flex items-center">
         <i class="fas fa-external-link-alt mr-1.5"></i> Abrir VestBot
       </a>
     </div>
@@ -112,9 +112,9 @@
           <div class="flex items-center justify-between mb-2">
             <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Escreva sua consulta SQL:</label>
             <div class="space-x-2">
-              <button onclick="setQuery('SELECT id, materia, dificuldade, LEFT(enunciado, 60) AS questao FROM questions LIMIT 10;')" class="text-xs text-blue-600 hover:underline">Ver 10 questões</button>
+              <button onclick="setQuery('SELECT id, subject, difficulty, LEFT(statement, 60) AS questao FROM questions LIMIT 10;')" class="text-xs text-blue-600 hover:underline">Ver 10 questões</button>
               <button onclick="setQuery('SELECT * FROM user_profiles;')" class="text-xs text-blue-600 hover:underline">Ver perfil Davi</button>
-              <button onclick="setQuery('SELECT q.materia, count(*) FROM questions q GROUP BY q.materia;')" class="text-xs text-blue-600 hover:underline">Contar por matéria</button>
+              <button onclick="setQuery('SELECT q.subject, count(*) FROM questions q GROUP BY q.subject;')" class="text-xs text-blue-600 hover:underline">Contar por matéria</button>
             </div>
           </div>
           <textarea id="sqlInput" rows="4" class="w-full p-3 font-mono text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800" placeholder="SELECT * FROM questions LIMIT 20;"></textarea>
@@ -371,7 +371,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             query: `
-              SELECT h.timestamp, h.question_id, q.materia, LEFT(q.enunciado, 70) AS enunciado, h.was_correct
+              SELECT h.timestamp, h.question_id, q.subject AS materia, LEFT(q.statement, 70) AS enunciado, h.was_correct
               FROM user_question_history h
               LEFT JOIN questions q ON h.question_id = q.id
               ORDER BY h.timestamp DESC LIMIT 20;

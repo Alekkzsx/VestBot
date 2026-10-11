@@ -103,12 +103,12 @@ export class ResolutionsComponent {
             // User is revealing the final answer
             this.showCorrectAnswer.set(true);
 
-            // Get previous attempt to determine if user had answered correctly before
-            const previousAttempt = this.questionHistory.getQuestionHistory(question.id);
-            const wasCorrect = previousAttempt?.wasCorrect ?? true; // Default to true if no previous attempt
-
-            // Record resolution viewing - this REDUCES the block time
-            this.questionHistory.recordAttempt(question.id, wasCorrect, 'resolution');
+            // Record resolution viewing for quiz questions only - this REDUCES the block time
+            if (this.selectedMode() === 'quiz') {
+                const previousAttempt = this.questionHistory.getQuestionHistory(question.id);
+                const wasCorrect = previousAttempt?.wasCorrect ?? true; // Default to true if no previous attempt
+                this.questionHistory.recordAttempt(question.id, wasCorrect, 'resolution');
+            }
         }
     }
 
